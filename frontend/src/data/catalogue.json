@@ -1,0 +1,604 @@
+{
+  "products": [
+    {
+      "slug": "double-lisseur-pate-a-sucre-2-en-1",
+      "name": "Double lisseur pâte à sucre 2 en 1",
+      "categoryId": "decoration-patisserie",
+      "price": 20,
+      "compareAtPrice": 0,
+      "description": "Lisseur double pour obtenir une pâte à sucre parfaitement lisse sur le dessus et les côtés du gâteau. Le lisseur intérieur à poignée se retire du support pour travailler les bords et les surfaces étroites.",
+      "details": [
+        "2 en 1 : lisseur à poignée + support à bord droit",
+        "Pour pâte à sucre, pâte d'amande et fondant",
+        "Plastique alimentaire, se lave à l'eau tiède"
+      ],
+      "images": [
+        {
+          "url": "/products/double-lisseur-pate-a-sucre-2-en-1-1.webp",
+          "thumb": "/products/double-lisseur-pate-a-sucre-2-en-1-1-thumb.webp"
+        },
+        {
+          "url": "/products/double-lisseur-pate-a-sucre-2-en-1-2.webp",
+          "thumb": "/products/double-lisseur-pate-a-sucre-2-en-1-2-thumb.webp"
+        }
+      ],
+      "featured": true,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.054Z"
+    },
+    {
+      "slug": "emporte-piece-rond-tartelette",
+      "name": "Emporte-pièce et découpoir rond à tartelette",
+      "categoryId": "moules-inox",
+      "price": 10,
+      "compareAtPrice": 0,
+      "description": "Emporte-pièce rond cannelé avec poussoir, pour découper et foncer des fonds de tartelettes réguliers en un seul geste.",
+      "details": [
+        "Bord cannelé",
+        "Poussoir pour former et démouler la pâte"
+      ],
+      "images": [
+        {
+          "url": "/products/emporte-piece-rond-tartelette-1.webp",
+          "thumb": "/products/emporte-piece-rond-tartelette-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "emporte-pieces-poussoir-bretzel-inox",
+      "name": "Emporte-pièces avec poussoir Bretzel en inox",
+      "categoryId": "moules-inox",
+      "price": 20,
+      "compareAtPrice": 0,
+      "description": "Emporte-pièce en forme de bretzel avec poussoir, pour des biscuits et des décors en pâte à sucre aux contours nets.",
+      "details": [
+        "Lame en acier inoxydable",
+        "Poussoir pour éjecter la pâte sans la déformer",
+        "Environ 6,5 cm"
+      ],
+      "images": [
+        {
+          "url": "/products/emporte-pieces-poussoir-bretzel-inox-1.webp",
+          "thumb": "/products/emporte-pieces-poussoir-bretzel-inox-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "ensemble-spatules-acier-inoxydable",
+      "name": "Ensemble de spatules en acier inoxydable",
+      "categoryId": "materiel-patisserie",
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "Lot de spatules à lame en acier inoxydable pour étaler crèmes et ganaches, lisser un glaçage et transférer les gâteaux.",
+      "details": [
+        "Lames en acier inoxydable",
+        "Manches colorés antidérapants",
+        "Plusieurs longueurs de lame"
+      ],
+      "images": [
+        {
+          "url": "/products/ensemble-spatules-acier-inoxydable-1.webp",
+          "thumb": "/products/ensemble-spatules-acier-inoxydable-1-thumb.webp"
+        }
+      ],
+      "featured": true,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "grattoirs-a-gateau-3-pieces",
+      "name": "Grattoirs à gâteau – 3 pièces",
+      "categoryId": "decoration-patisserie",
+      "price": 15,
+      "compareAtPrice": 0,
+      "description": "Trois grattoirs souples pour lisser la crème au beurre, racler un bol et réaliser des effets striés sur le tour d'un gâteau.",
+      "details": [
+        "3 pièces : 1 bord dentelé, 1 bord arrondi, 1 bord droit",
+        "Plastique alimentaire souple"
+      ],
+      "images": [
+        {
+          "url": "/products/grattoirs-a-gateau-3-pieces-1.webp",
+          "thumb": "/products/grattoirs-a-gateau-3-pieces-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "maryse-silicone",
+      "name": "Maryse en silicone",
+      "categoryId": "materiel-patisserie",
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "Maryse en silicone d'une seule pièce pour mélanger, incorporer délicatement et racler les bols jusqu'à la dernière goutte.",
+      "details": [
+        "Silicone alimentaire monobloc",
+        "Tête souple, manche rigide",
+        "Trou de suspension au bout du manche"
+      ],
+      "images": [
+        {
+          "url": "/products/maryse-silicone-1.webp",
+          "thumb": "/products/maryse-silicone-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "moule-madeleines-silicone",
+      "name": "Moule à madeleines en silicone",
+      "categoryId": "moules-silicone-four",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Moule à madeleines en silicone qui va au four, pour des madeleines bien formées qui se démoulent sans accroc.",
+      "details": [
+        "Empreintes en forme de coquille",
+        "Silicone qui supporte la cuisson au four"
+      ],
+      "images": [
+        {
+          "url": "/products/moule-madeleines-silicone-1.webp",
+          "thumb": "/products/moule-madeleines-silicone-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "moule-silicone-fleurs",
+      "name": "Moule en silicone – Fleurs",
+      "categoryId": "moules-silicone",
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "Moule en silicone à fleurs en relief, pour des décors de gâteaux en pâte à sucre ou en chocolat.",
+      "details": [
+        "Plusieurs fleurs détaillées",
+        "Silicone alimentaire souple"
+      ],
+      "images": [
+        {
+          "url": "/products/moule-silicone-fleurs-1.webp",
+          "thumb": "/products/moule-silicone-fleurs-1-thumb.webp"
+        }
+      ],
+      "featured": true,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "moule-silicone-noeuds-coeurs-couronnes",
+      "name": "Moule en silicone – Nœuds, cœurs et couronnes",
+      "categoryId": "moules-silicone",
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "Moule en silicone aux motifs de nœuds, cœurs et couronnes, idéal pour les gâteaux d'anniversaire et de baptême.",
+      "details": [
+        "Nombreux motifs sur un même moule",
+        "Pour pâte à sucre, chocolat et fondant"
+      ],
+      "images": [
+        {
+          "url": "/products/moule-silicone-noeuds-coeurs-couronnes-1.webp",
+          "thumb": "/products/moule-silicone-noeuds-coeurs-couronnes-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "moule-silicone-ornements-venitiens",
+      "name": "Moule en silicone – Ornements vénitiens",
+      "categoryId": "moules-silicone",
+      "price": 45,
+      "compareAtPrice": 0,
+      "description": "Moule en silicone aux motifs d'ornements baroques — volutes, médaillons et frises — pour décorer gâteaux et entremets en pâte à sucre, chocolat ou isomalt.",
+      "details": [
+        "Plusieurs motifs sur un même moule",
+        "Silicone alimentaire souple"
+      ],
+      "images": [
+        {
+          "url": "/products/moule-silicone-ornements-venitiens-1.webp",
+          "thumb": "/products/moule-silicone-ornements-venitiens-1-thumb.webp"
+        }
+      ],
+      "featured": true,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "moule-silicone-petites-fleurs",
+      "name": "Moule en silicone – Petites fleurs",
+      "categoryId": "moules-silicone",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Moule en silicone à petites fleurs de tailles variées, pour semer des décors floraux en pâte à sucre sur gâteaux et cupcakes.",
+      "details": [
+        "Plusieurs fleurs de tailles différentes",
+        "Silicone alimentaire souple"
+      ],
+      "images": [
+        {
+          "url": "/products/moule-silicone-petites-fleurs-1.webp",
+          "thumb": "/products/moule-silicone-petites-fleurs-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "moule-silicone-vetements-bebe",
+      "name": "Moule en silicone – Vêtements de bébé",
+      "categoryId": "moules-silicone",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Moule en silicone aux motifs de vêtements de bébé, pour décorer gâteaux de naissance, de baptême et de baby shower.",
+      "details": [
+        "Environ 17 × 6 cm",
+        "Silicone alimentaire souple et antiadhésif"
+      ],
+      "images": [
+        {
+          "url": "/products/moule-silicone-vetements-bebe-1.webp",
+          "thumb": "/products/moule-silicone-vetements-bebe-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "moule-silicone-tablette-chocolat-arc-en-ciel",
+      "name": "Moule en silicone pour tablette de chocolat – arc-en-ciel",
+      "categoryId": "moules-silicone",
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "Moule en silicone pour tablettes de chocolat au motif arc-en-ciel en relief, pour des tablettes maison au rendu de boutique.",
+      "details": [
+        "Motif arc-en-ciel en relief",
+        "Démoulage facile grâce au silicone souple"
+      ],
+      "images": [
+        {
+          "url": "/products/moule-silicone-tablette-chocolat-arc-en-ciel-1.webp",
+          "thumb": "/products/moule-silicone-tablette-chocolat-arc-en-ciel-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "moule-silicone-tablettes-chocolat-3-formes",
+      "name": "Moule en silicone pour tablettes de chocolat – 3 formes",
+      "categoryId": "moules-silicone",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Moule en silicone qui réunit trois tablettes de chocolat aux motifs différents : carrés classiques, rectangles et facettes géométriques.",
+      "details": [
+        "3 tablettes, 3 motifs",
+        "Silicone alimentaire souple"
+      ],
+      "images": [
+        {
+          "url": "/products/moule-silicone-tablettes-chocolat-3-formes-1.webp",
+          "thumb": "/products/moule-silicone-tablettes-chocolat-3-formes-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "plateau-tournant-acier-inoxydable",
+      "name": "Plateau tournant en acier inoxydable",
+      "categoryId": "materiel-patisserie",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Plateau tournant en métal pour masquer, lisser et décorer un gâteau en le faisant pivoter d'une main.",
+      "details": [
+        "Plateau rotatif en métal",
+        "Pied stable"
+      ],
+      "images": [
+        {
+          "url": "/products/plateau-tournant-acier-inoxydable-1.webp",
+          "thumb": "/products/plateau-tournant-acier-inoxydable-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "rouleau-pate-a-sucre-anneaux-epaisseur",
+      "name": "Rouleau pour pâte à sucre avec anneaux d'épaisseur",
+      "categoryId": "decoration-patisserie",
+      "price": 30,
+      "compareAtPrice": 0,
+      "description": "Rouleau en plastique alimentaire pour étaler la pâte à sucre, avec anneaux amovibles qui règlent l'épaisseur de la pâte.",
+      "details": [
+        "Environ 23 cm",
+        "Anneaux d'épaisseur amovibles",
+        "Surface lisse qui ne marque pas la pâte"
+      ],
+      "images": [
+        {
+          "url": "/products/rouleau-pate-a-sucre-anneaux-epaisseur-1.webp",
+          "thumb": "/products/rouleau-pate-a-sucre-anneaux-epaisseur-1-thumb.webp"
+        },
+        {
+          "url": "/products/rouleau-pate-a-sucre-anneaux-epaisseur-2.webp",
+          "thumb": "/products/rouleau-pate-a-sucre-anneaux-epaisseur-2-thumb.webp"
+        }
+      ],
+      "featured": true,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "spatule-coudee",
+      "name": "Spatule coudée",
+      "categoryId": "decoration-patisserie",
+      "price": 60,
+      "compareAtPrice": 0,
+      "description": "Spatule à lame coudée en acier inoxydable pour napper, lisser le dessus d'un gâteau et soulever les décors sans y mettre les doigts.",
+      "details": [
+        "Lame coudée en acier inoxydable",
+        "Manche noir antidérapant"
+      ],
+      "images": [
+        {
+          "url": "/products/spatule-coudee-1.webp",
+          "thumb": "/products/spatule-coudee-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "tapis-macaron-grande-taille-60x40",
+      "name": "Tapis à macarons – grande taille 60 × 40 cm",
+      "categoryId": "tapis-patisserie",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Tapis à macarons grand format avec cercles de repère, pour pocher des coques toutes de la même taille.",
+      "details": [
+        "60 × 40 cm",
+        "Cercles de repère imprimés"
+      ],
+      "images": [
+        {
+          "url": "/products/tapis-macaron-grande-taille-60x40-1.webp",
+          "thumb": "/products/tapis-macaron-grande-taille-60x40-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "tapis-macaron-petite-taille-30x40",
+      "name": "Tapis à macarons – petite taille 30 × 40 cm",
+      "categoryId": "tapis-patisserie",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Tapis à macarons petit format avec cercles de repère, adapté aux fours domestiques.",
+      "details": [
+        "30 × 40 cm",
+        "Cercles de repère imprimés"
+      ],
+      "images": [
+        {
+          "url": "/products/tapis-macaron-petite-taille-30x40-1.webp",
+          "thumb": "/products/tapis-macaron-petite-taille-30x40-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "tapis-cuisson-four-grande-taille",
+      "name": "Tapis de cuisson pour four – grande taille",
+      "categoryId": "tapis-patisserie",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Tapis de cuisson microperforé grand format : l'air circule sous la pâte pour des fonds de tarte et des biscuits cuits de façon homogène.",
+      "details": [
+        "Toile microperforée",
+        "Remplace le papier sulfurisé, réutilisable"
+      ],
+      "images": [
+        {
+          "url": "/products/tapis-cuisson-four-grande-taille-1.webp",
+          "thumb": "/products/tapis-cuisson-four-grande-taille-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "tapis-cuisson-four-petite-taille",
+      "name": "Tapis de cuisson pour four – petite taille",
+      "categoryId": "tapis-patisserie",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Tapis de cuisson microperforé petit format pour les plaques de four domestiques : cuisson homogène, sans papier sulfurisé.",
+      "details": [
+        "Toile microperforée",
+        "Réutilisable"
+      ],
+      "images": [
+        {
+          "url": "/products/tapis-cuisson-four-petite-taille-1.webp",
+          "thumb": "/products/tapis-cuisson-four-petite-taille-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "tapis-patisserie-silicone-grande-taille",
+      "name": "Tapis de pâtisserie en silicone – grande taille",
+      "categoryId": "tapis-patisserie",
+      "price": 0,
+      "compareAtPrice": 0,
+      "description": "Grand tapis de travail en silicone avec graduations et cercles de repère, pour pétrir et étaler la pâte à la bonne taille sans fariner le plan de travail.",
+      "details": [
+        "Graduations et cercles de diamètre imprimés",
+        "Antidérapant, se roule pour le rangement"
+      ],
+      "images": [
+        {
+          "url": "/products/tapis-patisserie-silicone-grande-taille-1.webp",
+          "thumb": "/products/tapis-patisserie-silicone-grande-taille-1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-06T13:47:16.056Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "moules-silicone",
+      "name": "Moules en silicone",
+      "description": "Moules souples pour chocolat, pâte à sucre, fondant et décors : le démoulage se fait sans casse.",
+      "order": 1,
+      "image": ""
+    },
+    {
+      "id": "moules-silicone-four",
+      "name": "Moules en silicone pour four",
+      "description": "Moules en silicone qui passent au four pour madeleines, palets et petits gâteaux.",
+      "order": 2,
+      "image": ""
+    },
+    {
+      "id": "tapis-patisserie",
+      "name": "Tapis de pâtisserie",
+      "description": "Tapis de travail, de cuisson et à macarons, pour étaler, cuire et dresser sur une surface antiadhésive.",
+      "order": 3,
+      "image": ""
+    },
+    {
+      "id": "decoration-patisserie",
+      "name": "Décoration de pâtisserie",
+      "description": "Lisseurs, rouleaux, grattoirs et spatules pour le cake design et les finitions nettes.",
+      "order": 4,
+      "image": ""
+    },
+    {
+      "id": "materiel-patisserie",
+      "name": "Matériel de pâtisserie",
+      "description": "Les ustensiles de base du pâtissier : spatules, maryses, plateau tournant.",
+      "order": 5,
+      "image": ""
+    },
+    {
+      "id": "moules-inox",
+      "name": "Moules et emporte-pièces en inox",
+      "description": "Emporte-pièces et découpoirs en acier inoxydable pour tartelettes et biscuits.",
+      "order": 6,
+      "image": ""
+    },
+    {
+      "id": "moules-aluminium",
+      "name": "Moules en aluminium",
+      "description": "",
+      "order": 7,
+      "image": ""
+    },
+    {
+      "id": "gateaux-marocains",
+      "name": "Matériel pour gâteaux marocains",
+      "description": "",
+      "order": 8,
+      "image": ""
+    },
+    {
+      "id": "appareils-patisserie",
+      "name": "Appareils de pâtisserie",
+      "description": "",
+      "order": 9,
+      "image": ""
+    },
+    {
+      "id": "equipement-professionnel",
+      "name": "Équipement professionnel",
+      "description": "",
+      "order": 10,
+      "image": ""
+    }
+  ],
+  "settings": {
+    "brand": "SweetTools",
+    "baseline": "Outils et matériel de pâtisserie & cake design",
+    "url": "https://sweettools.ma",
+    "phone": "06 95 81 97 43",
+    "whatsapp": "212695819743",
+    "email": "",
+    "city": "Casablanca",
+    "hours": "",
+    "instagram": "",
+    "facebook": "",
+    "tiktok": "",
+    "announcement": "Paiement à la livraison partout au Maroc",
+    "freeShippingThreshold": 0,
+    "minOrder": 200,
+    "zones": [
+      {
+        "id": "casablanca",
+        "label": "Casablanca",
+        "fee": 20,
+        "delay": "24 à 48 h"
+      },
+      {
+        "id": "autres-villes",
+        "label": "Autres villes du Maroc",
+        "fee": 35,
+        "delay": "2 à 4 jours ouvrables"
+      }
+    ]
+  },
+  "generatedAt": "2026-10-06T21:42:20.001Z"
+}
