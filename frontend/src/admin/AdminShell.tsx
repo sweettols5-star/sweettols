@@ -104,7 +104,7 @@ export default function AdminShell({
           <div className="adm-side__brand">
             <img src="/brand/emblem.png" alt="" width={36} height={36} />
             <span>
-              <strong>SweetTools</strong>
+              <strong>SWEETTOOLS</strong>
               <small>Administration</small>
             </span>
             <button type="button" className="adm-side__close" aria-label="Fermer le menu" onClick={() => setMenu(false)}>
@@ -186,7 +186,7 @@ function LoginScreen({ onDone }: { onDone: () => void }) {
     <div className="adm-login">
       <form className="adm-card adm-login__box" onSubmit={submit}>
         <img src="/brand/logo-256.webp" alt="SweetTools" width={120} height={120} className="adm-login__mark" />
-        <h1 className="adm-login__title">SweetTools</h1>
+        <h1 className="adm-login__title">SWEETTOOLS</h1>
         <p className="adm-muted">Espace d’administration</p>
 
         {error && <p className="adm-alert adm-alert--err">{error}</p>}
