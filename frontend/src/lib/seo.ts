@@ -69,7 +69,10 @@ export function layoutMeta(lang: Lang): Metadata {
     description: t.meta.defaultDescription,
     applicationName: site.brand,
     formatDetection: { telephone: false },
-    verification: { google: 'mKZuNJG6ikfZleiFIorasUEXq4QDofMIho0fQgCw3lQ' },
+    // Both stay: removing a token un-verifies that Google property.
+    verification: {
+      google: ['mKZuNJG6ikfZleiFIorasUEXq4QDofMIho0fQgCw3lQ', '55X9rqHWmIendLX5OEd5RzIvpUfbrJHS-b7NNpW7JF4'],
+    },
     // Listing icons here replaces the app/icon.png convention, so every size is explicit.
     icons: {
       icon: [
