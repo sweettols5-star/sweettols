@@ -2,14 +2,15 @@
 
 import { useEffect, useState, type FormEvent } from 'react';
 import AdminShell from '@/admin/AdminShell';
-import { api, errorText } from '@/admin/client';
-import { BusyButton, Field, Flash, Loading, SlowHint, useFlash } from '@/admin/ui';
+import { api, errorText, setToken } from '@/admin/client';
+import { BusyButton, carryFlash, Field, Flash, Loading, SlowHint, useFlash } from '@/admin/ui';
 import type { Settings, Zone } from '@/types';
 
 export default function SettingsPage() {
   return (
     <AdminShell title="Réglages">
       <SettingsView />
+      <EmailForm />
       <PasswordForm />
     </AdminShell>
   );
@@ -142,7 +143,7 @@ function SettingsView() {
           + Ajouter une zone
         </button>
         <div className="adm-fields adm-mt">
-          <Field label="Minimum de commande (DH)" hint="Montant des articles hors livraison. 0 = pas de minimum.">
+          <Field label="Minimum de commande (DH)" hint="Articles + livraison (hors TVA facture). 0 = pas de minimum.">
             <input
               className="adm-input"
               inputMode="numeric"
@@ -168,6 +169,67 @@ function SettingsView() {
         </BusyButton>
         <SlowHint active={busy} />
       </div>
+    </form>
+  );
+}
+
+function EmailForm() {
+  const [saved, setSaved] = useState('');
+  const [email, setEmail] = useState('');
+  const [current, setCurrent] = useState('');
+  const [busy, setBusy] = useState(false);
+  const flash = useFlash();
+
+  useEffect(() => {
+    api<{ admin: { email: string } }>('/api/admin/me')
+      .then(({ admin }) => {
+        setSaved(admin.email);
+        setEmail(admin.email);
+      })
+      .catch(() => {});
+  }, []);
+
+  async function submit(e: FormEvent) {
+    e.preventDefault();
+    setBusy(true);
+    try {
+      const r = await api<{ token: string; admin: { email: string } }>('/api/admin/email', {
+        method: 'POST',
+        body: { email, current },
+        keepSession: true,
+      });
+      setToken(r.token);
+      // Reload so the sidebar shows the new address; the message survives it.
+      carryFlash(`E-mail de connexion changé : ${r.admin.email}`);
+      window.location.reload();
+    } catch (err) {
+      flash.err(errorText(err));
+      setBusy(false);
+    }
+  }
+
+  return (
+    <form className="adm-card adm-mt" onSubmit={submit}>
+      <h2 className="adm-h2">E-mail de connexion</h2>
+      <Flash flash={flash.flash} />
+      <div className="adm-fields">
+        <Field label="Nouvel e-mail" hint={saved ? `Actuel : ${saved}` : undefined}>
+          <input className="adm-input" type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </Field>
+        <Field label="Mot de passe actuel" hint="Pour confirmer que c’est bien vous.">
+          <input className="adm-input" type="password" autoComplete="current-password" value={current} onChange={(e) => setCurrent(e.target.value)} required />
+        </Field>
+      </div>
+      <BusyButton
+        type="submit"
+        className="adm-btn adm-btn--primary"
+        busy={busy}
+        busyText="Changement en cours…"
+        disabled={!email || email.trim().toLowerCase() === saved}
+      >
+        Changer l’e-mail
+      </BusyButton>
+      <SlowHint active={busy} />
     </form>
   );
 }

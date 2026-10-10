@@ -29,7 +29,7 @@ export default function DeliveryInfo() {
         </table>
       </div>
       {(s.minOrder ?? 0) > 0 && (
-        <p className="notice">Minimum de commande : {dh(s.minOrder ?? 0)} d’articles (hors livraison).</p>
+        <p className="notice">Minimum de commande : {dh(s.minOrder ?? 0)}, livraison comprise.</p>
       )}
       {s.freeShippingThreshold > 0 && (
         <p className="notice">Livraison offerte dès {dh(s.freeShippingThreshold)} d’achat.</p>

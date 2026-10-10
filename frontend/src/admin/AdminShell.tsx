@@ -17,6 +17,7 @@ const NAV = [
   { href: '/admin/messages/', label: 'Messages', badge: 'messages' as const },
   { href: '/admin/produits/', label: 'Produits' },
   { href: '/admin/categories/', label: 'Catégories' },
+  { href: '/admin/kits/', label: 'Kits' },
   { href: '/admin/reglages/', label: 'Réglages' },
 ];
 
@@ -185,7 +186,7 @@ function LoginScreen({ onDone }: { onDone: () => void }) {
   return (
     <div className="adm-login">
       <form className="adm-card adm-login__box" onSubmit={submit}>
-        <img src="/brand/logo-256.webp" alt="SweetTools" width={120} height={120} className="adm-login__mark" />
+        <img src="/brand/logo-256.webp" alt="SWEETTOOLS" width={120} height={120} className="adm-login__mark" />
         <h1 className="adm-login__title">SWEETTOOLS</h1>
         <p className="adm-muted">Espace d’administration</p>
 

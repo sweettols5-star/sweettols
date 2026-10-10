@@ -67,11 +67,15 @@ export function useSettings(): Settings {
   return useContext(Ctx)?.settings ?? built.settings;
 }
 
-/** Categories that hold at least one product — the only ones worth a menu link. */
-export function useFilledCategories(): Category[] {
-  const categories = useCategories();
-  const products = useProducts();
-  return categories.filter((c) => products.some((p) => p.categoryId === c.id));
+const BUILT_CATEGORIES = new Set(built.categories.map((c) => c.id));
+
+/**
+ * Categories worth a link, empty ones included (their page says « bientôt »).
+ * One created in /admin after the build has no page yet: it shows from the
+ * next deploy instead of linking to a 404.
+ */
+export function useShownCategories(): Category[] {
+  return useCategories().filter((c) => BUILT_CATEGORIES.has(c.id));
 }
 
 const BUILT_SLUGS = new Set(built.products.map((p) => p.slug));

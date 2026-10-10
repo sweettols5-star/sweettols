@@ -4,7 +4,7 @@ import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
   title: 'Mon panier',
-  description: 'Votre panier SweetTools.',
+  description: 'Votre panier SWEETTOOLS.',
   path: routes.cart,
   noindex: true,
 });

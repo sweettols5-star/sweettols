@@ -45,7 +45,7 @@ export type Order = {
   }>;
   subtotal: number;
   shipping: number;
-  /** Set when the customer asked for an invoice (+10 % of the products). */
+  /** Set when the customer asked for an invoice (+20 % VAT on the products; older orders were at 10 %). */
   invoice?: { company: string; ice: string } | null;
   invoiceFee?: number;
   total: number;

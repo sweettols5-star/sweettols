@@ -2,15 +2,13 @@
 
 import { categoryImage } from '@/lib/catalogue';
 import { routes } from '@/lib/routes';
-import { useCategories, useProducts } from './LiveCatalogue';
+import { useProducts, useShownCategories } from './LiveCatalogue';
 import Link from './Link';
 
 /** Category tiles, each illustrated by its own picture or its first product's. */
 export default function HomeCategories() {
-  const categories = useCategories();
+  const shown = useShownCategories();
   const products = useProducts();
-  // An empty category would lead to an empty page: keep it off the home page.
-  const shown = categories.filter((c) => products.some((p) => p.categoryId === c.id));
 
   return (
     <div className="cats">
@@ -23,7 +21,7 @@ export default function HomeCategories() {
             </span>
             <span className="cat__name">{c.name}</span>
             <span className="cat__count">
-              {n} produit{n > 1 ? 's' : ''}
+              {n ? `${n} produit${n > 1 ? 's' : ''}` : 'Bientôt disponible'}
             </span>
           </Link>
         );

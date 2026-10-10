@@ -14,7 +14,15 @@ export const metadata: Metadata = {
     'Moules en silicone, tapis de cuisson, spatules, emporte-pièces et outils de cake design. Paiement à la livraison partout au Maroc.',
   applicationName: site.brand,
   formatDetection: { telephone: false },
-  icons: { apple: '/apple-touch-icon.png' },
+  verification: { google: 'mKZuNJG6ikfZleiFIorasUEXq4QDofMIho0fQgCw3lQ' },
+  // Listing icons here replaces the app/icon.png convention, so every size is explicit.
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/brand/emblem.png', type: 'image/png', sizes: '256x256' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export const viewport: Viewport = {

@@ -63,3 +63,36 @@ authRoutes.post('/password', requireAdmin, async (req, res) => {
     res.status(500).json({ error: 'Erreur serveur' });
   }
 });
+
+/**
+ * Changes the login e-mail. The token carries the e-mail, so a fresh one is
+ * returned: the old token would no longer match any admin.
+ */
+authRoutes.post('/email', requireAdmin, async (req, res) => {
+  try {
+    const current = String(req.body?.current ?? '');
+    const email = clean(req.body?.email, 160).toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      res.status(400).json({ error: 'Adresse e-mail invalide.' });
+      return;
+    }
+    const admin = await store.admins.get(req.session.email);
+    if (!admin || !(await bcrypt.compare(current, admin.passwordHash || ''))) {
+      res.status(401).json({ error: 'Mot de passe actuel incorrect.' });
+      return;
+    }
+    if (email !== admin.email && (await store.admins.get(email))) {
+      res.status(409).json({ error: 'Cette adresse est déjà utilisée par un autre compte.' });
+      return;
+    }
+    await store.admins.update(admin.email, { email });
+    res.json({
+      ok: true,
+      token: signToken({ email, name: admin.name || '' }),
+      admin: { email, name: admin.name || '' },
+    });
+  } catch (e) {
+    console.error('[email]', e);
+    res.status(500).json({ error: 'Erreur serveur' });
+  }
+});

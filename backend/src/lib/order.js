@@ -20,8 +20,8 @@ export const STATUS_LABELS = {
 };
 
 const MAX_LINES = 40;
-/** Surcharge when the customer asks for an invoice: 10 % of the products (delivery excluded). */
-export const INVOICE_RATE = 0.1;
+/** VAT added when the customer asks for an invoice: 20 % of the products (delivery excluded). */
+export const INVOICE_RATE = 0.2;
 export const invoiceFee = (subtotal) => Math.round(subtotal * INVOICE_RATE);
 
 /** `null` when no invoice is wanted; company and ICE are optional. */
@@ -103,15 +103,17 @@ export function buildOrder(body = {}, catalogue = [], settings) {
   }
 
   const subtotal = items.reduce((n, l) => n + l.lineTotal, 0);
+  const delivery = shippingFor(settings, clean(body.zoneId, 60), subtotal);
+  if (!delivery) return { error: 'Choisissez une zone de livraison.' };
+
+  // Client rule (2026-10-10): the minimum counts products + delivery (invoice VAT excluded).
   const minOrder = settings?.minOrder || 0;
-  if (minOrder && subtotal < minOrder) {
+  if (minOrder && subtotal + delivery.fee < minOrder) {
     return {
-      error: `Le montant minimum de commande est de ${minOrder} DH (hors livraison). Il manque ${minOrder - subtotal} DH à votre panier.`,
+      error: `Le montant minimum de commande est de ${minOrder} DH (livraison comprise). Il manque ${minOrder - subtotal - delivery.fee} DH à votre panier.`,
       minOrder,
     };
   }
-  const delivery = shippingFor(settings, clean(body.zoneId, 60), subtotal);
-  if (!delivery) return { error: 'Choisissez une zone de livraison.' };
 
   const facture = invoice(body.invoice);
   const factureFee = facture ? invoiceFee(subtotal) : 0;

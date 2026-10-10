@@ -13,7 +13,13 @@ import { productHref } from './ProductCard';
 export default function CartView() {
   const cart = useCart();
   const settings = useSettings();
-  const minOrder = useMinOrder(cart.subtotal);
+  const fees = settings.zones.map((z) => z.fee);
+  const minFee = fees.length ? Math.min(...fees) : 0;
+  const free = settings.freeShippingThreshold;
+  const missing = free > 0 ? free - cart.subtotal : 0;
+  // City not chosen yet: the cheapest delivery is the most the customer can count on.
+  const minDelivery = missing <= 0 && free > 0 ? 0 : minFee;
+  const minOrder = useMinOrder(cart.subtotal, minDelivery);
 
   if (!cart.ready) return <div className="container section" aria-busy="true" />;
 
@@ -31,11 +37,6 @@ export default function CartView() {
       </div>
     );
   }
-
-  const fees = settings.zones.map((z) => z.fee);
-  const minFee = fees.length ? Math.min(...fees) : 0;
-  const free = settings.freeShippingThreshold;
-  const missing = free > 0 ? free - cart.subtotal : 0;
 
   return (
     <div className="container section">
@@ -108,7 +109,7 @@ export default function CartView() {
           </dl>
           {missing > 0 && <p className="summary__hint">Plus que {dh(missing)} pour la livraison offerte.</p>}
           <p className="summary__note">Les frais exacts dépendent de votre ville, choisie à l’étape suivante.</p>
-          <MinOrderNotice subtotal={cart.subtotal} />
+          <MinOrderNotice subtotal={cart.subtotal} delivery={minDelivery} />
           {cart.blocked ? (
             <p className="notice notice--warn">Retirez les articles indisponibles pour continuer.</p>
           ) : minOrder.blocked ? (

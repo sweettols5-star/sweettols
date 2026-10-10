@@ -5,7 +5,7 @@ import { pageMeta } from '@/lib/seo';
 /** /produit/?slug=… — products added after the last build. Never indexed. */
 export const metadata = pageMeta({
   title: 'Produit',
-  description: 'Fiche produit SweetTools.',
+  description: 'Fiche produit SWEETTOOLS.',
   path: '/produit/',
   noindex: true,
 });

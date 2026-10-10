@@ -91,7 +91,7 @@ export default function ContactForm() {
         <p>Nous vous répondons rapidement, par téléphone, WhatsApp ou e-mail.</p>
         <div className="confirm__actions">
           {settings.whatsapp && (
-            <a href={whatsappUrl(settings.whatsapp, 'Bonjour SweetTools, ')} target="_blank" rel="noopener noreferrer" className="btn btn--ghost">
+            <a href={whatsappUrl(settings.whatsapp, 'Bonjour SWEETTOOLS, ')} target="_blank" rel="noopener noreferrer" className="btn btn--ghost">
               <IconWhatsapp width={18} height={18} /> Urgent ? WhatsApp
             </a>
           )}

@@ -92,7 +92,7 @@ if (process.env.NODE_ENV !== 'test') {
   connectStore()
     .then(() => {
       app.listen(PORT, () => {
-        console.log(`API SweetTools — http://localhost:${PORT}`);
+        console.log(`API SWEETTOOLS — http://localhost:${PORT}`);
         console.log(allowed.length
           ? `Origines autorisées : ${allowed.join(', ')}`
           : 'Aucune origine déclarée : seuls les appels sans en-tête Origin passeront.');

@@ -9,7 +9,7 @@ import { pageMeta } from '@/lib/seo';
 export const metadata = pageMeta({
   title: 'Questions fréquentes (FAQ)',
   description:
-    'Commande, paiement à la livraison, frais et délais, entretien des moules en silicone : toutes les réponses aux questions fréquentes sur SweetTools.',
+    'Commande, paiement à la livraison, frais et délais, entretien des moules en silicone : toutes les réponses aux questions fréquentes sur SWEETTOOLS.',
   path: routes.faq,
 });
 

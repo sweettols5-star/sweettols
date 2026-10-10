@@ -5,11 +5,11 @@ import { whatsappUrl } from '@/lib/whatsapp';
 import Brand from './Brand';
 import Link from './Link';
 import { IconFacebook, IconInstagram, IconMail, IconPhone, IconPin, IconTiktok, IconWhatsapp } from './Icons';
-import { useFilledCategories, useSettings } from './LiveCatalogue';
+import { useShownCategories, useSettings } from './LiveCatalogue';
 
 export default function Footer() {
   const s = useSettings();
-  const categories = useFilledCategories();
+  const categories = useShownCategories();
   const socials = [
     { href: s.instagram, label: 'Instagram', Icon: IconInstagram },
     { href: s.facebook, label: 'Facebook', Icon: IconFacebook },
@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer__bottom container">
-        <span>© {new Date().getFullYear()} SweetTools. Tous droits réservés.</span>
+        <span>© {new Date().getFullYear()} SWEETTOOLS. Tous droits réservés.</span>
         <span>Paiement à la livraison · Prix en dirhams</span>
       </div>
     </footer>

@@ -180,7 +180,7 @@ function MessageCard({
               <>
                 <a
                   className="adm-btn adm-btn--primary adm-btn--sm"
-                  href={whatsappUrl(phone, `Bonjour ${first}, SweetTools vous répond au sujet de votre message :`)}
+                  href={whatsappUrl(phone, `Bonjour ${first}, SWEETTOOLS vous répond au sujet de votre message :`)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -194,7 +194,7 @@ function MessageCard({
             {m.email && (
               <a
                 className={`adm-btn adm-btn--${phone ? 'ghost' : 'primary'} adm-btn--sm`}
-                href={`mailto:${m.email}?subject=${encodeURIComponent(`SweetTools — ${m.subject}`)}&body=${encodeURIComponent(`Bonjour ${first},\n\n`)}`}
+                href={`mailto:${m.email}?subject=${encodeURIComponent(`SWEETTOOLS — ${m.subject}`)}&body=${encodeURIComponent(`Bonjour ${first},\n\n`)}`}
               >
                 <IconMail width={16} height={16} /> Répondre par e-mail
               </a>

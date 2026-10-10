@@ -26,7 +26,7 @@ export default function ContactFloats() {
       {whatsapp && (
         <a
           className="float-btn float-btn--wa"
-          href={whatsappUrl(whatsapp, 'Bonjour SweetTools, j’ai une question :')}
+          href={whatsappUrl(whatsapp, 'Bonjour SWEETTOOLS, j’ai une question :')}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Nous écrire sur WhatsApp"

@@ -246,7 +246,7 @@ function OrderCard({
                 </a>
                 <a
                   className="adm-btn adm-btn--ghost adm-btn--sm"
-                  href={whatsappUrl(phone, `Bonjour ${o.customer.name.split(' ')[0]}, SweetTools au sujet de votre commande ${o.reference} (${dh(o.total)}).`)}
+                  href={whatsappUrl(phone, `Bonjour ${o.customer.name.split(' ')[0]}, SWEETTOOLS au sujet de votre commande ${o.reference} (${dh(o.total)}).`)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -283,7 +283,7 @@ function OrderCard({
                 </div>
                 {!!o.invoiceFee && (
                   <div>
-                    <dt>Facture (+10 %)</dt>
+                    <dt>TVA (facture)</dt>
                     <dd>{dh(o.invoiceFee)}</dd>
                   </div>
                 )}

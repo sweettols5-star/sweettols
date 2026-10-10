@@ -8,7 +8,7 @@ import { pageMeta } from '@/lib/seo';
 export const metadata = pageMeta({
   title: 'Contact',
   description:
-    'Une question sur un moule, une taille ou une commande ? Contactez SweetTools, matériel de pâtisserie livré partout au Maroc.',
+    'Une question sur un moule, une taille ou une commande ? Contactez SWEETTOOLS, matériel de pâtisserie livré partout au Maroc.',
   path: routes.contact,
 });
 

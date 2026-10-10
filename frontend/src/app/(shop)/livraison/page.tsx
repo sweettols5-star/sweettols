@@ -9,7 +9,7 @@ import { pageMeta } from '@/lib/seo';
 export const metadata = pageMeta({
   title: 'Livraison & paiement à la livraison',
   description:
-    'Livraison partout au Maroc et paiement en espèces à la réception. Délais, frais par ville et déroulement d’une commande SweetTools.',
+    'Livraison partout au Maroc et paiement en espèces à la réception. Délais, frais par ville et déroulement d’une commande SWEETTOOLS.',
   path: routes.delivery,
 });
 

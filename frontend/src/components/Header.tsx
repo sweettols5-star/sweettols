@@ -7,7 +7,7 @@ import Brand from './Brand';
 import Link from './Link';
 import { IconBag, IconClose, IconMenu, IconSearch } from './Icons';
 import { useCart } from './CartProvider';
-import { useFilledCategories, useSettings } from './LiveCatalogue';
+import { useShownCategories, useSettings } from './LiveCatalogue';
 
 const NAV = [
   { href: routes.home, label: 'Accueil' },
@@ -20,7 +20,7 @@ const NAV = [
 export default function Header() {
   const pathname = usePathname();
   const cart = useCart();
-  const categories = useFilledCategories();
+  const categories = useShownCategories();
   const settings = useSettings();
   const [open, setOpen] = useState(false);
   const [searching, setSearching] = useState(false);

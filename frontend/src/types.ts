@@ -44,7 +44,16 @@ export type Settings = {
   /** Minimum products total to order, in DH (delivery not counted). 0 = none. */
   minOrder?: number;
   zones: Zone[];
+  /** Home page bundles, edited in /admin/kits. Absent from snapshots built before kits moved to the API. */
+  kits?: Kit[];
 };
+
+/**
+ * Ready-made kit: a few products that go together, added to the cart in one
+ * click. The price shown is the live sum of the products — no invented
+ * discount. Unpriced or sold-out products are skipped, never added at 0 DH.
+ */
+export type Kit = { id: string; title: string; pitch: string; slugs: string[] };
 
 export type Catalogue = {
   products: Product[];

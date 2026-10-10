@@ -1421,6 +1421,66 @@ a.adm-stat:hover {
   margin-bottom: 8px;
 }
 
+/* ---------- Kits ---------- */
+
+.adm-kit__move {
+  display: grid;
+  gap: 4px;
+}
+
+.adm-kit__move .adm-btn {
+  padding: 2px 8px;
+}
+
+.adm-kit__pick {
+  display: grid;
+  gap: 4px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.adm-kit__item {
+  display: grid;
+  grid-template-columns: auto 40px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.adm-kit__item:hover {
+  background: var(--violet-50);
+}
+
+.adm-kit__item.is-on {
+  background: var(--violet-50);
+  font-weight: 600;
+}
+
+.adm-kit__item img,
+.adm-kit__ph {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--violet-50);
+}
+
+.adm-kit__name {
+  min-width: 0;
+  font-size: 0.88rem;
+}
+
+.adm-kit__price {
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 /* ---------- Settings ---------- */
 
 .adm-zones {

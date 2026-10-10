@@ -12,7 +12,7 @@ export default function ContactInfo() {
       Icon: IconWhatsapp,
       title: 'WhatsApp',
       value: s.whatsapp,
-      href: whatsappUrl(s.whatsapp, 'Bonjour SweetTools, '),
+      href: whatsappUrl(s.whatsapp, 'Bonjour SWEETTOOLS, '),
       external: true,
     },
     s.phone && { Icon: IconPhone, title: 'Téléphone', value: s.phone, href: `tel:${s.phone.replace(/\s/g, '')}` },

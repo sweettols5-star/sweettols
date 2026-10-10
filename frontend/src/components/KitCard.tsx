@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { Kit } from '@/data/kits';
+import type { Kit } from '@/types';
 import { isSellable } from '@/lib/catalogue';
 import { dh } from '@/lib/format';
 import { routes } from '@/lib/routes';

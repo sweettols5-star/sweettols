@@ -8,7 +8,7 @@ import '@/styles/admin.css';
  * API once the owner has signed in, so their static HTML holds no data.
  */
 export const metadata: Metadata = {
-  title: { absolute: 'Administration — SweetTools' },
+  title: { absolute: 'Administration — SWEETTOOLS' },
   robots: { index: false, follow: false, nocache: true },
 };
 

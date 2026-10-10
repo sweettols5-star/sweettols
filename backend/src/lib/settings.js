@@ -8,7 +8,7 @@ import { store } from '../store/index.js';
 import { clean, int, slugify } from './text.js';
 
 export const DEFAULT_SETTINGS = {
-  brand: 'SweetTools',
+  brand: 'SWEETTOOLS',
   baseline: 'Outils et matériel de pâtisserie & cake design',
   url: 'https://sweettools.ma',
   phone: '06 78 77 99 83',
@@ -21,11 +21,32 @@ export const DEFAULT_SETTINGS = {
   tiktok: '',
   announcement: 'Paiement à la livraison partout au Maroc',
   freeShippingThreshold: 0,
-  // Client rule (2026-10-06): no order under 200 DH of products (delivery not counted).
+  // Client rule (2026-10-10): no order under 200 DH, delivery included (invoice VAT not).
   minOrder: 200,
   zones: [
     { id: 'casablanca', label: 'Casablanca', fee: 30, delay: '24 à 48 h' },
     { id: 'autres-villes', label: 'Autres villes du Maroc', fee: 45, delay: '2 à 4 jours ouvrables' },
+  ],
+  // Home page "Kits prêts à l'emploi": products sold together, priced at their
+  // live sum by the shop. Edited in /admin/kits.
+  kits: [
+    {
+      id: 'debutant-cake-design',
+      title: 'Kit débutant cake design',
+      pitch: 'Étaler, couvrir et lisser vos premiers gâteaux en pâte à sucre.',
+      slugs: [
+        'rouleau-pate-a-sucre-anneaux-epaisseur',
+        'double-lisseur-pate-a-sucre-2-en-1',
+        'grattoirs-a-gateau-3-pieces',
+        'spatule-coudee',
+      ],
+    },
+    {
+      id: 'decors-silicone',
+      title: 'Kit décors en silicone',
+      pitch: 'Fleurs, nœuds, couronnes et ornements en pâte à sucre ou en chocolat.',
+      slugs: ['moule-silicone-fleurs', 'moule-silicone-noeuds-coeurs-couronnes', 'moule-silicone-ornements-venitiens'],
+    },
   ],
 };
 
@@ -56,6 +77,25 @@ function zones(list, fallback) {
   return out.length ? out : fallback;
 }
 
+/** Unlike zones, an empty list is kept: the owner may remove every kit. */
+function kits(list, fallback) {
+  if (!Array.isArray(list)) return fallback;
+  const seen = new Set();
+  const out = [];
+  for (const k of list) {
+    const title = clean(k?.title, 80);
+    if (!title) continue;
+    let id = slugify(k.id || title) || `kit-${out.length + 1}`;
+    while (seen.has(id)) id = `${id}-2`;
+    seen.add(id);
+    const slugs = [...new Set((Array.isArray(k.slugs) ? k.slugs : []).map((s) => slugify(s)).filter(Boolean))].slice(0, 8);
+    if (!slugs.length) continue;
+    out.push({ id, title, pitch: clean(k.pitch, 200), slugs });
+    if (out.length >= 12) break;
+  }
+  return out;
+}
+
 export function normaliseSettings(body = {}, base = DEFAULT_SETTINGS) {
   const m = { ...base, ...body };
   return {
@@ -74,6 +114,7 @@ export function normaliseSettings(body = {}, base = DEFAULT_SETTINGS) {
     freeShippingThreshold: int(m.freeShippingThreshold, { min: 0, max: 1_000_000, fallback: 0 }),
     minOrder: int(m.minOrder, { min: 0, max: 1_000_000, fallback: DEFAULT_SETTINGS.minOrder }),
     zones: zones(m.zones, base.zones || DEFAULT_SETTINGS.zones),
+    kits: kits(m.kits, base.kits || DEFAULT_SETTINGS.kits),
   };
 }
 

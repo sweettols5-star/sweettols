@@ -2,11 +2,10 @@ import BestSellers from '@/components/BestSellers';
 import FaqList from '@/components/FaqList';
 import GuideCards from '@/components/GuideCards';
 import HowToOrder from '@/components/HowToOrder';
-import KitCard from '@/components/KitCard';
 import { HOME_FAQ } from '@/data/faq';
 import { GUIDES } from '@/data/guides';
-import { KITS } from '@/data/kits';
 import HomeCategories from '@/components/HomeCategories';
+import HomeKits from '@/components/HomeKits';
 import { IconArrow, IconCash, IconChat, IconTruck, IconWhisk } from '@/components/Icons';
 import JsonLd from '@/components/JsonLd';
 import Link from '@/components/Link';
@@ -63,7 +62,7 @@ export default function HomePage() {
         </picture>
         <div className="container hero__inner">
           <div className="hero__text">
-            <p className="eyebrow">SweetTools</p>
+            <p className="eyebrow">SWEETTOOLS</p>
             <h1>
               Tout pour créer <em>avec élégance.</em>
             </h1>
@@ -124,19 +123,7 @@ export default function HomePage() {
         <BestSellers />
       </section>
 
-      <section className="section container">
-        <div className="section__head">
-          <div>
-            <h2 className="section__title">Kits prêts à l’emploi</h2>
-            <p className="section__sub">Les outils qui vont ensemble, ajoutés au panier en un clic.</p>
-          </div>
-        </div>
-        <div className="kits">
-          {KITS.map((k) => (
-            <KitCard key={k.id} kit={k} />
-          ))}
-        </div>
-      </section>
+      <HomeKits />
 
       <section className="section section--tint">
         <div className="container">

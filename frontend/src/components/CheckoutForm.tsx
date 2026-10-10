@@ -27,8 +27,8 @@ type Confirmed = {
 
 const PHONE = /^(0[5-7]\d{8}|212[5-7]\d{8})$/;
 const STORAGE_KEY = 'sweettools.checkout.v1';
-/** Same rule as the API (backend/src/lib/order.js): +10 % of the products, delivery excluded. */
-const INVOICE_RATE = 0.1;
+/** Same rule as the API (backend/src/lib/order.js): +20 % VAT on the products, delivery excluded. */
+const INVOICE_RATE = 0.2;
 
 export default function CheckoutForm() {
   const cart = useCart();
@@ -40,7 +40,6 @@ export default function CheckoutForm() {
   const [serverError, setServerError] = useState('');
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState<Confirmed | null>(null);
-  const minOrder = useMinOrder(cart.subtotal);
 
   // Remember the contact details for the next order (never the cart).
   useEffect(() => {
@@ -59,6 +58,10 @@ export default function CheckoutForm() {
   const freeFrom = settings.freeShippingThreshold;
   const shipping = zone ? (freeFrom > 0 && cart.subtotal >= freeFrom ? 0 : zone.fee) : 0;
   const invoiceFee = invoice.wanted ? Math.round(cart.subtotal * INVOICE_RATE) : 0;
+  // Before a city is picked, count the cheapest delivery.
+  const fees = settings.zones.map((z) => z.fee);
+  const cheapest = freeFrom > 0 && cart.subtotal >= freeFrom ? 0 : fees.length ? Math.min(...fees) : 0;
+  const minOrder = useMinOrder(cart.subtotal, zone ? shipping : cheapest);
 
   if (done) return <Confirmation order={done} whatsapp={settings.whatsapp} />;
 
@@ -111,7 +114,7 @@ export default function CheckoutForm() {
       return;
     }
     if (minOrder.blocked) {
-      setServerError(`Le montant minimum de commande est de ${minOrder.min} DH (hors livraison).`);
+      setServerError(`Le montant minimum de commande est de ${minOrder.min} DH (livraison comprise).`);
       return;
     }
     if (cart.blocked) {
@@ -239,7 +242,7 @@ export default function CheckoutForm() {
               />
               <span className="zone__text">
                 <strong>Je souhaite une facture</strong>
-                <small>+10 % sur le montant des articles (hors livraison)</small>
+                <small>TVA 20 % sur le montant des articles (hors livraison)</small>
               </span>
               <span className="zone__fee">+{dh(Math.round(cart.subtotal * INVOICE_RATE))}</span>
             </label>
@@ -293,7 +296,7 @@ export default function CheckoutForm() {
             </div>
             {invoiceFee > 0 && (
               <div>
-                <dt>Facture (+10 %)</dt>
+                <dt>TVA 20 % (facture)</dt>
                 <dd>{dh(invoiceFee)}</dd>
               </div>
             )}
@@ -306,7 +309,7 @@ export default function CheckoutForm() {
             <strong>Paiement à la livraison</strong>
             <span>Vous payez en espèces au livreur. Aucune carte bancaire demandée.</span>
           </div>
-          <MinOrderNotice subtotal={cart.subtotal} />
+          <MinOrderNotice subtotal={cart.subtotal} delivery={zone ? shipping : cheapest} />
           {serverError && (
             <p className="notice notice--error" role="alert">
               {serverError}
@@ -376,7 +379,7 @@ function Confirmation({ order, whatsapp }: { order: Confirmed; whatsapp: string 
             </div>
             {order.invoiceFee > 0 && (
               <div>
-                <dt>Facture (+10 %)</dt>
+                <dt>TVA 20 % (facture)</dt>
                 <dd>{dh(order.invoiceFee)}</dd>
               </div>
             )}

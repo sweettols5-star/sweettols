@@ -21,7 +21,8 @@ export function pageMeta({
   const url = `${site.url}${path}`;
   const images = [{ url: image || '/og.jpg', width: image ? 1000 : 1200, height: image ? 1000 : 630 }];
   return {
-    title,
+    // A title that already names the shop skips the layout's « | brand » suffix.
+    title: title.includes(site.brand) ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
     openGraph: {

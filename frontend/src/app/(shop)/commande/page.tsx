@@ -4,7 +4,7 @@ import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
   title: 'Commande — livraison',
-  description: 'Finalisez votre commande SweetTools, paiement à la livraison.',
+  description: 'Finalisez votre commande SWEETTOOLS, paiement à la livraison.',
   path: routes.checkout,
   noindex: true,
 });

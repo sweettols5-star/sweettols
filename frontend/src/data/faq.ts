@@ -26,7 +26,7 @@ export const FAQ: FaqGroup[] = [
       },
       {
         q: 'Y a-t-il un montant minimum de commande ?',
-        a: 'Oui : 200 DH d’articles minimum, hors frais de livraison. Votre panier indique combien il vous manque, et le bouton de commande s’active dès que le minimum est atteint.',
+        a: 'Oui : 200 DH minimum, frais de livraison compris. Votre panier indique combien il vous manque, et le bouton de commande s’active dès que le minimum est atteint.',
       },
       {
         q: 'Pourquoi certains produits affichent « Prix à venir » ?',
