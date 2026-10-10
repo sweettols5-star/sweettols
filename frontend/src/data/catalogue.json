@@ -1095,7 +1095,7 @@
     "city": "Casablanca",
     "hours": "",
     "instagram": "https://www.instagram.com/sweettols/",
-    "facebook": "",
+    "facebook": "https://www.facebook.com/sweettols",
     "tiktok": "",
     "announcement": "Paiement à la livraison partout au Maroc",
     "freeShippingThreshold": 0,
@@ -1188,5 +1188,5 @@
       }
     }
   },
-  "generatedAt": "2026-10-10T17:57:42.589Z"
+  "generatedAt": "2026-10-10T18:03:38.572Z"
 }
