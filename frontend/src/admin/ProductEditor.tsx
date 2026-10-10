@@ -8,7 +8,7 @@ import { routes } from '@/lib/routes';
 import type { ProductImage } from '@/types';
 import { api, errorText, uploadPhoto } from './client';
 import type { AdminCategory, AdminProduct } from './types';
-import { Field, Flash, Loading, useFlash } from './ui';
+import { BusyButton, carryFlash, Field, Flash, Loading, SlowHint, Spinner, useFlash } from './ui';
 
 /** Same rule as the API's slugify, so the preview matches what gets saved. */
 export function slugify(input: string) {
@@ -74,7 +74,7 @@ export default function ProductEditor({ slug }: { slug: string }) {
   const [original, setOriginal] = useState<AdminProduct | null>(null);
   const [categories, setCategories] = useState<AdminCategory[]>([]);
   const [slugTouched, setSlugTouched] = useState(!!slug);
-  const [busy, setBusy] = useState(false);
+  const [busy, setBusy] = useState<'' | 'save' | 'delete'>('');
   const [uploading, setUploading] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
   const flash = useFlash();
@@ -104,7 +104,7 @@ export default function ProductEditor({ slug }: { slug: string }) {
     };
   }, [slug]);
 
-  if (!draft) return flash.flash ? <Flash flash={flash.flash} /> : <Loading />;
+  if (!draft) return flash.flash ? <Flash flash={flash.flash} /> : <Loading text={slug ? 'Chargement du produit…' : 'Préparation du formulaire…'} />;
 
   const set = <K extends keyof Draft>(k: K, v: Draft[K]) => setDraft((d) => (d ? { ...d, [k]: v } : d));
   const onName = (name: string) =>
@@ -152,7 +152,8 @@ export default function ProductEditor({ slug }: { slug: string }) {
       'Changer l’adresse de la page casse les liens déjà partagés et le référencement de l’ancienne adresse. Continuer ?',
     )) return;
 
-    setBusy(true);
+    setBusy('save');
+    flash.clear();
     const body = {
       name: draft.name,
       slug: draft.slug || slugify(draft.name),
@@ -170,30 +171,28 @@ export default function ProductEditor({ slug }: { slug: string }) {
       const { product } = original
         ? await api<{ product: AdminProduct }>(`/api/admin/products/${encodeURIComponent(original.slug)}`, { method: 'PUT', body })
         : await api<{ product: AdminProduct }>('/api/admin/products', { method: 'POST', body });
-      setOriginal(product);
-      setDraft(toDraft(product));
-      setSlugTouched(true);
-      flash.ok(original ? 'Modifications enregistrées — visibles tout de suite sur la boutique.' : 'Produit créé.');
-      if (!original || product.slug !== original.slug) {
-        router.replace(`/admin/produits/?modifier=${encodeURIComponent(product.slug)}`);
-      }
+      // Back to the list; the message rides along to it.
+      const visible = product.active ? ' — visible tout de suite sur la boutique' : ' (masqué)';
+      carryFlash(original ? `Produit « ${product.name} » modifié${visible}.` : `Produit « ${product.name} » créé${visible}.`);
+      router.push('/admin/produits/');
     } catch (err) {
       flash.err(errorText(err));
-    } finally {
-      setBusy(false);
+      setBusy('');
     }
   }
 
   async function remove() {
     if (!original) return;
     if (!window.confirm(`Supprimer définitivement « ${original.name} » ?\n\nPour le retirer seulement de la vente, utilisez plutôt « Masquer ».`)) return;
-    setBusy(true);
+    setBusy('delete');
+    flash.clear();
     try {
       await api(`/api/admin/products/${encodeURIComponent(original.slug)}`, { method: 'DELETE' });
+      carryFlash(`Produit « ${original.name} » supprimé.`);
       router.push('/admin/produits/');
     } catch (err) {
       flash.err(errorText(err));
-      setBusy(false);
+      setBusy('');
     }
   }
 
@@ -217,6 +216,7 @@ export default function ProductEditor({ slug }: { slug: string }) {
       </div>
       <Flash flash={flash.flash} />
 
+      <fieldset className="adm-lock" disabled={!!busy}>
       <div className="adm-editor__grid">
         <div className="adm-editor__main">
           <section className="adm-card">
@@ -283,7 +283,13 @@ export default function ProductEditor({ slug }: { slug: string }) {
                   </div>
                 </figure>
               ))}
-              {draft.images.length < MAX_IMAGES && (
+              {Array.from({ length: uploading }, (_, i) => (
+                <figure key={`pending-${i}`} className="adm-photo adm-photo--pending" role="status">
+                  <Spinner />
+                  <span>Envoi de la photo…</span>
+                </figure>
+              ))}
+              {draft.images.length + uploading < MAX_IMAGES && (
                 <label
                   className={`adm-drop${uploading ? ' is-busy' : ''}`}
                   onDragOver={(e) => e.preventDefault()}
@@ -293,7 +299,15 @@ export default function ProductEditor({ slug }: { slug: string }) {
                   }}
                 >
                   <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple onChange={(e) => addFiles(e.target.files)} />
-                  <strong>{uploading ? `Envoi… (${uploading})` : '+ Ajouter'}</strong>
+                  <strong>
+                    {uploading ? (
+                      <>
+                        <Spinner /> {uploading} photo{uploading > 1 ? 's' : ''} en cours d’envoi
+                      </>
+                    ) : (
+                      '+ Ajouter'
+                    )}
+                  </strong>
                   <small>JPEG, PNG, WebP — cadrées en carré automatiquement</small>
                 </label>
               )}
@@ -334,17 +348,33 @@ export default function ProductEditor({ slug }: { slug: string }) {
           </section>
 
           <div className="adm-editor__save">
-            <button type="submit" className="adm-btn adm-btn--primary adm-btn--block" disabled={busy || uploading > 0 || !dirty}>
-              {busy ? 'Enregistrement…' : original ? 'Enregistrer' : 'Créer le produit'}
-            </button>
+            <BusyButton
+              type="submit"
+              className="adm-btn adm-btn--primary adm-btn--block"
+              busy={busy === 'save'}
+              busyText={original ? 'Enregistrement…' : 'Création du produit…'}
+              disabled={!!busy || uploading > 0 || !dirty}
+            >
+              {original ? 'Enregistrer' : 'Créer le produit'}
+            </BusyButton>
+            {uploading > 0 && <p className="adm-muted">Attendez la fin de l’envoi des photos pour enregistrer.</p>}
             {original && (
-              <button type="button" className="adm-btn adm-btn--danger adm-btn--block" onClick={remove} disabled={busy}>
+              <BusyButton
+                type="button"
+                className="adm-btn adm-btn--danger adm-btn--block"
+                onClick={remove}
+                busy={busy === 'delete'}
+                busyText="Suppression…"
+                disabled={!!busy}
+              >
                 Supprimer
-              </button>
+              </BusyButton>
             )}
+            <SlowHint active={!!busy} />
           </div>
         </aside>
       </div>
+      </fieldset>
     </form>
   );
 }

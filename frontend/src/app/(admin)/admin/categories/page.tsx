@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState, type FormEvent } from 'react';
 import AdminShell from '@/admin/AdminShell';
 import { api, errorText, uploadPhoto } from '@/admin/client';
 import type { AdminCategory } from '@/admin/types';
-import { Field, Flash, Loading, useFlash } from '@/admin/ui';
+import { BusyButton, Field, Flash, Loading, SlowHint, Spinner, useFlash } from '@/admin/ui';
 import Link from '@/components/Link';
 import { routes } from '@/lib/routes';
 
@@ -33,7 +33,7 @@ function CategoriesView() {
     load();
   }, [load]);
 
-  if (!list) return flash.flash ? <Flash flash={flash.flash} /> : <Loading />;
+  if (!list) return flash.flash ? <Flash flash={flash.flash} /> : <Loading text="Chargement des catégories…" />;
 
   return (
     <>
@@ -87,14 +87,17 @@ function CategoryCard({
   onError: (msg: string) => void;
 }) {
   const [editing, setEditing] = useState(false);
+  const [removing, setRemoving] = useState(false);
 
   async function remove() {
     if (!window.confirm(`Supprimer la catégorie « ${c.name} » ?`)) return;
+    setRemoving(true);
     try {
       await api(`/api/admin/categories/${c.id}`, { method: 'DELETE' });
       onSaved(`Catégorie « ${c.name} » supprimée.`);
     } catch (e) {
       onError(errorText(e));
+      setRemoving(false);
     }
   }
 
@@ -133,13 +136,13 @@ function CategoryCard({
         </small>
       </div>
       <div className="adm-row">
-        <button type="button" className="adm-btn adm-btn--ghost adm-btn--sm" onClick={() => setEditing(true)}>
+        <button type="button" className="adm-btn adm-btn--ghost adm-btn--sm" onClick={() => setEditing(true)} disabled={removing}>
           Modifier
         </button>
         {!c.productCount && (
-          <button type="button" className="adm-btn adm-btn--danger adm-btn--sm" onClick={remove}>
+          <BusyButton type="button" className="adm-btn adm-btn--danger adm-btn--sm" onClick={remove} busy={removing} busyText="Suppression…">
             Supprimer
-          </button>
+          </BusyButton>
         )}
       </div>
     </article>
@@ -164,16 +167,19 @@ function CategoryForm({
   const [order, setOrder] = useState(String(category?.order ?? nextOrder));
   const [image, setImage] = useState(category?.image || '');
   const [busy, setBusy] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
-  async function upload(file: File | undefined) {
+  async function upload(input: HTMLInputElement) {
+    const file = input.files?.[0];
     if (!file) return;
-    setBusy(true);
+    setUploading(true);
     try {
       setImage((await uploadPhoto(file, name)).thumb);
     } catch (e) {
       onError(errorText(e));
     } finally {
-      setBusy(false);
+      setUploading(false);
+      input.value = '';
     }
   }
 
@@ -197,7 +203,7 @@ function CategoryForm({
 
   return (
     <form className="adm-card adm-cat-form" onSubmit={submit}>
-      <div className="adm-fields">
+      <fieldset className="adm-lock adm-fields" disabled={busy}>
         <Field label="Nom">
           <input className="adm-input" required value={name} onChange={(e) => setName(e.target.value)} maxLength={80} />
         </Field>
@@ -210,23 +216,36 @@ function CategoryForm({
         <Field label="Photo" wide hint="Facultatif : sans photo, celle du premier produit de la catégorie est utilisée.">
           <div className="adm-row">
             {image && <img src={image} alt="" width={56} height={56} className="adm-thumb" />}
-            <input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => upload(e.target.files?.[0])} />
-            {image && (
+            {uploading ? (
+              <span className="adm-muted adm-row" role="status">
+                <Spinner /> Envoi de la photo…
+              </span>
+            ) : (
+              <input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => upload(e.currentTarget)} />
+            )}
+            {image && !uploading && (
               <button type="button" className="adm-btn adm-btn--ghost adm-btn--sm" onClick={() => setImage('')}>
                 Retirer
               </button>
             )}
           </div>
         </Field>
-      </div>
+      </fieldset>
       <div className="adm-row">
-        <button type="submit" className="adm-btn adm-btn--primary" disabled={busy}>
+        <BusyButton
+          type="submit"
+          className="adm-btn adm-btn--primary"
+          busy={busy}
+          busyText={category ? 'Enregistrement…' : 'Création…'}
+          disabled={uploading}
+        >
           {category ? 'Enregistrer' : 'Créer la catégorie'}
-        </button>
-        <button type="button" className="adm-btn adm-btn--ghost" onClick={onCancel}>
+        </BusyButton>
+        <button type="button" className="adm-btn adm-btn--ghost" onClick={onCancel} disabled={busy}>
           Annuler
         </button>
       </div>
+      <SlowHint active={busy || uploading} />
     </form>
   );
 }

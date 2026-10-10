@@ -45,6 +45,9 @@ export type Order = {
   }>;
   subtotal: number;
   shipping: number;
+  /** Set when the customer asked for an invoice (+10 % of the products). */
+  invoice?: { company: string; ice: string } | null;
+  invoiceFee?: number;
   total: number;
   payment: 'cod';
   status: OrderStatus;
@@ -54,8 +57,20 @@ export type Order = {
   updatedAt: string;
 };
 
+export type Message = {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  subject: string;
+  text: string;
+  read: boolean;
+  createdAt: string;
+};
+
 export type Dashboard = {
   toProcess: number;
+  unreadMessages: number;
   byStatus: Partial<Record<OrderStatus, number>>;
   last30: { orders: number; revenue: number };
   products: { total: number; active: number; withoutPrice: number; outOfStock: number; withoutImage: number };

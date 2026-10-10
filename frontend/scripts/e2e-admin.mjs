@@ -114,7 +114,7 @@ ok(Number(await text('.adm-nav__badge')) >= 1, 'sidebar badge counts new orders'
 await go(`/admin/commandes/?ref=${placed.reference}`);
 ok((await js(`!!document.querySelector('.adm-order.is-open')`)), 'order opened from its reference');
 ok((await text('.adm-note'))?.includes('Sonner deux fois'), 'customer note visible');
-ok((await text('.adm-totals__total dd'))?.replace(/\s/g, '') === '235DH', 'amount to collect 8×25 + 35 = 235 DH (exactly the 200 DH minimum is accepted)');
+ok((await text('.adm-totals__total dd'))?.replace(/\s/g, '') === '245DH', 'amount to collect 8×25 + 45 = 245 DH (exactly the 200 DH minimum is accepted)');
 await click('Confirmer (client appelé)');
 await sleep(900);
 ok((await text('.adm-order.is-open .adm-badge')) === 'Confirmée', 'one click moves it to « Confirmée »');
@@ -183,7 +183,7 @@ await sleep(1000);
 ok((await text('.adm-alert--ok'))?.includes('Réglages enregistrés'), 'settings saved');
 await go('/');
 ok(await js(`!!document.querySelector('.float-btn--wa[href^="https://wa.me/212612345678"]')`), 'WhatsApp button appears on the shop with the normalised number');
-ok(await js(`!!document.querySelector('.float-btn--phone[href="tel:0695819743"]')`), 'call button dials the shop phone number');
+ok(await js(`!!document.querySelector('.float-btn--phone[href="tel:0678779983"]')`), 'call button dials the shop phone number');
 ok((await text('.announce')) === 'Livraison offerte dès 300 DH', 'announcement bar updated live');
 
 // ---- Categories ----

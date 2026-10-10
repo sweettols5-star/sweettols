@@ -1,12 +1,12 @@
-/* SweetTools — palette from the client's mockup: violet principal, violet foncé,
+/* SweetTools — main colour #c45ab3 (client choice), plus violet foncé,
    beige/crème, champagne, blanc. Playfair Display (titles) + Montserrat. */
 
 :root {
-  --violet: #8e3a9f;
-  --violet-600: #7a2f8a;
-  --violet-dark: #4b1d52;
-  --violet-50: #f6eef8;
-  --violet-100: #ecdcf0;
+  --violet: #c45ab3;
+  --violet-600: #a9479a;
+  --violet-dark: #5a1f50;
+  --violet-50: #fbf0f9;
+  --violet-100: #f5ddf0;
   --cream: #faf5f0;
   --beige: #f1e7dd;
   --champagne: #c9a46b;
@@ -23,8 +23,8 @@
 
   --radius: 14px;
   --radius-sm: 10px;
-  --shadow: 0 1px 2px rgba(75, 29, 82, 0.06), 0 6px 22px rgba(75, 29, 82, 0.07);
-  --shadow-lg: 0 18px 50px rgba(75, 29, 82, 0.16);
+  --shadow: 0 1px 2px rgba(79, 23, 82, 0.06), 0 6px 22px rgba(79, 23, 82, 0.07);
+  --shadow-lg: 0 18px 50px rgba(79, 23, 82, 0.16);
   --container: 1200px;
   --gutter: clamp(16px, 4vw, 32px);
   --header-h: 72px;
@@ -301,27 +301,17 @@ p {
   flex-shrink: 0;
 }
 
-.brand__mark {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+.brand__logo {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
 }
 
-.brand__name {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  color: var(--violet-dark);
-}
-
-.brand__name span {
-  color: var(--violet);
-}
-
-.brand--light .brand__name,
-.brand--light .brand__name span {
-  color: #fff;
+.brand--light .brand__logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
 }
 
 .header__nav {
@@ -563,26 +553,25 @@ p {
   background: var(--cream);
 }
 
-/* The photo keeps its own 3:2 shape on the right (the whole cake stays in frame);
-   its left edge fades into the page instead of being stretched edge to edge. */
+/* Edge to edge like the mockup. The photo's left third is plain, so the
+   headline sits on it; cropping (wider or narrower screens) eats into that
+   plain side first, never into the cake on the right. */
 .hero__photo img {
   position: absolute;
-  top: 0;
-  right: 0;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  width: auto;
-  max-width: none;
-  aspect-ratio: 3 / 2;
   object-fit: cover;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 34%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 34%);
+  /* Very wide screens crop height: take it from the marble below, not the flowers on top. */
+  object-position: 72% 20%;
 }
 
+/* Light wash behind the text only, for screens where the crop pulls the photo under it. */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(250, 245, 240, 0.9) 0%, rgba(250, 245, 240, 0.6) 34%, rgba(250, 245, 240, 0) 50%);
+  background: linear-gradient(90deg, rgba(250, 245, 240, 0.55) 0%, rgba(250, 245, 240, 0.25) 35%, rgba(250, 245, 240, 0) 50%);
   pointer-events: none;
 }
 
@@ -591,7 +580,7 @@ p {
   z-index: 1;
   display: flex;
   align-items: center;
-  min-height: clamp(460px, 40vw, 600px);
+  min-height: clamp(460px, 40vw, 720px);
   padding-top: clamp(40px, 6vw, 80px);
   padding-bottom: clamp(40px, 6vw, 80px);
 }
@@ -912,7 +901,7 @@ p {
 }
 
 .empty__mark {
-  border-radius: 50%;
+  border-radius: 16px;
 }
 
 /* Contact band */
@@ -928,10 +917,10 @@ p {
 }
 
 .band__mark {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.5);
+  width: 96px;
+  height: 96px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
 }
 
@@ -1646,6 +1635,10 @@ p {
   color: var(--violet-dark);
 }
 
+.invoice-fields {
+  margin-top: 14px;
+}
+
 .confirm {
   max-width: 620px;
   margin: 0 auto;
@@ -1795,6 +1788,90 @@ p {
 .contact-foot {
   margin-top: 28px;
   color: var(--muted);
+}
+
+/* ---------- Contact form ---------- */
+
+.contact-form,
+.contact-sent {
+  margin-top: 28px;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.contact-form__title,
+.contact-sent h2 {
+  font-size: 1.4rem;
+  margin: 0 0 4px;
+}
+
+.contact-form__lead {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+.contact-form__fields {
+  min-width: 0;
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+}
+
+.field select {
+  appearance: auto;
+}
+
+.field select:focus {
+  border-color: var(--violet);
+  outline: none;
+}
+
+/* Honeypot: off-screen, never seen nor focused by people. */
+.contact-form__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.contact-form .notice {
+  margin: 0 0 14px;
+}
+
+.contact-form__send {
+  min-width: 220px;
+}
+
+.contact-sent {
+  text-align: center;
+}
+
+.contact-sent p {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+/* Spinner inside a shop button; inherits the button's text colour. */
+.btn-spin {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-form__send {
+    width: 100%;
+  }
 }
 
 /* ---------- Footer ---------- */
@@ -1983,8 +2060,7 @@ p {
     height: auto;
     aspect-ratio: 6 / 5;
     max-height: 56vh;
-    -webkit-mask-image: none;
-    mask-image: none;
+    object-position: 50% 50%;
   }
   .hero::after {
     display: none;
@@ -2015,12 +2091,10 @@ p {
   body {
     font-size: 14.5px;
   }
-  .brand__name {
-    font-size: 1.2rem;
-  }
-  .brand__mark {
-    width: 38px;
-    height: 38px;
+  .brand__logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
   }
   .grid {
     grid-template-columns: repeat(2, 1fr);

@@ -18,6 +18,7 @@ import { categoryRoutes } from './routes/categories.js';
 import { adminOrderRoutes, orderRoutes } from './routes/orders.js';
 import { settingsRoutes } from './routes/settings.js';
 import { dashboardRoutes } from './routes/dashboard.js';
+import { adminMessageRoutes, messageRoutes } from './routes/messages.js';
 import { uploadRoutes, UPLOAD_DIR } from './routes/uploads.js';
 
 export const app = express();
@@ -69,8 +70,10 @@ app.use('/api/admin', settingsRoutes);
 app.use('/api/admin', dashboardRoutes);
 app.use('/api/admin', adminOrderRoutes);
 app.use('/api/admin', uploadRoutes);
+app.use('/api/admin', adminMessageRoutes);
 app.use('/api', catalogueRoutes);
 app.use('/api', orderRoutes);
+app.use('/api', messageRoutes);
 
 app.use((req, res) => res.status(404).json({ error: 'Route inconnue' }));
 

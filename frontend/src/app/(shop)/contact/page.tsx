@@ -1,4 +1,5 @@
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ContactForm from '@/components/ContactForm';
 import ContactInfo from '@/components/ContactInfo';
 import Link from '@/components/Link';
 import { routes } from '@/lib/routes';
@@ -23,6 +24,7 @@ export default function ContactPage() {
         </p>
       </header>
       <ContactInfo />
+      <ContactForm />
       <p className="contact-foot">
         Vous cherchez les frais et délais ? Consultez la page <Link href={routes.delivery}>livraison & paiement</Link>.
       </p>

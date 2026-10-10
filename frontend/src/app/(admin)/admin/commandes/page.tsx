@@ -5,7 +5,7 @@ import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import AdminShell, { useRefreshBadge } from '@/admin/AdminShell';
 import { api, errorText } from '@/admin/client';
 import type { Order, OrderStatus } from '@/admin/types';
-import { Flash, Loading, STATUS, STATUS_ORDER, StatusBadge, useFlash, when } from '@/admin/ui';
+import { BusyButton, Flash, Loading, SlowHint, Spinner, STATUS, STATUS_ORDER, StatusBadge, useFlash, when } from '@/admin/ui';
 import { IconPhone, IconWhatsapp } from '@/components/Icons';
 import { dh } from '@/lib/format';
 import { whatsappUrl } from '@/lib/whatsapp';
@@ -13,7 +13,7 @@ import { whatsappUrl } from '@/lib/whatsapp';
 export default function OrdersPage() {
   return (
     <AdminShell title="Commandes">
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading text="Chargement des commandes…" />}>
         <OrdersView />
       </Suspense>
     </AdminShell>
@@ -34,16 +34,25 @@ function OrdersView() {
   const [status, setStatus] = useState<OrderStatus | ''>((params.get('statut') as OrderStatus) || '');
   const [query, setQuery] = useState(params.get('ref') || '');
   const [open, setOpen] = useState<string>(params.get('ref') || '');
+  const [refreshing, setRefreshing] = useState(false);
   const flash = useFlash();
 
   const load = useCallback(async () => {
     try {
       const { orders: list } = await api<{ orders: Order[] }>('/api/admin/orders');
       setOrders(list);
+      return true;
     } catch (e) {
       flash.err(errorText(e));
+      return false;
     }
   }, []);
+
+  async function refresh() {
+    setRefreshing(true);
+    if (await load()) flash.ok('Liste des commandes à jour.');
+    setRefreshing(false);
+  }
 
   useEffect(() => {
     load();
@@ -69,7 +78,7 @@ function OrdersView() {
     setOrders((list) => (list || []).map((o) => (o.reference === updated.reference ? updated : o)));
   }
 
-  if (!orders) return flash.flash ? <Flash flash={flash.flash} /> : <Loading />;
+  if (!orders) return flash.flash ? <Flash flash={flash.flash} /> : <Loading text="Chargement des commandes…" />;
 
   return (
     <>
@@ -94,9 +103,9 @@ function OrdersView() {
           onChange={(e) => setQuery(e.target.value)}
           aria-label="Rechercher une commande"
         />
-        <button type="button" className="adm-btn adm-btn--ghost" onClick={load}>
+        <BusyButton type="button" className="adm-btn adm-btn--ghost" onClick={refresh} busy={refreshing} busyText="Actualisation…">
           Actualiser
-        </button>
+        </BusyButton>
       </div>
 
       {shown.length ? (
@@ -113,6 +122,12 @@ function OrdersView() {
                 refreshBadge();
               }}
               onError={(m) => flash.err(m)}
+              onDeleted={(msg) => {
+                setOrders((list) => (list || []).filter((x) => x.reference !== o.reference));
+                setOpen('');
+                flash.ok(msg);
+                refreshBadge();
+              }}
             />
           ))}
         </div>
@@ -131,27 +146,49 @@ function OrderCard({
   onToggle,
   onSaved,
   onError,
+  onDeleted,
 }: {
   order: Order;
   open: boolean;
   onToggle: () => void;
   onSaved: (o: Order, msg: string) => void;
   onError: (msg: string) => void;
+  onDeleted: (msg: string) => void;
 }) {
   const [note, setNote] = useState(o.adminNote || '');
-  const [busy, setBusy] = useState(false);
+  /** Which change is on its way: a status, the note, or the deletion. */
+  const [busy, setBusy] = useState<'' | 'note' | 'delete' | OrderStatus>('');
   const next = NEXT[o.status];
   const count = o.items.reduce((n, l) => n + l.qty, 0);
 
   async function patch(body: { status?: OrderStatus; adminNote?: string }, msg: string) {
-    setBusy(true);
+    setBusy(body.status || 'note');
     try {
       const { order } = await api<{ order: Order }>(`/api/admin/orders/${o.reference}`, { method: 'PATCH', body });
       onSaved(order, msg);
     } catch (e) {
       onError(errorText(e));
     } finally {
-      setBusy(false);
+      setBusy('');
+    }
+  }
+
+  async function remove() {
+    const restock = o.status !== 'annulee' && o.status !== 'livree';
+    if (
+      !window.confirm(
+        `Supprimer définitivement la commande ${o.reference} (${o.customer.name}, ${dh(o.total)}) ?` +
+          (restock ? '\n\nLes articles seront remis en stock.' : '') +
+          '\n\nPour la garder dans l’historique, utilisez plutôt le statut « Annulée ».',
+      )
+    ) return;
+    setBusy('delete');
+    try {
+      const r = await api<{ restocked: boolean }>(`/api/admin/orders/${o.reference}`, { method: 'DELETE' });
+      onDeleted(`Commande ${o.reference} supprimée${r.restocked ? ' — articles remis en stock' : ''}.`);
+    } catch (e) {
+      onError(errorText(e));
+      setBusy('');
     }
   }
 
@@ -168,7 +205,10 @@ function OrderCard({
       <button type="button" className="adm-order__head" onClick={onToggle} aria-expanded={open}>
         <span className="adm-mono">{o.reference}</span>
         <span className="adm-order__who">
-          <strong>{o.customer.name}</strong>
+          <strong>
+            {o.customer.name}
+            {o.invoice && <em className="adm-tag adm-tag--invoice">Facture</em>}
+          </strong>
           <small>
             {o.customer.city} · {count} article{count > 1 ? 's' : ''}
           </small>
@@ -192,6 +232,13 @@ function OrderCard({
                 <br />
                 {o.customer.city} — zone « {o.zone.label} »
               </p>
+              {o.invoice && (
+                <p className="adm-note">
+                  Facture demandée
+                  {o.invoice.company && ` — ${o.invoice.company}`}
+                  {o.invoice.ice && ` — ICE ${o.invoice.ice}`}
+                </p>
+              )}
               {o.customer.notes && <p className="adm-note">Note du client : {o.customer.notes}</p>}
               <div className="adm-row">
                 <a className="adm-btn adm-btn--ghost adm-btn--sm" href={`tel:${phone}`}>
@@ -234,6 +281,12 @@ function OrderCard({
                   <dt>Livraison</dt>
                   <dd>{o.shipping ? dh(o.shipping) : 'Offerte'}</dd>
                 </div>
+                {!!o.invoiceFee && (
+                  <div>
+                    <dt>Facture (+10 %)</dt>
+                    <dd>{dh(o.invoiceFee)}</dd>
+                  </div>
+                )}
                 <div className="adm-totals__total">
                   <dt>À encaisser</dt>
                   <dd>{dh(o.total)}</dd>
@@ -244,13 +297,20 @@ function OrderCard({
 
           <div className="adm-order__actions">
             {next && (
-              <button type="button" className="adm-btn adm-btn--primary" disabled={busy} onClick={() => changeStatus(next.to)}>
+              <BusyButton
+                type="button"
+                className="adm-btn adm-btn--primary"
+                busy={busy === next.to}
+                busyText="Mise à jour…"
+                disabled={!!busy}
+                onClick={() => changeStatus(next.to)}
+              >
                 {next.label}
-              </button>
+              </BusyButton>
             )}
             <label className="adm-inline">
               <span>Statut</span>
-              <select value={o.status} disabled={busy} onChange={(e) => changeStatus(e.target.value as OrderStatus)}>
+              <select value={o.status} disabled={!!busy} onChange={(e) => changeStatus(e.target.value as OrderStatus)}>
                 {STATUS_ORDER.map((s) => (
                   <option key={s} value={s}>
                     {STATUS[s].label}
@@ -258,32 +318,52 @@ function OrderCard({
                 ))}
               </select>
             </label>
+            {busy && busy !== 'note' && busy !== 'delete' && busy !== next?.to && (
+              <span className="adm-muted adm-row" role="status">
+                <Spinner /> Passage à « {STATUS[busy].label} »…
+              </span>
+            )}
           </div>
+          <SlowHint active={!!busy} />
 
           <div className="adm-order__note">
             <label className="adm-field">
               <span>Note interne (invisible pour le client)</span>
               <textarea rows={2} value={note} onChange={(e) => setNote(e.target.value)} placeholder="Ex. livrer après 18 h, client rappelé…" />
             </label>
-            <button
+            <BusyButton
               type="button"
               className="adm-btn adm-btn--ghost adm-btn--sm"
-              disabled={busy || note === (o.adminNote || '')}
+              busy={busy === 'note'}
+              busyText="Enregistrement…"
+              disabled={!!busy || note === (o.adminNote || '')}
               onClick={() => patch({ adminNote: note }, 'Note enregistrée.')}
             >
               Enregistrer la note
-            </button>
+            </BusyButton>
           </div>
 
-          {o.history?.length > 0 && (
-            <ol className="adm-history">
-              {o.history.map((h, i) => (
-                <li key={i}>
-                  <StatusBadge status={h.status} /> <span className="adm-muted">{when(h.at)}</span>
-                </li>
-              ))}
-            </ol>
-          )}
+          <div className="adm-order__foot">
+            {o.history?.length > 0 && (
+              <ol className="adm-history">
+                {o.history.map((h, i) => (
+                  <li key={i}>
+                    <StatusBadge status={h.status} /> <span className="adm-muted">{when(h.at)}</span>
+                  </li>
+                ))}
+              </ol>
+            )}
+            <BusyButton
+              type="button"
+              className="adm-btn adm-btn--danger adm-btn--sm adm-order__delete"
+              busy={busy === 'delete'}
+              busyText="Suppression…"
+              disabled={!!busy}
+              onClick={remove}
+            >
+              Supprimer la commande
+            </BusyButton>
+          </div>
         </div>
       )}
     </article>

@@ -20,6 +20,15 @@ export const STATUS_LABELS = {
 };
 
 const MAX_LINES = 40;
+/** Surcharge when the customer asks for an invoice: 10 % of the products (delivery excluded). */
+export const INVOICE_RATE = 0.1;
+export const invoiceFee = (subtotal) => Math.round(subtotal * INVOICE_RATE);
+
+/** `null` when no invoice is wanted; company and ICE are optional. */
+function invoice(raw) {
+  if (!raw) return null;
+  return { company: clean(raw.company, 120), ice: clean(raw.ice, 30) };
+}
 
 function customer(raw = {}) {
   const c = {
@@ -104,6 +113,9 @@ export function buildOrder(body = {}, catalogue = [], settings) {
   const delivery = shippingFor(settings, clean(body.zoneId, 60), subtotal);
   if (!delivery) return { error: 'Choisissez une zone de livraison.' };
 
+  const facture = invoice(body.invoice);
+  const factureFee = facture ? invoiceFee(subtotal) : 0;
+
   const now = new Date().toISOString();
   return {
     order: {
@@ -113,7 +125,9 @@ export function buildOrder(body = {}, catalogue = [], settings) {
       items,
       subtotal,
       shipping: delivery.fee,
-      total: subtotal + delivery.fee,
+      invoice: facture,
+      invoiceFee: factureFee,
+      total: subtotal + delivery.fee + factureFee,
       payment: 'cod',
       status: 'nouvelle',
       history: [{ status: 'nouvelle', at: now }],

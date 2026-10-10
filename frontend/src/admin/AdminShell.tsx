@@ -6,19 +6,21 @@ import Link from '@/components/Link';
 import { IconClose, IconMenu } from '@/components/Icons';
 import { API_URL } from '@/config/api';
 import { api, ApiError, clearToken, getToken, onExpired, setToken } from './client';
+import { BusyButton, SlowHint, Spinner } from './ui';
 
 type Admin = { email: string; name: string };
 type Phase = 'checking' | 'out' | 'in';
 
 const NAV = [
   { href: '/admin/', label: 'Tableau de bord' },
-  { href: '/admin/commandes/', label: 'Commandes', badge: true },
+  { href: '/admin/commandes/', label: 'Commandes', badge: 'orders' as const },
+  { href: '/admin/messages/', label: 'Messages', badge: 'messages' as const },
   { href: '/admin/produits/', label: 'Produits' },
   { href: '/admin/categories/', label: 'Catégories' },
   { href: '/admin/reglages/', label: 'Réglages' },
 ];
 
-/** Lets a page refresh the « new orders » badge after changing a status. */
+/** Lets a page refresh the sidebar badges (new orders, unread messages) after a change. */
 const BadgeCtx = createContext<() => void>(() => {});
 export const useRefreshBadge = () => useContext(BadgeCtx);
 
@@ -40,11 +42,15 @@ export default function AdminShell({
   const [phase, setPhase] = useState<Phase>('checking');
   const [admin, setAdmin] = useState<Admin | null>(null);
   const [newOrders, setNewOrders] = useState(0);
+  const [unread, setUnread] = useState(0);
   const [menu, setMenu] = useState(false);
 
   const refreshBadge = useCallback(() => {
-    api<{ toProcess: number }>('/api/admin/dashboard')
-      .then((d) => setNewOrders(d.toProcess))
+    api<{ toProcess: number; unreadMessages?: number }>('/api/admin/dashboard')
+      .then((d) => {
+        setNewOrders(d.toProcess);
+        setUnread(d.unreadMessages || 0);
+      })
       .catch(() => {});
   }, []);
 
@@ -79,7 +85,13 @@ export default function AdminShell({
     setPhase('out');
   }
 
-  if (phase === 'checking') return <div className="adm-boot">Vérification de la session…</div>;
+  if (phase === 'checking') {
+    return (
+      <div className="adm-boot" role="status">
+        <Spinner /> Vérification de la session…
+      </div>
+    );
+  }
   if (phase === 'out') return <LoginScreen onDone={check} />;
 
   const isActive = (href: string) =>
@@ -103,9 +115,14 @@ export default function AdminShell({
             {NAV.map((item) => (
               <Link key={item.href} href={item.href} className={isActive(item.href) ? 'is-active' : ''}>
                 {item.label}
-                {item.badge && newOrders > 0 && (
+                {item.badge === 'orders' && newOrders > 0 && (
                   <span className="adm-nav__badge" aria-label={`${newOrders} nouvelles`}>
                     {newOrders}
+                  </span>
+                )}
+                {item.badge === 'messages' && unread > 0 && (
+                  <span className="adm-nav__badge" aria-label={`${unread} non lus`}>
+                    {unread}
                   </span>
                 )}
               </Link>
@@ -129,7 +146,7 @@ export default function AdminShell({
           <header className="adm-head">
             <button type="button" className="adm-burger" aria-label="Ouvrir le menu" onClick={() => setMenu(true)}>
               <IconMenu />
-              {newOrders > 0 && <span className="adm-nav__badge">{newOrders}</span>}
+              {newOrders + unread > 0 && <span className="adm-nav__badge">{newOrders + unread}</span>}
             </button>
             <h1 className="adm-h1">{title}</h1>
             {actions && <div className="adm-head__actions">{actions}</div>}
@@ -168,7 +185,7 @@ function LoginScreen({ onDone }: { onDone: () => void }) {
   return (
     <div className="adm-login">
       <form className="adm-card adm-login__box" onSubmit={submit}>
-        <img src="/brand/emblem.png" alt="" width={64} height={64} className="adm-login__mark" />
+        <img src="/brand/logo-256.webp" alt="SweetTools" width={120} height={120} className="adm-login__mark" />
         <h1 className="adm-login__title">SweetTools</h1>
         <p className="adm-muted">Espace d’administration</p>
 
@@ -189,9 +206,10 @@ function LoginScreen({ onDone }: { onDone: () => void }) {
           />
         </label>
 
-        <button type="submit" className="adm-btn adm-btn--primary" disabled={busy}>
-          {busy ? 'Connexion…' : 'Se connecter'}
-        </button>
+        <BusyButton type="submit" className="adm-btn adm-btn--primary" busy={busy} busyText="Connexion…">
+          Se connecter
+        </BusyButton>
+        <SlowHint active={busy} />
         <p className="adm-login__api">Serveur : {API_URL}</p>
       </form>
     </div>

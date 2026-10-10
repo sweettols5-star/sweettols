@@ -7,7 +7,7 @@ export const dashboardRoutes = Router();
 /** The numbers the owner checks first thing in the morning. */
 dashboardRoutes.get('/dashboard', requireAdmin, async (req, res) => {
   try {
-    const [orders, products] = await Promise.all([store.orders.all(), store.products.all()]);
+    const [orders, products, messages] = await Promise.all([store.orders.all(), store.products.all(), store.messages.all()]);
     const since = Date.now() - 30 * 24 * 3600 * 1000;
     const recent = orders.filter((o) => Date.parse(o.createdAt) >= since && o.status !== 'annulee');
     const byStatus = {};
@@ -15,6 +15,7 @@ dashboardRoutes.get('/dashboard', requireAdmin, async (req, res) => {
 
     res.json({
       toProcess: byStatus.nouvelle || 0,
+      unreadMessages: messages.filter((m) => !m.read).length,
       byStatus,
       last30: {
         orders: recent.length,

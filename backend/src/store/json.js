@@ -14,7 +14,7 @@ import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
 
-const EMPTY = { products: [], categories: [], orders: [], admins: [], settings: {} };
+const EMPTY = { products: [], categories: [], orders: [], messages: [], admins: [], settings: {} };
 
 export function createJsonStore(file) {
   let cache = null;
@@ -108,6 +108,7 @@ export function createJsonStore(file) {
     products: collection('products', 'slug'),
     categories: collection('categories', 'id'),
     orders: collection('orders', 'reference'),
+    messages: collection('messages', 'id'),
     admins: collection('admins', 'email'),
     settings: {
       async read() {

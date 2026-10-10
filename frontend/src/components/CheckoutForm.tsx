@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { apiUrl } from '@/config/api';
 import { dh } from '@/lib/format';
 import { routes } from '@/lib/routes';
@@ -9,6 +9,7 @@ import { useCart } from './CartProvider';
 import { IconCheck, IconWhatsapp } from './Icons';
 import { useSettings } from './LiveCatalogue';
 import MinOrderNotice, { useMinOrder } from './MinOrderNotice';
+import Field from './FormField';
 import Link from './Link';
 import OrderSteps from './OrderSteps';
 
@@ -17,6 +18,7 @@ type Confirmed = {
   items: Array<{ slug: string; name: string; qty: number; price: number; lineTotal: number }>;
   subtotal: number;
   shipping: number;
+  invoiceFee: number;
   total: number;
   zone: { label: string };
   name: string;
@@ -25,12 +27,15 @@ type Confirmed = {
 
 const PHONE = /^(0[5-7]\d{8}|212[5-7]\d{8})$/;
 const STORAGE_KEY = 'sweettools.checkout.v1';
+/** Same rule as the API (backend/src/lib/order.js): +10 % of the products, delivery excluded. */
+const INVOICE_RATE = 0.1;
 
 export default function CheckoutForm() {
   const cart = useCart();
   const settings = useSettings();
   const [form, setForm] = useState({ name: '', phone: '', city: '', address: '', notes: '' });
   const [zoneId, setZoneId] = useState('');
+  const [invoice, setInvoice] = useState({ wanted: false, company: '', ice: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [serverError, setServerError] = useState('');
   const [sending, setSending] = useState(false);
@@ -53,6 +58,7 @@ export default function CheckoutForm() {
   const zone = settings.zones.find((z) => z.id === zoneId);
   const freeFrom = settings.freeShippingThreshold;
   const shipping = zone ? (freeFrom > 0 && cart.subtotal >= freeFrom ? 0 : zone.fee) : 0;
+  const invoiceFee = invoice.wanted ? Math.round(cart.subtotal * INVOICE_RATE) : 0;
 
   if (done) return <Confirmation order={done} whatsapp={settings.whatsapp} />;
 
@@ -121,6 +127,7 @@ export default function CheckoutForm() {
         body: JSON.stringify({
           customer: form,
           zoneId,
+          invoice: invoice.wanted ? { company: invoice.company, ice: invoice.ice } : null,
           items: cart.lines.map((l) => ({ slug: l.product.slug, qty: l.qty, price: l.product.price })),
         }),
       });
@@ -221,6 +228,43 @@ export default function CheckoutForm() {
             {errors.zone && <p className="field__error">{errors.zone}</p>}
           </fieldset>
 
+          <fieldset className="panel">
+            <legend>Facture</legend>
+            <label className={`zone${invoice.wanted ? ' is-checked' : ''}`}>
+              <input
+                type="checkbox"
+                name="invoice"
+                checked={invoice.wanted}
+                onChange={(e) => setInvoice((i) => ({ ...i, wanted: e.target.checked }))}
+              />
+              <span className="zone__text">
+                <strong>Je souhaite une facture</strong>
+                <small>+10 % sur le montant des articles (hors livraison)</small>
+              </span>
+              <span className="zone__fee">+{dh(Math.round(cart.subtotal * INVOICE_RATE))}</span>
+            </label>
+            {invoice.wanted && (
+              <div className="fields invoice-fields">
+                <Field label="Société (facultatif)">
+                  <input
+                    name="company"
+                    autoComplete="organization"
+                    value={invoice.company}
+                    onChange={(e) => setInvoice((i) => ({ ...i, company: e.target.value }))}
+                  />
+                </Field>
+                <Field label="ICE (facultatif)">
+                  <input
+                    name="ice"
+                    inputMode="numeric"
+                    value={invoice.ice}
+                    onChange={(e) => setInvoice((i) => ({ ...i, ice: e.target.value }))}
+                  />
+                </Field>
+              </div>
+            )}
+          </fieldset>
+
           <Link href={routes.cart} className="link-back">
             ← Retour au panier
           </Link>
@@ -247,9 +291,15 @@ export default function CheckoutForm() {
               <dt>Livraison</dt>
               <dd>{zone ? (shipping ? dh(shipping) : 'Offerte') : '—'}</dd>
             </div>
+            {invoiceFee > 0 && (
+              <div>
+                <dt>Facture (+10 %)</dt>
+                <dd>{dh(invoiceFee)}</dd>
+              </div>
+            )}
             <div className="summary__total">
               <dt>Total à payer</dt>
-              <dd>{dh(cart.subtotal + shipping)}</dd>
+              <dd>{dh(cart.subtotal + shipping + invoiceFee)}</dd>
             </div>
           </dl>
           <div className="cod">
@@ -290,28 +340,6 @@ function pick(o: Record<string, unknown>) {
   return out;
 }
 
-function Field({
-  label,
-  error,
-  hint,
-  wide,
-  children,
-}: {
-  label: string;
-  error?: string;
-  hint?: string;
-  wide?: boolean;
-  children: ReactNode;
-}) {
-  return (
-    <label className={`field${wide ? ' field--wide' : ''}${error ? ' has-error' : ''}`}>
-      <span className="field__label">{label}</span>
-      {children}
-      {error ? <span className="field__error">{error}</span> : hint && <span className="field__hint">{hint}</span>}
-    </label>
-  );
-}
-
 function Confirmation({ order, whatsapp }: { order: Confirmed; whatsapp: string }) {
   return (
     <div className="container section">
@@ -346,6 +374,12 @@ function Confirmation({ order, whatsapp }: { order: Confirmed; whatsapp: string 
               <dt>Livraison ({order.zone.label})</dt>
               <dd>{order.shipping ? dh(order.shipping) : 'Offerte'}</dd>
             </div>
+            {order.invoiceFee > 0 && (
+              <div>
+                <dt>Facture (+10 %)</dt>
+                <dd>{dh(order.invoiceFee)}</dd>
+              </div>
+            )}
             <div className="summary__total">
               <dt>À payer à la livraison</dt>
               <dd>{dh(order.total)}</dd>

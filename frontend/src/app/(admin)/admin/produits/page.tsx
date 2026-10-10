@@ -6,7 +6,7 @@ import AdminShell from '@/admin/AdminShell';
 import { api, errorText } from '@/admin/client';
 import ProductEditor from '@/admin/ProductEditor';
 import type { AdminCategory, AdminProduct } from '@/admin/types';
-import { Flash, Loading, useFlash } from '@/admin/ui';
+import { BusyButton, Flash, Loading, useFlash } from '@/admin/ui';
 import Link from '@/components/Link';
 import { dh } from '@/lib/format';
 
@@ -113,7 +113,18 @@ function ProductList({ filter }: { filter: string }) {
     }
   }
 
-  if (!products) return flash.flash ? <Flash flash={flash.flash} /> : <Loading />;
+  async function remove(p: AdminProduct) {
+    try {
+      await api(`/api/admin/products/${encodeURIComponent(p.slug)}`, { method: 'DELETE' });
+      setProducts((list) => (list || []).filter((x) => x.slug !== p.slug));
+      setCategories((list) => list.map((c) => (c.id === p.categoryId ? { ...c, productCount: Math.max(0, c.productCount - 1) } : c)));
+      flash.ok(`Produit « ${p.name} » supprimé.`);
+    } catch (e) {
+      flash.err(errorText(e));
+    }
+  }
+
+  if (!products) return flash.flash ? <Flash flash={flash.flash} /> : <Loading text="Chargement des produits…" />;
 
   return (
     <>
@@ -156,7 +167,7 @@ function ProductList({ filter }: { filter: string }) {
       {shown.length ? (
         <div className="adm-products">
           {shown.map((p) => (
-            <ProductRow key={p.slug} product={p} category={catName.get(p.categoryId) || '—'} onQuick={quick} />
+            <ProductRow key={p.slug} product={p} category={catName.get(p.categoryId) || '—'} onQuick={quick} onDelete={remove} />
           ))}
         </div>
       ) : (
@@ -170,18 +181,40 @@ function ProductRow({
   product: p,
   category,
   onQuick,
+  onDelete,
 }: {
   product: AdminProduct;
   category: string;
   onQuick: (p: AdminProduct, patch: Partial<AdminProduct>, msg: string) => Promise<void>;
+  onDelete: (p: AdminProduct) => Promise<void>;
 }) {
   const [price, setPrice] = useState(p.price ? String(p.price) : '');
+  const [pending, setPending] = useState<'' | 'price' | 'active' | 'delete'>('');
   useEffect(() => setPrice(p.price ? String(p.price) : ''), [p.price]);
   const typed = Number(price.replace(/[^\d]/g, '')) || 0;
   const href = `/admin/produits/?modifier=${encodeURIComponent(p.slug)}`;
 
+  async function run(kind: 'price' | 'active', patch: Partial<AdminProduct>, msg: string) {
+    setPending(kind);
+    try {
+      await onQuick(p, patch, msg);
+    } finally {
+      setPending('');
+    }
+  }
+
+  async function remove() {
+    if (!window.confirm(`Supprimer définitivement « ${p.name} » ?
+
+Pour le retirer seulement de la vente, utilisez plutôt « Masquer ».`)) return;
+    setPending('delete');
+    // On success the row disappears; only a failure needs the buttons back.
+    await onDelete(p);
+    setPending('');
+  }
+
   return (
-    <article className={`adm-prod${p.active ? '' : ' is-hidden'}`}>
+    <article className={`adm-prod${p.active ? '' : ' is-hidden'}`} aria-busy={!!pending || undefined}>
       <Link href={href} className="adm-prod__img" tabIndex={-1} aria-hidden>
         {p.images[0] ? <img src={p.images[0].thumb} alt="" width={64} height={64} /> : <span>Sans photo</span>}
       </Link>
@@ -201,7 +234,7 @@ function ProductRow({
         className="adm-prod__price"
         onSubmit={(e) => {
           e.preventDefault();
-          if (typed !== p.price) onQuick(p, { price: typed }, typed ? `${p.name} : ${dh(typed)}.` : `${p.name} : prix retiré.`);
+          if (typed !== p.price && !pending) run('price', { price: typed }, typed ? `${p.name} : ${dh(typed)}.` : `${p.name} : prix retiré.`);
         }}
       >
         <input
@@ -210,26 +243,40 @@ function ProductRow({
           placeholder="Prix"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          disabled={pending === 'price'}
           aria-label={`Prix de ${p.name} en DH`}
         />
         <span>DH</span>
-        {typed !== p.price && (
-          <button type="submit" className="adm-btn adm-btn--primary adm-btn--sm">
+        {(typed !== p.price || pending === 'price') && (
+          <BusyButton type="submit" className="adm-btn adm-btn--primary adm-btn--sm" busy={pending === 'price'} busyText="" disabled={!!pending}>
             OK
-          </button>
+          </BusyButton>
         )}
       </form>
       <div className="adm-prod__actions">
-        <button
+        <BusyButton
           type="button"
           className="adm-btn adm-btn--ghost adm-btn--sm"
-          onClick={() => onQuick(p, { active: !p.active }, p.active ? `${p.name} est masqué.` : `${p.name} est en ligne.`)}
+          busy={pending === 'active'}
+          busyText={p.active ? 'Masquage…' : 'Mise en ligne…'}
+          disabled={!!pending}
+          onClick={() => run('active', { active: !p.active }, p.active ? `${p.name} est masqué.` : `${p.name} est en ligne.`)}
         >
           {p.active ? 'Masquer' : 'Mettre en ligne'}
-        </button>
+        </BusyButton>
         <Link href={href} className="adm-btn adm-btn--ghost adm-btn--sm">
           Modifier
         </Link>
+        <BusyButton
+          type="button"
+          className="adm-btn adm-btn--danger adm-btn--sm"
+          busy={pending === 'delete'}
+          busyText="Suppression…"
+          disabled={!!pending}
+          onClick={remove}
+        >
+          Supprimer
+        </BusyButton>
       </div>
     </article>
   );

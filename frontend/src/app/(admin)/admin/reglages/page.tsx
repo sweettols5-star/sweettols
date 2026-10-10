@@ -3,7 +3,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import AdminShell from '@/admin/AdminShell';
 import { api, errorText } from '@/admin/client';
-import { Field, Flash, Loading, useFlash } from '@/admin/ui';
+import { BusyButton, Field, Flash, Loading, SlowHint, useFlash } from '@/admin/ui';
 import type { Settings, Zone } from '@/types';
 
 export default function SettingsPage() {
@@ -30,7 +30,7 @@ function SettingsView() {
       .catch((e) => flash.err(errorText(e)));
   }, []);
 
-  if (!s) return flash.flash ? <Flash flash={flash.flash} /> : <Loading />;
+  if (!s) return flash.flash ? <Flash flash={flash.flash} /> : <Loading text="Chargement des réglages…" />;
 
   const set = <K extends keyof Settings>(k: K, v: Settings[K]) => setS((x) => (x ? { ...x, [k]: v } : x));
   const setZone = (i: number, patch: Partial<Zone>) =>
@@ -55,7 +55,7 @@ function SettingsView() {
   }
 
   return (
-    <form onSubmit={submit} className="adm-settings">
+    <form onSubmit={submit} className="adm-settings" aria-busy={busy || undefined}>
       <section className="adm-card">
         <h2 className="adm-h2">Coordonnées</h2>
         <p className="adm-muted adm-intro">
@@ -147,7 +147,7 @@ function SettingsView() {
               className="adm-input"
               inputMode="numeric"
               value={String(s.minOrder ?? 0)}
-              onChange={(e) => set('minOrder', Number(e.target.value.replace(/[^d]/g, '')) || 0)}
+              onChange={(e) => set('minOrder', Number(e.target.value.replace(/[^\d]/g, '')) || 0)}
             />
           </Field>
           <Field label="Livraison offerte dès (DH)" hint="0 = jamais offerte.">
@@ -163,9 +163,10 @@ function SettingsView() {
 
       <div className="adm-sticky-save">
         <Flash flash={flash.flash} />
-        <button type="submit" className="adm-btn adm-btn--primary" disabled={busy || !dirty}>
-          {busy ? 'Enregistrement…' : 'Enregistrer les réglages'}
-        </button>
+        <BusyButton type="submit" className="adm-btn adm-btn--primary" busy={busy} busyText="Enregistrement des réglages…" disabled={!dirty}>
+          Enregistrer les réglages
+        </BusyButton>
+        <SlowHint active={busy} />
       </div>
     </form>
   );
@@ -184,7 +185,7 @@ function PasswordForm() {
     if (next !== confirm) return flash.err('Les deux nouveaux mots de passe ne correspondent pas.');
     setBusy(true);
     try {
-      await api('/api/admin/password', { method: 'POST', body: { current, next } });
+      await api('/api/admin/password', { method: 'POST', body: { current, next }, keepSession: true });
       setCurrent('');
       setNext('');
       setConfirm('');
@@ -211,9 +212,10 @@ function PasswordForm() {
           <input className="adm-input" type="password" autoComplete="new-password" value={confirm} onChange={(e) => setConfirm(e.target.value)} required />
         </Field>
       </div>
-      <button type="submit" className="adm-btn adm-btn--primary" disabled={busy}>
+      <BusyButton type="submit" className="adm-btn adm-btn--primary" busy={busy} busyText="Changement en cours…">
         Changer le mot de passe
-      </button>
+      </BusyButton>
+      <SlowHint active={busy} />
     </form>
   );
 }

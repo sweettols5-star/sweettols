@@ -26,10 +26,14 @@ function DashboardView() {
       .catch((e) => flash.err(errorText(e)));
   }, []);
 
-  if (!data) return flash.flash ? <Flash flash={flash.flash} /> : <Loading />;
+  if (!data) return flash.flash ? <Flash flash={flash.flash} /> : <Loading text="Chargement du tableau de bord…" />;
 
   const p = data.products;
   const todo = [
+    data.unreadMessages > 0 && {
+      text: `${data.unreadMessages} message${data.unreadMessages > 1 ? 's' : ''} non lu${data.unreadMessages > 1 ? 's' : ''} (page Contact)`,
+      href: '/admin/messages/',
+    },
     p.withoutPrice > 0 && {
       text: `${p.withoutPrice} produit${p.withoutPrice > 1 ? 's' : ''} sans prix (affichés « Prix à venir », non commandables)`,
       href: '/admin/produits/?filtre=sans-prix',
@@ -110,7 +114,10 @@ function DashboardView() {
                         {o.reference}
                       </Link>
                     </td>
-                    <td>{o.customer.name}</td>
+                    <td>
+                      {o.customer.name}
+                      {o.invoice && <em className="adm-tag adm-tag--invoice">Facture</em>}
+                    </td>
                     <td>{o.customer.city}</td>
                     <td className="adm-num">{dh(o.total)}</td>
                     <td>

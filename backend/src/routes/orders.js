@@ -35,6 +35,7 @@ orderRoutes.post('/orders', throttle({ tries: 6, windowMs: 60_000 }), async (req
       items: saved.items,
       subtotal: saved.subtotal,
       shipping: saved.shipping,
+      invoiceFee: saved.invoiceFee,
       total: saved.total,
       zone: saved.zone,
     });
@@ -87,6 +88,29 @@ adminOrderRoutes.patch('/orders/:reference', requireAdmin, async (req, res) => {
     res.json({ ok: true, order: await store.orders.update(order.reference, patch) });
   } catch (e) {
     console.error('[order PATCH]', e);
+    res.status(500).json({ error: 'Erreur serveur' });
+  }
+});
+
+/**
+ * Removes an order for good (test order, duplicate, spam). Units still held
+ * by it go back to stock — not for a cancelled order (already given back) nor
+ * a delivered one (they really left the shop).
+ */
+adminOrderRoutes.delete('/orders/:reference', requireAdmin, async (req, res) => {
+  try {
+    const order = await store.orders.get(clean(req.params.reference, 20));
+    if (!order) {
+      res.status(404).json({ error: 'Commande introuvable.' });
+      return;
+    }
+    const restock = order.status !== 'annulee' && order.status !== 'livree';
+    if (restock) await moveStock(order.items, +1);
+    await store.orders.remove(order.reference);
+    console.log('[commande] %s supprimée%s', order.reference, restock ? ' (stock remis)' : '');
+    res.json({ ok: true, restocked: restock });
+  } catch (e) {
+    console.error('[order DELETE]', e);
     res.status(500).json({ error: 'Erreur serveur' });
   }
 });

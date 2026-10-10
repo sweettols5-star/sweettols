@@ -145,7 +145,7 @@ await fill('[name=address]', 'Rue des Tests 12, Maarif');
 await js(`document.querySelector('input[name=zone][value=casablanca]').click()`);
 await sleep(200);
 ok((await js(`document.querySelector('[name=city]').value`)) === 'Casablanca', 'choosing Casablanca fills the city');
-ok((await js(`document.querySelector('.summary__total dd')?.textContent`))?.replace(/\s/g, '') === '275DH', 'total with delivery = 255 + 20 = 275 DH');
+ok((await js(`document.querySelector('.summary__total dd')?.textContent`))?.replace(/\s/g, '') === '285DH', 'total with delivery = 255 + 30 = 285 DH');
 
 await click('Confirmer la commande');
 await sleep(1800);
@@ -157,7 +157,7 @@ ok(!(await js(`!!document.querySelector('.cart-btn__count')`)), 'header badge go
 const { orders } = await (await fetch(`${API}/api/admin/orders?q=${encodeURIComponent(reference)}`, { headers: auth })).json();
 const order = orders?.[0];
 ok(order?.customer?.name === `Test E2E ${stamp}`, 'order is in the admin list');
-ok(order?.total === 275 && order?.shipping === 20 && order?.items?.length === 2, 'order totals computed by the API');
+ok(order?.total === 285 && order?.shipping === 30 && order?.items?.length === 2, 'order totals computed by the API');
 if (order) {
   await fetch(`${API}/api/admin/orders/${order.reference}`, { method: 'PATCH', headers: auth, body: JSON.stringify({ status: 'annulee', adminNote: 'Commande de test e2e' }) });
 }

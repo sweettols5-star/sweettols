@@ -1,8 +1,10 @@
 /* Back office. Reuses the shop tokens from globals.css; denser, calmer layout. */
 
 .adm-boot {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   min-height: 100vh;
   color: var(--muted);
 }
@@ -243,6 +245,53 @@
 
 .adm-loading {
   padding: 24px 0;
+  color: var(--muted);
+}
+
+.adm-loading p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.adm-loading .adm-spin {
+  width: 20px;
+  height: 20px;
+  color: var(--violet);
+}
+
+/* Spinner: inherits the text colour, so it works on primary and ghost buttons alike. */
+.adm-spin {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: adm-spin 0.7s linear infinite;
+}
+
+@keyframes adm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adm-spin {
+    animation-duration: 2s;
+  }
+}
+
+.adm-slow {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff6e5;
+  color: var(--warn);
+  font-size: 0.82rem;
 }
 
 .adm-empty {
@@ -334,6 +383,19 @@
 .adm-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.adm-btn.is-busy:disabled {
+  opacity: 0.85;
+  cursor: progress;
+}
+
+/* Locks a form while it is being saved, without changing its layout. */
+.adm-lock {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .adm-btn--sm {
@@ -472,6 +534,81 @@ textarea.adm-input,
   color: var(--error);
 }
 
+/* Request outcome, pinned to the top of the screen. */
+.adm-toast {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: min(560px, calc(100vw - 32px));
+  padding: 12px 10px 12px 14px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  box-shadow: 0 12px 32px rgba(42, 29, 45, 0.28);
+  transform: translateX(-50%);
+  animation: adm-toast-in 0.22s ease-out;
+}
+
+.adm-toast--ok {
+  background: var(--ok);
+}
+
+.adm-toast--err {
+  background: var(--error);
+}
+
+.adm-toast p {
+  margin: 0;
+  flex: 1;
+}
+
+.adm-toast__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  font-weight: 700;
+}
+
+.adm-toast__close {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.adm-toast__close:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@keyframes adm-toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adm-toast {
+    animation: none;
+  }
+}
+
 .adm-badge {
   display: inline-block;
   padding: 3px 10px;
@@ -526,6 +663,11 @@ textarea.adm-input,
 .adm-tag--warn {
   background: #fdecea;
   color: var(--error);
+}
+
+.adm-tag--invoice {
+  background: var(--violet-100);
+  color: var(--violet-dark);
 }
 
 .adm-tabs {
@@ -839,6 +981,23 @@ a.adm-stat:hover {
   border-radius: 10px;
 }
 
+.adm-order__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.adm-order__foot .adm-history {
+  margin: 0;
+}
+
+.adm-order__delete {
+  margin-left: auto;
+}
+
 .adm-order__note {
   display: grid;
   gap: 6px;
@@ -934,6 +1093,7 @@ a.adm-stat:hover {
 
 .adm-prod__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
 }
 
@@ -1054,7 +1214,150 @@ a.adm-stat:hover {
 }
 
 .adm-drop.is-busy {
-  opacity: 0.7;
+  cursor: progress;
+}
+
+.adm-drop strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.adm-photo--pending {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  min-height: 140px;
+  aspect-ratio: 1;
+  background: var(--violet-50);
+  color: var(--violet);
+  font-size: 0.78rem;
+}
+
+.adm-photo--pending .adm-spin {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- Messages ---------- */
+
+.adm-msgs__bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.adm-msgs {
+  display: grid;
+  gap: 10px;
+}
+
+.adm-msg {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.adm-msg.is-unread {
+  border-left-color: var(--violet);
+}
+
+.adm-msg.is-open {
+  box-shadow: var(--shadow);
+}
+
+.adm-msg__head {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 10px minmax(140px, 220px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.adm-msg__head:hover {
+  background: #fcf9fd;
+}
+
+.adm-msg__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.adm-msg.is-unread .adm-msg__dot {
+  background: var(--violet);
+}
+
+.adm-msg__who {
+  display: grid;
+  min-width: 0;
+}
+
+.adm-msg__who strong,
+.adm-msg__who small,
+.adm-msg__preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.adm-msg.is-unread .adm-msg__who strong {
+  color: var(--violet-dark);
+}
+
+.adm-msg__who small {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.adm-msg__preview {
+  color: var(--muted);
+}
+
+.adm-msg__date {
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.adm-msg__body {
+  padding: 4px 16px 16px 40px;
+}
+
+.adm-msg__text {
+  margin: 0 0 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.55;
+}
+
+.adm-msg__contact {
+  margin: 0 0 12px;
+}
+
+.adm-msg__spacer {
+  flex: 1;
+}
+
+@media (max-width: 700px) {
+  .adm-msg__head {
+    grid-template-columns: 10px minmax(0, 1fr) auto;
+  }
+  .adm-msg__preview {
+    display: none;
+  }
+  .adm-msg__body {
+    padding-left: 16px;
+  }
 }
 
 /* ---------- Categories ---------- */
@@ -1184,8 +1487,9 @@ a.adm-stat:hover {
 }
 
 .adm-login__mark {
+  display: block;
   margin: 0 auto 10px;
-  border-radius: 50%;
+  border-radius: 14px;
 }
 
 .adm-login__title {

@@ -37,7 +37,7 @@ export default function HomePage() {
           '@type': 'OnlineStore',
           name: site.brand,
           url: site.url,
-          logo: `${site.url}/brand/emblem.png`,
+          logo: `${site.url}/brand/logo-512.png`,
           description: site.baseline,
           areaServed: { '@type': 'Country', name: 'Maroc' },
           paymentAccepted: 'Cash',
@@ -50,14 +50,14 @@ export default function HomePage() {
             plain left side. Phones get a tighter crop above the text.
             Source + licence: public/hero/CREDITS.md, rebuilt by scripts/prepare-hero.mjs. */}
         <picture className="hero__photo">
-          <source media="(max-width: 900px)" srcSet="/hero/cake-mobile.webp" width={900} height={750} />
+          <source media="(max-width: 900px)" srcSet="/hero/hero-mobile.webp" width={900} height={750} />
           <img
-            src="/hero/cake-1600.webp"
-            srcSet="/hero/cake-1600.webp 1600w, /hero/cake-2400.webp 2400w"
+            src="/hero/hero-1600.webp"
+            srcSet="/hero/hero-1600.webp 1600w, /hero/hero-2400.webp 2400w"
             sizes="100vw"
-            alt="Gâteau décoré de roses en crème au beurre rose, sur un présentoir à pois"
+            alt="Gâteau crème décoré de fleurs en sucre violettes, macarons, moule en silicone cœur et fouets sur un plan en marbre"
             width={1600}
-            height={1067}
+            height={656}
             fetchPriority="high"
           />
         </picture>
@@ -176,7 +176,7 @@ export default function HomePage() {
 
       <section className="section container">
         <div className="band">
-          <img src="/brand/emblem.png" alt="" width={96} height={96} className="band__mark" />
+          <img src="/brand/logo-256.webp" alt="" width={96} height={96} className="band__mark" />
           <div className="band__text">
             <h2>Une question avant de commander ?</h2>
             <p>Taille d’un moule, nombre d’empreintes, délai de livraison : écrivez-nous, on vous répond rapidement.</p>

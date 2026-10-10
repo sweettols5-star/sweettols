@@ -45,8 +45,15 @@ admin client (jeton Bearer en localStorage) + rafraîchissement du catalogue dan
   un lien, à la navigation et sur Échap — piloté en JS (`Header.tsx`), plus par `:focus-within` qui le laissait ouvert.
   Test souris réel : `node scripts/e2e-nav.mjs` (8 vérifications).
 - 2 boutons flottants en bas à droite (`ContactFloats.tsx`) : Appeler + WhatsApp.
-- **Numéro de la boutique : +212 695 81 97 43** (WhatsApp + téléphone), mis en valeur par défaut dans
+- **Numéro de la boutique : +212 678 77 99 83** (WhatsApp + téléphone), mis en valeur par défaut dans
   `backend/src/lib/settings.js` → boutons flottants, pied de page, page contact. Modifiable dans Admin → Réglages.
+- **Suppression** depuis l'admin : bouton « Supprimer » sur chaque ligne de produit ; « Supprimer la commande » dans une commande
+  ouverte (`DELETE /api/admin/orders/:ref`) — remet le stock si la commande n'était ni annulée ni livrée.
+- **Formulaire de contact** (page Contact) → `POST /api/messages` (validation FR, téléphone ou e-mail requis, champ piège
+  anti-robots, 5 envois / 10 min par IP) → Admin → **Messages** (badge non lus, ouverture = lu, répondre WhatsApp / appel /
+  e-mail, marquer non lu, supprimer). Collection `messages` dans les deux stores (JSON + Mongo).
+- **Frais de livraison (client, 2026-10-09) : Casablanca 30 DH, autres villes 45 DH** — valeurs par défaut dans
+  `backend/src/lib/settings.js` ; en production, à saisir aussi dans Admin → Réglages si des réglages y sont déjà enregistrés.
 - **Minimum de commande 200 DH** (consigne client, articles hors livraison) : refusé par l'API (`lib/order.js`), bouton
   de commande désactivé + message « il manque X DH » avec barre de progression dans le panier et à la commande
   (`MinOrderNotice.tsx`), réglable dans Admin → Réglages (0 = pas de minimum), rappelé dans la FAQ et sur la page Livraison.
@@ -98,9 +105,8 @@ admin client (jeton Bearer en localStorage) + rafraîchissement du catalogue dan
 - `product.jpeg` : nom + prix (enregistré comme « Moule en silicone – 24 palets ronds », **masqué**)
 - « Silicone alimentaire… » = moule vêtements de bébé : confirmer le nom
 - Rouleau : 22 ou 23 cm ? (la photo dit 23)
-- Frais de livraison réels (provisoire : Casablanca 20 DH, autres villes 35 DH — modifiables dans l'admin)
 - WhatsApp, téléphone, e-mail, Instagram, domaine ; langues AR/EN (FR seulement pour l'instant)
-- Le logo est écrit « SWEETTOLS » : le site utilise seulement le dessin + le nom en texte
+- Logo du client utilisé tel quel (fond violet #9f34a1 + « SWEETTOLS ») : public/brand/logo-256.webp / logo-512.png. Le violet du site est aligné sur ce logo. L’emblème rond reste pour les petites tailles (sidebar admin, placeholders produits)
 
 ## Pièges
 - Dossier dans le gros dépôt git de Bureau : ne rien committer en masse.

@@ -32,6 +32,10 @@ function models(connection) {
       [{ reference: 1 }, { unique: true }],
       [{ createdAt: -1 }, {}],
     ]),
+    Message: define('Message', 'messages', [
+      [{ id: 1 }, { unique: true }],
+      [{ createdAt: -1 }, {}],
+    ]),
     Admin: define('Admin', 'admins', [[{ email: 1 }, { unique: true }]]),
     Settings: define('Settings', 'settings', []),
   };
@@ -92,6 +96,7 @@ export function createMongoStore(uri, dbName) {
     products: collection(M.Product, 'slug'),
     categories: collection(M.Category, 'id'),
     orders: collection(M.Order, 'reference'),
+    messages: collection(M.Message, 'id'),
     admins: collection(M.Admin, 'email'),
     settings: {
       async read() {

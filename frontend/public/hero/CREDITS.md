@@ -1,9 +1,6 @@
 # Hero photo
 
-- Files: cake-2400.webp, cake-1600.webp, cake-mobile.webp (built by `node scripts/prepare-hero.mjs <photo>`)
-- Subject: pink buttercream-rose cake on a polka-dot cake stand
-- Source: Pixabay image 1202271 — https://pixabay.com/photos/id-1202271/
-  (found through rawpixel's public-domain/CC0 collection, rawpixel.com/image/5960658)
-- License: Pixabay Content License / CC0 — commercial use allowed, no attribution required
-- Status: TEMPORARY files built from rawpixel's 1024 px copy (enlarged). Replace with the full-size
-  Pixabay download: `node scripts/prepare-hero.mjs path/to/download.jpg`, then rebuild.
+- Files: hero-2400.webp, hero-1600.webp, hero-mobile.webp (built by `node scripts/prepare-hero.mjs <photo>`)
+- Subject: cream cake with violet sugar flowers on a gold stand, macarons, violet silicone heart mould,
+  whisks and piping tips on white marble — the hero of the client's mockup
+- Source: AI-generated (Gemini) for SweetTools, 3200×1312, no text; the left third is plain for the headline

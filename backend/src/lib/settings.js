@@ -2,7 +2,7 @@
  * Shop settings — contact details and delivery zones — editable in /admin.
  *
  * Delivery is priced per zone (the mockup's "Casablanca / autres villes"). The
- * fees below are PLACEHOLDERS until the client gives the real ones.
+ * fees below are the client's (2026-10-09): Casablanca 30 DH, other cities 45 DH.
  */
 import { store } from '../store/index.js';
 import { clean, int, slugify } from './text.js';
@@ -11,8 +11,8 @@ export const DEFAULT_SETTINGS = {
   brand: 'SweetTools',
   baseline: 'Outils et matériel de pâtisserie & cake design',
   url: 'https://sweettools.ma',
-  phone: '06 95 81 97 43',
-  whatsapp: '212695819743',
+  phone: '06 78 77 99 83',
+  whatsapp: '212678779983',
   email: '',
   city: 'Casablanca',
   hours: '',
@@ -24,8 +24,8 @@ export const DEFAULT_SETTINGS = {
   // Client rule (2026-10-06): no order under 200 DH of products (delivery not counted).
   minOrder: 200,
   zones: [
-    { id: 'casablanca', label: 'Casablanca', fee: 20, delay: '24 à 48 h' },
-    { id: 'autres-villes', label: 'Autres villes du Maroc', fee: 35, delay: '2 à 4 jours ouvrables' },
+    { id: 'casablanca', label: 'Casablanca', fee: 30, delay: '24 à 48 h' },
+    { id: 'autres-villes', label: 'Autres villes du Maroc', fee: 45, delay: '2 à 4 jours ouvrables' },
   ],
 };
 

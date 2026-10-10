@@ -91,7 +91,7 @@ export default async function GuidePage({ params }: Props) {
           image: `${site.url}${guide.cover.replace('-thumb', '')}`,
           inLanguage: 'fr',
           author: { '@type': 'Organization', name: site.brand },
-          publisher: { '@type': 'Organization', name: site.brand, logo: { '@type': 'ImageObject', url: `${site.url}/brand/emblem.png` } },
+          publisher: { '@type': 'Organization', name: site.brand, logo: { '@type': 'ImageObject', url: `${site.url}/brand/logo-512.png` } },
           mainEntityOfPage: `${site.url}${routes.guide(guide.slug)}`,
         }}
       />

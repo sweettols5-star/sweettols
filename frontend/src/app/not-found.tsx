@@ -14,7 +14,7 @@ export default function NotFound() {
     <ShopChrome>
       <div className="container section">
         <div className="empty">
-          <img src="/brand/emblem.png" alt="" width={96} height={96} className="empty__mark" />
+          <img src="/brand/logo-256.webp" alt="" width={128} height={128} className="empty__mark" />
           <h1 className="page-title">Page introuvable</h1>
           <p>Cette page n’existe pas ou a été déplacée.</p>
           <div className="confirm__actions">

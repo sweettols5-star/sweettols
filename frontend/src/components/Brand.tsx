@@ -1,16 +1,10 @@
 import Link from './Link';
 
-/**
- * The cake drawing from the client's logo + the name set in type. The logo
- * file itself spells « SWEETTOLS », so only its drawing is reused.
- */
+/** The client's logo as sent: white drawing + « SWEETTOLS » on its violet square. */
 export default function Brand({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className={`brand${light ? ' brand--light' : ''}`} aria-label="SweetTools — accueil">
-      <img src="/brand/emblem.png" alt="" width={44} height={44} className="brand__mark" />
-      <span className="brand__name">
-        Sweet<span>Tools</span>
-      </span>
+      <img src="/brand/logo-256.webp" alt="SweetTools" width={256} height={256} className="brand__logo" />
     </Link>
   );
 }

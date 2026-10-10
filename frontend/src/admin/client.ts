@@ -57,6 +57,19 @@ type Options = {
   form?: FormData;
   /** Login: no token, and a 401 means « wrong password », not « session expired ». */
   anonymous?: boolean;
+  /** Password change: the API answers a wrong current password with 401 — not a reason to sign out. */
+  keepSession?: boolean;
+};
+
+/**
+ * Shortest time an action (anything but GET) shows its spinner. A local API
+ * answers in ~70 ms: without this the owner never sees that anything happened.
+ */
+const MIN_ACTION_MS = 600;
+
+const settle = async (method: string, started: number) => {
+  const left = MIN_ACTION_MS - (Date.now() - started);
+  if (method !== 'GET' && left > 0) await new Promise((r) => setTimeout(r, left));
 };
 
 /**
@@ -64,8 +77,9 @@ type Options = {
  * the API sent — those are written for the shop owner and shown verbatim.
  */
 export async function api<T>(path: string, options: Options = {}): Promise<T> {
-  const { method = 'GET', body, form, anonymous = false } = options;
+  const { method = 'GET', body, form, anonymous = false, keepSession = false } = options;
   const token = anonymous ? '' : getToken();
+  const started = Date.now();
 
   let res: Response;
   try {
@@ -78,10 +92,11 @@ export async function api<T>(path: string, options: Options = {}): Promise<T> {
       body: form ?? (body === undefined ? undefined : JSON.stringify(body)),
     });
   } catch {
+    await settle(method, started);
     throw new ApiError('Serveur injoignable. Vérifiez votre connexion (le serveur peut mettre une minute à se réveiller).', 0);
   }
 
-  if (res.status === 401 && !anonymous) {
+  if (res.status === 401 && !anonymous && !keepSession) {
     clearToken();
     window.dispatchEvent(new Event(EXPIRED));
     throw new ApiError('Session expirée, reconnectez-vous.', 401);
@@ -89,6 +104,7 @@ export async function api<T>(path: string, options: Options = {}): Promise<T> {
   if (res.status === 429) throw new ApiError('Trop de tentatives. Patientez une minute.', 429);
 
   const data = (await res.json().catch(() => null)) as (T & { error?: string }) | null;
+  await settle(method, started);
   if (!res.ok) throw new ApiError(data?.error || `Erreur ${res.status}`, res.status);
   return data as T;
 }
