@@ -70,7 +70,7 @@ function OrdersView() {
       (o) =>
         (!status || o.status === status) &&
         (!q ||
-          [o.reference, o.customer.name, o.customer.phone, o.customer.city].some((v) => v.toLowerCase().includes(q))),
+          [o.reference, o.customer.name, o.customer.phone, o.customer.email || '', o.customer.city].some((v) => v.toLowerCase().includes(q))),
     );
   }, [orders, status, query]);
 
@@ -208,6 +208,11 @@ function OrderCard({
           <strong>
             {o.customer.name}
             {o.invoice && <em className="adm-tag adm-tag--invoice">Facture</em>}
+            {o.lang && o.lang !== 'fr' && (
+              <em className="adm-tag" title="Langue du client sur le site">
+                {o.lang === 'ar' ? 'Arabe' : 'Anglais'}
+              </em>
+            )}
           </strong>
           <small>
             {o.customer.city} · {count} article{count > 1 ? 's' : ''}
@@ -228,6 +233,12 @@ function OrderCard({
                 <br />
                 {o.customer.phone}
                 <br />
+                {o.customer.email && (
+                  <>
+                    <a href={`mailto:${o.customer.email}`}>{o.customer.email}</a>
+                    <br />
+                  </>
+                )}
                 {o.customer.address}
                 <br />
                 {o.customer.city} — zone « {o.zone.label} »

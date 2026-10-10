@@ -33,6 +33,34 @@ export function reference(prefix = 'ST') {
   return `${prefix}-${out}`;
 }
 
+/** Languages besides French (the base language, stored in the plain fields). */
+export const LANGS = ['en', 'ar'];
+
+/**
+ * Translations of some text fields: `{ en: { name: '…' }, ar: { … } }`.
+ * `fields` maps a field to its max length, or to 'list' for a string list.
+ * Empty values are dropped: the shop falls back to the French field.
+ */
+export function translations(raw, fields) {
+  const out = {};
+  for (const lang of LANGS) {
+    const src = raw && typeof raw === 'object' ? raw[lang] : null;
+    if (!src || typeof src !== 'object') continue;
+    const t = {};
+    for (const [field, max] of Object.entries(fields)) {
+      if (max === 'list') {
+        const list = stringList(src[field]);
+        if (list.length) t[field] = list;
+      } else {
+        const s = clean(src[field], max);
+        if (s) t[field] = s;
+      }
+    }
+    if (Object.keys(t).length) out[lang] = t;
+  }
+  return out;
+}
+
 /** Trimmed, de-duplicated list of short strings. */
 export function stringList(value, { max = 12, len = 160 } = {}) {
   const raw = Array.isArray(value) ? value : String(value ?? '').split('\n');

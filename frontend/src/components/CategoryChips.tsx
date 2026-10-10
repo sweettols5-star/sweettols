@@ -1,15 +1,17 @@
 'use client';
 
 import { routes } from '@/lib/routes';
+import { useT } from './LangProvider';
 import { useShownCategories } from './LiveCatalogue';
 import Link from './Link';
 
 export default function CategoryChips({ current }: { current: string }) {
   const categories = useShownCategories();
+  const t = useT();
   return (
-    <nav className="chips" aria-label="Catégories">
+    <nav className="chips" aria-label={t.nav.categories}>
       <Link href={routes.shop} className="chip">
-        Tout
+        {t.grid.all}
       </Link>
       {categories.map((c) => (
         <Link

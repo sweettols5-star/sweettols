@@ -4,7 +4,13 @@ import { useCallback, useEffect, useState, type FormEvent } from 'react';
 import AdminShell from '@/admin/AdminShell';
 import { api, errorText, uploadPhoto } from '@/admin/client';
 import type { AdminCategory } from '@/admin/types';
+import Translations, { fromTrDraft, toTrDraft, type TrField } from '@/admin/Translations';
 import { BusyButton, Field, Flash, Loading, SlowHint, Spinner, useFlash } from '@/admin/ui';
+
+const TR_FIELDS: TrField[] = [
+  { key: 'name', label: 'Nom', max: 80 },
+  { key: 'description', label: 'Description', rows: 3, max: 600 },
+];
 import Link from '@/components/Link';
 import { routes } from '@/lib/routes';
 
@@ -166,6 +172,7 @@ function CategoryForm({
   const [description, setDescription] = useState(category?.description || '');
   const [order, setOrder] = useState(String(category?.order ?? nextOrder));
   const [image, setImage] = useState(category?.image || '');
+  const [i18n, setI18n] = useState(toTrDraft(category?.i18n));
   const [busy, setBusy] = useState(false);
   const [uploading, setUploading] = useState(false);
 
@@ -186,7 +193,7 @@ function CategoryForm({
   async function submit(e: FormEvent) {
     e.preventDefault();
     setBusy(true);
-    const body = { name, description, order: Number(order) || 0, image };
+    const body = { name, description, order: Number(order) || 0, image, i18n: fromTrDraft(i18n, TR_FIELDS) };
     try {
       if (category) {
         await api(`/api/admin/categories/${category.id}`, { method: 'PUT', body });
@@ -230,6 +237,7 @@ function CategoryForm({
             )}
           </div>
         </Field>
+        <Translations fields={TR_FIELDS} value={i18n} onChange={setI18n} />
       </fieldset>
       <div className="adm-row">
         <BusyButton

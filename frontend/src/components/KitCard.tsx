@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import type { Kit } from '@/types';
 import { isSellable } from '@/lib/catalogue';
-import { dh } from '@/lib/format';
 import { routes } from '@/lib/routes';
 import { useCart } from './CartProvider';
 import { IconBag, IconCheck } from './Icons';
+import { useT } from './LangProvider';
 import { useProducts } from './LiveCatalogue';
 import Link from './Link';
 import { productHref } from './ProductCard';
@@ -15,6 +15,7 @@ import { productHref } from './ProductCard';
 export default function KitCard({ kit }: { kit: Kit }) {
   const all = useProducts();
   const cart = useCart();
+  const t = useT();
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
@@ -44,17 +45,14 @@ export default function KitCard({ kit }: { kit: Kit }) {
           {items.map((p) => (
             <li key={p.slug} className={isSellable(p) ? '' : 'is-off'}>
               <Link href={productHref(p.slug)}>{p.name}</Link>
-              <span>{isSellable(p) ? dh(p.price) : 'bientôt'}</span>
+              <span>{isSellable(p) ? t.dh(p.price) : t.kits.soon}</span>
             </li>
           ))}
         </ul>
         <div className="kit__foot">
           <p className="kit__total">
-            <span>
-              {sellable.length} article{sellable.length > 1 ? 's' : ''}
-              {missing > 0 && ' disponibles'}
-            </span>
-            <strong>{dh(total)}</strong>
+            <span>{t.kits.items(sellable.length, missing > 0)}</span>
+            <strong>{t.dh(total)}</strong>
           </p>
           <button
             type="button"
@@ -65,12 +63,12 @@ export default function KitCard({ kit }: { kit: Kit }) {
             }}
           >
             {added ? <IconCheck width={18} height={18} /> : <IconBag width={18} height={18} />}
-            {added ? 'Kit ajouté' : 'Ajouter le kit au panier'}
+            {added ? t.kits.added : t.kits.add}
           </button>
         </div>
         {added && (
           <p className="buy__added" role="status">
-            <Link href={routes.cart}>Voir le panier →</Link>
+            <Link href={routes.cart}>{t.buy.seeCart}</Link>
           </p>
         )}
       </div>

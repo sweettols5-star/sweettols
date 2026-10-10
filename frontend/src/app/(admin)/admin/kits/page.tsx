@@ -4,9 +4,15 @@ import { useCallback, useEffect, useState, type FormEvent } from 'react';
 import AdminShell from '@/admin/AdminShell';
 import { api, errorText } from '@/admin/client';
 import type { AdminProduct, Settings } from '@/admin/types';
+import Translations, { fromTrDraft, toTrDraft, type TrField } from '@/admin/Translations';
 import { BusyButton, Field, Flash, Loading, SlowHint, useFlash } from '@/admin/ui';
 import { dh } from '@/lib/format';
 import type { Kit } from '@/types';
+
+const TR_FIELDS: TrField[] = [
+  { key: 'title', label: 'Nom du kit', max: 80 },
+  { key: 'pitch', label: 'Phrase d’accroche', max: 200 },
+];
 
 export default function KitsPage() {
   return (
@@ -203,6 +209,7 @@ function KitForm({
 }) {
   const [title, setTitle] = useState(kit?.title || '');
   const [pitch, setPitch] = useState(kit?.pitch || '');
+  const [i18n, setI18n] = useState(toTrDraft(kit?.i18n));
   const [slugs, setSlugs] = useState<string[]>(kit?.slugs || []);
   const [query, setQuery] = useState('');
   const [busy, setBusy] = useState(false);
@@ -222,7 +229,7 @@ function KitForm({
     }
     setBusy(true);
     try {
-      await onSave({ id: kit?.id || '', title, pitch, slugs });
+      await onSave({ id: kit?.id || '', title, pitch, slugs, i18n: fromTrDraft(i18n, TR_FIELDS) as Kit['i18n'] });
     } catch (err) {
       onError(errorText(err));
       setBusy(false);
@@ -238,6 +245,7 @@ function KitForm({
         <Field label="Phrase d’accroche" wide hint="Une ligne sous le nom du kit.">
           <input className="adm-input" value={pitch} onChange={(e) => setPitch(e.target.value)} maxLength={200} />
         </Field>
+        <Translations fields={TR_FIELDS} value={i18n} onChange={setI18n} />
         <Field
           label={`Produits (${slugs.length}/8)`}
           wide

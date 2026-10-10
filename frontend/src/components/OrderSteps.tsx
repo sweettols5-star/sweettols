@@ -1,9 +1,12 @@
-const STEPS = ['Panier', 'Livraison', 'Confirmation'];
+'use client';
+
+import { useT } from './LangProvider';
 
 export default function OrderSteps({ current }: { current: 1 | 2 | 3 }) {
+  const t = useT().steps;
   return (
-    <ol className="steps" aria-label="Étapes de la commande">
-      {STEPS.map((s, i) => {
+    <ol className="steps" aria-label={t.label}>
+      {t.items.map((s, i) => {
         const n = i + 1;
         const state = n < current ? 'is-done' : n === current ? 'is-current' : '';
         return (

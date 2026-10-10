@@ -100,7 +100,7 @@ p {
 
 .skip-link {
   position: absolute;
-  left: -9999px;
+  inset-inline-start: -9999px;
   top: 8px;
   z-index: 100;
   background: var(--violet-dark);
@@ -110,7 +110,7 @@ p {
 }
 
 .skip-link:focus {
-  left: 8px;
+  inset-inline-start: 8px;
 }
 
 .container {
@@ -290,7 +290,7 @@ p {
 
 .header__burger {
   display: none;
-  margin-left: -10px;
+  margin-inline-start: -10px;
 }
 
 .brand {
@@ -318,7 +318,7 @@ p {
   display: flex;
   align-items: center;
   gap: 4px;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .header__nav > a,
@@ -411,13 +411,13 @@ p {
   display: flex;
   align-items: center;
   gap: 2px;
-  margin-left: 8px;
+  margin-inline-start: 8px;
 }
 
 .cart-btn__count {
   position: absolute;
   top: 3px;
-  right: 1px;
+  inset-inline-end: 1px;
   min-width: 19px;
   height: 19px;
   padding: 0 5px;
@@ -493,7 +493,7 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: min(86vw, 340px);
   background: #fff;
   overflow-y: auto;
@@ -804,7 +804,7 @@ p {
 .card__badge {
   position: absolute;
   top: 10px;
-  left: 10px;
+  inset-inline-start: 10px;
   background: var(--violet-dark);
   color: #fff;
   font-size: 0.7rem;
@@ -1024,7 +1024,7 @@ p {
 
 .crumbs li + li::before {
   content: '›';
-  margin-right: 4px;
+  margin-inline-end: 4px;
   color: var(--line);
   color: #b9a8bb;
 }
@@ -1401,7 +1401,7 @@ p {
 .line__total {
   font-weight: 700;
   color: var(--violet-dark);
-  text-align: right;
+  text-align: end;
 }
 
 .summary {
@@ -1521,7 +1521,7 @@ p {
 }
 
 .panel legend {
-  float: left;
+  float: inline-start;
   width: 100%;
   font-family: var(--font-display);
   font-size: 1.2rem;
@@ -1658,7 +1658,7 @@ p {
 
 .confirm__summary {
   position: static;
-  text-align: left;
+  text-align: start;
   margin: 24px 0;
 }
 
@@ -1693,7 +1693,7 @@ p {
 .table th,
 .table td {
   padding: 12px 14px;
-  text-align: left;
+  text-align: start;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1710,7 +1710,7 @@ p {
 }
 
 .howto {
-  padding-left: 1.3em;
+  padding-inline-start: 1.3em;
   display: grid;
   gap: 8px;
 }
@@ -1828,7 +1828,7 @@ p {
 /* Honeypot: off-screen, never seen nor focused by people. */
 .contact-form__hp {
   position: absolute;
-  left: -9999px;
+  inset-inline-start: -9999px;
   width: 1px;
   height: 1px;
   opacity: 0;
@@ -1954,7 +1954,7 @@ p {
 /* Floating contact buttons (call + WhatsApp), stacked bottom-right */
 .floats {
   position: fixed;
-  right: 18px;
+  inset-inline-end: 18px;
   bottom: 18px;
   z-index: 30;
   display: grid;
@@ -1990,7 +1990,7 @@ p {
 /* label that slides out on hover (desktop) */
 .float-btn__tip {
   position: absolute;
-  right: calc(100% + 10px);
+  inset-inline-end: calc(100% + 10px);
   top: 50%;
   transform: translate(6px, -50%);
   padding: 6px 12px;
@@ -2013,7 +2013,7 @@ p {
 
 @media (max-width: 640px) {
   .floats {
-    right: 14px;
+    inset-inline-end: 14px;
     bottom: 14px;
     gap: 10px;
   }
@@ -2051,7 +2051,7 @@ p {
     display: inline-flex;
   }
   .header__actions {
-    margin-left: auto;
+    margin-inline-start: auto;
   }
   /* Phones and tablets: the photo becomes a banner above the text. */
   .hero__photo img {
@@ -2395,7 +2395,7 @@ p {
 .howorder__n {
   position: absolute;
   top: -4px;
-  right: -6px;
+  inset-inline-end: -6px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -2482,7 +2482,7 @@ p {
 }
 
 .guide__steps {
-  padding-left: 1.4em;
+  padding-inline-start: 1.4em;
   display: grid;
   gap: 10px;
 }
@@ -2598,4 +2598,142 @@ p {
   .guides {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Languages ---------- */
+
+/* Language menu: the current language; a click lists the two others. */
+.langs {
+  position: relative;
+  margin-inline-end: 4px;
+}
+
+.langs__current {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--violet-dark);
+  cursor: pointer;
+}
+
+.langs__current:hover,
+.langs.is-open .langs__current {
+  border-color: var(--violet);
+  background: var(--violet-50);
+}
+
+.langs__caret {
+  transition: transform 0.15s;
+}
+
+.langs.is-open .langs__caret {
+  transform: rotate(180deg);
+}
+
+.langs__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  inset-inline-end: 0;
+  z-index: 60;
+  min-width: 150px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(60, 20, 60, 0.12);
+}
+
+.langs__menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--ink, #2b1d2e);
+  white-space: nowrap;
+}
+
+.langs__menu a:hover,
+.langs__menu a:focus-visible {
+  background: var(--violet-50);
+  color: var(--violet-dark);
+}
+
+.langs__code {
+  min-width: 22px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.langs [lang='ar'],
+.langs__menu a[lang='ar'] {
+  font-family: var(--font-arabic-face), 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* ---------- Right to left (Arabic) ---------- */
+
+/* Neither Playfair nor Montserrat has Arabic letters: Cairo for everything. */
+html[dir='rtl'] {
+  --font-display: var(--font-arabic-face), 'Segoe UI', Tahoma, sans-serif;
+  --font-body: var(--font-arabic-face), 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Latin letter-spacing breaks the joins between Arabic letters. */
+html[dir='rtl'] body * {
+  letter-spacing: normal !important;
+}
+
+/* Arrows drawn as icons point the reading way. */
+html[dir='rtl'] .flip-rtl {
+  transform: scaleX(-1);
+}
+
+/* The drawer slides in from the right. */
+html[dir='rtl'] .drawer__panel {
+  transform: translateX(100%);
+}
+
+html[dir='rtl'] .drawer.is-open .drawer__panel {
+  transform: none;
+}
+
+html[dir='rtl'] .crumbs li + li::before {
+  content: '‹';
+}
+
+/* Phone numbers, references and e-mails stay left to right inside Arabic text. */
+html[dir='rtl'] input[type='tel'],
+html[dir='rtl'] input[type='email'] {
+  direction: ltr;
+  text-align: right;
+}
+
+/* Hero: the photo's plain side must sit under the headline, which is on the
+   right in Arabic — mirror the photo and its wash (wide screens only; phones
+   show it as a banner above the text). */
+@media (min-width: 901px) {
+  html[dir='rtl'] .hero__photo img {
+    transform: scaleX(-1);
+  }
+  html[dir='rtl'] .hero::after {
+    transform: scaleX(-1);
+  }
+}
+
+/* Arabic italic is not a thing: the emphasis keeps the colour, not the slant. */
+html[dir='rtl'] .hero h1 em,
+html[dir='rtl'] em {
+  font-style: normal;
 }

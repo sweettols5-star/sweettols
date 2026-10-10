@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { requireAdmin } from '../auth.js';
 import { store } from '../store/index.js';
-import { clean, int, slugify } from '../lib/text.js';
+import { clean, int, slugify, translations } from '../lib/text.js';
 
 export const categoryRoutes = Router();
 
-function normalise(body = {}, fallbackOrder = 99) {
+function normalise(body = {}, fallbackOrder = 99, existing = null) {
   const name = clean(body.name, 80);
   if (!name) return { error: 'Le nom de la catégorie est obligatoire.' };
   const image = clean(body.image, 500);
@@ -13,6 +13,7 @@ function normalise(body = {}, fallbackOrder = 99) {
     category: {
       name,
       description: clean(body.description, 600),
+      i18n: body.i18n === undefined ? existing?.i18n || {} : translations(body.i18n, { name: 80, description: 600 }),
       order: int(body.order, { min: 0, max: 999, fallback: fallbackOrder }),
       image: /^(https?:\/\/|\/)/i.test(image) && !/^\/\//.test(image) ? image : '',
     },
@@ -50,7 +51,7 @@ categoryRoutes.put('/categories/:id', requireAdmin, async (req, res) => {
     res.status(404).json({ error: 'Catégorie introuvable' });
     return;
   }
-  const { error, category } = normalise(req.body, existing.order);
+  const { error, category } = normalise(req.body, existing.order, existing);
   if (error) {
     res.status(400).json({ error });
     return;

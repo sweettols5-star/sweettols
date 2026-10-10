@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { isSellable } from '@/lib/catalogue';
 import type { Product } from '@/types';
+import { useLang, useT } from './LangProvider';
 import { useLiveList } from './LiveCatalogue';
 import ProductCard from './ProductCard';
 
@@ -21,7 +22,7 @@ export default function ProductGrid({
   categoryId,
   query = '',
   sortable = false,
-  empty = 'Aucun produit pour le moment.',
+  empty,
 }: {
   products: Product[];
   categoryId?: string;
@@ -30,6 +31,8 @@ export default function ProductGrid({
   empty?: string;
 }) {
   const live = useLiveList(products, categoryId);
+  const lang = useLang();
+  const t = useT().grid;
   const [sort, setSort] = useState<Sort>('default');
 
   const list = useMemo(() => {
@@ -45,26 +48,24 @@ export default function ProductGrid({
     out = [...out].sort((a, b) => {
       if (sort === 'price-asc') return (a.price || Infinity) - (b.price || Infinity);
       if (sort === 'price-desc') return b.price - a.price;
-      if (sort === 'name') return a.name.localeCompare(b.name, 'fr');
+      if (sort === 'name') return a.name.localeCompare(b.name, lang);
       return rank(a) - rank(b);
     });
     return out;
-  }, [live, query, sort]);
+  }, [live, query, sort, lang]);
 
   return (
     <>
       {sortable && (
         <div className="toolbar">
-          <p className="toolbar__count">
-            {list.length} produit{list.length > 1 ? 's' : ''}
-          </p>
+          <p className="toolbar__count">{t.count(list.length)}</p>
           <label className="toolbar__sort">
-            <span>Trier</span>
+            <span>{t.sort}</span>
             <select value={sort} onChange={(e) => setSort(e.target.value as Sort)}>
-              <option value="default">Disponibles d’abord</option>
-              <option value="price-asc">Prix croissant</option>
-              <option value="price-desc">Prix décroissant</option>
-              <option value="name">Nom (A → Z)</option>
+              <option value="default">{t.sortDefault}</option>
+              <option value="price-asc">{t.priceAsc}</option>
+              <option value="price-desc">{t.priceDesc}</option>
+              <option value="name">{t.nameAz}</option>
             </select>
           </label>
         </div>
@@ -76,7 +77,7 @@ export default function ProductGrid({
           ))}
         </div>
       ) : (
-        <p className="empty">{empty}</p>
+        <p className="empty">{empty ?? t.empty}</p>
       )}
     </>
   );

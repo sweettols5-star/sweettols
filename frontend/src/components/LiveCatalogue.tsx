@@ -1,9 +1,12 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { apiUrl } from '@/config/api';
+import type { Lang } from '@/i18n/config';
+import { locCatalogue } from '@/i18n/content';
 import * as built from '@/lib/catalogue';
 import type { Catalogue, Category, Product, Settings } from '@/types';
+import { useLang } from './LangProvider';
 
 /**
  * The catalogue, refreshed in the browser.
@@ -14,7 +17,18 @@ import type { Catalogue, Category, Product, Settings } from '@/types';
  * everything quietly stays on the built snapshot.
  */
 
-const Ctx = createContext<Catalogue | null>(null);
+/** Both versions in the page's language: `live` is null until the API answers. */
+type Value = { live: Catalogue | null; built: Catalogue };
+
+const BUILT: Catalogue = { products: built.products, categories: built.categories, settings: built.settings };
+const builtCache = new Map<Lang, Catalogue>();
+/** The build snapshot in a language, computed once per language. */
+function builtIn(lang: Lang): Catalogue {
+  if (!builtCache.has(lang)) builtCache.set(lang, locCatalogue(BUILT, lang));
+  return builtCache.get(lang)!;
+}
+
+const Ctx = createContext<Value>({ live: null, built: BUILT });
 
 let pending: Promise<Catalogue | null> | null = null;
 
@@ -36,35 +50,46 @@ function load(): Promise<Catalogue | null> {
 }
 
 export function LiveCatalogueProvider({ children }: { children: ReactNode }) {
-  const [live, setLive] = useState<Catalogue | null>(null);
+  const lang = useLang();
+  const [raw, setRaw] = useState<Catalogue | null>(null);
 
   useEffect(() => {
     let alive = true;
     load().then((snap) => {
-      if (alive && snap) setLive(snap);
+      if (alive && snap) setRaw(snap);
     });
     return () => {
       alive = false;
     };
   }, []);
 
-  return <Ctx.Provider value={live}>{children}</Ctx.Provider>;
+  // Memoised: the cart and the lists key their own memos on these arrays.
+  const value = useMemo<Value>(
+    () => ({ live: raw && locCatalogue(raw, lang), built: builtIn(lang) }),
+    [raw, lang],
+  );
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
 /** null until the live answer arrives. */
-export const useLiveCatalogue = () => useContext(Ctx);
+export const useLiveCatalogue = () => useContext(Ctx).live;
 
 export function useProducts(): Product[] {
-  return useContext(Ctx)?.products ?? built.products;
+  const { live, built: b } = useContext(Ctx);
+  return live?.products ?? b.products;
 }
 
 export function useCategories(): Category[] {
-  const live = useContext(Ctx);
-  return live ? [...live.categories].sort((a, b) => a.order - b.order) : built.categories;
+  const { live, built: b } = useContext(Ctx);
+  return useMemo(
+    () => (live ? [...live.categories].sort((x, y) => x.order - y.order) : b.categories),
+    [live, b],
+  );
 }
 
 export function useSettings(): Settings {
-  return useContext(Ctx)?.settings ?? built.settings;
+  const { live, built: b } = useContext(Ctx);
+  return live?.settings ?? b.settings;
 }
 
 const BUILT_CATEGORIES = new Set(built.categories.map((c) => c.id));
@@ -86,15 +111,15 @@ export const hasStaticPage = (slug: string) => BUILT_SLUGS.has(slug);
  * the page still exists, so it says so instead of taking an order.
  */
 export function useLiveProduct(product: Product): { product: Product; removed: boolean } {
-  const live = useContext(Ctx);
+  const { live } = useContext(Ctx);
   if (!live) return { product, removed: false };
   const fresh = live.products.find((p) => p.slug === product.slug);
   return fresh ? { product: fresh, removed: false } : { product, removed: true };
 }
 
 export function useProductBySlug(slug: string): { product: Product | null; ready: boolean } {
-  const live = useContext(Ctx);
-  if (!live) return { product: built.productBySlug(slug) ?? null, ready: false };
+  const { live, built: b } = useContext(Ctx);
+  if (!live) return { product: b.products.find((p) => p.slug === slug) ?? null, ready: false };
   return { product: live.products.find((p) => p.slug === slug) ?? null, ready: true };
 }
 
@@ -103,7 +128,7 @@ export function useProductBySlug(slug: string): { product: Product | null; ready
  * on screen, newcomers appended, removed ones dropped.
  */
 export function useLiveList(fallback: Product[], categoryId?: string): Product[] {
-  const live = useContext(Ctx);
+  const { live } = useContext(Ctx);
   if (!live) return fallback;
   const wanted = categoryId ? live.products.filter((p) => p.categoryId === categoryId) : live.products;
   const bySlug = new Map(wanted.map((p) => [p.slug, p]));

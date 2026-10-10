@@ -1,4 +1,4 @@
-import type { ProductImage, Settings } from '@/types';
+import type { Category, Product, ProductImage, Settings } from '@/types';
 
 /** A product as /api/admin/products returns it — with stock and visibility. */
 export type AdminProduct = {
@@ -10,6 +10,7 @@ export type AdminProduct = {
   description: string;
   details: string[];
   images: ProductImage[];
+  i18n?: Product['i18n'];
   /** null = not tracked (always orderable). */
   stock: number | null;
   active: boolean;
@@ -24,6 +25,7 @@ export type AdminCategory = {
   description: string;
   order: number;
   image: string;
+  i18n?: Category['i18n'];
   productCount: number;
 };
 
@@ -31,7 +33,8 @@ export type OrderStatus = 'nouvelle' | 'confirmee' | 'expediee' | 'livree' | 'an
 
 export type Order = {
   reference: string;
-  customer: { name: string; phone: string; city: string; address: string; notes: string };
+  /** email: optional, absent on orders placed before it was asked. */
+  customer: { name: string; phone: string; email?: string; city: string; address: string; notes: string };
   zone: { id: string; label: string };
   items: Array<{
     slug: string;
@@ -50,6 +53,8 @@ export type Order = {
   invoiceFee?: number;
   total: number;
   payment: 'cod';
+  /** Language the customer ordered in (absent on older orders = French). */
+  lang?: 'fr' | 'en' | 'ar';
   status: OrderStatus;
   history: Array<{ status: OrderStatus; at: string }>;
   adminNote?: string;

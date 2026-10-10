@@ -3,6 +3,8 @@
 import { useSearchParams } from 'next/navigation';
 import { routes } from '@/lib/routes';
 import type { Product } from '@/types';
+import { rich } from '@/i18n/rich';
+import { useT } from './LangProvider';
 import { useCategories, useProducts } from './LiveCatalogue';
 import Link from './Link';
 import ProductGrid from './ProductGrid';
@@ -12,12 +14,13 @@ export default function ShopBrowser({ products }: { products: Product[] }) {
   const query = (useSearchParams().get('q') || '').trim();
   const categories = useCategories();
   const live = useProducts();
+  const t = useT();
 
   return (
     <>
-      <nav className="chips" aria-label="Catégories">
+      <nav className="chips" aria-label={t.nav.categories}>
         <Link href={routes.shop} className="chip is-active">
-          Tout
+          {t.grid.all}
         </Link>
         {categories
           .filter((c) => live.some((p) => p.categoryId === c.id))
@@ -30,7 +33,10 @@ export default function ShopBrowser({ products }: { products: Product[] }) {
 
       {query && (
         <p className="search-note">
-          Résultats pour « <strong>{query}</strong> » — <Link href={routes.shop}>effacer</Link>
+          {rich(t.grid.resultsFor, {
+            q: <strong>{query}</strong>,
+            clear: <Link href={routes.shop}>{t.grid.clear}</Link>,
+          })}
         </p>
       )}
 
@@ -38,7 +44,7 @@ export default function ShopBrowser({ products }: { products: Product[] }) {
         products={products}
         query={query}
         sortable
-        empty={query ? 'Aucun produit ne correspond à votre recherche.' : undefined}
+        empty={query ? t.grid.noResults : undefined}
       />
     </>
   );

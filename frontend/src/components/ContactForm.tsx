@@ -5,9 +5,13 @@ import { apiUrl } from '@/config/api';
 import { whatsappUrl } from '@/lib/whatsapp';
 import Field from './FormField';
 import { IconCheck, IconWhatsapp } from './Icons';
+import { useLang, useT } from './LangProvider';
 import { useSettings } from './LiveCatalogue';
 
-/** Same list as the API (backend/src/lib/message.js). */
+/**
+ * Same list as the API (backend/src/lib/message.js): the French value is what
+ * gets sent, so the admin reads one language; the select shows t.contact.subjectLabels.
+ */
 const SUBJECTS = ['Question sur un produit', 'Suivi de commande', 'Commande en gros / professionnel', 'Autre'];
 
 const PHONE = /^(0[5-7]\d{8}|212[5-7]\d{8})$/;
@@ -20,6 +24,8 @@ const EMPTY = { name: '', phone: '', email: '', subject: SUBJECTS[0], message: '
  */
 export default function ContactForm() {
   const settings = useSettings();
+  const lang = useLang();
+  const t = useT().contact;
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [serverError, setServerError] = useState('');
@@ -38,12 +44,12 @@ export default function ContactForm() {
 
   function validate() {
     const e: Record<string, string> = {};
-    if (form.name.trim().length < 2) e.name = 'Indiquez votre nom.';
+    if (form.name.trim().length < 2) e.name = t.errName;
     const phone = form.phone.replace(/\D/g, '');
-    if (!phone && !form.email.trim()) e.phone = 'Laissez un téléphone ou un e-mail pour la réponse.';
-    else if (phone && !PHONE.test(phone)) e.phone = 'Numéro invalide (ex. 06 12 34 56 78).';
-    if (form.email.trim() && !EMAIL.test(form.email.trim())) e.email = 'Adresse e-mail invalide.';
-    if (form.message.trim().length < 10) e.message = 'Votre message est trop court (10 caractères minimum).';
+    if (!phone && !form.email.trim()) e.phone = t.errPhoneOrEmail;
+    else if (phone && !PHONE.test(phone)) e.phone = t.errPhone;
+    if (form.email.trim() && !EMAIL.test(form.email.trim())) e.email = t.errEmail;
+    if (form.message.trim().length < 10) e.message = t.errMessage;
     return e;
   }
 
@@ -61,21 +67,21 @@ export default function ContactForm() {
       const res = await fetch(apiUrl('/api/messages'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, lang }),
       });
       const data = await res.json().catch(() => ({}));
       if (res.status === 429) {
-        setServerError('Trop de messages envoyés. Réessayez dans quelques minutes ou écrivez-nous sur WhatsApp.');
+        setServerError(t.errTooMany);
         return;
       }
       if (!res.ok) {
-        setServerError(data.error || 'Le message n’a pas pu être envoyé. Réessayez.');
+        setServerError(data.error || t.errFailed);
         return;
       }
       setSent(true);
       setForm(EMPTY);
     } catch {
-      setServerError('Connexion impossible. Vérifiez votre réseau puis réessayez (le serveur peut mettre une minute à se réveiller).');
+      setServerError(t.errNetwork);
     } finally {
       setSending(false);
     }
@@ -87,16 +93,16 @@ export default function ContactForm() {
         <span className="confirm__icon">
           <IconCheck width={32} height={32} />
         </span>
-        <h2>Message envoyé, merci !</h2>
-        <p>Nous vous répondons rapidement, par téléphone, WhatsApp ou e-mail.</p>
+        <h2>{t.sentTitle}</h2>
+        <p>{t.sentText}</p>
         <div className="confirm__actions">
           {settings.whatsapp && (
-            <a href={whatsappUrl(settings.whatsapp, 'Bonjour SWEETTOOLS, ')} target="_blank" rel="noopener noreferrer" className="btn btn--ghost">
-              <IconWhatsapp width={18} height={18} /> Urgent ? WhatsApp
+            <a href={whatsappUrl(settings.whatsapp, t.hello)} target="_blank" rel="noopener noreferrer" className="btn btn--ghost">
+              <IconWhatsapp width={18} height={18} /> {t.urgent}
             </a>
           )}
           <button type="button" className="btn btn--ghost" onClick={() => setSent(false)}>
-            Écrire un autre message
+            {t.another}
           </button>
         </div>
       </div>
@@ -105,31 +111,33 @@ export default function ContactForm() {
 
   return (
     <form className="panel contact-form" onSubmit={submit} noValidate aria-busy={sending || undefined}>
-      <h2 className="contact-form__title">Écrivez-nous</h2>
-      <p className="contact-form__lead">Réponse rapide par téléphone, WhatsApp ou e-mail — laissez au moins l’un des deux.</p>
+      <h2 className="contact-form__title">{t.title}</h2>
+      <p className="contact-form__lead">{t.lead}</p>
       <fieldset className="fields contact-form__fields" disabled={sending}>
-        <Field label="Nom" error={errors.name}>
+        <Field label={t.name} error={errors.name}>
           <input name="name" autoComplete="name" value={form.name} onChange={set('name')} required />
         </Field>
-        <Field label="Sujet">
+        <Field label={t.subject}>
           <select name="subject" value={form.subject} onChange={set('subject')}>
-            {SUBJECTS.map((s) => (
-              <option key={s}>{s}</option>
+            {SUBJECTS.map((s, i) => (
+              <option key={s} value={s}>
+                {t.subjectLabels[i] ?? s}
+              </option>
             ))}
           </select>
         </Field>
-        <Field label="Téléphone / WhatsApp" error={errors.phone}>
+        <Field label={t.phone} error={errors.phone}>
           <input name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="06 12 34 56 78" value={form.phone} onChange={set('phone')} />
         </Field>
-        <Field label="E-mail" error={errors.email} hint="Facultatif si vous laissez un téléphone.">
-          <input name="email" type="email" autoComplete="email" placeholder="vous@exemple.com" value={form.email} onChange={set('email')} />
+        <Field label={t.email} error={errors.email} hint={t.emailHint}>
+          <input name="email" type="email" autoComplete="email" placeholder={t.emailPlaceholder} value={form.email} onChange={set('email')} />
         </Field>
-        <Field label="Message" error={errors.message} wide>
+        <Field label={t.message} error={errors.message} wide>
           <textarea
             name="message"
             rows={5}
             maxLength={3000}
-            placeholder="Votre question : produit, dimensions, commande (référence ST-…)…"
+            placeholder={t.messagePlaceholder}
             value={form.message}
             onChange={set('message')}
             required
@@ -146,10 +154,10 @@ export default function ContactForm() {
       <button type="submit" className="btn btn--primary btn--lg contact-form__send" disabled={sending}>
         {sending ? (
           <>
-            <span className="btn-spin" aria-hidden /> Envoi en cours…
+            <span className="btn-spin" aria-hidden /> {t.sendingLong}
           </>
         ) : (
-          'Envoyer le message'
+          t.send
         )}
       </button>
     </form>

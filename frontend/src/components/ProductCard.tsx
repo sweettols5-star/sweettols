@@ -3,6 +3,7 @@
 import { routes } from '@/lib/routes';
 import type { Product } from '@/types';
 import AddToCart from './AddToCart';
+import { useT } from './LangProvider';
 import { hasStaticPage } from './LiveCatalogue';
 import Link from './Link';
 import Price from './Price';
@@ -12,14 +13,15 @@ export function productHref(slug: string) {
 }
 
 export default function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
+  const t = useT().product;
   const href = productHref(product.slug);
   const img = product.images[0];
   const badge = !product.inStock
-    ? 'Épuisé'
+    ? t.soldOut
     : product.compareAtPrice > product.price && product.price
-      ? 'Promo'
+      ? t.promo
       : product.lowStock
-        ? `Plus que ${product.lowStock}`
+        ? t.onlyLeft(product.lowStock)
         : '';
 
   return (

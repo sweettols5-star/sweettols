@@ -2,23 +2,29 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { localePath, splitPath } from '@/i18n/config';
 import { routes } from '@/lib/routes';
 import Brand from './Brand';
 import Link from './Link';
 import { IconBag, IconClose, IconMenu, IconSearch } from './Icons';
 import { useCart } from './CartProvider';
+import { useLang, useT } from './LangProvider';
+import LangSwitch from './LangSwitch';
 import { useShownCategories, useSettings } from './LiveCatalogue';
-
-const NAV = [
-  { href: routes.home, label: 'Accueil' },
-  { href: routes.shop, label: 'Boutique' },
-  { href: routes.guides, label: 'Conseils' },
-  { href: routes.delivery, label: 'Livraison' },
-  { href: routes.contact, label: 'Contact' },
-];
 
 export default function Header() {
   const pathname = usePathname();
+  // Compared without the /en or /ar prefix: the routes below are unprefixed.
+  const path = splitPath(pathname || '/').path;
+  const lang = useLang();
+  const t = useT().nav;
+  const NAV = [
+    { href: routes.home, label: t.home },
+    { href: routes.shop, label: t.shop },
+    { href: routes.guides, label: t.guides },
+    { href: routes.delivery, label: t.delivery },
+    { href: routes.contact, label: t.contact },
+  ];
   const cart = useCart();
   const categories = useShownCategories();
   const settings = useSettings();
@@ -86,7 +92,7 @@ export default function Header() {
     if (searching) searchRef.current?.focus();
   }, [searching]);
 
-  const isActive = (href: string) => (href === '/' ? pathname === '/' : !!pathname?.startsWith(href));
+  const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 
   return (
     <>
@@ -96,7 +102,7 @@ export default function Header() {
           <button
             type="button"
             className="icon-btn header__burger"
-            aria-label="Ouvrir le menu"
+            aria-label={t.openMenu}
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
@@ -105,7 +111,7 @@ export default function Header() {
 
           <Brand />
 
-          <nav className="header__nav" aria-label="Navigation principale">
+          <nav className="header__nav" aria-label={t.main}>
             {NAV.slice(0, 2).map((n) => (
               <Link key={n.href} href={n.href} className={isActive(n.href) ? 'is-active' : ''}>
                 {n.label}
@@ -123,12 +129,12 @@ export default function Header() {
             >
               <Link
                 href={routes.shop}
-                className={pathname?.startsWith('/categorie') ? 'is-active' : ''}
+                className={path.startsWith('/categorie') ? 'is-active' : ''}
                 aria-haspopup="true"
                 aria-expanded={dropOpen}
                 onClick={closeDrop}
               >
-                Catégories
+                {t.categories}
                 <svg className="header__caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden>
                   <path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
@@ -149,10 +155,11 @@ export default function Header() {
           </nav>
 
           <div className="header__actions">
+            <LangSwitch />
             <button
               type="button"
               className="icon-btn"
-              aria-label="Rechercher"
+              aria-label={t.search}
               aria-expanded={searching}
               onClick={() => setSearching((s) => !s)}
             >
@@ -161,7 +168,7 @@ export default function Header() {
             <Link
               href={routes.cart}
               className={`icon-btn cart-btn${bump ? ' is-bumped' : ''}`}
-              aria-label={`Panier (${cart.count} article${cart.count > 1 ? 's' : ''})`}
+              aria-label={t.cart(cart.count)}
             >
               <IconBag />
               {cart.ready && cart.count > 0 && <span className="cart-btn__count">{cart.count}</span>}
@@ -171,17 +178,17 @@ export default function Header() {
 
         {searching && (
           <div className="header__search">
-            <form action={routes.shop} method="get" className="container" role="search">
+            <form action={localePath(lang, routes.shop)} method="get" className="container" role="search">
               <IconSearch />
               <input
                 ref={searchRef}
                 name="q"
                 type="search"
-                placeholder="Moule, tapis, spatule…"
-                aria-label="Rechercher un produit"
+                placeholder={t.searchPlaceholder}
+                aria-label={t.searchLabel}
               />
               <button type="submit" className="btn btn--primary btn--sm">
-                Rechercher
+                {t.search}
               </button>
             </form>
           </div>
@@ -190,10 +197,10 @@ export default function Header() {
 
       <div className={`drawer${open ? ' is-open' : ''}`} aria-hidden={!open} inert={!open}>
         <div className="drawer__backdrop" onClick={() => setOpen(false)} />
-        <div className="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+        <div className="drawer__panel" role="dialog" aria-modal="true" aria-label={t.menu}>
           <div className="drawer__head">
             <Brand />
-            <button type="button" className="icon-btn" aria-label="Fermer le menu" onClick={() => setOpen(false)}>
+            <button type="button" className="icon-btn" aria-label={t.closeMenu} onClick={() => setOpen(false)}>
               <IconClose />
             </button>
           </div>
@@ -204,9 +211,9 @@ export default function Header() {
               </Link>
             ))}
             <Link href={routes.faq} className={isActive(routes.faq) ? 'is-active' : ''}>
-              Questions fréquentes
+              {t.faq}
             </Link>
-            <p className="drawer__label">Catégories</p>
+            <p className="drawer__label">{t.categories}</p>
             {categories.map((c) => (
               <Link key={c.id} href={routes.category(c.id)} className="drawer__sub">
                 {c.name}

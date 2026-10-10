@@ -1,11 +1,13 @@
-import { site } from '@/config/site';
+import { getDict, type Lang } from '@/i18n';
+import { abs } from '@/lib/seo';
 import Link from './Link';
 
 export type Crumb = { label: string; href?: string };
 
 /** Visible trail + BreadcrumbList JSON-LD. The last crumb is the current page. */
-export default function Breadcrumbs({ items }: { items: Crumb[] }) {
-  const all: Crumb[] = [{ label: 'Accueil', href: '/' }, ...items];
+export default function Breadcrumbs({ lang, items }: { lang: Lang; items: Crumb[] }) {
+  const t = getDict(lang).crumbs;
+  const all: Crumb[] = [{ label: t.home, href: '/' }, ...items];
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -13,11 +15,11 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
       '@type': 'ListItem',
       position: i + 1,
       name: c.label,
-      ...(c.href ? { item: `${site.url}${c.href}` } : {}),
+      ...(c.href ? { item: abs(lang, c.href) } : {}),
     })),
   };
   return (
-    <nav className="crumbs" aria-label="Fil d’Ariane">
+    <nav className="crumbs" aria-label={t.label}>
       <ol>
         {all.map((c, i) => (
           <li key={i}>

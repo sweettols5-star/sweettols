@@ -1,9 +1,9 @@
 'use client';
 
-import { dh } from '@/lib/format';
 import { routes } from '@/lib/routes';
 import { useCart } from './CartProvider';
 import { IconArrow, IconBag, IconTrash } from './Icons';
+import { useT } from './LangProvider';
 import { useSettings } from './LiveCatalogue';
 import MinOrderNotice, { useMinOrder } from './MinOrderNotice';
 import Link from './Link';
@@ -13,6 +13,8 @@ import { productHref } from './ProductCard';
 export default function CartView() {
   const cart = useCart();
   const settings = useSettings();
+  const t = useT();
+  const c = t.cart;
   const fees = settings.zones.map((z) => z.fee);
   const minFee = fees.length ? Math.min(...fees) : 0;
   const free = settings.freeShippingThreshold;
@@ -26,12 +28,12 @@ export default function CartView() {
   if (!cart.lines.length) {
     return (
       <div className="container section">
-        <h1 className="page-title">Mon panier</h1>
+        <h1 className="page-title">{c.title}</h1>
         <div className="empty">
           <IconBag width={40} height={40} />
-          <p>Votre panier est vide.</p>
+          <p>{c.empty}</p>
           <Link href={routes.shop} className="btn btn--primary">
-            Découvrir la boutique
+            {c.discover}
           </Link>
         </div>
       </div>
@@ -40,7 +42,7 @@ export default function CartView() {
 
   return (
     <div className="container section">
-      <h1 className="page-title">Mon panier</h1>
+      <h1 className="page-title">{c.title}</h1>
       <OrderSteps current={1} />
 
       <div className="checkout">
@@ -58,31 +60,31 @@ export default function CartView() {
                       {product.name}
                     </Link>
                     {sellable ? (
-                      <span className="line__unit">{dh(product.price)} / pièce</span>
+                      <span className="line__unit">{c.perUnit(t.dh(product.price))}</span>
                     ) : (
-                      <span className="line__warn">Plus disponible — retirez-le pour commander.</span>
+                      <span className="line__warn">{c.unavailable}</span>
                     )}
                   </div>
-                  <div className="qty qty--sm" role="group" aria-label={`Quantité de ${product.name}`}>
-                    <button type="button" onClick={() => cart.setQty(product.slug, qty - 1)} aria-label="Retirer un">
+                  <div className="qty qty--sm" role="group" aria-label={c.qtyOf(product.name)}>
+                    <button type="button" onClick={() => cart.setQty(product.slug, qty - 1)} aria-label={t.buy.minusOne}>
                       −
                     </button>
                     <span aria-live="polite">{qty}</span>
                     <button
                       type="button"
                       onClick={() => cart.setQty(product.slug, qty + 1)}
-                      aria-label="Ajouter un"
+                      aria-label={t.buy.plusOne}
                       disabled={!sellable}
                     >
                       +
                     </button>
                   </div>
-                  <span className="line__total">{sellable ? dh(product.price * qty) : '—'}</span>
+                  <span className="line__total">{sellable ? t.dh(product.price * qty) : '—'}</span>
                   <button
                     type="button"
                     className="icon-btn line__remove"
                     onClick={() => cart.remove(product.slug)}
-                    aria-label={`Retirer ${product.name} du panier`}
+                    aria-label={c.remove(product.name)}
                   >
                     <IconTrash width={18} height={18} />
                   </button>
@@ -91,37 +93,37 @@ export default function CartView() {
             })}
           </ul>
           <Link href={routes.shop} className="link-back">
-            ← Continuer mes achats
+            {c.continue}
           </Link>
         </div>
 
         <aside className="summary">
-          <h2>Récapitulatif</h2>
+          <h2>{c.summary}</h2>
           <dl>
             <div>
-              <dt>Sous-total</dt>
-              <dd>{dh(cart.subtotal)}</dd>
+              <dt>{c.subtotal}</dt>
+              <dd>{t.dh(cart.subtotal)}</dd>
             </div>
             <div>
-              <dt>Livraison</dt>
-              <dd>{missing <= 0 && free > 0 ? 'Offerte' : `dès ${dh(minFee)}`}</dd>
+              <dt>{c.delivery}</dt>
+              <dd>{missing <= 0 && free > 0 ? c.free : c.from(t.dh(minFee))}</dd>
             </div>
           </dl>
-          {missing > 0 && <p className="summary__hint">Plus que {dh(missing)} pour la livraison offerte.</p>}
-          <p className="summary__note">Les frais exacts dépendent de votre ville, choisie à l’étape suivante.</p>
+          {missing > 0 && <p className="summary__hint">{c.freeHint(t.dh(missing))}</p>}
+          <p className="summary__note">{c.feesNote}</p>
           <MinOrderNotice subtotal={cart.subtotal} delivery={minDelivery} />
           {cart.blocked ? (
-            <p className="notice notice--warn">Retirez les articles indisponibles pour continuer.</p>
+            <p className="notice notice--warn">{c.removeBlocked}</p>
           ) : minOrder.blocked ? (
             <button type="button" className="btn btn--primary btn--block" disabled>
-              Passer à la livraison <IconArrow width={18} height={18} />
+              {c.toDelivery} <IconArrow width={18} height={18} className="flip-rtl" />
             </button>
           ) : (
             <Link href={routes.checkout} className="btn btn--primary btn--block">
-              Passer à la livraison <IconArrow width={18} height={18} />
+              {c.toDelivery} <IconArrow width={18} height={18} className="flip-rtl" />
             </Link>
           )}
-          <p className="summary__cod">Paiement en espèces à la livraison</p>
+          <p className="summary__cod">{c.cash}</p>
         </aside>
       </div>
     </div>

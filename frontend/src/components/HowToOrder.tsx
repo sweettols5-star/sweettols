@@ -1,17 +1,14 @@
+import { getDict, type Lang } from '@/i18n';
 import { IconBag, IconCash, IconPhone, IconTruck } from './Icons';
 
-const STEPS = [
-  { Icon: IconBag, title: 'Vous choisissez', text: 'Ajoutez vos outils au panier, sans créer de compte.' },
-  { Icon: IconPhone, title: 'On vous appelle', text: 'Nous confirmons la commande et l’adresse par téléphone.' },
-  { Icon: IconTruck, title: 'On livre', text: 'Votre colis part partout au Maroc.' },
-  { Icon: IconCash, title: 'Vous payez à la réception', text: 'En espèces au livreur. Rien à payer en ligne.' },
-];
+const ICONS = [IconBag, IconPhone, IconTruck, IconCash];
 
 /** The cash-on-delivery flow in four steps — reassures first-time online buyers. */
-export default function HowToOrder() {
+export default function HowToOrder({ lang }: { lang: Lang }) {
+  const steps = getDict(lang).howToOrder.map((s, i) => ({ ...s, Icon: ICONS[i] }));
   return (
     <ol className="howorder">
-      {STEPS.map(({ Icon, title, text }, i) => (
+      {steps.map(({ Icon, title, text }, i) => (
         <li key={title}>
           <span className="howorder__icon">
             <Icon />

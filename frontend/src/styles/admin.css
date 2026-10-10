@@ -1710,3 +1710,62 @@ a.adm-stat:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ---------- Translations (EN / AR) ---------- */
+
+.adm-tr {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  background: #fff;
+}
+
+.adm-tr summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.adm-tr summary .adm-muted {
+  font-weight: 400;
+  font-size: 0.82rem;
+  margin-left: 6px;
+}
+
+.adm-tr__hint {
+  margin: 8px 0 4px;
+  font-size: 0.82rem;
+}
+
+.adm-tr__cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.adm-tr__col {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.adm-tr__lang {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.adm-tr [dir='rtl'] {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+@media (max-width: 760px) {
+  .adm-tr__cols {
+    grid-template-columns: 1fr;
+  }
+}

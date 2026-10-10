@@ -1,7 +1,8 @@
 'use client';
 
-import { dh } from '@/lib/format';
+import { rich } from '@/i18n/rich';
 import { routes } from '@/lib/routes';
+import { useT } from './LangProvider';
 import Link from './Link';
 import { useSettings } from './LiveCatalogue';
 
@@ -23,19 +24,17 @@ export function useMinOrder(subtotal: number, delivery: number) {
  */
 export default function MinOrderNotice({ subtotal, delivery }: { subtotal: number; delivery: number }) {
   const { min, total, missing, blocked } = useMinOrder(subtotal, delivery);
+  const t = useT();
   if (!blocked) return null;
   const pct = Math.min(100, Math.round((total / min) * 100));
   return (
     <div className="minorder" role="status">
-      <p>
-        <strong>Minimum de commande : {dh(min)}</strong> (livraison comprise). Ajoutez encore{' '}
-        <strong>{dh(missing)}</strong> d’articles pour pouvoir commander.
-      </p>
+      <p>{rich(t.minOrder.notice, { min: <strong>{t.dh(min)}</strong>, missing: <strong>{t.dh(missing)}</strong> })}</p>
       <div className="minorder__bar" aria-hidden>
         <span style={{ width: `${pct}%` }} />
       </div>
       <Link href={routes.shop} className="minorder__link">
-        Continuer mes achats →
+        {t.minOrder.continue}
       </Link>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { routes } from '@/lib/routes';
+import { useT } from './LangProvider';
 import Link from './Link';
 import { useProductBySlug } from './LiveCatalogue';
 import ProductView from './ProductView';
@@ -13,16 +14,17 @@ import ProductView from './ProductView';
 export default function ProductFallback() {
   const slug = (useSearchParams().get('slug') || '').trim();
   const { product, ready } = useProductBySlug(slug);
+  const t = useT().product;
 
   if (product) return <ProductView product={product} />;
 
   return (
     <div className="container section">
       <div className="empty">
-        <p>{ready || !slug ? 'Ce produit est introuvable.' : 'Chargement…'}</p>
+        <p>{ready || !slug ? t.notFound : t.loading}</p>
         {(ready || !slug) && (
           <Link href={routes.shop} className="btn btn--primary">
-            Voir la boutique
+            {t.seeShop}
           </Link>
         )}
       </div>

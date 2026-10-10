@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import type { ProductImage } from '@/types';
+import { useT } from './LangProvider';
 
 export default function Gallery({ images, name }: { images: ProductImage[]; name: string }) {
   const [i, setI] = useState(0);
+  const t = useT().product;
   const current = images[Math.min(i, images.length - 1)];
 
   if (!current) {
@@ -30,7 +32,7 @@ export default function Gallery({ images, name }: { images: ProductImage[]; name
               type="button"
               className={n === i ? 'is-active' : ''}
               onClick={() => setI(n)}
-              aria-label={`Photo ${n + 1} sur ${images.length}`}
+              aria-label={t.photo(n + 1, images.length)}
               aria-pressed={n === i}
             >
               <img src={img.thumb} alt="" width={96} height={96} loading="lazy" />

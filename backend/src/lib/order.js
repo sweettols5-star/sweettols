@@ -7,6 +7,7 @@
  * wins and the old figure is kept on the line for the phone call.
  */
 import { clean, int, reference } from './text.js';
+import { msg, nameIn, shopLang } from './i18n.js';
 import { isSellable } from './product.js';
 import { shippingFor } from './settings.js';
 
@@ -30,22 +31,27 @@ function invoice(raw) {
   return { company: clean(raw.company, 120), ice: clean(raw.ice, 30) };
 }
 
-function customer(raw = {}) {
+function customer(raw = {}, lang = 'fr') {
   const c = {
     name: clean(raw.name, 120),
     phone: clean(raw.phone, 30),
+    email: clean(raw.email, 160).toLowerCase(),
     city: clean(raw.city, 80),
     address: clean(raw.address, 400),
     notes: clean(raw.notes, 1000),
   };
-  if (c.name.length < 2) return { error: 'Indiquez votre nom complet.' };
+  if (c.name.length < 2) return { error: msg(lang, 'name') };
   const d = c.phone.replace(/\D/g, '');
   // 06/07/05 + 8 digits locally, or 212 + 9 digits.
   if (!/^(0[5-7]\d{8}|212[5-7]\d{8})$/.test(d)) {
-    return { error: 'Numéro de téléphone invalide (ex. 06 12 34 56 78).' };
+    return { error: msg(lang, 'phone') };
   }
-  if (!c.city) return { error: 'Indiquez votre ville.' };
-  if (c.address.length < 5) return { error: 'Indiquez votre adresse de livraison.' };
+  // Optional, but a typo would be kept and never reach the customer.
+  if (c.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email)) {
+    return { error: msg(lang, 'email') };
+  }
+  if (!c.city) return { error: msg(lang, 'city') };
+  if (c.address.length < 5) return { error: msg(lang, 'address') };
   return { customer: c };
 }
 
@@ -53,11 +59,13 @@ function customer(raw = {}) {
  * @returns {{error: string, problems?: object[]} | {order: object}}
  */
 export function buildOrder(body = {}, catalogue = [], settings) {
-  const who = customer(body.customer);
+  // The shopper's language: their error messages, and a hint for the confirmation call.
+  const lang = shopLang(body.lang);
+  const who = customer(body.customer, lang);
   if (who.error) return { error: who.error };
 
   const requested = Array.isArray(body.items) ? body.items.slice(0, MAX_LINES) : [];
-  if (!requested.length) return { error: 'Le panier est vide.' };
+  if (!requested.length) return { error: msg(lang, 'emptyCart') };
 
   const bySlug = new Map(catalogue.map((p) => [p.slug, p]));
   const merged = new Map();
@@ -96,21 +104,22 @@ export function buildOrder(body = {}, catalogue = [], settings) {
   // receives two calls the shop angry. The cart shows what to fix.
   if (problems.length) {
     const first = problems[0];
-    const msg = first.reason === 'stock'
-      ? `Stock insuffisant pour « ${first.name} » (${first.available} disponible${first.available > 1 ? 's' : ''}).`
-      : `« ${first.name} » n'est plus disponible. Retirez-le du panier pour continuer.`;
-    return { error: msg, problems };
+    const name = nameIn(bySlug.get(first.slug), lang) || first.name;
+    const error = first.reason === 'stock'
+      ? msg(lang, 'stock', { name, available: first.available })
+      : msg(lang, 'unavailable', { name });
+    return { error, problems };
   }
 
   const subtotal = items.reduce((n, l) => n + l.lineTotal, 0);
   const delivery = shippingFor(settings, clean(body.zoneId, 60), subtotal);
-  if (!delivery) return { error: 'Choisissez une zone de livraison.' };
+  if (!delivery) return { error: msg(lang, 'zone') };
 
   // Client rule (2026-10-10): the minimum counts products + delivery (invoice VAT excluded).
   const minOrder = settings?.minOrder || 0;
   if (minOrder && subtotal + delivery.fee < minOrder) {
     return {
-      error: `Le montant minimum de commande est de ${minOrder} DH (livraison comprise). Il manque ${minOrder - subtotal - delivery.fee} DH à votre panier.`,
+      error: msg(lang, 'minOrder', { min: minOrder, missing: minOrder - subtotal - delivery.fee }),
       minOrder,
     };
   }
@@ -131,6 +140,7 @@ export function buildOrder(body = {}, catalogue = [], settings) {
       invoiceFee: factureFee,
       total: subtotal + delivery.fee + factureFee,
       payment: 'cod',
+      lang,
       status: 'nouvelle',
       history: [{ status: 'nouvelle', at: now }],
       createdAt: now,

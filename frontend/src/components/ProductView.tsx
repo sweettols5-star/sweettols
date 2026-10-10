@@ -1,12 +1,13 @@
 'use client';
 
+import { locCategory } from '@/i18n/content';
 import { categoryById } from '@/lib/catalogue';
-import { dh } from '@/lib/format';
 import { routes } from '@/lib/routes';
 import type { Product } from '@/types';
 import AddToCart from './AddToCart';
 import Gallery from './Gallery';
 import { IconCash, IconCheck, IconTruck } from './Icons';
+import { useLang, useT } from './LangProvider';
 import { useCategories, useLiveProduct, useProducts, useSettings } from './LiveCatalogue';
 import Link from './Link';
 import Price from './Price';
@@ -18,7 +19,11 @@ export default function ProductView({ product: built }: { product: Product }) {
   const settings = useSettings();
   const categories = useCategories();
   const all = useProducts();
-  const category = categories.find((c) => c.id === product.categoryId) ?? categoryById(product.categoryId);
+  const lang = useLang();
+  const t = useT();
+  const builtCategory = categoryById(product.categoryId);
+  const category =
+    categories.find((c) => c.id === product.categoryId) ?? (builtCategory && locCategory(builtCategory, lang));
 
   const related = all
     .filter((p) => p.categoryId === product.categoryId && p.slug !== product.slug)
@@ -43,19 +48,19 @@ export default function ProductView({ product: built }: { product: Product }) {
           <Price product={product} large />
 
           {removed ? (
-            <p className="notice notice--warn">Ce produit n’est plus proposé à la vente.</p>
+            <p className="notice notice--warn">{t.product.removed}</p>
           ) : (
             <>
               <p className={`stock${product.inStock ? '' : ' stock--out'}`}>
                 <span aria-hidden className="stock__dot" />
                 {!product.inStock
-                  ? 'Rupture de stock'
+                  ? t.product.outOfStock
                   : product.lowStock
-                    ? `En stock — plus que ${product.lowStock}`
-                    : 'En stock'}
+                    ? t.product.inStockLow(product.lowStock)
+                    : t.product.inStock}
               </p>
               {!product.price && (
-                <p className="notice">Le prix de ce produit sera bientôt publié. Contactez-nous pour le connaître.</p>
+                <p className="notice">{t.product.priceSoon}</p>
               )}
               <AddToCart product={product} withQty />
             </>
@@ -65,29 +70,29 @@ export default function ProductView({ product: built }: { product: Product }) {
             <li>
               <IconCash />
               <span>
-                <strong>Paiement à la livraison</strong>
-                Vous payez en espèces à la réception.
+                <strong>{t.product.codTitle}</strong>
+                {t.product.codText}
               </span>
             </li>
             <li>
               <IconTruck />
               <span>
-                <strong>Livraison partout au Maroc</strong>
-                {minFee ? `À partir de ${dh(minFee)}` : 'Frais affichés à la commande'}
-                {settings.freeShippingThreshold > 0 && `, offerte dès ${dh(settings.freeShippingThreshold)}`}.
+                <strong>{t.product.shipTitle}</strong>
+                {minFee ? t.product.shipFrom(t.dh(minFee)) : t.product.shipAtCheckout}
+                {settings.freeShippingThreshold > 0 && t.product.shipFreeFrom(t.dh(settings.freeShippingThreshold))}.
               </span>
             </li>
           </ul>
 
           {product.description && (
             <div className="product__desc">
-              <h2>Description</h2>
+              <h2>{t.product.description}</h2>
               <p>{product.description}</p>
             </div>
           )}
           {product.details.length > 0 && (
             <div className="product__desc">
-              <h2>Caractéristiques</h2>
+              <h2>{t.product.features}</h2>
               <ul className="checks">
                 {product.details.map((d) => (
                   <li key={d}>
@@ -104,10 +109,10 @@ export default function ProductView({ product: built }: { product: Product }) {
       {related.length > 0 && (
         <section className="section container">
           <div className="section__head">
-            <h2 className="section__title">Vous aimerez aussi</h2>
+            <h2 className="section__title">{t.product.related}</h2>
             {category && (
               <Link href={routes.category(category.id)} className="link-arrow">
-                Voir la catégorie →
+                {t.product.seeCategory}
               </Link>
             )}
           </div>

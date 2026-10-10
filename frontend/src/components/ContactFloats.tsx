@@ -2,6 +2,7 @@
 
 import { whatsappUrl } from '@/lib/whatsapp';
 import { IconPhone, IconWhatsapp } from './Icons';
+import { useT } from './LangProvider';
 import { useSettings } from './LiveCatalogue';
 
 /**
@@ -12,27 +13,28 @@ import { useSettings } from './LiveCatalogue';
  */
 export default function ContactFloats() {
   const { whatsapp, phone } = useSettings();
+  const t = useT().contact;
   const callNumber = (phone || whatsapp).replace(/[^\d+]/g, '');
   if (!whatsapp && !callNumber) return null;
 
   return (
     <div className="floats">
       {callNumber && (
-        <a className="float-btn float-btn--phone" href={`tel:${callNumber}`} aria-label="Nous appeler">
+        <a className="float-btn float-btn--phone" href={`tel:${callNumber}`} aria-label={t.call}>
           <IconPhone width={24} height={24} />
-          <span className="float-btn__tip">Appeler</span>
+          <span className="float-btn__tip">{t.callTip}</span>
         </a>
       )}
       {whatsapp && (
         <a
           className="float-btn float-btn--wa"
-          href={whatsappUrl(whatsapp, 'Bonjour SWEETTOOLS, j’ai une question :')}
+          href={whatsappUrl(whatsapp, t.helloQuestion)}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Nous écrire sur WhatsApp"
+          aria-label={t.writeWhatsapp}
         >
           <IconWhatsapp width={28} height={28} />
-          <span className="float-btn__tip">WhatsApp</span>
+          <span className="float-btn__tip">{t.whatsapp}</span>
         </a>
       )}
     </div>

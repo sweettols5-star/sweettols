@@ -4,6 +4,10 @@
  * source of search traffic for a small shop). General technique only: no
  * product-specific claim that is not on the product sheet.
  */
+import type { Lang } from '@/i18n/config';
+import { GUIDES_AR } from './guides.ar';
+import { GUIDES_EN } from './guides.en';
+
 export type GuideBlock =
   | { type: 'p'; text: string }
   | { type: 'h2'; text: string }
@@ -206,4 +210,15 @@ export const GUIDES: Guide[] = [
   },
 ];
 
-export const guideBySlug = (slug: string) => GUIDES.find((g) => g.slug === slug);
+/** What a translation replaces; slug, cover, minutes and products are shared. */
+export type GuideText = Pick<Guide, 'title' | 'summary' | 'body'>;
+
+const TEXTS: Partial<Record<Lang, Record<string, GuideText>>> = { en: GUIDES_EN, ar: GUIDES_AR };
+
+/** The guides in a language; an untranslated one stays in French. */
+export function guidesFor(lang: Lang): Guide[] {
+  const texts = TEXTS[lang];
+  return texts ? GUIDES.map((g) => ({ ...g, ...texts[g.slug] })) : GUIDES;
+}
+
+export const guideBySlug = (lang: Lang, slug: string) => guidesFor(lang).find((g) => g.slug === slug);

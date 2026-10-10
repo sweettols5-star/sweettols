@@ -12,6 +12,26 @@
         "Pour pâte à sucre, pâte d'amande et fondant",
         "Plastique alimentaire, se lave à l'eau tiède"
       ],
+      "i18n": {
+        "en": {
+          "name": "2-in-1 double sugar paste smoother",
+          "description": "Double smoother for a perfectly smooth sugar paste finish on the top and sides of the cake. The inner smoother with handle comes out of its holder to work on edges and narrow surfaces.",
+          "details": [
+            "2 in 1: smoother with handle + straight-edged holder",
+            "For sugar paste, marzipan and fondant",
+            "Food-grade plastic, wash in lukewarm water"
+          ]
+        },
+        "ar": {
+          "name": "أداة تنعيم مزدوجة لعجينة السكر 2 في 1",
+          "description": "أداة تنعيم مزدوجة للحصول على عجينة سكر ناعمة تمامًا على سطح الكعكة وجوانبها. تُفصل أداة التنعيم الداخلية ذات المقبض عن حاملها لمعالجة الحواف والأسطح الضيقة.",
+          "details": [
+            "2 في 1: أداة تنعيم بمقبض + حامل بحافة مستقيمة",
+            "لعجينة السكر وعجينة اللوز والفوندان",
+            "بلاستيك غذائي، يُغسل بالماء الفاتر"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403417/sweettools/produits/double-lisseur-pate-a-sucre-2-en-1-1.webp",
@@ -38,6 +58,24 @@
         "Bord cannelé",
         "Poussoir pour former et démouler la pâte"
       ],
+      "i18n": {
+        "en": {
+          "name": "Round tartlet cutter and press",
+          "description": "Fluted round cutter with a plunger, to cut and line even tartlet bases in a single motion.",
+          "details": [
+            "Fluted edge",
+            "Plunger to shape and release the dough"
+          ]
+        },
+        "ar": {
+          "name": "قاطع دائري ومكبس للتارتلات",
+          "description": "قاطع دائري مموج مع مكبس، لقطع قواعد التارتلات وتشكيلها بشكل منتظم بحركة واحدة.",
+          "details": [
+            "حافة مموجة",
+            "مكبس لتشكيل العجينة وإخراجها"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403419/sweettools/produits/emporte-piece-rond-tartelette-1.webp",
@@ -61,6 +99,26 @@
         "Poussoir pour éjecter la pâte sans la déformer",
         "Environ 6,5 cm"
       ],
+      "i18n": {
+        "en": {
+          "name": "Stainless steel pretzel cutter with plunger",
+          "description": "Pretzel-shaped cutter with a plunger, for biscuits and sugar paste decorations with clean outlines.",
+          "details": [
+            "Stainless steel blade",
+            "Plunger to release the dough without deforming it",
+            "About 6.5 cm"
+          ]
+        },
+        "ar": {
+          "name": "قاطع على شكل بريتزل بمكبس من الإينوكس",
+          "description": "قاطع على شكل بريتزل مع مكبس، لبسكويت وزينة من عجينة السكر بحواف واضحة.",
+          "details": [
+            "شفرة من الفولاذ المقاوم للصدأ",
+            "مكبس لإخراج العجينة دون تشويهها",
+            "حوالي 6.5 سم"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403420/sweettools/produits/emporte-pieces-poussoir-bretzel-inox-1.webp",
@@ -84,6 +142,26 @@
         "Manches colorés antidérapants",
         "Plusieurs longueurs de lame"
       ],
+      "i18n": {
+        "en": {
+          "name": "Stainless steel spatula set",
+          "description": "Set of stainless steel spatulas to spread creams and ganaches, smooth an icing and transfer cakes.",
+          "details": [
+            "Stainless steel blades",
+            "Colourful non-slip handles",
+            "Several blade lengths"
+          ]
+        },
+        "ar": {
+          "name": "طقم ملاعق من الفولاذ المقاوم للصدأ",
+          "description": "مجموعة ملاعق بشفرات من الفولاذ المقاوم للصدأ لفرد الكريمات والغاناش، وتنعيم التغطية ونقل الكعكات.",
+          "details": [
+            "شفرات من الفولاذ المقاوم للصدأ",
+            "مقابض ملونة مانعة للانزلاق",
+            "عدة أطوال للشفرات"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403422/sweettools/produits/ensemble-spatules-acier-inoxydable-1.webp",
@@ -106,6 +184,24 @@
         "3 pièces : 1 bord dentelé, 1 bord arrondi, 1 bord droit",
         "Plastique alimentaire souple"
       ],
+      "i18n": {
+        "en": {
+          "name": "Cake scrapers – 3 pieces",
+          "description": "Three flexible scrapers to smooth buttercream, scrape a bowl and create ridged effects around a cake.",
+          "details": [
+            "3 pieces: 1 serrated edge, 1 rounded edge, 1 straight edge",
+            "Flexible food-grade plastic"
+          ]
+        },
+        "ar": {
+          "name": "مكاشط الكيك – 3 قطع",
+          "description": "ثلاث مكاشط مرنة لتنعيم كريمة الزبدة، وكشط الأوعية وصنع خطوط زخرفية حول الكعكة.",
+          "details": [
+            "3 قطع: حافة مسننة، حافة مستديرة، حافة مستقيمة",
+            "بلاستيك غذائي مرن"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403423/sweettools/produits/grattoirs-a-gateau-3-pieces-1.webp",
@@ -129,6 +225,26 @@
         "Tête souple, manche rigide",
         "Trou de suspension au bout du manche"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone spatula",
+          "description": "One-piece silicone spatula to mix, fold in gently and scrape bowls down to the last drop.",
+          "details": [
+            "One-piece food-grade silicone",
+            "Flexible head, rigid handle",
+            "Hanging hole at the end of the handle"
+          ]
+        },
+        "ar": {
+          "name": "ملعقة مطاطية من السيليكون",
+          "description": "ملعقة سيليكون من قطعة واحدة للخلط والتقليب بلطف وكشط الأوعية حتى آخر قطرة.",
+          "details": [
+            "سيليكون غذائي من قطعة واحدة",
+            "رأس مرن ومقبض صلب",
+            "ثقب للتعليق في طرف المقبض"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403424/sweettools/produits/maryse-silicone-1.webp",
@@ -144,13 +260,31 @@
       "slug": "moule-madeleines-silicone",
       "name": "Moule à madeleines en silicone",
       "categoryId": "moules-silicone-four",
-      "price": 0,
+      "price": 30,
       "compareAtPrice": 0,
       "description": "Moule à madeleines en silicone qui va au four, pour des madeleines bien formées qui se démoulent sans accroc.",
       "details": [
         "Empreintes en forme de coquille",
         "Silicone qui supporte la cuisson au four"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone madeleine mould",
+          "description": "Oven-safe silicone madeleine mould, for well-shaped madeleines that unmould without a hitch.",
+          "details": [
+            "Shell-shaped cavities",
+            "Oven-safe silicone"
+          ]
+        },
+        "ar": {
+          "name": "قالب مادلين من السيليكون",
+          "description": "قالب مادلين من السيليكون يتحمل الفرن، لمادلين بشكل جميل تخرج من القالب بسهولة.",
+          "details": [
+            "تجاويف على شكل صدفة",
+            "سيليكون يتحمل الخَبز في الفرن"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403434/sweettools/produits/moule-madeleines-silicone-1.webp",
@@ -173,6 +307,24 @@
         "Plusieurs fleurs détaillées",
         "Silicone alimentaire souple"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone mould – Flowers",
+          "description": "Silicone mould with raised flowers, for sugar paste or chocolate cake decorations.",
+          "details": [
+            "Several detailed flowers",
+            "Flexible food-grade silicone"
+          ]
+        },
+        "ar": {
+          "name": "قالب سيليكون – زهور",
+          "description": "قالب سيليكون بزهور بارزة، لزينة الكعكات بعجينة السكر أو الشوكولاتة.",
+          "details": [
+            "عدة زهور مفصلة",
+            "سيليكون غذائي مرن"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403432/sweettools/produits/moule-silicone-fleurs-1.webp",
@@ -195,6 +347,24 @@
         "Nombreux motifs sur un même moule",
         "Pour pâte à sucre, chocolat et fondant"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone mould – Bows, hearts and crowns",
+          "description": "Silicone mould with bow, heart and crown patterns, ideal for birthday and christening cakes.",
+          "details": [
+            "Many patterns on one mould",
+            "For sugar paste, chocolate and fondant"
+          ]
+        },
+        "ar": {
+          "name": "قالب سيليكون – فيونكات وقلوب وتيجان",
+          "description": "قالب سيليكون بنقوش الفيونكات والقلوب والتيجان، مثالي لكعكات أعياد الميلاد والعقيقة.",
+          "details": [
+            "نقوش عديدة في قالب واحد",
+            "لعجينة السكر والشوكولاتة والفوندان"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403431/sweettools/produits/moule-silicone-noeuds-coeurs-couronnes-1.webp",
@@ -217,6 +387,24 @@
         "Plusieurs motifs sur un même moule",
         "Silicone alimentaire souple"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone mould – Venetian ornaments",
+          "description": "Silicone mould with baroque ornament patterns — scrolls, medallions and friezes — to decorate cakes and desserts with sugar paste, chocolate or isomalt.",
+          "details": [
+            "Several patterns on one mould",
+            "Flexible food-grade silicone"
+          ]
+        },
+        "ar": {
+          "name": "قالب سيليكون – زخارف فينيسية",
+          "description": "قالب سيليكون بنقوش زخرفية باروكية — لفائف وميداليات وأفاريز — لتزيين الكعكات والحلويات بعجينة السكر أو الشوكولاتة أو الإيزومالت.",
+          "details": [
+            "عدة نقوش في قالب واحد",
+            "سيليكون غذائي مرن"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403426/sweettools/produits/moule-silicone-ornements-venitiens-1.webp",
@@ -239,6 +427,24 @@
         "Plusieurs fleurs de tailles différentes",
         "Silicone alimentaire souple"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone mould – Small flowers",
+          "description": "Silicone mould with small flowers in various sizes, to scatter sugar paste floral decorations over cakes and cupcakes.",
+          "details": [
+            "Several flowers of different sizes",
+            "Flexible food-grade silicone"
+          ]
+        },
+        "ar": {
+          "name": "قالب سيليكون – زهور صغيرة",
+          "description": "قالب سيليكون بزهور صغيرة بأحجام مختلفة، لنثر زينة زهرية من عجينة السكر على الكعكات والكب كيك.",
+          "details": [
+            "عدة زهور بأحجام مختلفة",
+            "سيليكون غذائي مرن"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403430/sweettools/produits/moule-silicone-petites-fleurs-1.webp",
@@ -261,6 +467,24 @@
         "Environ 17 × 6 cm",
         "Silicone alimentaire souple et antiadhésif"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone mould – Baby clothes",
+          "description": "Silicone mould with baby clothes patterns, to decorate birth, christening and baby shower cakes.",
+          "details": [
+            "About 17 × 6 cm",
+            "Flexible, non-stick food-grade silicone"
+          ]
+        },
+        "ar": {
+          "name": "قالب سيليكون – ملابس الأطفال",
+          "description": "قالب سيليكون بنقوش ملابس الأطفال، لتزيين كعكات المواليد والعقيقة وحفلات استقبال المولود.",
+          "details": [
+            "حوالي 17 × 6 سم",
+            "سيليكون غذائي مرن ومانع للالتصاق"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403433/sweettools/produits/moule-silicone-vetements-bebe-1.webp",
@@ -283,6 +507,24 @@
         "Motif arc-en-ciel en relief",
         "Démoulage facile grâce au silicone souple"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone chocolate bar mould – rainbow",
+          "description": "Silicone chocolate bar mould with a raised rainbow pattern, for homemade bars with a shop-quality finish.",
+          "details": [
+            "Raised rainbow pattern",
+            "Easy release thanks to flexible silicone"
+          ]
+        },
+        "ar": {
+          "name": "قالب سيليكون لألواح الشوكولاتة – قوس قزح",
+          "description": "قالب سيليكون لألواح الشوكولاتة بنقش قوس قزح بارز، لألواح منزلية بلمسة احترافية.",
+          "details": [
+            "نقش قوس قزح بارز",
+            "إخراج سهل بفضل السيليكون المرن"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403427/sweettools/produits/moule-silicone-tablette-chocolat-arc-en-ciel-1.webp",
@@ -305,6 +547,24 @@
         "3 tablettes, 3 motifs",
         "Silicone alimentaire souple"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone chocolate bar mould – 3 shapes",
+          "description": "Silicone mould with three chocolate bars in different patterns: classic squares, rectangles and geometric facets.",
+          "details": [
+            "3 bars, 3 patterns",
+            "Flexible food-grade silicone"
+          ]
+        },
+        "ar": {
+          "name": "قالب سيليكون لألواح الشوكولاتة – 3 أشكال",
+          "description": "قالب سيليكون يجمع ثلاثة ألواح شوكولاتة بنقوش مختلفة: مربعات كلاسيكية، مستطيلات وأوجه هندسية.",
+          "details": [
+            "3 ألواح، 3 نقوش",
+            "سيليكون غذائي مرن"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403429/sweettools/produits/moule-silicone-tablettes-chocolat-3-formes-1.webp",
@@ -327,6 +587,24 @@
         "Plateau rotatif en métal",
         "Pied stable"
       ],
+      "i18n": {
+        "en": {
+          "name": "Stainless steel turntable",
+          "description": "Metal turntable to coat, smooth and decorate a cake while turning it with one hand.",
+          "details": [
+            "Rotating metal plate",
+            "Stable base"
+          ]
+        },
+        "ar": {
+          "name": "صينية دوارة من الفولاذ المقاوم للصدأ",
+          "description": "صينية دوارة معدنية لتغطية الكعكة وتنعيمها وتزيينها مع تدويرها بيد واحدة.",
+          "details": [
+            "صينية دوارة معدنية",
+            "قاعدة ثابتة"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403437/sweettools/produits/plateau-tournant-acier-inoxydable-1.webp",
@@ -350,6 +628,26 @@
         "Anneaux d'épaisseur amovibles",
         "Surface lisse qui ne marque pas la pâte"
       ],
+      "i18n": {
+        "en": {
+          "name": "Sugar paste rolling pin with thickness rings",
+          "description": "Food-grade plastic rolling pin for sugar paste, with removable rings that set the thickness of the paste.",
+          "details": [
+            "About 23 cm",
+            "Removable thickness rings",
+            "Smooth surface that leaves no marks"
+          ]
+        },
+        "ar": {
+          "name": "شوبك لعجينة السكر بحلقات تحديد السمك",
+          "description": "شوبك من البلاستيك الغذائي لفرد عجينة السكر، مع حلقات قابلة للإزالة تحدد سمك العجينة.",
+          "details": [
+            "حوالي 23 سم",
+            "حلقات سمك قابلة للإزالة",
+            "سطح أملس لا يترك أثرًا على العجينة"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403438/sweettools/produits/rouleau-pate-a-sucre-anneaux-epaisseur-1.webp",
@@ -376,6 +674,24 @@
         "Lame coudée en acier inoxydable",
         "Manche noir antidérapant"
       ],
+      "i18n": {
+        "en": {
+          "name": "Offset spatula",
+          "description": "Stainless steel offset spatula to coat and smooth the top of a cake and lift decorations without touching them.",
+          "details": [
+            "Stainless steel offset blade",
+            "Black non-slip handle"
+          ]
+        },
+        "ar": {
+          "name": "ملعقة معقوفة",
+          "description": "ملعقة بشفرة معقوفة من الفولاذ المقاوم للصدأ لتغطية سطح الكعكة وتنعيمه ورفع الزينة دون لمسها بالأصابع.",
+          "details": [
+            "شفرة معقوفة من الفولاذ المقاوم للصدأ",
+            "مقبض أسود مانع للانزلاق"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403441/sweettools/produits/spatule-coudee-1.webp",
@@ -398,6 +714,24 @@
         "60 × 40 cm",
         "Cercles de repère imprimés"
       ],
+      "i18n": {
+        "en": {
+          "name": "Macaron mat – large 60 × 40 cm",
+          "description": "Large macaron mat with guide circles, to pipe shells all the same size.",
+          "details": [
+            "60 × 40 cm",
+            "Printed guide circles"
+          ]
+        },
+        "ar": {
+          "name": "حصيرة ماكارون – حجم كبير 60 × 40 سم",
+          "description": "حصيرة ماكارون كبيرة بدوائر إرشادية، لتشكيل قشور بنفس الحجم.",
+          "details": [
+            "60 × 40 سم",
+            "دوائر إرشادية مطبوعة"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403447/sweettools/produits/tapis-macaron-grande-taille-60x40-1.webp",
@@ -420,6 +754,24 @@
         "30 × 40 cm",
         "Cercles de repère imprimés"
       ],
+      "i18n": {
+        "en": {
+          "name": "Macaron mat – small 30 × 40 cm",
+          "description": "Small macaron mat with guide circles, sized for home ovens.",
+          "details": [
+            "30 × 40 cm",
+            "Printed guide circles"
+          ]
+        },
+        "ar": {
+          "name": "حصيرة ماكارون – حجم صغير 30 × 40 سم",
+          "description": "حصيرة ماكارون صغيرة بدوائر إرشادية، مناسبة للأفران المنزلية.",
+          "details": [
+            "30 × 40 سم",
+            "دوائر إرشادية مطبوعة"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403449/sweettools/produits/tapis-macaron-petite-taille-30x40-1.webp",
@@ -442,6 +794,24 @@
         "Toile microperforée",
         "Remplace le papier sulfurisé, réutilisable"
       ],
+      "i18n": {
+        "en": {
+          "name": "Oven baking mat – large",
+          "description": "Large micro-perforated baking mat: air flows under the dough for evenly baked tart bases and biscuits.",
+          "details": [
+            "Micro-perforated fabric",
+            "Replaces baking paper, reusable"
+          ]
+        },
+        "ar": {
+          "name": "حصيرة خَبز للفرن – حجم كبير",
+          "description": "حصيرة خَبز كبيرة بثقوب دقيقة: يدور الهواء تحت العجينة لخَبز متجانس لقواعد التارت والبسكويت.",
+          "details": [
+            "نسيج بثقوب دقيقة",
+            "تعوّض ورق الزبدة، قابلة لإعادة الاستعمال"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403444/sweettools/produits/tapis-cuisson-four-grande-taille-1.webp",
@@ -464,6 +834,24 @@
         "Toile microperforée",
         "Réutilisable"
       ],
+      "i18n": {
+        "en": {
+          "name": "Oven baking mat – small",
+          "description": "Small micro-perforated baking mat for home oven trays: even baking, no baking paper needed.",
+          "details": [
+            "Micro-perforated fabric",
+            "Reusable"
+          ]
+        },
+        "ar": {
+          "name": "حصيرة خَبز للفرن – حجم صغير",
+          "description": "حصيرة خَبز صغيرة بثقوب دقيقة لصواني الأفران المنزلية: خَبز متجانس دون ورق الزبدة.",
+          "details": [
+            "نسيج بثقوب دقيقة",
+            "قابلة لإعادة الاستعمال"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403445/sweettools/produits/tapis-cuisson-four-petite-taille-1.webp",
@@ -486,6 +874,24 @@
         "Graduations et cercles de diamètre imprimés",
         "Antidérapant, se roule pour le rangement"
       ],
+      "i18n": {
+        "en": {
+          "name": "Silicone pastry mat – large",
+          "description": "Large silicone work mat with measurements and guide circles, to knead and roll out dough to the right size without flouring the worktop.",
+          "details": [
+            "Printed measurements and diameter circles",
+            "Non-slip, rolls up for storage"
+          ]
+        },
+        "ar": {
+          "name": "حصيرة حلويات من السيليكون – حجم كبير",
+          "description": "حصيرة عمل كبيرة من السيليكون بتدريجات ودوائر إرشادية، لعجن العجينة وفردها بالمقاس المناسب دون رش الدقيق على سطح العمل.",
+          "details": [
+            "تدريجات ودوائر أقطار مطبوعة",
+            "مانعة للانزلاق، تُلف للتخزين"
+          ]
+        }
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791403442/sweettools/produits/tapis-patisserie-silicone-grande-taille-1.webp",
@@ -504,77 +910,179 @@
       "name": "Appareils de pâtisserie",
       "description": "",
       "order": 1,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Baking appliances"
+        },
+        "ar": {
+          "name": "أجهزة الحلويات"
+        }
+      }
     },
     {
       "id": "decoration-patisserie",
       "name": "Décoration de pâtisserie",
       "description": "Lisseurs, rouleaux, grattoirs et spatules pour le cake design et les finitions nettes.",
       "order": 2,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Cake decorating",
+          "description": "Smoothers, rolling pins, scrapers and spatulas for cake design and clean finishes."
+        },
+        "ar": {
+          "name": "تزيين الحلويات",
+          "description": "أدوات تنعيم، شوبك، مكاشط وملاعق لتزيين الكيك ولمسات نهائية نظيفة."
+        }
+      }
     },
     {
       "id": "equipement-professionnel",
       "name": "Équipement professionnel",
       "description": "",
       "order": 3,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Professional equipment"
+        },
+        "ar": {
+          "name": "معدات احترافية"
+        }
+      }
     },
     {
       "id": "materiel-patisserie",
       "name": "Matériel de pâtisserie",
       "description": "Les ustensiles de base du pâtissier : spatules, maryses, plateau tournant.",
       "order": 4,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Baking tools",
+          "description": "The baker’s basic utensils: spatulas, silicone spatulas, turntable."
+        },
+        "ar": {
+          "name": "أدوات الحلويات",
+          "description": "الأدوات الأساسية لصانع الحلويات: ملاعق، ملاعق مطاطية، صينية دوارة."
+        }
+      }
     },
     {
       "id": "gateaux-marocains",
       "name": "Matériel pour gâteaux marocains",
       "description": "",
       "order": 5,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Moroccan pastry tools"
+        },
+        "ar": {
+          "name": "أدوات الحلويات المغربية"
+        }
+      }
     },
     {
       "id": "moules-aluminium",
       "name": "Moules en aluminium",
       "description": "",
       "order": 6,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Aluminium moulds"
+        },
+        "ar": {
+          "name": "قوالب الألومنيوم"
+        }
+      }
     },
     {
       "id": "moules-silicone",
       "name": "Moules en silicone",
       "description": "Moules souples pour chocolat, pâte à sucre, fondant et décors : le démoulage se fait sans casse.",
       "order": 7,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Silicone moulds",
+          "description": "Flexible moulds for chocolate, sugar paste, fondant and decorations: they release without breakage."
+        },
+        "ar": {
+          "name": "قوالب السيليكون",
+          "description": "قوالب مرنة للشوكولاتة وعجينة السكر والفوندان والزينة: تُخرج الحلوى دون كسر."
+        }
+      }
     },
     {
       "id": "moules-silicone-four",
       "name": "Moules en silicone pour four",
       "description": "Moules en silicone qui passent au four pour madeleines, palets et petits gâteaux.",
       "order": 8,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Oven-safe silicone moulds",
+          "description": "Oven-safe silicone moulds for madeleines, discs and small cakes."
+        },
+        "ar": {
+          "name": "قوالب سيليكون للفرن",
+          "description": "قوالب سيليكون تتحمل الفرن للمادلين والأقراص والكعكات الصغيرة."
+        }
+      }
     },
     {
       "id": "moules-silicone-chocolat",
       "name": "Moules en silicone pour tablettes de chocolat",
       "description": "Moules en silicone pour réaliser vos tablettes de chocolat maison : formes classiques, fantaisie et multicolores, démoulage facile.",
       "order": 9,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Silicone chocolate bar moulds",
+          "description": "Silicone moulds to make your own chocolate bars at home: classic, fancy and multicoloured shapes, easy release."
+        },
+        "ar": {
+          "name": "قوالب سيليكون لألواح الشوكولاتة",
+          "description": "قوالب سيليكون لصنع ألواح الشوكولاتة في المنزل: أشكال كلاسيكية ومزخرفة ومتعددة الألوان، وإخراج سهل."
+        }
+      }
     },
     {
       "id": "moules-inox",
       "name": "Moules et emporte-pièces en inox",
       "description": "Emporte-pièces et découpoirs en acier inoxydable pour tartelettes et biscuits.",
       "order": 10,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Stainless steel moulds and cutters",
+          "description": "Stainless steel cutters and presses for tartlets and biscuits."
+        },
+        "ar": {
+          "name": "قوالب وقواطع من الإينوكس",
+          "description": "قواطع ومكابس من الفولاذ المقاوم للصدأ للتارتلات والبسكويت."
+        }
+      }
     },
     {
       "id": "tapis-patisserie",
       "name": "Tapis de pâtisserie",
       "description": "Tapis de travail, de cuisson et à macarons, pour étaler, cuire et dresser sur une surface antiadhésive.",
       "order": 11,
-      "image": ""
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Pastry mats",
+          "description": "Work, baking and macaron mats, to roll out, bake and pipe on a non-stick surface."
+        },
+        "ar": {
+          "name": "حصائر الحلويات",
+          "description": "حصائر للعمل والخَبز والماكارون، للفرد والخَبز والتشكيل على سطح مانع للالتصاق."
+        }
+      }
     }
   ],
   "settings": {
@@ -597,38 +1105,88 @@
         "id": "casablanca",
         "label": "Casablanca",
         "fee": 30,
-        "delay": "24 à 48 h"
+        "delay": "24 à 48 h",
+        "i18n": {
+          "en": {
+            "label": "Casablanca",
+            "delay": "24 to 48 h"
+          },
+          "ar": {
+            "label": "الدار البيضاء",
+            "delay": "من 24 إلى 48 ساعة"
+          }
+        }
       },
       {
         "id": "autres-villes",
         "label": "Autres villes du Maroc",
         "fee": 45,
-        "delay": "2 à 4 jours ouvrables"
+        "delay": "2 à 4 jours ouvrables",
+        "i18n": {
+          "en": {
+            "label": "Other cities in Morocco",
+            "delay": "2 to 4 working days"
+          },
+          "ar": {
+            "label": "باقي مدن المغرب",
+            "delay": "من 2 إلى 4 أيام عمل"
+          }
+        }
       }
     ],
     "kits": [
       {
         "id": "debutant-cake-design",
-        "title": "Kit dÃ©butant cake design",
-        "pitch": "Ã‰taler, couvrir et lisser vos premiers gÃ¢teaux en pÃ¢te Ã  sucre.",
+        "title": "Kit débutant cake design",
+        "pitch": "Étaler, couvrir et lisser vos premiers gâteaux en pâte à sucre.",
         "slugs": [
           "rouleau-pate-a-sucre-anneaux-epaisseur",
           "double-lisseur-pate-a-sucre-2-en-1",
           "grattoirs-a-gateau-3-pieces",
           "spatule-coudee"
-        ]
+        ],
+        "i18n": {
+          "en": {
+            "title": "Cake decorating starter kit",
+            "pitch": "Roll out, cover and smooth your first sugar paste cakes."
+          },
+          "ar": {
+            "title": "طقم المبتدئين لتزيين الكيك",
+            "pitch": "افرد وغطِّ ونعّم كعكاتك الأولى بعجينة السكر."
+          }
+        }
       },
       {
         "id": "decors-silicone",
-        "title": "Kit dÃ©cors en silicone",
-        "pitch": "Fleurs, nÅ“uds, couronnes et ornements en pÃ¢te Ã  sucre ou en chocolat.",
+        "title": "Kit décors en silicone",
+        "pitch": "Fleurs, nœuds, couronnes et ornements en pâte à sucre ou en chocolat.",
         "slugs": [
           "moule-silicone-fleurs",
           "moule-silicone-noeuds-coeurs-couronnes",
           "moule-silicone-ornements-venitiens"
-        ]
+        ],
+        "i18n": {
+          "en": {
+            "title": "Silicone decorations kit",
+            "pitch": "Flowers, bows, crowns and ornaments in sugar paste or chocolate."
+          },
+          "ar": {
+            "title": "طقم زينة السيليكون",
+            "pitch": "زهور، فيونكات، تيجان وزخارف من عجينة السكر أو الشوكولاتة."
+          }
+        }
       }
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "baseline": "Baking & cake decorating tools and supplies",
+        "announcement": "Cash on delivery anywhere in Morocco"
+      },
+      "ar": {
+        "baseline": "أدوات ومعدات الحلويات وتزيين الكيك",
+        "announcement": "الدفع عند الاستلام في جميع أنحاء المغرب"
+      }
+    }
   },
-  "generatedAt": "2026-10-10T15:21:11.822Z"
+  "generatedAt": "2026-10-10T17:25:00.957Z"
 }

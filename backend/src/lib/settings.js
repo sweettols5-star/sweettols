@@ -5,7 +5,7 @@
  * fees below are the client's (2026-10-09): Casablanca 30 DH, other cities 45 DH.
  */
 import { store } from '../store/index.js';
-import { clean, int, slugify } from './text.js';
+import { clean, int, slugify, translations } from './text.js';
 
 export const DEFAULT_SETTINGS = {
   brand: 'SWEETTOOLS',
@@ -71,6 +71,7 @@ function zones(list, fallback) {
       label,
       fee: int(z.fee, { min: 0, max: 10_000, fallback: 0 }),
       delay: clean(z.delay, 60),
+      i18n: translations(z.i18n, { label: 80, delay: 60 }),
     });
     if (out.length >= 20) break;
   }
@@ -90,7 +91,7 @@ function kits(list, fallback) {
     seen.add(id);
     const slugs = [...new Set((Array.isArray(k.slugs) ? k.slugs : []).map((s) => slugify(s)).filter(Boolean))].slice(0, 8);
     if (!slugs.length) continue;
-    out.push({ id, title, pitch: clean(k.pitch, 200), slugs });
+    out.push({ id, title, pitch: clean(k.pitch, 200), slugs, i18n: translations(k.i18n, { title: 80, pitch: 200 }) });
     if (out.length >= 12) break;
   }
   return out;
@@ -115,6 +116,8 @@ export function normaliseSettings(body = {}, base = DEFAULT_SETTINGS) {
     minOrder: int(m.minOrder, { min: 0, max: 1_000_000, fallback: DEFAULT_SETTINGS.minOrder }),
     zones: zones(m.zones, base.zones || DEFAULT_SETTINGS.zones),
     kits: kits(m.kits, base.kits || DEFAULT_SETTINGS.kits),
+    // English / Arabic versions of the texts shown on the shop.
+    i18n: translations(m.i18n, { baseline: 160, announcement: 160 }),
   };
 }
 

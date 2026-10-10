@@ -4,6 +4,10 @@
  * call, zones and fees from the settings. Anything the client has not decided
  * yet (exact return policy, opening hours) is phrased as « contact us ».
  */
+import type { Lang } from '@/i18n/config';
+import { FAQ_AR } from './faq.ar';
+import { FAQ_EN } from './faq.en';
+
 export type Faq = { q: string; a: string };
 export type FaqGroup = { id: string; title: string; items: Faq[] };
 
@@ -94,5 +98,13 @@ export const FAQ: FaqGroup[] = [
   },
 ];
 
+const BY_LANG: Record<Lang, FaqGroup[]> = { fr: FAQ, en: FAQ_EN, ar: FAQ_AR };
+
+/** The FAQ in a language (en and ar mirror the French groups, same order). */
+export const faqFor = (lang: Lang): FaqGroup[] => BY_LANG[lang] ?? FAQ;
+
 /** The questions shown on the home page. */
-export const HOME_FAQ: Faq[] = [FAQ[1].items[0], FAQ[0].items[1], FAQ[0].items[3], FAQ[1].items[1], FAQ[2].items[0], FAQ[2].items[3]];
+export function homeFaq(lang: Lang): Faq[] {
+  const f = faqFor(lang);
+  return [f[1].items[0], f[0].items[1], f[0].items[3], f[1].items[1], f[2].items[0], f[2].items[3]];
+}

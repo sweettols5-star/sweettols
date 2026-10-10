@@ -2,12 +2,14 @@
 
 import { useEffect, useState, type FormEvent } from 'react';
 import { apiUrl } from '@/config/api';
-import { dh } from '@/lib/format';
+import type { Dict } from '@/i18n';
+import { rich } from '@/i18n/rich';
 import { routes } from '@/lib/routes';
 import { whatsappUrl } from '@/lib/whatsapp';
 import { useCart } from './CartProvider';
 import { IconCheck, IconWhatsapp } from './Icons';
-import { useSettings } from './LiveCatalogue';
+import { useLang, useT } from './LangProvider';
+import { useProducts, useSettings } from './LiveCatalogue';
 import MinOrderNotice, { useMinOrder } from './MinOrderNotice';
 import Field from './FormField';
 import Link from './Link';
@@ -26,6 +28,7 @@ type Confirmed = {
 };
 
 const PHONE = /^(0[5-7]\d{8}|212[5-7]\d{8})$/;
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const STORAGE_KEY = 'sweettools.checkout.v1';
 /** Same rule as the API (backend/src/lib/order.js): +20 % VAT on the products, delivery excluded. */
 const INVOICE_RATE = 0.2;
@@ -33,7 +36,10 @@ const INVOICE_RATE = 0.2;
 export default function CheckoutForm() {
   const cart = useCart();
   const settings = useSettings();
-  const [form, setForm] = useState({ name: '', phone: '', city: '', address: '', notes: '' });
+  const lang = useLang();
+  const t = useT();
+  const k = t.checkout;
+  const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', address: '', notes: '' });
   const [zoneId, setZoneId] = useState('');
   const [invoice, setInvoice] = useState({ wanted: false, company: '', ice: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -63,18 +69,18 @@ export default function CheckoutForm() {
   const cheapest = freeFrom > 0 && cart.subtotal >= freeFrom ? 0 : fees.length ? Math.min(...fees) : 0;
   const minOrder = useMinOrder(cart.subtotal, zone ? shipping : cheapest);
 
-  if (done) return <Confirmation order={done} whatsapp={settings.whatsapp} />;
+  if (done) return <Confirmation order={done} whatsapp={settings.whatsapp} t={t} />;
 
   if (!cart.ready) return <div className="container section" aria-busy="true" />;
 
   if (!cart.lines.length) {
     return (
       <div className="container section">
-        <h1 className="page-title">Commande</h1>
+        <h1 className="page-title">{k.emptyTitle}</h1>
         <div className="empty">
-          <p>Votre panier est vide.</p>
+          <p>{t.cart.empty}</p>
           <Link href={routes.shop} className="btn btn--primary">
-            Découvrir la boutique
+            {t.cart.discover}
           </Link>
         </div>
       </div>
@@ -89,18 +95,19 @@ export default function CheckoutForm() {
   const chooseZone = (id: string) => {
     setZoneId(id);
     setErrors(({ zone: _drop, ...rest }) => rest);
-    // Casablanca chosen and no city typed yet: fill it in.
+    // Casablanca chosen and no city typed yet: fill it in (not for « other cities »).
     const z = settings.zones.find((x) => x.id === id);
-    if (z && !/autre/i.test(z.label) && !form.city.trim()) setForm((f) => ({ ...f, city: z.label }));
+    if (z && !/autre|other|أخرى|باقي/i.test(z.label) && !form.city.trim()) setForm((f) => ({ ...f, city: z.label }));
   };
 
   function validate() {
     const e: Record<string, string> = {};
-    if (form.name.trim().length < 2) e.name = 'Indiquez votre nom complet.';
-    if (!PHONE.test(form.phone.replace(/\D/g, ''))) e.phone = 'Numéro invalide (ex. 06 12 34 56 78).';
-    if (!form.city.trim()) e.city = 'Indiquez votre ville.';
-    if (form.address.trim().length < 5) e.address = 'Indiquez votre adresse complète.';
-    if (!zoneId) e.zone = 'Choisissez une zone de livraison.';
+    if (form.name.trim().length < 2) e.name = k.errName;
+    if (!PHONE.test(form.phone.replace(/\D/g, ''))) e.phone = k.errPhone;
+    if (form.email.trim() && !EMAIL.test(form.email.trim())) e.email = k.errEmail;
+    if (!form.city.trim()) e.city = k.errCity;
+    if (form.address.trim().length < 5) e.address = k.errAddress;
+    if (!zoneId) e.zone = k.errZone;
     return e;
   }
 
@@ -114,11 +121,11 @@ export default function CheckoutForm() {
       return;
     }
     if (minOrder.blocked) {
-      setServerError(`Le montant minimum de commande est de ${minOrder.min} DH (livraison comprise).`);
+      setServerError(k.errMinOrder(minOrder.min));
       return;
     }
     if (cart.blocked) {
-      setServerError('Retirez les articles indisponibles de votre panier.');
+      setServerError(k.errBlocked);
       return;
     }
 
@@ -128,6 +135,7 @@ export default function CheckoutForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          lang,
           customer: form,
           zoneId,
           invoice: invoice.wanted ? { company: invoice.company, ice: invoice.ice } : null,
@@ -136,7 +144,7 @@ export default function CheckoutForm() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setServerError(data.error || 'La commande n’a pas pu être enregistrée. Réessayez.');
+        setServerError(data.error || k.errFailed);
         return;
       }
       try {
@@ -148,7 +156,7 @@ export default function CheckoutForm() {
       cart.clear();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch {
-      setServerError('Connexion impossible. Vérifiez votre réseau puis réessayez.');
+      setServerError(k.errNetwork);
     } finally {
       setSending(false);
     }
@@ -156,18 +164,18 @@ export default function CheckoutForm() {
 
   return (
     <div className="container section">
-      <h1 className="page-title">Livraison</h1>
+      <h1 className="page-title">{k.title}</h1>
       <OrderSteps current={2} />
 
       <form className="checkout" onSubmit={submit} noValidate>
         <div className="checkout__main">
           <fieldset className="panel">
-            <legend>Adresse de livraison</legend>
+            <legend>{k.addressLegend}</legend>
             <div className="fields">
-              <Field label="Nom complet" error={errors.name}>
+              <Field label={k.name} error={errors.name}>
                 <input name="name" autoComplete="name" value={form.name} onChange={set('name')} required />
               </Field>
-              <Field label="Téléphone" error={errors.phone} hint="Nous vous appelons pour confirmer.">
+              <Field label={k.phone} error={errors.phone} hint={k.phoneHint}>
                 <input
                   name="phone"
                   type="tel"
@@ -179,25 +187,36 @@ export default function CheckoutForm() {
                   required
                 />
               </Field>
-              <Field label="Ville" error={errors.city}>
+              <Field label={k.email} error={errors.email}>
+                <input
+                  name="email"
+                  type="email"
+                  inputMode="email"
+                  autoComplete="email"
+                  placeholder="nom@gmail.com"
+                  value={form.email}
+                  onChange={set('email')}
+                />
+              </Field>
+              <Field label={k.city} error={errors.city}>
                 <input name="city" autoComplete="address-level2" value={form.city} onChange={set('city')} required />
               </Field>
-              <Field label="Adresse complète" error={errors.address} wide>
+              <Field label={k.address} error={errors.address} wide>
                 <textarea
                   name="address"
                   autoComplete="street-address"
                   rows={2}
-                  placeholder="Quartier, rue, numéro, immeuble…"
+                  placeholder={k.addressPlaceholder}
                   value={form.address}
                   onChange={set('address')}
                   required
                 />
               </Field>
-              <Field label="Note (facultatif)" wide>
+              <Field label={k.note} wide>
                 <textarea
                   name="notes"
                   rows={2}
-                  placeholder="Créneau préféré, repère pour le livreur…"
+                  placeholder={k.notePlaceholder}
                   value={form.notes}
                   onChange={set('notes')}
                 />
@@ -206,7 +225,7 @@ export default function CheckoutForm() {
           </fieldset>
 
           <fieldset className="panel">
-            <legend>Zone de livraison</legend>
+            <legend>{k.zoneLegend}</legend>
             <div className="zones" role="radiogroup" aria-invalid={!!errors.zone}>
               {settings.zones.map((z) => {
                 const fee = freeFrom > 0 && cart.subtotal >= freeFrom ? 0 : z.fee;
@@ -223,7 +242,7 @@ export default function CheckoutForm() {
                       <strong>{z.label}</strong>
                       {z.delay && <small>{z.delay}</small>}
                     </span>
-                    <span className="zone__fee">{fee ? dh(fee) : 'Offerte'}</span>
+                    <span className="zone__fee">{fee ? t.dh(fee) : t.cart.free}</span>
                   </label>
                 );
               })}
@@ -232,7 +251,7 @@ export default function CheckoutForm() {
           </fieldset>
 
           <fieldset className="panel">
-            <legend>Facture</legend>
+            <legend>{k.invoiceLegend}</legend>
             <label className={`zone${invoice.wanted ? ' is-checked' : ''}`}>
               <input
                 type="checkbox"
@@ -241,14 +260,14 @@ export default function CheckoutForm() {
                 onChange={(e) => setInvoice((i) => ({ ...i, wanted: e.target.checked }))}
               />
               <span className="zone__text">
-                <strong>Je souhaite une facture</strong>
-                <small>TVA 20 % sur le montant des articles (hors livraison)</small>
+                <strong>{k.invoiceWanted}</strong>
+                <small>{k.invoiceVat}</small>
               </span>
-              <span className="zone__fee">+{dh(Math.round(cart.subtotal * INVOICE_RATE))}</span>
+              <span className="zone__fee">+{t.dh(Math.round(cart.subtotal * INVOICE_RATE))}</span>
             </label>
             {invoice.wanted && (
               <div className="fields invoice-fields">
-                <Field label="Société (facultatif)">
+                <Field label={k.company}>
                   <input
                     name="company"
                     autoComplete="organization"
@@ -256,7 +275,7 @@ export default function CheckoutForm() {
                     onChange={(e) => setInvoice((i) => ({ ...i, company: e.target.value }))}
                   />
                 </Field>
-                <Field label="ICE (facultatif)">
+                <Field label={k.ice}>
                   <input
                     name="ice"
                     inputMode="numeric"
@@ -269,45 +288,45 @@ export default function CheckoutForm() {
           </fieldset>
 
           <Link href={routes.cart} className="link-back">
-            ← Retour au panier
+            {k.back}
           </Link>
         </div>
 
         <aside className="summary">
-          <h2>Récapitulatif</h2>
+          <h2>{t.cart.summary}</h2>
           <ul className="summary__items">
             {cart.lines.map((l) => (
               <li key={l.product.slug}>
                 <span>
                   {l.qty} × {l.product.name}
                 </span>
-                <span>{l.sellable ? dh(l.product.price * l.qty) : '—'}</span>
+                <span>{l.sellable ? t.dh(l.product.price * l.qty) : '—'}</span>
               </li>
             ))}
           </ul>
           <dl>
             <div>
-              <dt>Sous-total</dt>
-              <dd>{dh(cart.subtotal)}</dd>
+              <dt>{t.cart.subtotal}</dt>
+              <dd>{t.dh(cart.subtotal)}</dd>
             </div>
             <div>
-              <dt>Livraison</dt>
-              <dd>{zone ? (shipping ? dh(shipping) : 'Offerte') : '—'}</dd>
+              <dt>{t.cart.delivery}</dt>
+              <dd>{zone ? (shipping ? t.dh(shipping) : t.cart.free) : '—'}</dd>
             </div>
             {invoiceFee > 0 && (
               <div>
-                <dt>TVA 20 % (facture)</dt>
-                <dd>{dh(invoiceFee)}</dd>
+                <dt>{k.vat}</dt>
+                <dd>{t.dh(invoiceFee)}</dd>
               </div>
             )}
             <div className="summary__total">
-              <dt>Total à payer</dt>
-              <dd>{dh(cart.subtotal + shipping + invoiceFee)}</dd>
+              <dt>{k.total}</dt>
+              <dd>{t.dh(cart.subtotal + shipping + invoiceFee)}</dd>
             </div>
           </dl>
           <div className="cod">
-            <strong>Paiement à la livraison</strong>
-            <span>Vous payez en espèces au livreur. Aucune carte bancaire demandée.</span>
+            <strong>{k.codTitle}</strong>
+            <span>{k.codText}</span>
           </div>
           <MinOrderNotice subtotal={cart.subtotal} delivery={zone ? shipping : cheapest} />
           {serverError && (
@@ -316,19 +335,19 @@ export default function CheckoutForm() {
             </p>
           )}
           <button type="submit" className="btn btn--primary btn--block" disabled={sending || cart.blocked || minOrder.blocked}>
-            {sending ? 'Envoi…' : 'Confirmer la commande'}
+            {sending ? k.sending : k.confirm}
           </button>
           {serverError && settings.whatsapp && (
             <a
               className="btn btn--ghost btn--block"
               href={whatsappUrl(
                 settings.whatsapp,
-                `Bonjour, je voudrais commander :\n${cart.lines.map((l) => `- ${l.qty} × ${l.product.name}`).join('\n')}`,
+                k.whatsappOrderMessage(cart.lines.map((l) => `- ${l.qty} × ${l.product.name}`).join('\n')),
               )}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconWhatsapp width={18} height={18} /> Commander sur WhatsApp
+              <IconWhatsapp width={18} height={18} /> {k.whatsappOrder}
             </a>
           )}
         </aside>
@@ -339,11 +358,15 @@ export default function CheckoutForm() {
 
 function pick(o: Record<string, unknown>) {
   const out: Record<string, string> = {};
-  for (const k of ['name', 'phone', 'city', 'address']) if (typeof o[k] === 'string') out[k] = o[k] as string;
+  for (const k of ['name', 'phone', 'email', 'city', 'address']) if (typeof o[k] === 'string') out[k] = o[k] as string;
   return out;
 }
 
-function Confirmation({ order, whatsapp }: { order: Confirmed; whatsapp: string }) {
+function Confirmation({ order, whatsapp, t }: { order: Confirmed; whatsapp: string; t: Dict }) {
+  const k = t.checkout;
+  // The API stores French names (the admin reads them); show the shopper's language.
+  const products = useProducts();
+  const nameOf = (slug: string, fallback: string) => products.find((p) => p.slug === slug)?.name || fallback;
   return (
     <div className="container section">
       <OrderSteps current={3} />
@@ -351,57 +374,54 @@ function Confirmation({ order, whatsapp }: { order: Confirmed; whatsapp: string 
         <span className="confirm__icon">
           <IconCheck width={34} height={34} />
         </span>
-        <h1 className="page-title">Merci {order.name.split(' ')[0]} !</h1>
-        <p>
-          Votre commande <strong>{order.reference}</strong> est enregistrée. Nous vous appelons au{' '}
-          <strong>{order.phone}</strong> pour la confirmer avant l’envoi.
-        </p>
+        <h1 className="page-title">{k.thanks(order.name.split(' ')[0])}</h1>
+        <p>{rich(k.saved, { ref: <strong>{order.reference}</strong>, phone: <strong dir="ltr">{order.phone}</strong> })}</p>
 
         <div className="summary confirm__summary">
           <ul className="summary__items">
             {order.items.map((l) => (
               <li key={l.slug}>
                 <span>
-                  {l.qty} × {l.name}
+                  {l.qty} × {nameOf(l.slug, l.name)}
                 </span>
-                <span>{dh(l.lineTotal)}</span>
+                <span>{t.dh(l.lineTotal)}</span>
               </li>
             ))}
           </ul>
           <dl>
             <div>
-              <dt>Sous-total</dt>
-              <dd>{dh(order.subtotal)}</dd>
+              <dt>{t.cart.subtotal}</dt>
+              <dd>{t.dh(order.subtotal)}</dd>
             </div>
             <div>
-              <dt>Livraison ({order.zone.label})</dt>
-              <dd>{order.shipping ? dh(order.shipping) : 'Offerte'}</dd>
+              <dt>{k.deliveryTo(order.zone.label)}</dt>
+              <dd>{order.shipping ? t.dh(order.shipping) : t.cart.free}</dd>
             </div>
             {order.invoiceFee > 0 && (
               <div>
-                <dt>TVA 20 % (facture)</dt>
-                <dd>{dh(order.invoiceFee)}</dd>
+                <dt>{k.vat}</dt>
+                <dd>{t.dh(order.invoiceFee)}</dd>
               </div>
             )}
             <div className="summary__total">
-              <dt>À payer à la livraison</dt>
-              <dd>{dh(order.total)}</dd>
+              <dt>{k.toPay}</dt>
+              <dd>{t.dh(order.total)}</dd>
             </div>
           </dl>
         </div>
 
         <div className="confirm__actions">
           <Link href={routes.shop} className="btn btn--primary">
-            Continuer mes achats
+            {k.continueShopping}
           </Link>
           {whatsapp && (
             <a
               className="btn btn--ghost"
-              href={whatsappUrl(whatsapp, `Bonjour, j’ai passé la commande ${order.reference}.`)}
+              href={whatsappUrl(whatsapp, k.placedMessage(order.reference))}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconWhatsapp width={18} height={18} /> Nous écrire
+              <IconWhatsapp width={18} height={18} /> {k.writeUs}
             </a>
           )}
         </div>

@@ -2,6 +2,7 @@
 
 import { categoryImage } from '@/lib/catalogue';
 import { routes } from '@/lib/routes';
+import { useT } from './LangProvider';
 import { useProducts, useShownCategories } from './LiveCatalogue';
 import Link from './Link';
 
@@ -9,6 +10,7 @@ import Link from './Link';
 export default function HomeCategories() {
   const shown = useShownCategories();
   const products = useProducts();
+  const t = useT().categories;
 
   return (
     <div className="cats">
@@ -21,7 +23,7 @@ export default function HomeCategories() {
             </span>
             <span className="cat__name">{c.name}</span>
             <span className="cat__count">
-              {n ? `${n} produit${n > 1 ? 's' : ''}` : 'Bientôt disponible'}
+              {n ? t.count(n) : t.soon}
             </span>
           </Link>
         );

@@ -1,8 +1,10 @@
 import type { Guide } from '@/data/guides';
+import { getDict, type Lang } from '@/i18n';
 import { routes } from '@/lib/routes';
 import Link from './Link';
 
-export default function GuideCards({ guides }: { guides: Guide[] }) {
+export default function GuideCards({ guides, lang }: { guides: Guide[]; lang: Lang }) {
+  const t = getDict(lang).guides;
   return (
     <div className="guides">
       {guides.map((g) => (
@@ -11,7 +13,7 @@ export default function GuideCards({ guides }: { guides: Guide[] }) {
             <img src={g.cover} alt="" width={500} height={500} loading="lazy" />
           </Link>
           <div className="guide-card__body">
-            <span className="guide-card__meta">Conseil · {g.minutes} min de lecture</span>
+            <span className="guide-card__meta">{t.meta(g.minutes)}</span>
             <h3>
               <Link href={routes.guide(g.slug)}>{g.title}</Link>
             </h3>

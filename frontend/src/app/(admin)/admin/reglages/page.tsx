@@ -4,7 +4,17 @@ import { useEffect, useState, type FormEvent } from 'react';
 import AdminShell from '@/admin/AdminShell';
 import { api, errorText, setToken } from '@/admin/client';
 import { BusyButton, carryFlash, Field, Flash, Loading, SlowHint, useFlash } from '@/admin/ui';
+import Translations, { fromTrDraft, toTrDraft, type TrField } from '@/admin/Translations';
 import type { Settings, Zone } from '@/types';
+
+const SHOP_TR: TrField[] = [
+  { key: 'announcement', label: 'Bandeau', max: 160 },
+  { key: 'baseline', label: 'Slogan', max: 160 },
+];
+const ZONE_TR: TrField[] = [
+  { key: 'label', label: 'Zone', max: 80 },
+  { key: 'delay', label: 'Délai', max: 60 },
+];
 
 export default function SettingsPage() {
   return (
@@ -100,6 +110,11 @@ function SettingsView() {
           <Field label="Slogan" wide>
             <input className="adm-input" value={s.baseline} onChange={(e) => set('baseline', e.target.value)} maxLength={160} />
           </Field>
+          <Translations
+            fields={SHOP_TR}
+            value={toTrDraft(s.i18n)}
+            onChange={(v) => set('i18n', fromTrDraft(v, SHOP_TR) as Settings['i18n'])}
+          />
         </div>
       </section>
 
@@ -132,6 +147,11 @@ function SettingsView() {
               >
                 Retirer
               </button>
+              <Translations
+                fields={ZONE_TR}
+                value={toTrDraft(z.i18n)}
+                onChange={(v) => setZone(i, { i18n: fromTrDraft(v, ZONE_TR) as Zone['i18n'] })}
+              />
             </div>
           ))}
         </div>

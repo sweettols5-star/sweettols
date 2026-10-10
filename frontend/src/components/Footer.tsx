@@ -5,11 +5,14 @@ import { whatsappUrl } from '@/lib/whatsapp';
 import Brand from './Brand';
 import Link from './Link';
 import { IconFacebook, IconInstagram, IconMail, IconPhone, IconPin, IconTiktok, IconWhatsapp } from './Icons';
+import { useT } from './LangProvider';
 import { useShownCategories, useSettings } from './LiveCatalogue';
 
 export default function Footer() {
   const s = useSettings();
   const categories = useShownCategories();
+  const t = useT();
+  const f = t.footer;
   const socials = [
     { href: s.instagram, label: 'Instagram', Icon: IconInstagram },
     { href: s.facebook, label: 'Facebook', Icon: IconFacebook },
@@ -21,7 +24,9 @@ export default function Footer() {
       <div className="container footer__grid">
         <div className="footer__about">
           <Brand light />
-          <p>{s.baseline}. Paiement à la livraison partout au Maroc.</p>
+          <p>
+            {s.baseline}. {f.cod}
+          </p>
           {socials.length > 0 && (
             <div className="footer__socials">
               {socials.map(({ href, label, Icon }) => (
@@ -34,7 +39,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="footer__title">Catégories</p>
+          <p className="footer__title">{f.categories}</p>
           <ul>
             {categories.slice(0, 6).map((c) => (
               <li key={c.id}>
@@ -42,39 +47,39 @@ export default function Footer() {
               </li>
             ))}
             <li>
-              <Link href={routes.shop}>Toute la boutique</Link>
+              <Link href={routes.shop}>{f.allShop}</Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="footer__title">Aide</p>
+          <p className="footer__title">{f.help}</p>
           <ul>
             <li>
-              <Link href={routes.delivery}>Livraison & paiement</Link>
+              <Link href={routes.delivery}>{f.deliveryPay}</Link>
             </li>
             <li>
-              <Link href={routes.faq}>Questions fréquentes</Link>
+              <Link href={routes.faq}>{f.faq}</Link>
             </li>
             <li>
-              <Link href={routes.guides}>Conseils & astuces</Link>
+              <Link href={routes.guides}>{f.guides}</Link>
             </li>
             <li>
-              <Link href={routes.cart}>Mon panier</Link>
+              <Link href={routes.cart}>{f.myCart}</Link>
             </li>
             <li>
-              <Link href={routes.contact}>Contact</Link>
+              <Link href={routes.contact}>{f.contact}</Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="footer__title">Nous joindre</p>
+          <p className="footer__title">{f.reach}</p>
           <ul className="footer__contact">
             {s.whatsapp && (
               <li>
                 <IconWhatsapp width={18} height={18} />
-                <a href={whatsappUrl(s.whatsapp)} target="_blank" rel="noopener noreferrer">
+                <a href={whatsappUrl(s.whatsapp)} target="_blank" rel="noopener noreferrer" dir="ltr">
                   {s.whatsapp}
                 </a>
               </li>
@@ -82,7 +87,9 @@ export default function Footer() {
             {s.phone && (
               <li>
                 <IconPhone width={18} height={18} />
-                <a href={`tel:${s.phone.replace(/\s/g, '')}`}>{s.phone}</a>
+                <a href={`tel:${s.phone.replace(/\s/g, '')}`} dir="ltr">
+                  {s.phone}
+                </a>
               </li>
             )}
             {s.email && (
@@ -94,18 +101,20 @@ export default function Footer() {
             {s.city && (
               <li>
                 <IconPin width={18} height={18} />
-                <span>{s.city}, Maroc</span>
+                <span>
+                  {s.city}, {t.country}
+                </span>
               </li>
             )}
             <li>
-              <Link href={routes.contact}>Écrivez-nous →</Link>
+              <Link href={routes.contact}>{f.writeUs}</Link>
             </li>
           </ul>
         </div>
       </div>
       <div className="footer__bottom container">
-        <span>© {new Date().getFullYear()} SWEETTOOLS. Tous droits réservés.</span>
-        <span>Paiement à la livraison · Prix en dirhams</span>
+        <span>{f.rights(new Date().getFullYear())}</span>
+        <span>{f.bottom}</span>
       </div>
     </footer>
   );

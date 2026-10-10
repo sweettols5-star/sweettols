@@ -8,7 +8,7 @@
  * Stock: `null` = not tracked (always orderable), a number = units left, and
  * each order takes them off (see lib/order.js).
  */
-import { bool, clean, int, slugify, stringList } from './text.js';
+import { bool, clean, int, slugify, stringList, translations } from './text.js';
 
 const MAX_IMAGES = 8;
 
@@ -68,6 +68,8 @@ export function normaliseProduct(body = {}, existing = null, categories = [], ta
       compareAtPrice: compareAtPrice || 0,
       description: clean(body.description, 4000),
       details: stringList(body.details),
+      // Absent = untouched (an older admin screen must not wipe the translations).
+      i18n: body.i18n === undefined ? existing?.i18n || {} : translations(body.i18n, { name: 140, description: 4000, details: 'list' }),
       images,
       stock,
       active: body.active === undefined ? true : bool(body.active),
@@ -88,6 +90,7 @@ export function publicView(p) {
     compareAtPrice: p.compareAtPrice || 0,
     description: p.description || '',
     details: p.details || [],
+    i18n: p.i18n || {},
     images: (p.images || []).map(({ url, thumb }) => ({ url, thumb: thumb || url })),
     featured: !!p.featured,
     // The exact count stays private; the shop only needs "can I sell it".

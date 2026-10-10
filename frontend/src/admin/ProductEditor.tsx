@@ -7,6 +7,7 @@ import { hasStaticPage } from '@/components/LiveCatalogue';
 import { routes } from '@/lib/routes';
 import type { ProductImage } from '@/types';
 import { api, errorText, uploadPhoto } from './client';
+import Translations, { fromTrDraft, toTrDraft, type TrDraft, type TrField } from './Translations';
 import type { AdminCategory, AdminProduct } from './types';
 import { BusyButton, carryFlash, Field, Flash, Loading, SlowHint, Spinner, useFlash } from './ui';
 
@@ -35,7 +36,14 @@ type Draft = {
   images: ProductImage[];
   active: boolean;
   featured: boolean;
+  i18n: TrDraft;
 };
+
+const TR_FIELDS: TrField[] = [
+  { key: 'name', label: 'Nom', max: 140 },
+  { key: 'description', label: 'Description', rows: 4, max: 4000 },
+  { key: 'details', label: 'Caractéristiques', rows: 4, list: true },
+];
 
 const EMPTY: Draft = {
   name: '',
@@ -49,6 +57,7 @@ const EMPTY: Draft = {
   images: [],
   active: true,
   featured: false,
+  i18n: {},
 };
 
 const toDraft = (p: AdminProduct): Draft => ({
@@ -63,6 +72,7 @@ const toDraft = (p: AdminProduct): Draft => ({
   images: p.images,
   active: p.active !== false,
   featured: p.featured,
+  i18n: toTrDraft(p.i18n),
 });
 
 const num = (s: string) => Number(s.replace(/[^\d]/g, '')) || 0;
@@ -166,6 +176,7 @@ export default function ProductEditor({ slug }: { slug: string }) {
       images: draft.images,
       active: draft.active,
       featured: draft.featured,
+      i18n: fromTrDraft(draft.i18n, TR_FIELDS),
     };
     try {
       const { product } = original
@@ -250,6 +261,7 @@ export default function ProductEditor({ slug }: { slug: string }) {
               <Field label="Caractéristiques" wide hint="Une par ligne : matière, dimensions, nombre d’empreintes, entretien…">
                 <textarea className="adm-input" rows={5} value={draft.details} onChange={(e) => set('details', e.target.value)} />
               </Field>
+              <Translations fields={TR_FIELDS} value={draft.i18n} onChange={(v) => setDraft((d) => d && { ...d, i18n: v })} />
             </div>
           </section>
 

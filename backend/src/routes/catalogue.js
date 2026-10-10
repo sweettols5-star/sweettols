@@ -25,7 +25,7 @@ catalogueRoutes.get('/catalogue', async (req, res) => {
         .map(publicView),
       categories: categories
         .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
-        .map(({ id, name, description, order, image }) => ({ id, name, description: description || '', order, image: image || '' })),
+        .map(({ id, name, description, order, image, i18n }) => ({ id, name, description: description || '', order, image: image || '', i18n: i18n || {} })),
       settings,
       generatedAt: new Date().toISOString(),
     });
