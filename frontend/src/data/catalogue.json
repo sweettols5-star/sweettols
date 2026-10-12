@@ -1088,7 +1088,7 @@
   "settings": {
     "brand": "SWEETTOOLS",
     "baseline": "Outils et matériel de pâtisserie & cake design",
-    "url": "https://sweettols.com",
+    "url": "https://www.sweettols.com",
     "phone": "06 78 77 99 83",
     "whatsapp": "212678779983",
     "email": "",
@@ -1105,15 +1105,15 @@
         "id": "casablanca",
         "label": "Casablanca",
         "fee": 30,
-        "delay": "24 à 48 h",
+        "delay": "24 h",
         "i18n": {
           "en": {
             "label": "Casablanca",
-            "delay": "24 to 48 h"
+            "delay": "24 h"
           },
           "ar": {
             "label": "الدار البيضاء",
-            "delay": "من 24 إلى 48 ساعة"
+            "delay": "24 ساعة"
           }
         }
       },
@@ -1121,15 +1121,15 @@
         "id": "autres-villes",
         "label": "Autres villes du Maroc",
         "fee": 45,
-        "delay": "2 à 4 jours ouvrables",
+        "delay": "24 à 48 h",
         "i18n": {
           "en": {
             "label": "Other cities in Morocco",
-            "delay": "2 to 4 working days"
+            "delay": "24 to 48 h"
           },
           "ar": {
             "label": "باقي مدن المغرب",
-            "delay": "من 2 إلى 4 أيام عمل"
+            "delay": "من 24 إلى 48 ساعة"
           }
         }
       }
@@ -1188,5 +1188,5 @@
       }
     }
   },
-  "generatedAt": "2026-10-10T18:03:38.572Z"
+  "generatedAt": "2026-10-10T18:59:44.755Z"
 }

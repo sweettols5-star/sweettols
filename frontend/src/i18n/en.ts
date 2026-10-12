@@ -165,7 +165,7 @@ const en: Dict = {
     name: 'Full name',
     phone: 'Phone',
     phoneHint: 'We will call you to confirm.',
-    email: 'E-mail (optional)',
+    email: 'E-mail (to follow our new arrivals)',
     city: 'City',
     address: 'Full address',
     addressPlaceholder: 'District, street, number, building…',
@@ -284,7 +284,7 @@ const en: Dict = {
       promises: [
         { title: 'Baker’s selection', text: 'Tools chosen for cake decorating and home baking.' },
         { title: 'Cash on delivery', text: 'You pay in cash when the parcel arrives.' },
-        { title: 'Delivery anywhere in Morocco', text: 'Casablanca in 24 to 48 h, other cities in a few days.' },
+        { title: 'Delivery anywhere in Morocco', text: 'Casablanca in 24 h, other cities in 24 to 48 h.' },
         { title: 'Advice before you buy', text: 'A question about a mould or a size? We will answer.' },
       ],
       categoriesTitle: 'Our categories',

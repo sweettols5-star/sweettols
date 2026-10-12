@@ -169,7 +169,7 @@ const fr = {
     name: 'Nom complet',
     phone: 'Téléphone',
     phoneHint: 'Nous vous appelons pour confirmer.',
-    email: 'E-mail (facultatif)',
+    email: 'E-mail (pour suivre nos nouveautés)',
     city: 'Ville',
     address: 'Adresse complète',
     addressPlaceholder: 'Quartier, rue, numéro, immeuble…',
@@ -289,7 +289,7 @@ const fr = {
       promises: [
         { title: 'Sélection pâtissière', text: 'Des outils choisis pour le cake design et la pâtisserie maison.' },
         { title: 'Paiement à la livraison', text: 'Vous payez en espèces à la réception du colis.' },
-        { title: 'Livraison partout au Maroc', text: 'Casablanca en 24 à 48 h, les autres villes en quelques jours.' },
+        { title: 'Livraison partout au Maroc', text: 'Casablanca en 24 h, les autres villes en 24 à 48 h.' },
         { title: 'Conseil avant achat', text: 'Une question sur un moule ou une taille ? On vous répond.' },
       ],
       categoriesTitle: 'Nos catégories',

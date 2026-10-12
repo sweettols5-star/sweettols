@@ -36,5 +36,5 @@ if [[ $WHAT == all || $WHAT == site ]]; then
       tar -xzf - -C /var/www/sweettols.new &&
       rm -rf /var/www/sweettols.old && mv /var/www/sweettols /var/www/sweettols.old &&
       mv /var/www/sweettols.new /var/www/sweettols && chown -R nginx:nginx /var/www/sweettols'
-  curl -fsS -o /dev/null https://sweettols.com/ && echo "  Boutique OK"
+  curl -fsS -o /dev/null https://www.sweettols.com/ && echo "  Boutique OK"
 fi

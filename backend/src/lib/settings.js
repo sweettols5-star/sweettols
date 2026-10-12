@@ -10,7 +10,7 @@ import { clean, int, slugify, translations } from './text.js';
 export const DEFAULT_SETTINGS = {
   brand: 'SWEETTOOLS',
   baseline: 'Outils et matériel de pâtisserie & cake design',
-  url: 'https://sweettools.ma',
+  url: 'https://www.sweettols.com',
   phone: '06 78 77 99 83',
   whatsapp: '212678779983',
   email: '',
@@ -24,8 +24,8 @@ export const DEFAULT_SETTINGS = {
   // Client rule (2026-10-10): no order under 200 DH, delivery included (invoice VAT not).
   minOrder: 200,
   zones: [
-    { id: 'casablanca', label: 'Casablanca', fee: 30, delay: '24 à 48 h' },
-    { id: 'autres-villes', label: 'Autres villes du Maroc', fee: 45, delay: '2 à 4 jours ouvrables' },
+    { id: 'casablanca', label: 'Casablanca', fee: 30, delay: '24 h' },
+    { id: 'autres-villes', label: 'Autres villes du Maroc', fee: 45, delay: '24 à 48 h' },
   ],
   // Home page "Kits prêts à l'emploi": products sold together, priced at their
   // live sum by the shop. Edited in /admin/kits.
