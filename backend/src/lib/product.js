@@ -28,15 +28,20 @@ function image(raw) {
 /**
  * @param body       untrusted input from /admin
  * @param existing   the stored product when editing, null when creating
- * @param categories stored categories, to check categoryId
+ * @param categories stored categories, to check categoryIds
  * @param taken      slugs already used by OTHER products
  */
 export function normaliseProduct(body = {}, existing = null, categories = [], taken = new Set()) {
   const name = clean(body.name, 140);
   if (!name) return { error: 'Le nom du produit est obligatoire.' };
 
-  const categoryId = clean(body.categoryId, 60);
-  if (!categories.some((c) => c.id === categoryId)) return { error: 'Catégorie inconnue.' };
+  // A product can sit in several categories. The first one is the main one:
+  // breadcrumb, Google product_type, « Dans la même catégorie ».
+  const requested = Array.isArray(body.categoryIds) && body.categoryIds.length ? body.categoryIds : [body.categoryId];
+  const categoryIds = [...new Set(requested.map((id) => clean(id, 60)).filter(Boolean))];
+  if (!categoryIds.length) return { error: 'Choisissez au moins une catégorie.' };
+  const unknown = categoryIds.find((id) => !categories.some((c) => c.id === id));
+  if (unknown) return { error: `Catégorie inconnue : « ${unknown} ».` };
 
   const slug = slugify(body.slug || name);
   if (!slug) return { error: 'Adresse (slug) invalide.' };
@@ -63,7 +68,8 @@ export function normaliseProduct(body = {}, existing = null, categories = [], ta
     product: {
       slug,
       name,
-      categoryId,
+      categoryId: categoryIds[0],
+      categoryIds,
       price,
       compareAtPrice: compareAtPrice || 0,
       description: clean(body.description, 4000),
@@ -80,12 +86,16 @@ export function normaliseProduct(body = {}, existing = null, categories = [], ta
   };
 }
 
+/** Every category of a product — products saved before multi-category only have categoryId. */
+export const categoriesOf = (p) => (Array.isArray(p.categoryIds) && p.categoryIds.length ? p.categoryIds : [p.categoryId]);
+
 /** What the shop receives: no internal fields, and a computed availability. */
 export function publicView(p) {
   return {
     slug: p.slug,
     name: p.name,
     categoryId: p.categoryId,
+    categoryIds: categoriesOf(p),
     price: p.price || 0,
     compareAtPrice: p.compareAtPrice || 0,
     description: p.description || '',

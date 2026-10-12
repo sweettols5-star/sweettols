@@ -9,7 +9,10 @@ export type Translations<T> = { en?: Partial<T>; ar?: Partial<T> };
 export type Product = {
   slug: string;
   name: string;
+  /** The main category: breadcrumb, Google product_type, related products. */
   categoryId: string;
+  /** Every category it appears in, main one first. Absent on older snapshots. */
+  categoryIds?: string[];
   /** Whole dirhams. 0 = « prix à venir » : shown, never orderable. */
   price: number;
   compareAtPrice: number;

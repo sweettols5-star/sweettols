@@ -1,7 +1,7 @@
 'use client';
 
 import { locCategory } from '@/i18n/content';
-import { categoryById } from '@/lib/catalogue';
+import { categoryById, inCategory } from '@/lib/catalogue';
 import { routes } from '@/lib/routes';
 import type { Product } from '@/types';
 import AddToCart from './AddToCart';
@@ -26,7 +26,7 @@ export default function ProductView({ product: built }: { product: Product }) {
     categories.find((c) => c.id === product.categoryId) ?? (builtCategory && locCategory(builtCategory, lang));
 
   const related = all
-    .filter((p) => p.categoryId === product.categoryId && p.slug !== product.slug)
+    .filter((p) => inCategory(p, product.categoryId) && p.slug !== product.slug)
     .sort((a, b) => Number(b.price > 0) - Number(a.price > 0))
     .slice(0, 4);
 

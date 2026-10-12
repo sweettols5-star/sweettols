@@ -517,6 +517,23 @@ textarea.adm-input,
   font-size: 0.78rem;
 }
 
+.adm-cats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  column-gap: 16px;
+}
+
+.adm-cats .adm-check {
+  padding: 4px 0;
+  font-size: 0.9rem;
+}
+
+.adm-cats .adm-check input {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+}
+
 .adm-alert {
   padding: 11px 14px;
   border-radius: 10px;

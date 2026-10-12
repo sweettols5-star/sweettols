@@ -8,6 +8,7 @@ import ProductEditor from '@/admin/ProductEditor';
 import type { AdminCategory, AdminProduct } from '@/admin/types';
 import { BusyButton, Flash, Loading, useFlash } from '@/admin/ui';
 import Link from '@/components/Link';
+import { categoriesOf, inCategory } from '@/lib/catalogue';
 import { dh } from '@/lib/format';
 
 export default function ProductsPage() {
@@ -94,7 +95,7 @@ function ProductList({ filter }: { filter: string }) {
     return (products || []).filter(
       (p) =>
         active.test(p) &&
-        (!category || p.categoryId === category) &&
+        (!category || inCategory(p, category)) &&
         (!q || p.name.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().includes(q)),
     );
   }, [products, active, category, query]);
@@ -117,7 +118,7 @@ function ProductList({ filter }: { filter: string }) {
     try {
       await api(`/api/admin/products/${encodeURIComponent(p.slug)}`, { method: 'DELETE' });
       setProducts((list) => (list || []).filter((x) => x.slug !== p.slug));
-      setCategories((list) => list.map((c) => (c.id === p.categoryId ? { ...c, productCount: Math.max(0, c.productCount - 1) } : c)));
+      setCategories((list) => list.map((c) => (inCategory(p, c.id) ? { ...c, productCount: Math.max(0, c.productCount - 1) } : c)));
       flash.ok(`Produit « ${p.name} » supprimé.`);
     } catch (e) {
       flash.err(errorText(e));
@@ -167,7 +168,7 @@ function ProductList({ filter }: { filter: string }) {
       {shown.length ? (
         <div className="adm-products">
           {shown.map((p) => (
-            <ProductRow key={p.slug} product={p} category={catName.get(p.categoryId) || '—'} onQuick={quick} onDelete={remove} />
+            <ProductRow key={p.slug} product={p} category={categoriesOf(p).map((id) => catName.get(id)).filter(Boolean).join(', ') || '—'} onQuick={quick} onDelete={remove} />
           ))}
         </div>
       ) : (

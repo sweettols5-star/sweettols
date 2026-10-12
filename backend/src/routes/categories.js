@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { requireAdmin } from '../auth.js';
 import { store } from '../store/index.js';
+import { categoriesOf } from '../lib/product.js';
 import { clean, int, slugify, translations } from '../lib/text.js';
 
 export const categoryRoutes = Router();
@@ -25,7 +26,7 @@ categoryRoutes.get('/categories', requireAdmin, async (req, res) => {
   res.json({
     categories: categories
       .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
-      .map((c) => ({ ...c, productCount: products.filter((p) => p.categoryId === c.id).length })),
+      .map((c) => ({ ...c, productCount: products.filter((p) => categoriesOf(p).includes(c.id)).length })),
   });
 });
 
@@ -63,7 +64,7 @@ categoryRoutes.put('/categories/:id', requireAdmin, async (req, res) => {
 
 categoryRoutes.delete('/categories/:id', requireAdmin, async (req, res) => {
   const id = clean(req.params.id, 80);
-  const used = (await store.products.all()).filter((p) => p.categoryId === id).length;
+  const used = (await store.products.all()).filter((p) => categoriesOf(p).includes(id)).length;
   if (used) {
     res.status(409).json({ error: `Impossible : ${used} produit(s) sont encore dans cette catégorie.` });
     return;

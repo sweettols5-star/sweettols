@@ -130,7 +130,7 @@ export function useProductBySlug(slug: string): { product: Product | null; ready
 export function useLiveList(fallback: Product[], categoryId?: string): Product[] {
   const { live } = useContext(Ctx);
   if (!live) return fallback;
-  const wanted = categoryId ? live.products.filter((p) => p.categoryId === categoryId) : live.products;
+  const wanted = categoryId ? live.products.filter((p) => built.inCategory(p, categoryId)) : live.products;
   const bySlug = new Map(wanted.map((p) => [p.slug, p]));
   const kept = fallback.map((p) => bySlug.get(p.slug)).filter(Boolean) as Product[];
   const seen = new Set(kept.map((p) => p.slug));

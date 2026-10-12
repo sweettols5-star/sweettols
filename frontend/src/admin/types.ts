@@ -5,6 +5,8 @@ export type AdminProduct = {
   slug: string;
   name: string;
   categoryId: string;
+  /** Main one first; absent on products saved before multi-category. */
+  categoryIds?: string[];
   price: number;
   compareAtPrice: number;
   description: string;

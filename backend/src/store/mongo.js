@@ -26,6 +26,7 @@ function models(connection) {
     Product: define('Product', 'products', [
       [{ slug: 1 }, { unique: true }],
       [{ categoryId: 1 }, {}],
+      [{ categoryIds: 1 }, {}],
     ]),
     Category: define('Category', 'categories', [[{ id: 1 }, { unique: true }]]),
     Order: define('Order', 'orders', [

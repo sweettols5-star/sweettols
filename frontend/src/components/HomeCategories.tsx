@@ -1,6 +1,6 @@
 'use client';
 
-import { categoryImage } from '@/lib/catalogue';
+import { categoryImage, inCategory } from '@/lib/catalogue';
 import { routes } from '@/lib/routes';
 import { useT } from './LangProvider';
 import { useProducts, useShownCategories } from './LiveCatalogue';
@@ -15,7 +15,7 @@ export default function HomeCategories() {
   return (
     <div className="cats">
       {shown.map((c) => {
-        const n = products.filter((p) => p.categoryId === c.id).length;
+        const n = products.filter((p) => inCategory(p, c.id)).length;
         return (
           <Link key={c.id} href={routes.category(c.id)} className="cat">
             <span className="cat__img">

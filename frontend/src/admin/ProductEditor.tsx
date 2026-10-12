@@ -28,6 +28,8 @@ type Draft = {
   name: string;
   slug: string;
   categoryId: string;
+  /** Other categories it also appears in. */
+  alsoIn: string[];
   price: string;
   compareAtPrice: string;
   stock: string;
@@ -49,6 +51,7 @@ const EMPTY: Draft = {
   name: '',
   slug: '',
   categoryId: '',
+  alsoIn: [],
   price: '',
   compareAtPrice: '',
   stock: '',
@@ -64,6 +67,7 @@ const toDraft = (p: AdminProduct): Draft => ({
   name: p.name,
   slug: p.slug,
   categoryId: p.categoryId,
+  alsoIn: (p.categoryIds || []).filter((id) => id !== p.categoryId),
   price: p.price ? String(p.price) : '',
   compareAtPrice: p.compareAtPrice ? String(p.compareAtPrice) : '',
   stock: p.stock === null || p.stock === undefined ? '' : String(p.stock),
@@ -167,7 +171,7 @@ export default function ProductEditor({ slug }: { slug: string }) {
     const body = {
       name: draft.name,
       slug: draft.slug || slugify(draft.name),
-      categoryId: draft.categoryId,
+      categoryIds: [draft.categoryId, ...draft.alsoIn.filter((id) => id !== draft.categoryId)],
       price,
       compareAtPrice: compare,
       stock: draft.stock.trim() === '' ? null : num(draft.stock),
@@ -236,8 +240,16 @@ export default function ProductEditor({ slug }: { slug: string }) {
               <Field label="Nom du produit" wide>
                 <input className="adm-input" required value={draft.name} onChange={(e) => onName(e.target.value)} maxLength={140} />
               </Field>
-              <Field label="Catégorie">
-                <select className="adm-input" value={draft.categoryId} onChange={(e) => set('categoryId', e.target.value)} required>
+              <Field label="Catégorie principale" hint="Fil d’Ariane, Google et « même catégorie ».">
+                <select
+                  className="adm-input"
+                  value={draft.categoryId}
+                  onChange={(e) => {
+                    const id = e.target.value;
+                    setDraft((d) => (d ? { ...d, categoryId: id, alsoIn: d.alsoIn.filter((x) => x !== id) } : d));
+                  }}
+                  required
+                >
                   {categories.map((c) => (
                     <option key={c.id} value={c.id}>
                       {c.name}
@@ -255,6 +267,28 @@ export default function ProductEditor({ slug }: { slug: string }) {
                   }}
                 />
               </Field>
+              {categories.length > 1 && (
+                <div className="adm-field adm-field--wide" role="group" aria-labelledby="also-in">
+                  <span id="also-in">Aussi dans</span>
+                  <div className="adm-cats">
+                    {categories
+                      .filter((c) => c.id !== draft.categoryId)
+                      .map((c) => (
+                        <label key={c.id} className="adm-check">
+                          <input
+                            type="checkbox"
+                            checked={draft.alsoIn.includes(c.id)}
+                            onChange={(e) =>
+                              set('alsoIn', e.target.checked ? [...draft.alsoIn, c.id] : draft.alsoIn.filter((x) => x !== c.id))
+                            }
+                          />
+                          <span>{c.name}</span>
+                        </label>
+                      ))}
+                  </div>
+                  <small>Le produit apparaît aussi dans ces catégories.</small>
+                </div>
+              )}
               <Field label="Description" wide hint="Affichée sur la fiche et reprise par Google.">
                 <textarea className="adm-input" rows={5} value={draft.description} onChange={(e) => set('description', e.target.value)} maxLength={4000} />
               </Field>

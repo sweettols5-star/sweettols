@@ -13,7 +13,11 @@ export const settings = data.settings;
 
 export const productBySlug = (slug: string) => products.find((p) => p.slug === slug);
 export const categoryById = (id: string) => categories.find((c) => c.id === id);
-export const productsIn = (id: string) => products.filter((p) => p.categoryId === id);
+/** A product can sit in several categories; older data only has categoryId. */
+export const categoriesOf = (p: { categoryId: string; categoryIds?: string[] }) =>
+  p.categoryIds?.length ? p.categoryIds : [p.categoryId];
+export const inCategory = (p: { categoryId: string; categoryIds?: string[] }, id: string) => categoriesOf(p).includes(id);
+export const productsIn = (id: string) => products.filter((p) => inCategory(p, id));
 
 /** Can it go in the cart? Same rule as the API's isSellable. */
 export const isSellable = (p: Product) => p.price > 0 && p.inStock;
@@ -21,7 +25,7 @@ export const isSellable = (p: Product) => p.price > 0 && p.inStock;
 /** Picture standing for a category: its own, else its first product's. */
 export function categoryImage(c: Category, list: Product[] = products): string {
   if (c.image) return c.image;
-  const p = list.find((x) => x.categoryId === c.id && x.images.length);
+  const p = list.find((x) => inCategory(x, c.id) && x.images.length);
   return p ? p.images[0].thumb : '/brand/emblem.png';
 }
 

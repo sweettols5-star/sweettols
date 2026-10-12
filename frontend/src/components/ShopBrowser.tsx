@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { inCategory } from '@/lib/catalogue';
 import { routes } from '@/lib/routes';
 import type { Product } from '@/types';
 import { rich } from '@/i18n/rich';
@@ -23,7 +24,7 @@ export default function ShopBrowser({ products }: { products: Product[] }) {
           {t.grid.all}
         </Link>
         {categories
-          .filter((c) => live.some((p) => p.categoryId === c.id))
+          .filter((c) => live.some((p) => inCategory(p, c.id)))
           .map((c) => (
             <Link key={c.id} href={routes.category(c.id)} className="chip">
               {c.name}
