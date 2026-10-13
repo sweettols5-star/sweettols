@@ -1,31 +1,73 @@
 {
   "products": [
     {
-      "slug": "aerographe-avec-compresseur-rose",
-      "name": "Aérographe avec Compresseur Rose",
-      "categoryId": "appareils-patisserie",
+      "slug": "26-pieces-de-decoupoirs-alphabet-pour-la-decoration-des-gateaux",
+      "name": "26 pièces de découpoirs alphabet pour la décoration des gâteaux",
+      "categoryId": "materiel-patisserie",
       "categoryIds": [
-        "appareils-patisserie"
+        "materiel-patisserie"
       ],
-      "price": 350,
+      "price": 70,
       "compareAtPrice": 0,
       "description": "",
       "details": [],
       "i18n": {},
       "images": [
         {
-          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791751010/sweettools/produits/aerographe-avec-compresseur-rose-mv4aaf73.webp",
-          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791751010/sweettools/produits/aerographe-avec-compresseur-rose-mv4aaf73-thumb.webp"
-        },
-        {
-          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791751026/sweettools/produits/aerographe-avec-compresseur-rose-mv4aarjs.webp",
-          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791751026/sweettools/produits/aerographe-avec-compresseur-rose-mv4aarjs-thumb.webp"
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791847044/sweettools/produits/26-pieces-de-decoupoirs-alphabet-pour-la-decoration-des-gateaux-mv5vgs4g.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791847044/sweettools/produits/26-pieces-de-decoupoirs-alphabet-pour-la-decoration-des-gateaux-mv5vgs4g-thumb.webp"
         }
       ],
       "featured": false,
       "inStock": true,
       "lowStock": 0,
-      "createdAt": "2026-10-11T20:37:16.501Z"
+      "createdAt": "2026-10-12T23:17:52.750Z"
+    },
+    {
+      "slug": "3-moules-pour-preparer-des-genoises-des-gat",
+      "name": "3 moules pour préparer des génoises",
+      "categoryId": "moules-aluminium",
+      "categoryIds": [
+        "moules-aluminium"
+      ],
+      "price": 100,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791821339/sweettools/produits/3-moules-pour-preparer-des-genoises-mv5g5tn9.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791821339/sweettools/produits/3-moules-pour-preparer-des-genoises-mv5g5tn9-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T16:05:12.221Z"
+    },
+    {
+      "slug": "3-moules-pour-preparer-des-genoises-des-gateaux-ou-du-flan-venezuelien",
+      "name": "3 moules pour préparer des génoises, des gâteaux ou du flan vénézuélien.",
+      "categoryId": "moules-aluminium",
+      "categoryIds": [
+        "moules-aluminium"
+      ],
+      "price": 70,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791820422/sweettools/produits/3-moules-pour-preparer-des-genoises-des-gateaux-ou-du-flan-venezuelien-mv5fm69e.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791820422/sweettools/produits/3-moules-pour-preparer-des-genoises-des-gateaux-ou-du-flan-venezuelien-mv5fm69e-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T15:54:10.987Z"
     },
     {
       "slug": "ambra-moule-en-silicone",
@@ -126,6 +168,77 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-12T07:52:05.305Z"
+    },
+    {
+      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm",
+      "name": "Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 16 cm",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 26,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819470/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm-mv5f1r3n.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819470/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm-mv5f1r3n-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T15:38:27.995Z"
+    },
+    {
+      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm",
+      "name": "Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 19 cm",
+      "categoryId": "appareils-patisserie",
+      "categoryIds": [
+        "appareils-patisserie",
+        "materiel-patisserie"
+      ],
+      "price": 29,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819600/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm-mv5f4jcr.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819599/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm-mv5f4jcr-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T15:40:15.427Z"
+    },
+    {
+      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm",
+      "name": "Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 20 cm",
+      "categoryId": "appareils-patisserie",
+      "categoryIds": [
+        "appareils-patisserie",
+        "materiel-patisserie"
+      ],
+      "price": 30,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819692/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm-mv5f6iwu.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819692/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm-mv5f6iwu-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T15:41:45.765Z"
     },
     {
       "slug": "double-lisseur-pate-a-sucre-2-en-1",
@@ -343,6 +456,29 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "lot-de-100-poches-a-douille-jetables",
+      "name": "Lot de 100 poches à douille jetables",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 45,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791828806/sweettools/produits/lot-de-100-poches-a-douille-jetables-mv5klviy.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791828806/sweettools/produits/lot-de-100-poches-a-douille-jetables-mv5klviy-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T18:13:47.955Z"
     },
     {
       "slug": "maryse-silicone",
@@ -872,11 +1008,58 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "plateau-tournant-pour-decoration-de-gateaux-presentoir-de-cake-tournant",
+      "name": "Plateau tournant pour décoration de gâteaux, Présentoir de cake tournant",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 50,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791822053/sweettools/produits/plateau-tournant-pour-decoration-de-gateaux-presentoir-de-cake-tournant-mv5gl4d5.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791822053/sweettools/produits/plateau-tournant-pour-decoration-de-gateaux-presentoir-de-cake-tournant-mv5gl4d5-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T16:21:12.867Z"
+    },
+    {
+      "slug": "poche-a-douille-en-silicone",
+      "name": "Poche à douille en Silicone",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791822205/sweettools/produits/poche-a-douille-en-silicone-mv5godxf.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791822205/sweettools/produits/poche-a-douille-en-silicone-mv5godxf-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T16:23:38.775Z"
+    },
+    {
       "slug": "rouleau-et-bicyclette-extensible-multicoupe-simple-5-roulettes-en-inox",
       "name": "Rouleau et Bicyclette Extensible Multicoupe Simple 5 Roulettes en Inox",
       "categoryId": "equipement-professionnel",
       "categoryIds": [
-        "equipement-professionnel"
+        "equipement-professionnel",
+        "appareils-patisserie"
       ],
       "price": 260,
       "compareAtPrice": 0,
@@ -1551,7 +1734,7 @@
     "hours": "",
     "instagram": "https://www.instagram.com/sweettols/",
     "facebook": "https://www.facebook.com/sweettols",
-    "tiktok": "",
+    "tiktok": "https://www.tiktok.com/@sweettols",
     "announcement": "Paiement à la livraison partout au Maroc",
     "freeShippingThreshold": 0,
     "minOrder": 200,
@@ -1643,5 +1826,5 @@
       }
     }
   },
-  "generatedAt": "2026-10-12T08:41:45.896Z"
+  "generatedAt": "2026-10-13T11:16:16.127Z"
 }
