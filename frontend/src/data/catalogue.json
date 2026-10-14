@@ -130,6 +130,48 @@
       "createdAt": "2026-10-11T20:35:43.843Z"
     },
     {
+      "slug": "boules-decoratives-pour-gateaux",
+      "name": "Boules décoratives pour gâteaux",
+      "categoryId": "decoration-patisserie",
+      "categoryIds": [
+        "decoration-patisserie"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [
+        "Rouge",
+        "Violet",
+        "Bleu ciel",
+        "Blanc"
+      ],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791979878/sweettools/produits/boules-decoratives-pour-gateaux-mv82jv1w.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791979878/sweettools/produits/boules-decoratives-pour-gateaux-mv82jv1w-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791979881/sweettools/produits/boules-decoratives-pour-gateaux-mv82jxm3.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791979881/sweettools/produits/boules-decoratives-pour-gateaux-mv82jxm3-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791979883/sweettools/produits/boules-decoratives-pour-gateaux-mv82jz5a.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791979883/sweettools/produits/boules-decoratives-pour-gateaux-mv82jz5a-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791979885/sweettools/produits/boules-decoratives-pour-gateaux-mv82k0bs.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791979885/sweettools/produits/boules-decoratives-pour-gateaux-mv82k0bs-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T12:14:13.285Z"
+    },
+    {
       "slug": "couteau-a-pain-dentele-ideal-pour-couper-les-pains-les-viennoiseries-et-les-pati",
       "name": "Couteau à pain dentelé, idéal pour couper les pains, les viennoiseries et les pâtisseries.",
       "categoryId": "equipement-professionnel",
@@ -1426,7 +1468,7 @@
       "categoryIds": [
         "materiel-patisserie"
       ],
-      "price": 35,
+      "price": 40,
       "compareAtPrice": 0,
       "description": "",
       "details": [],
@@ -2217,5 +2259,5 @@
       }
     }
   },
-  "generatedAt": "2026-10-13T23:41:14.346Z"
+  "generatedAt": "2026-10-14T13:09:38.897Z"
 }
