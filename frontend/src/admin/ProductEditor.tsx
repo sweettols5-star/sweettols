@@ -323,7 +323,12 @@ export default function ProductEditor({ slug }: { slug: string }) {
                   placeholder={'20\n24\n30 x 40'}
                 />
               </Field>
-              <Translations fields={TR_FIELDS} value={draft.i18n} onChange={(v) => setDraft((d) => d && { ...d, i18n: v })} />
+              <Translations
+                fields={TR_FIELDS}
+                value={draft.i18n}
+                onChange={(v) => setDraft((d) => d && { ...d, i18n: v })}
+                hint="Les champs vides sont traduits automatiquement à l’enregistrement (relisez-les ensuite). Une traduction modifiée ici n’est plus jamais remplacée."
+              />
             </div>
           </section>
 

@@ -27,9 +27,17 @@ await connectStore();
 
 let n = 0;
 for (const [slug, tr] of Object.entries(data.products || {})) {
-  const ok = await store.products.update(slug, { i18n: translations(tr, { name: 140, description: 4000, details: 'list' }) });
-  if (ok) n += 1;
-  else console.warn(`  produit introuvable : ${slug}`);
+  const product = await store.products.get(slug);
+  if (!product) {
+    console.warn(`  produit introuvable : ${slug}`);
+    continue;
+  }
+  // Merged per language: a field the file leaves out keeps its translation.
+  const merged = Object.fromEntries(['en', 'ar'].map((l) => [l, { ...product.i18n?.[l], ...tr[l] }]));
+  await store.products.update(slug, {
+    i18n: translations(merged, { name: 140, description: 4000, details: 'list', colors: 'list' }),
+  });
+  n += 1;
 }
 console.log(`✓ ${n} produits traduits`);
 

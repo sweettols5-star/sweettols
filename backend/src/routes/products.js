@@ -2,7 +2,14 @@ import { Router } from 'express';
 import { requireAdmin } from '../auth.js';
 import { store } from '../store/index.js';
 import { normaliseProduct } from '../lib/product.js';
-import { clean } from '../lib/text.js';
+import { clean, translations } from '../lib/text.js';
+import { autoTranslate } from '../lib/translate.js';
+
+/** Fills the missing English / Arabic translations (see lib/translate.js). */
+async function withTranslations(product, existing = null) {
+  const { i18n, i18nAuto } = await autoTranslate(product, existing);
+  return { ...product, i18n: translations(i18n, { name: 140, description: 4000, details: 'list', colors: 'list' }), i18nAuto };
+}
 
 export const productRoutes = Router();
 
@@ -35,7 +42,7 @@ productRoutes.post('/products', requireAdmin, async (req, res) => {
       res.status(400).json({ error });
       return;
     }
-    res.status(201).json({ ok: true, product: await store.products.create(product) });
+    res.status(201).json({ ok: true, product: await store.products.create(await withTranslations(product)) });
   } catch (e) {
     console.error('[products POST]', e);
     res.status(500).json({ error: 'Erreur serveur' });
@@ -57,7 +64,7 @@ productRoutes.put('/products/:slug', requireAdmin, async (req, res) => {
       res.status(400).json({ error });
       return;
     }
-    res.json({ ok: true, product: await store.products.update(current, product) });
+    res.json({ ok: true, product: await store.products.update(current, await withTranslations(product, existing)) });
   } catch (e) {
     console.error('[products PUT]', e);
     res.status(500).json({ error: 'Erreur serveur' });
