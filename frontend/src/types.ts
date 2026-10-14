@@ -18,7 +18,14 @@ export type Product = {
   compareAtPrice: number;
   description: string;
   details: string[];
-  i18n?: Translations<{ name: string; description: string; details: string[] }>;
+  /**
+   * Options the customer picks one of (same price, same stock). Colours are
+   * French names (translated through i18n, same order); sizes are in cm,
+   * stored without the unit ("20", "30 × 40"). Absent on older snapshots.
+   */
+  colors?: string[];
+  sizes?: string[];
+  i18n?: Translations<{ name: string; description: string; details: string[]; colors: string[] }>;
   images: ProductImage[];
   featured: boolean;
   inStock: boolean;

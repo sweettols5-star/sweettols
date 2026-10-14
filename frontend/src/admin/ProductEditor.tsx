@@ -35,6 +35,9 @@ type Draft = {
   stock: string;
   description: string;
   details: string;
+  /** One per line. */
+  colors: string;
+  sizes: string;
   images: ProductImage[];
   active: boolean;
   featured: boolean;
@@ -45,6 +48,7 @@ const TR_FIELDS: TrField[] = [
   { key: 'name', label: 'Nom', max: 140 },
   { key: 'description', label: 'Description', rows: 4, max: 4000 },
   { key: 'details', label: 'Caractéristiques', rows: 4, list: true },
+  { key: 'colors', label: 'Couleurs (même ordre qu’en français)', rows: 3, list: true },
 ];
 
 const EMPTY: Draft = {
@@ -57,6 +61,8 @@ const EMPTY: Draft = {
   stock: '',
   description: '',
   details: '',
+  colors: '',
+  sizes: '',
   images: [],
   active: true,
   featured: false,
@@ -73,6 +79,8 @@ const toDraft = (p: AdminProduct): Draft => ({
   stock: p.stock === null || p.stock === undefined ? '' : String(p.stock),
   description: p.description,
   details: p.details.join('\n'),
+  colors: (p.colors || []).join('\n'),
+  sizes: (p.sizes || []).join('\n'),
   images: p.images,
   active: p.active !== false,
   featured: p.featured,
@@ -177,6 +185,8 @@ export default function ProductEditor({ slug }: { slug: string }) {
       stock: draft.stock.trim() === '' ? null : num(draft.stock),
       description: draft.description,
       details: draft.details.split('\n'),
+      colors: draft.colors.split('\n'),
+      sizes: draft.sizes.split('\n'),
       images: draft.images,
       active: draft.active,
       featured: draft.featured,
@@ -294,6 +304,24 @@ export default function ProductEditor({ slug }: { slug: string }) {
               </Field>
               <Field label="Caractéristiques" wide hint="Une par ligne : matière, dimensions, nombre d’empreintes, entretien…">
                 <textarea className="adm-input" rows={5} value={draft.details} onChange={(e) => set('details', e.target.value)} />
+              </Field>
+              <Field label="Couleurs" hint="Une par ligne (ex. Rose, Blanc). Vide = pas de choix de couleur.">
+                <textarea
+                  className="adm-input"
+                  rows={4}
+                  value={draft.colors}
+                  onChange={(e) => set('colors', e.target.value)}
+                  placeholder={'Rose\nBlanc\nNoir'}
+                />
+              </Field>
+              <Field label="Tailles (cm)" hint="Une par ligne, en cm (ex. 20 ou 30 x 40). Vide = pas de choix de taille.">
+                <textarea
+                  className="adm-input"
+                  rows={4}
+                  value={draft.sizes}
+                  onChange={(e) => set('sizes', e.target.value)}
+                  placeholder={'20\n24\n30 x 40'}
+                />
               </Field>
               <Translations fields={TR_FIELDS} value={draft.i18n} onChange={(v) => setDraft((d) => d && { ...d, i18n: v })} />
             </div>

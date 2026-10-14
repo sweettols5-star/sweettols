@@ -8,7 +8,7 @@
  */
 import { clean, int, reference } from './text.js';
 import { msg, nameIn, shopLang } from './i18n.js';
-import { isSellable } from './product.js';
+import { isSellable, sizeLabel } from './product.js';
 import { shippingFor } from './settings.js';
 
 export const STATUSES = ['nouvelle', 'confirmee', 'expediee', 'livree', 'annulee'];
@@ -68,28 +68,45 @@ export function buildOrder(body = {}, catalogue = [], settings) {
   if (!requested.length) return { error: msg(lang, 'emptyCart') };
 
   const bySlug = new Map(catalogue.map((p) => [p.slug, p]));
+  // One line per product + colour + size; the stock is shared by every option.
   const merged = new Map();
+  const perProduct = new Map();
   for (const line of requested) {
     const slug = clean(line?.slug, 90);
+    const color = clean(line?.color, 40);
+    const size = sizeLabel(line?.size);
     const qty = int(line?.qty, { min: 1, max: 99, fallback: 1 });
-    merged.set(slug, { qty: (merged.get(slug)?.qty || 0) + qty, price: line?.price });
+    const key = [slug, color, size].join('\u0000');
+    merged.set(key, { slug, color, size, qty: (merged.get(key)?.qty || 0) + qty, price: line?.price });
+    perProduct.set(slug, (perProduct.get(slug) || 0) + qty);
   }
 
   const items = [];
   const problems = [];
-  for (const [slug, line] of merged) {
+  for (const line of merged.values()) {
+    const { slug } = line;
     const product = bySlug.get(slug);
     if (!isSellable(product)) {
       problems.push({ slug, name: product?.name || slug, reason: 'indisponible' });
       continue;
     }
-    if (typeof product.stock === 'number' && line.qty > product.stock) {
+    if (typeof product.stock === 'number' && perProduct.get(slug) > product.stock) {
       problems.push({ slug, name: product.name, reason: 'stock', available: product.stock });
+      continue;
+    }
+    // A product with options needs one of each — and one that is still offered.
+    // Options a product no longer has are dropped, not refused.
+    const colors = product.colors || [];
+    const sizes = product.sizes || [];
+    if ((colors.length && !colors.includes(line.color)) || (sizes.length && !sizes.includes(line.size))) {
+      problems.push({ slug, name: product.name, reason: 'option' });
       continue;
     }
     items.push({
       slug,
       name: product.name,
+      ...(colors.length ? { color: line.color } : {}),
+      ...(sizes.length ? { size: line.size } : {}),
       image: product.images?.[0]?.thumb || product.images?.[0]?.url || '',
       qty: line.qty,
       price: product.price,
@@ -107,7 +124,7 @@ export function buildOrder(body = {}, catalogue = [], settings) {
     const name = nameIn(bySlug.get(first.slug), lang) || first.name;
     const error = first.reason === 'stock'
       ? msg(lang, 'stock', { name, available: first.available })
-      : msg(lang, 'unavailable', { name });
+      : msg(lang, first.reason === 'option' ? 'option' : 'unavailable', { name });
     return { error, problems };
   }
 

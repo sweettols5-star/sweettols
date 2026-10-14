@@ -4,6 +4,7 @@ import { routes } from '@/lib/routes';
 import { useCart } from './CartProvider';
 import { IconArrow, IconBag, IconTrash } from './Icons';
 import { useT } from './LangProvider';
+import { useOptionsLabel } from './LineOptions';
 import { useSettings } from './LiveCatalogue';
 import MinOrderNotice, { useMinOrder } from './MinOrderNotice';
 import Link from './Link';
@@ -15,6 +16,7 @@ export default function CartView() {
   const settings = useSettings();
   const t = useT();
   const c = t.cart;
+  const optionsOf = useOptionsLabel();
   const fees = settings.zones.map((z) => z.fee);
   const minFee = fees.length ? Math.min(...fees) : 0;
   const free = settings.freeShippingThreshold;
@@ -48,10 +50,11 @@ export default function CartView() {
       <div className="checkout">
         <div className="checkout__main">
           <ul className="lines">
-            {cart.lines.map(({ product, qty, sellable }) => {
+            {cart.lines.map(({ key, product, qty, color, size, sellable, optionGone }) => {
               const href = productHref(product.slug);
+              const options = optionsOf(product, color, size);
               return (
-                <li key={product.slug} className={`line${sellable ? '' : ' line--blocked'}`}>
+                <li key={key} className={`line${sellable ? '' : ' line--blocked'}`}>
                   <Link href={href} className="line__img" tabIndex={-1} aria-hidden>
                     <img src={product.images[0]?.thumb || '/brand/emblem.png'} alt="" width={96} height={96} />
                   </Link>
@@ -59,20 +62,21 @@ export default function CartView() {
                     <Link href={href} className="line__name">
                       {product.name}
                     </Link>
+                    {options && <span className="line__opts">{options}</span>}
                     {sellable ? (
                       <span className="line__unit">{c.perUnit(t.dh(product.price))}</span>
                     ) : (
-                      <span className="line__warn">{c.unavailable}</span>
+                      <span className="line__warn">{optionGone ? c.chooseAgain : c.unavailable}</span>
                     )}
                   </div>
                   <div className="qty qty--sm" role="group" aria-label={c.qtyOf(product.name)}>
-                    <button type="button" onClick={() => cart.setQty(product.slug, qty - 1)} aria-label={t.buy.minusOne}>
+                    <button type="button" onClick={() => cart.setQty(key, qty - 1)} aria-label={t.buy.minusOne}>
                       −
                     </button>
                     <span aria-live="polite">{qty}</span>
                     <button
                       type="button"
-                      onClick={() => cart.setQty(product.slug, qty + 1)}
+                      onClick={() => cart.setQty(key, qty + 1)}
                       aria-label={t.buy.plusOne}
                       disabled={!sellable}
                     >
@@ -83,7 +87,7 @@ export default function CartView() {
                   <button
                     type="button"
                     className="icon-btn line__remove"
-                    onClick={() => cart.remove(product.slug)}
+                    onClick={() => cart.remove(key)}
                     aria-label={c.remove(product.name)}
                   >
                     <IconTrash width={18} height={18} />

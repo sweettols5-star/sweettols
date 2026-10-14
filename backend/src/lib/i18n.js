@@ -18,6 +18,7 @@ const MESSAGES = {
     zone: 'Choisissez une zone de livraison.',
     stock: ({ name, available }) => `Stock insuffisant pour « ${name} » (${available} disponible${available > 1 ? 's' : ''}).`,
     unavailable: ({ name }) => `« ${name} » n'est plus disponible. Retirez-le du panier pour continuer.`,
+    option: ({ name }) => `La couleur ou la taille choisie pour « ${name} » n'est plus proposée. Retirez-le du panier et choisissez à nouveau.`,
     minOrder: ({ min, missing }) => `Le montant minimum de commande est de ${min} DH (livraison comprise). Il manque ${missing} DH à votre panier.`,
   },
   en: {
@@ -34,6 +35,7 @@ const MESSAGES = {
     zone: 'Please choose a delivery zone.',
     stock: ({ name, available }) => `Not enough stock for “${name}” (${available} available).`,
     unavailable: ({ name }) => `“${name}” is no longer available. Remove it from your cart to continue.`,
+    option: ({ name }) => `The colour or size chosen for “${name}” is no longer offered. Remove it from your cart and choose again.`,
     minOrder: ({ min, missing }) => `The minimum order is ${min} DH (delivery included). Add ${missing} DH more to your cart.`,
   },
   ar: {
@@ -50,6 +52,7 @@ const MESSAGES = {
     zone: 'يرجى اختيار منطقة التوصيل.',
     stock: ({ name, available }) => `المخزون غير كافٍ لـ «${name}» (المتوفر: ${available}).`,
     unavailable: ({ name }) => `«${name}» لم يعد متوفرًا. احذفه من السلة للمتابعة.`,
+    option: ({ name }) => `اللون أو المقاس المختار لـ «${name}» لم يعد متوفرًا. احذفه من السلة واختر من جديد.`,
     minOrder: ({ min, missing }) => `الحد الأدنى للطلب هو ${min} درهم (شاملًا التوصيل). أضف ${missing} درهم إلى سلتك.`,
   },
 };

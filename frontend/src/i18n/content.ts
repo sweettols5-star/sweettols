@@ -18,6 +18,24 @@ export function locProduct(p: Product, lang: Lang): Product {
   };
 }
 
+/**
+ * A colour in the shopper's language. `colors` keeps the French names (they
+ * are what the cart and the order store); the translations sit in i18n, in
+ * the same order.
+ */
+export function colorName(p: Product, color: string, lang: Lang): string {
+  if (lang === 'fr') return color;
+  const i = (p.colors || []).indexOf(color);
+  return (i >= 0 && p.i18n?.[lang]?.colors?.[i]) || color;
+}
+
+/** Does the product ask for a colour or a size before going in the cart? */
+export const hasOptions = (p: Product) => !!(p.colors?.length || p.sizes?.length);
+
+/** A chosen colour/size is (still) one the product offers — none needed when it has none. */
+export const validOptions = (p: Product, color?: string, size?: string) =>
+  (p.colors?.length ? p.colors.includes(color || '') : true) && (p.sizes?.length ? p.sizes.includes(size || '') : true);
+
 export function locCategory(c: Category, lang: Lang): Category {
   const t = lang === 'fr' ? undefined : c.i18n?.[lang];
   if (!t) return c;

@@ -960,6 +960,12 @@ a.adm-stat:hover {
   font-size: 0.78rem;
 }
 
+/* The colour/size to pack: must not be missed. */
+.adm-lines small.adm-lines__opts {
+  color: inherit;
+  font-weight: 600;
+}
+
 .adm-totals {
   margin: 0;
   display: grid;

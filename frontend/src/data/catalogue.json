@@ -11,6 +11,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -34,6 +36,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -57,6 +61,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -80,6 +86,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -103,6 +111,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -130,6 +140,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -153,6 +165,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -180,6 +194,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -195,15 +211,16 @@
     {
       "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm",
       "name": "Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 19 cm",
-      "categoryId": "appareils-patisserie",
+      "categoryId": "materiel-patisserie",
       "categoryIds": [
-        "appareils-patisserie",
         "materiel-patisserie"
       ],
       "price": 29,
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -228,6 +245,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -251,6 +270,8 @@
       "compareAtPrice": 0,
       "description": "Lisseur double pour obtenir une pâte à sucre parfaitement lisse sur le dessus et les côtés du gâteau. Le lisseur intérieur à poignée se retire du support pour travailler les bords et les surfaces étroites.",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "2-in-1 double sugar paste smoother",
@@ -301,6 +322,8 @@
         "Poussoir pour éjecter la pâte sans la déformer",
         "Environ 6,5 cm"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Stainless steel pretzel cutter with plunger",
@@ -346,6 +369,8 @@
         "Bord cannelé",
         "Poussoir pour former et démouler la pâte"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Round tartlet cutter and press",
@@ -386,6 +411,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Stainless steel spatula set",
@@ -428,6 +455,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone pastry mat – large",
@@ -458,6 +487,31 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "grattoir-coupe-pate-en-inox",
+      "name": "Grattoir & Coupe-Pâte en Inox",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791922319/sweettools/produits/grattoir-coupe-pate-en-inox-mv74a6lp.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791922319/sweettools/produits/grattoir-coupe-pate-en-inox-mv74a6lp-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T20:12:18.976Z"
+    },
+    {
       "slug": "lot-de-100-poches-a-douille-jetables",
       "name": "Lot de 100 poches à douille jetables",
       "categoryId": "materiel-patisserie",
@@ -468,6 +522,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -491,6 +547,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone spatula",
@@ -533,6 +591,8 @@
       "compareAtPrice": 0,
       "description": "Moule à madeleines en silicone qui va au four, pour des madeleines bien formées qui se démoulent sans accroc.",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone madeleine mould",
@@ -563,6 +623,60 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "moule-a-tablette-chocolat-motif-framboises",
+      "name": "Moule à tablette chocolat motif framboises",
+      "categoryId": "moules-silicone-chocolat",
+      "categoryIds": [
+        "moules-silicone-chocolat"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917559/sweettools/produits/moule-a-tablette-chocolat-motif-framboises-mv71g5ps.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917559/sweettools/produits/moule-a-tablette-chocolat-motif-framboises-mv71g5ps-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917568/sweettools/produits/moule-a-tablette-chocolat-motif-framboises-mv71gce7.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917568/sweettools/produits/moule-a-tablette-chocolat-motif-framboises-mv71gce7-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T18:53:01.993Z"
+    },
+    {
+      "slug": "moule-a-tablette-de-chocolat",
+      "name": "Moule à tablette de chocolat",
+      "categoryId": "moules-silicone-chocolat",
+      "categoryIds": [
+        "moules-silicone-chocolat"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917359/sweettools/produits/moule-a-tablette-de-chocolat-mv71burt.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917359/sweettools/produits/moule-a-tablette-de-chocolat-mv71burt-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T18:43:52.235Z"
+    },
+    {
       "slug": "moule-silicone-vetements-bebe",
       "name": "Moule en silicone – Vêtements de bébé pour décorer gâteaux de naissance, de baptême et de baby shower.",
       "categoryId": "moules-silicone",
@@ -576,6 +690,8 @@
         "Environ 17 × 6 cm",
         "Silicone alimentaire souple et antiadhésif"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Baby clothes",
@@ -619,6 +735,8 @@
         "24 empreintes",
         "Silicone qui supporte la cuisson au four"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – 24 round discs",
@@ -659,6 +777,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Flowers",
@@ -699,6 +819,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Small flowers",
@@ -739,6 +861,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Venetian ornaments",
@@ -779,6 +903,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Bows, hearts and crowns",
@@ -819,6 +945,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -832,6 +960,36 @@
       "createdAt": "2026-10-11T09:45:27.426Z"
     },
     {
+      "slug": "moule-en-silicone-pour-chocolat-formes-rondes",
+      "name": "Moule en silicone pour chocolat – Formes rondes",
+      "categoryId": "appareils-patisserie",
+      "categoryIds": [
+        "appareils-patisserie",
+        "moules-silicone-chocolat"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791918055/sweettools/produits/moule-en-silicone-pour-chocolat-formes-rondes-mv71qs1x.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791918055/sweettools/produits/moule-en-silicone-pour-chocolat-formes-rondes-mv71qs1x-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791918072/sweettools/produits/moule-en-silicone-pour-chocolat-formes-rondes-mv71r5bb.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791918072/sweettools/produits/moule-en-silicone-pour-chocolat-formes-rondes-mv71r5bb-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T19:01:21.160Z"
+    },
+    {
       "slug": "moule-en-silicone",
       "name": "Moule en silicone pour dentelles et tuiles – Mélange de fleurs dimensions 47 x 27 cm",
       "categoryId": "tapis-patisserie",
@@ -842,6 +1000,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -855,6 +1015,93 @@
       "createdAt": "2026-10-11T13:01:44.038Z"
     },
     {
+      "slug": "moule-en-silicone-pour-tablette-de-chocolat-forme-ondulee",
+      "name": "Moule en silicone pour tablette de chocolat (forme ondulée)",
+      "categoryId": "moules-silicone-chocolat",
+      "categoryIds": [
+        "moules-silicone-chocolat"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791921030/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-forme-ondulee-mv73ijtg.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791921030/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-forme-ondulee-mv73ijtg-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791921079/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-forme-ondulee-mv73jlng.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791921079/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-forme-ondulee-mv73jlng-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T19:51:36.289Z"
+    },
+    {
+      "slug": "moule-en-silicone-pour-tablette-de-chocolat-a-bulles",
+      "name": "Moule en silicone pour tablette de chocolat à bulles",
+      "categoryId": "moules-silicone-chocolat",
+      "categoryIds": [
+        "moules-silicone-chocolat"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917843/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-a-bulles-mv71m8bj.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917843/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-a-bulles-mv71m8bj-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917853/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-a-bulles-mv71mgrh.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917854/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-a-bulles-mv71mgrh-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T18:57:50.318Z"
+    },
+    {
+      "slug": "moule-en-silicone-pour-tablette-de-chocolat-geometrique",
+      "name": "Moule en silicone pour tablette de chocolat géométrique",
+      "categoryId": "moules-silicone-chocolat",
+      "categoryIds": [
+        "moules-silicone-chocolat"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791920358/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-geometrique-mv7344ts.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791920358/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-geometrique-mv7344ts-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791920369/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-geometrique-mv734dn5.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791920369/sweettools/produits/moule-en-silicone-pour-tablette-de-chocolat-geometrique-mv734dn5-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T19:39:39.392Z"
+    },
+    {
       "slug": "moule-silicone-tablettes-chocolat-3-formes",
       "name": "Moule en silicone pour tablettes de chocolat – 3 formes",
       "categoryId": "moules-silicone-chocolat",
@@ -865,6 +1112,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone chocolate bar mould – 3 shapes",
@@ -908,6 +1157,8 @@
         "Motif arc-en-ciel en relief",
         "Démoulage facile grâce au silicone souple"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Silicone chocolate bar mould – rainbow",
@@ -938,6 +1189,31 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "moule-silicone-tablette-de-chocolat-fragment-15-3-x-7-8-cm",
+      "name": "Moule Silicone Tablette de Chocolat Fragment 15.3 x 7.8 cm",
+      "categoryId": "moules-silicone-chocolat",
+      "categoryIds": [
+        "moules-silicone-chocolat"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917308/sweettools/produits/moule-silicone-tablette-de-chocolat-fragment-15-3-x-7-8-cm-mv71arcx.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791917308/sweettools/produits/moule-silicone-tablette-de-chocolat-fragment-15-3-x-7-8-cm-mv71arcx-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T18:48:39.002Z"
+    },
+    {
       "slug": "papier-decoratif-paillettes-feuilles-d-or-d-imitation",
       "name": "Papier Décoratif Paillettes & Feuilles d'Or d'Imitation",
       "categoryId": "decoration-patisserie",
@@ -948,6 +1224,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -978,6 +1256,8 @@
         "Plateau rotatif en métal",
         "Pied stable"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Stainless steel turntable",
@@ -1018,6 +1298,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1041,6 +1323,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1065,6 +1349,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1096,6 +1382,8 @@
         "Anneaux d'épaisseur amovibles",
         "Surface lisse qui ne marque pas la pâte"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Sugar paste rolling pin with thickness rings",
@@ -1132,6 +1420,56 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "set-de-15-pinceaux-de-decoration-pour-patisserie-et-chocolaterie",
+      "name": "Set de 15 pinceaux de décoration pour pâtisserie et chocolaterie",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791923687/sweettools/produits/set-de-15-pinceaux-de-decoration-pour-patisserie-et-chocolaterie-mv753hr1.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791923687/sweettools/produits/set-de-15-pinceaux-de-decoration-pour-patisserie-et-chocolaterie-mv753hr1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T20:35:34.659Z"
+    },
+    {
+      "slug": "set-12-douilles-patisserie-en-inox",
+      "name": "SET. 12 Douilles Pâtisserie en Inox",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 95,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791923219/sweettools/produits/set-12-douilles-patisserie-en-inox-mv74tgyz.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791923219/sweettools/produits/set-12-douilles-patisserie-en-inox-mv74tgyz-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T20:27:14.137Z"
+    },
+    {
       "slug": "spatule-coudee",
       "name": "Spatule coudée en acier inoxydable pour napper, lisser le dessus d'un gâteau et soulever les décors sans y mettre les doigts",
       "categoryId": "materiel-patisserie",
@@ -1145,6 +1483,8 @@
         "Lame coudée en acier inoxydable",
         "Manche noir antidérapant"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Offset spatula",
@@ -1188,6 +1528,8 @@
         "60 × 40 cm",
         "Cercles de repère imprimés"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Macaron mat – large 60 × 40 cm",
@@ -1231,6 +1573,8 @@
         "30 × 40 cm",
         "Cercles de repère imprimés"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Macaron mat – small 30 × 40 cm",
@@ -1271,6 +1615,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1297,6 +1643,8 @@
         "Toile microperforée",
         "Remplace le papier sulfurisé, réutilisable"
       ],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Oven baking mat – large",
@@ -1337,6 +1685,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Oven baking mat – small",
@@ -1377,6 +1727,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1408,6 +1760,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1439,6 +1793,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1462,6 +1818,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1489,6 +1847,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {},
       "images": [
         {
@@ -1502,6 +1862,35 @@
       "createdAt": "2026-10-11T12:58:59.816Z"
     },
     {
+      "slug": "thermometre-de-cuisine-digital-24-cm-tp300",
+      "name": "Thermomètre de Cuisine Digital 24 cm TP300",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 70,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791922681/sweettools/produits/thermometre-de-cuisine-digital-24-cm-tp300-mv74hxd9.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791922681/sweettools/produits/thermometre-de-cuisine-digital-24-cm-tp300-mv74hxd9-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791922687/sweettools/produits/thermometre-de-cuisine-digital-24-cm-tp300-mv74i2a4.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791922687/sweettools/produits/thermometre-de-cuisine-digital-24-cm-tp300-mv74i2a4-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-13T20:18:19.016Z"
+    },
+    {
       "slug": "grattoirs-a-gateau-3-pieces",
       "name": "Trois grattoirs souples pour lisser la crème au beurre, racler un bol et réaliser des effets striés sur le tour d'un gâteau",
       "categoryId": "materiel-patisserie",
@@ -1512,6 +1901,8 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
+      "colors": [],
+      "sizes": [],
       "i18n": {
         "en": {
           "name": "Cake scrapers – 3 pieces",
@@ -1826,5 +2217,5 @@
       }
     }
   },
-  "generatedAt": "2026-10-13T11:16:16.127Z"
+  "generatedAt": "2026-10-13T23:41:14.346Z"
 }

@@ -1,21 +1,36 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { validOptions } from '@/i18n/content';
 import { isSellable } from '@/lib/catalogue';
 import type { Product } from '@/types';
 import { useProducts } from './LiveCatalogue';
 
 const STORAGE_KEY = 'sweettools.cart.v1';
 
-/** Only slug + qty are stored: prices are always re-read from the catalogue. */
-type StoredLine = { slug: string; qty: number };
+/**
+ * Only slug, options and qty are stored: prices are always re-read from the
+ * catalogue. The same product in two colours makes two lines.
+ */
+type StoredLine = { slug: string; qty: number; color?: string; size?: string };
+
+/** Chosen colour (French name) and size (cm, no unit), when the product has some. */
+export type CartOptions = { color?: string; size?: string };
 
 export type CartLine = {
+  /** Identifies the line for setQty / remove: slug + options. */
+  key: string;
   product: Product;
   qty: number;
-  /** False when the product lost its price or stock since it was added. */
+  color?: string;
+  size?: string;
+  /** False when the product lost its price, stock or the chosen option since it was added. */
   sellable: boolean;
+  /** The chosen colour or size is no longer offered (or was never chosen). */
+  optionGone: boolean;
 };
+
+const keyOf = (l: { slug: string; color?: string; size?: string }) => [l.slug, l.color || '', l.size || ''].join('|');
 
 interface CartApi {
   lines: CartLine[];
@@ -25,9 +40,9 @@ interface CartApi {
   subtotal: number;
   /** Something in the cart can no longer be ordered. */
   blocked: boolean;
-  add: (product: Product, qty?: number) => void;
-  setQty: (slug: string, qty: number) => void;
-  remove: (slug: string) => void;
+  add: (product: Product, qty?: number, options?: CartOptions) => void;
+  setQty: (key: string, qty: number) => void;
+  remove: (key: string) => void;
   clear: () => void;
   /** False on the first render so server and client HTML match. */
   ready: boolean;
@@ -51,7 +66,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setStored(
           parsed
             .filter((l) => l && typeof l.slug === 'string' && Number.isFinite(l.qty))
-            .map((l) => ({ slug: l.slug, qty: Math.max(1, Math.min(MAX, Math.floor(l.qty))) })),
+            .map((l) => ({
+              slug: l.slug,
+              qty: Math.max(1, Math.min(MAX, Math.floor(l.qty))),
+              ...(typeof l.color === 'string' && l.color ? { color: l.color } : {}),
+              ...(typeof l.size === 'string' && l.size ? { size: l.size } : {}),
+            })),
         );
       }
     } catch {
@@ -71,9 +91,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const api = useMemo<CartApi>(() => {
     const lines = stored
-      .map((l) => {
+      .map((l): CartLine | null => {
         const product = products.find((p) => p.slug === l.slug);
-        return product ? { product, qty: l.qty, sellable: isSellable(product) } : null;
+        if (!product) return null;
+        const optionGone = !validOptions(product, l.color, l.size);
+        return {
+          key: keyOf(l),
+          product,
+          qty: l.qty,
+          color: l.color,
+          size: l.size,
+          sellable: isSellable(product) && !optionGone,
+          optionGone,
+        };
       })
       .filter((l): l is CartLine => l !== null);
 
@@ -84,22 +114,29 @@ export function CartProvider({ children }: { children: ReactNode }) {
       count: lines.reduce((n, l) => n + l.qty, 0),
       subtotal: lines.reduce((n, l) => n + (l.sellable ? l.product.price * l.qty : 0), 0),
       blocked: lines.some((l) => !l.sellable),
-      add: (product, qty = 1) => {
+      add: (product, qty = 1, options = {}) => {
         if (!isSellable(product)) return;
+        const line: StoredLine = {
+          slug: product.slug,
+          qty: Math.min(MAX, qty),
+          ...(product.colors?.length && options.color ? { color: options.color } : {}),
+          ...(product.sizes?.length && options.size ? { size: options.size } : {}),
+        };
+        const key = keyOf(line);
         setStored((prev) =>
-          prev.some((l) => l.slug === product.slug)
-            ? prev.map((l) => (l.slug === product.slug ? { ...l, qty: Math.min(MAX, l.qty + qty) } : l))
-            : [...prev, { slug: product.slug, qty: Math.min(MAX, qty) }],
+          prev.some((l) => keyOf(l) === key)
+            ? prev.map((l) => (keyOf(l) === key ? { ...l, qty: Math.min(MAX, l.qty + qty) } : l))
+            : [...prev, line],
         );
         setLastAdd(Date.now());
       },
-      setQty: (slug, qty) =>
+      setQty: (key, qty) =>
         setStored((prev) =>
           qty <= 0
-            ? prev.filter((l) => l.slug !== slug)
-            : prev.map((l) => (l.slug === slug ? { ...l, qty: Math.min(MAX, qty) } : l)),
+            ? prev.filter((l) => keyOf(l) !== key)
+            : prev.map((l) => (keyOf(l) === key ? { ...l, qty: Math.min(MAX, qty) } : l)),
         ),
-      remove: (slug) => setStored((prev) => prev.filter((l) => l.slug !== slug)),
+      remove: (key) => setStored((prev) => prev.filter((l) => keyOf(l) !== key)),
       clear: () => setStored([]),
     };
   }, [stored, ready, products, lastAdd]);

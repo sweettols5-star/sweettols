@@ -1157,6 +1157,82 @@ p {
   min-height: 52px;
 }
 
+/* Colour / size chips on the product page */
+.opts {
+  margin: 0 0 6px;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.opts legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.opts__value {
+  margin-inline-start: 8px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.opts__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.opt {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.opt:hover {
+  border-color: var(--violet-100);
+}
+
+.opt.is-checked {
+  border-color: var(--violet);
+  background: var(--violet-50);
+  color: var(--violet-dark);
+  font-weight: 600;
+}
+
+.opt input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.opt:has(input:focus-visible) {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+
+.opts[aria-invalid='true'] .opt {
+  border-color: var(--error);
+}
+
+.opts .field__error {
+  margin-top: 6px;
+}
+
+.line__opts {
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
 .qty {
   display: inline-flex;
   align-items: center;

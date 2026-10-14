@@ -9,6 +9,7 @@ import { whatsappUrl } from '@/lib/whatsapp';
 import { useCart } from './CartProvider';
 import { IconCheck, IconWhatsapp } from './Icons';
 import { useLang, useT } from './LangProvider';
+import { useOptionsLabel } from './LineOptions';
 import { useProducts, useSettings } from './LiveCatalogue';
 import MinOrderNotice, { useMinOrder } from './MinOrderNotice';
 import Field from './FormField';
@@ -17,7 +18,7 @@ import OrderSteps from './OrderSteps';
 
 type Confirmed = {
   reference: string;
-  items: Array<{ slug: string; name: string; qty: number; price: number; lineTotal: number }>;
+  items: Array<{ slug: string; name: string; color?: string; size?: string; qty: number; price: number; lineTotal: number }>;
   subtotal: number;
   shipping: number;
   invoiceFee: number;
@@ -39,6 +40,7 @@ export default function CheckoutForm() {
   const lang = useLang();
   const t = useT();
   const k = t.checkout;
+  const optionsOf = useOptionsLabel();
   const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', address: '', notes: '' });
   const [zoneId, setZoneId] = useState('');
   const [invoice, setInvoice] = useState({ wanted: false, company: '', ice: '' });
@@ -139,7 +141,7 @@ export default function CheckoutForm() {
           customer: form,
           zoneId,
           invoice: invoice.wanted ? { company: invoice.company, ice: invoice.ice } : null,
-          items: cart.lines.map((l) => ({ slug: l.product.slug, qty: l.qty, price: l.product.price })),
+          items: cart.lines.map((l) => ({ slug: l.product.slug, color: l.color, size: l.size, qty: l.qty, price: l.product.price })),
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -296,9 +298,10 @@ export default function CheckoutForm() {
           <h2>{t.cart.summary}</h2>
           <ul className="summary__items">
             {cart.lines.map((l) => (
-              <li key={l.product.slug}>
+              <li key={l.key}>
                 <span>
                   {l.qty} × {l.product.name}
+                  {(l.color || l.size) && <small> — {optionsOf(l.product, l.color, l.size)}</small>}
                 </span>
                 <span>{l.sellable ? t.dh(l.product.price * l.qty) : '—'}</span>
               </li>
@@ -342,7 +345,11 @@ export default function CheckoutForm() {
               className="btn btn--ghost btn--block"
               href={whatsappUrl(
                 settings.whatsapp,
-                k.whatsappOrderMessage(cart.lines.map((l) => `- ${l.qty} × ${l.product.name}`).join('\n')),
+                k.whatsappOrderMessage(
+                  cart.lines
+                    .map((l) => `- ${l.qty} × ${l.product.name}${l.color || l.size ? ` (${optionsOf(l.product, l.color, l.size)})` : ''}`)
+                    .join('\n'),
+                ),
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -367,6 +374,7 @@ function Confirmation({ order, whatsapp, t }: { order: Confirmed; whatsapp: stri
   // The API stores French names (the admin reads them); show the shopper's language.
   const products = useProducts();
   const nameOf = (slug: string, fallback: string) => products.find((p) => p.slug === slug)?.name || fallback;
+  const optionsOf = useOptionsLabel();
   return (
     <div className="container section">
       <OrderSteps current={3} />
@@ -380,9 +388,12 @@ function Confirmation({ order, whatsapp, t }: { order: Confirmed; whatsapp: stri
         <div className="summary confirm__summary">
           <ul className="summary__items">
             {order.items.map((l) => (
-              <li key={l.slug}>
+              <li key={[l.slug, l.color, l.size].join('|')}>
                 <span>
                   {l.qty} × {nameOf(l.slug, l.name)}
+                  {(l.color || l.size) && (
+                    <small> — {optionsOf(products.find((p) => p.slug === l.slug), l.color, l.size)}</small>
+                  )}
                 </span>
                 <span>{t.dh(l.lineTotal)}</span>
               </li>
