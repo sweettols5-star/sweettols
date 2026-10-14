@@ -1792,3 +1792,32 @@ a.adm-stat:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* Product editor: French / English / Arabic tabs over the text fields. */
+.adm-langs {
+  margin-bottom: 8px;
+}
+
+.adm-langs b {
+  font-weight: 600;
+}
+
+/* Translations still missing for this language. */
+.adm-langs button span.adm-langs__todo {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.adm-langs button.is-active span.adm-langs__todo {
+  color: #fde68a;
+}
+
+.adm-langs__hint {
+  margin: 0 0 14px;
+  font-size: 0.82rem;
+}
+
+.adm-fields [dir='rtl'] {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  text-align: right;
+}

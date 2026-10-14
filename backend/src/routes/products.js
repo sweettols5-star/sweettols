@@ -3,7 +3,7 @@ import { requireAdmin } from '../auth.js';
 import { store } from '../store/index.js';
 import { normaliseProduct } from '../lib/product.js';
 import { clean, translations } from '../lib/text.js';
-import { autoTranslate } from '../lib/translate.js';
+import { autoTranslate, translationEnabled } from '../lib/translate.js';
 
 /** Fills the missing English / Arabic translations (see lib/translate.js). */
 async function withTranslations(product, existing = null) {
@@ -22,6 +22,11 @@ productRoutes.get('/products', requireAdmin, async (req, res) => {
     console.error('[products GET]', e);
     res.status(500).json({ error: 'Erreur serveur' });
   }
+});
+
+/** Tells the product editor whether empty translations get filled on save. */
+productRoutes.get('/translation', requireAdmin, (req, res) => {
+  res.json({ enabled: translationEnabled() });
 });
 
 productRoutes.get('/products/:slug', requireAdmin, async (req, res) => {

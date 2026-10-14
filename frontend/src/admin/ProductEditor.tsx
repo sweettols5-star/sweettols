@@ -7,7 +7,7 @@ import { hasStaticPage } from '@/components/LiveCatalogue';
 import { routes } from '@/lib/routes';
 import type { ProductImage } from '@/types';
 import { api, errorText, uploadPhoto } from './client';
-import Translations, { fromTrDraft, toTrDraft, type TrDraft, type TrField } from './Translations';
+import { fromTrDraft, toTrDraft, type TrDraft, type TrField, type TrLang } from './Translations';
 import type { AdminCategory, AdminProduct } from './types';
 import { BusyButton, carryFlash, Field, Flash, Loading, SlowHint, Spinner, useFlash } from './ui';
 
@@ -48,7 +48,16 @@ const TR_FIELDS: TrField[] = [
   { key: 'name', label: 'Nom', max: 140 },
   { key: 'description', label: 'Description', rows: 4, max: 4000 },
   { key: 'details', label: 'Caractéristiques', rows: 4, list: true },
-  { key: 'colors', label: 'Couleurs (même ordre qu’en français)', rows: 3, list: true },
+  { key: 'colors', label: 'Couleurs', rows: 3, list: true },
+];
+
+/** The text fields that exist in every language, edited under one tab bar. */
+type TextKey = 'name' | 'description' | 'details' | 'colors';
+type EditLang = 'fr' | TrLang;
+const EDIT_LANGS: Array<{ lang: EditLang; label: string; dir: 'ltr' | 'rtl' }> = [
+  { lang: 'fr', label: 'Français', dir: 'ltr' },
+  { lang: 'en', label: 'English', dir: 'ltr' },
+  { lang: 'ar', label: 'العربية', dir: 'rtl' },
 ];
 
 const EMPTY: Draft = {
@@ -98,6 +107,8 @@ export default function ProductEditor({ slug }: { slug: string }) {
   const [slugTouched, setSlugTouched] = useState(!!slug);
   const [busy, setBusy] = useState<'' | 'save' | 'delete'>('');
   const [uploading, setUploading] = useState(0);
+  const [lang, setLang] = useState<EditLang>('fr');
+  const [autoTranslate, setAutoTranslate] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const flash = useFlash();
 
@@ -110,6 +121,8 @@ export default function ProductEditor({ slug }: { slug: string }) {
           slug ? api<{ product: AdminProduct }>(`/api/admin/products/${encodeURIComponent(slug)}`) : Promise.resolve(null),
         ]);
         if (!alive) return;
+        // Only changes a hint: an older API without the route is fine.
+        api<{ enabled: boolean }>('/api/admin/translation').then((r) => alive && setAutoTranslate(r.enabled), () => {});
         setCategories(cats);
         if (prod) {
           setOriginal(prod.product);
@@ -131,6 +144,19 @@ export default function ProductEditor({ slug }: { slug: string }) {
   const set = <K extends keyof Draft>(k: K, v: Draft[K]) => setDraft((d) => (d ? { ...d, [k]: v } : d));
   const onName = (name: string) =>
     setDraft((d) => (d ? { ...d, name, ...(slugTouched ? {} : { slug: slugify(name) }) } : d));
+
+  // The four text fields, in the language of the active tab.
+  const text = (k: TextKey) => (lang === 'fr' ? draft[k] : draft.i18n[lang]?.[k] || '');
+  const setText = (k: TextKey, v: string) => {
+    if (lang === 'fr') return k === 'name' ? onName(v) : set(k, v);
+    const l = lang;
+    setDraft((d) => d && { ...d, i18n: { ...d.i18n, [l]: { ...d.i18n[l], [k]: v } } });
+  };
+  const textKeys = TR_FIELDS.map((f) => f.key as TextKey).filter((k) => draft[k].trim());
+  const filled = (l: TrLang) => textKeys.filter((k) => (draft.i18n[l]?.[k] || '').trim()).length;
+  const dir = lang === 'ar' ? 'rtl' : 'ltr';
+  /** Inputs of a translation tab: right-to-left for Arabic, the French as a guide. */
+  const tr = (k: TextKey) => (lang === 'fr' ? {} : { dir, lang, placeholder: draft[k] });
 
   const price = num(draft.price);
   const compare = num(draft.compareAtPrice);
@@ -246,9 +272,43 @@ export default function ProductEditor({ slug }: { slug: string }) {
         <div className="adm-editor__main">
           <section className="adm-card">
             <h2 className="adm-h2">Informations</h2>
+            <div className="adm-tabs adm-langs" role="tablist" aria-label="Langue des textes">
+              {EDIT_LANGS.map((l) => (
+                <button
+                  key={l.lang}
+                  type="button"
+                  role="tab"
+                  aria-selected={lang === l.lang}
+                  className={lang === l.lang ? 'is-active' : ''}
+                  onClick={() => setLang(l.lang)}
+                >
+                  <b lang={l.lang}>{l.label}</b>
+                  {l.lang !== 'fr' && textKeys.length > 0 && (
+                    <span className={filled(l.lang) < textKeys.length ? 'adm-langs__todo' : ''}>
+                      {filled(l.lang)}/{textKeys.length}
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+            {lang !== 'fr' && (
+              <p className="adm-muted adm-langs__hint">
+                {autoTranslate
+                  ? 'Laissez vide : traduit automatiquement à l’enregistrement (relisez ensuite). Un texte modifié ici n’est jamais remplacé.'
+                  : 'Laissez vide : la boutique affiche le texte français.'}{' '}
+                Le prix, les photos, la catégorie et les tailles sont communs aux trois langues.
+              </p>
+            )}
             <div className="adm-fields">
-              <Field label="Nom du produit" wide>
-                <input className="adm-input" required value={draft.name} onChange={(e) => onName(e.target.value)} maxLength={140} />
+              <Field label={lang === 'fr' ? 'Nom du produit' : 'Nom du produit (traduction)'} wide>
+                <input
+                  className="adm-input"
+                  required={lang === 'fr'}
+                  value={text('name')}
+                  onChange={(e) => setText('name', e.target.value)}
+                  maxLength={140}
+                  {...tr('name')}
+                />
               </Field>
               <Field label="Catégorie principale" hint="Fil d’Ariane, Google et « même catégorie ».">
                 <select
@@ -300,20 +360,35 @@ export default function ProductEditor({ slug }: { slug: string }) {
                 </div>
               )}
               <Field label="Description" wide hint="Affichée sur la fiche et reprise par Google.">
-                <textarea className="adm-input" rows={5} value={draft.description} onChange={(e) => set('description', e.target.value)} maxLength={4000} />
-              </Field>
-              <Field label="Caractéristiques" wide hint="Une par ligne : matière, dimensions, nombre d’empreintes, entretien…">
-                <textarea className="adm-input" rows={5} value={draft.details} onChange={(e) => set('details', e.target.value)} />
-              </Field>
-              <Field label="Couleurs" hint="Une par ligne (ex. Rose, Blanc). Vide = pas de choix de couleur.">
                 <textarea
                   className="adm-input"
-                  rows={4}
-                  value={draft.colors}
-                  onChange={(e) => set('colors', e.target.value)}
-                  placeholder={'Rose\nBlanc\nNoir'}
+                  rows={5}
+                  value={text('description')}
+                  onChange={(e) => setText('description', e.target.value)}
+                  maxLength={4000}
+                  {...tr('description')}
                 />
               </Field>
+              <Field label="Caractéristiques" wide hint="Une par ligne : matière, dimensions, nombre d’empreintes, entretien…">
+                <textarea className="adm-input" rows={5} value={text('details')} onChange={(e) => setText('details', e.target.value)} {...tr('details')} />
+              </Field>
+              {lang === 'fr' ? (
+                <Field label="Couleurs" hint="Une par ligne (ex. Rose, Blanc). Vide = pas de choix de couleur.">
+                  <textarea
+                    className="adm-input"
+                    rows={4}
+                    value={draft.colors}
+                    onChange={(e) => set('colors', e.target.value)}
+                    placeholder={'Rose\nBlanc\nNoir'}
+                  />
+                </Field>
+              ) : (
+                draft.colors.trim() && (
+                  <Field label="Couleurs" hint="Une par ligne, dans le même ordre qu’en français.">
+                    <textarea className="adm-input" rows={4} value={text('colors')} onChange={(e) => setText('colors', e.target.value)} {...tr('colors')} />
+                  </Field>
+                )
+              )}
               <Field label="Tailles (cm)" hint="Une par ligne, en cm (ex. 20 ou 30 x 40). Vide = pas de choix de taille.">
                 <textarea
                   className="adm-input"
@@ -323,12 +398,6 @@ export default function ProductEditor({ slug }: { slug: string }) {
                   placeholder={'20\n24\n30 x 40'}
                 />
               </Field>
-              <Translations
-                fields={TR_FIELDS}
-                value={draft.i18n}
-                onChange={(v) => setDraft((d) => d && { ...d, i18n: v })}
-                hint="Les champs vides sont traduits automatiquement à l’enregistrement (relisez-les ensuite). Une traduction modifiée ici n’est plus jamais remplacée."
-              />
             </div>
           </section>
 

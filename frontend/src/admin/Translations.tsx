@@ -51,14 +51,11 @@ export default function Translations({
   value,
   onChange,
   open = false,
-  hint = 'Facultatif : un champ vide affiche le texte français à la place.',
 }: {
   fields: TrField[];
   value: TrDraft;
   onChange: (next: TrDraft) => void;
   open?: boolean;
-  /** Overrides the default note under the title. */
-  hint?: string;
 }) {
   const set = (lang: TrLang, key: string, v: string) => onChange({ ...value, [lang]: { ...value[lang], [key]: v } });
   const status = LANGS.map(({ lang }) => `${lang.toUpperCase()} ${filled(value, lang, fields)}/${fields.length}`).join(' · ');
@@ -68,7 +65,7 @@ export default function Translations({
       <summary>
         Traductions <span className="adm-muted">anglais / arabe — {status}</span>
       </summary>
-      <p className="adm-muted adm-tr__hint">{hint}</p>
+      <p className="adm-muted adm-tr__hint">Facultatif : un champ vide affiche le texte français à la place.</p>
       <div className="adm-tr__cols">
         {LANGS.map(({ lang, label, dir }) => (
           <div key={lang} className="adm-tr__col">
