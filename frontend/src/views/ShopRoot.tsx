@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { LangProvider } from '@/components/LangProvider';
+import MetaPixel from '@/components/MetaPixel';
 import ShopChrome from '@/components/ShopChrome';
 import { dirOf, type Lang } from '@/i18n';
 import { fontClass, fontClassAr } from '@/lib/fonts';
@@ -18,6 +19,7 @@ export default function ShopRoot({ lang, children }: { lang: Lang; children: Rea
         <LangProvider lang={lang}>
           <ShopChrome>{children}</ShopChrome>
         </LangProvider>
+        <MetaPixel />
       </body>
     </html>
   );

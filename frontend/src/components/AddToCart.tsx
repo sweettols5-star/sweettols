@@ -11,6 +11,7 @@ import { IconBag, IconCheck, IconWhatsapp } from './Icons';
 import { useLang, useT } from './LangProvider';
 import { useSettings } from './LiveCatalogue';
 import Link from './Link';
+import { trackPixel } from './MetaPixel';
 import { productHref } from './ProductCard';
 
 /**
@@ -90,7 +91,15 @@ export default function AddToCart({ product, withQty = false }: { product: Produ
       setMissing(true);
       return;
     }
-    cart.add(product, withQty ? qty : 1, { color, size });
+    const n = withQty ? qty : 1;
+    cart.add(product, n, { color, size });
+    trackPixel('AddToCart', {
+      content_ids: [product.slug],
+      content_name: product.name,
+      content_type: 'product',
+      contents: [{ id: product.slug, quantity: n, item_price: product.price }],
+      value: product.price * n,
+    });
     setAdded(true);
   };
 

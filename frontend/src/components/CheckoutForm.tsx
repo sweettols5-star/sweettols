@@ -14,6 +14,7 @@ import { useProducts, useSettings } from './LiveCatalogue';
 import MinOrderNotice, { useMinOrder } from './MinOrderNotice';
 import Field from './FormField';
 import Link from './Link';
+import { trackPixel } from './MetaPixel';
 import OrderSteps from './OrderSteps';
 
 type Confirmed = {
@@ -154,6 +155,19 @@ export default function CheckoutForm() {
       } catch {
         /* ignore */
       }
+      const order = data as Confirmed;
+      // The order reference as event ID: Meta drops a duplicate of the same order.
+      trackPixel(
+        'Purchase',
+        {
+          content_ids: order.items.map((l) => l.slug),
+          content_type: 'product',
+          contents: order.items.map((l) => ({ id: l.slug, quantity: l.qty, item_price: l.price })),
+          num_items: order.items.reduce((n, l) => n + l.qty, 0),
+          value: order.total,
+        },
+        order.reference,
+      );
       setDone({ ...data, name: form.name.trim(), phone: form.phone.trim() });
       cart.clear();
       window.scrollTo({ top: 0, behavior: 'smooth' });
