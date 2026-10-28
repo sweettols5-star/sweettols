@@ -164,7 +164,7 @@ export default function CheckoutForm() {
           content_type: 'product',
           contents: order.items.map((l) => ({ id: l.slug, quantity: l.qty, item_price: l.price })),
           num_items: order.items.reduce((n, l) => n + l.qty, 0),
-          value: order.total,
+          value: order.subtotal,
         },
         order.reference,
       );
