@@ -4,6 +4,7 @@ import { store } from '../store/index.js';
 import { buildOrder, STATUSES, stockDelta } from '../lib/order.js';
 import { clean } from '../lib/text.js';
 import { readSettings } from '../lib/settings.js';
+import { sendPurchase } from '../lib/meta.js';
 
 export const orderRoutes = Router();
 export const adminOrderRoutes = Router();
@@ -29,6 +30,8 @@ orderRoutes.post('/orders', throttle({ tries: 6, windowMs: 60_000 }), async (req
     const saved = await store.orders.create(order);
     await moveStock(saved.items, -1);
     console.log('[commande] %s — %s — %d DH', saved.reference, saved.customer.name, saved.total);
+    // Not awaited: the customer doesn't wait for Meta.
+    sendPurchase(saved, { ip: req.ip, userAgent: req.get('user-agent'), browser: req.body?.meta });
     res.status(201).json({
       ok: true,
       reference: saved.reference,

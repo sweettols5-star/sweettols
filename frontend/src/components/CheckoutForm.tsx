@@ -143,6 +143,8 @@ export default function CheckoutForm() {
           zoneId,
           invoice: invoice.wanted ? { company: invoice.company, ice: invoice.ice } : null,
           items: cart.lines.map((l) => ({ slug: l.product.slug, color: l.color, size: l.size, qty: l.qty, price: l.product.price })),
+          // For the server-side Purchase (Conversions API), matched to this browser.
+          meta: { fbp: cookie('_fbp'), fbc: cookie('_fbc'), url: location.href },
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -375,6 +377,10 @@ export default function CheckoutForm() {
       </form>
     </div>
   );
+}
+
+function cookie(name: string) {
+  return document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))?.[1];
 }
 
 function pick(o: Record<string, unknown>) {
