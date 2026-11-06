@@ -13,6 +13,7 @@ export type AdminProduct = {
   details: string[];
   colors?: string[];
   sizes?: string[];
+  shapes?: string[];
   images: ProductImage[];
   i18n?: Product['i18n'];
   /** null = not tracked (always orderable). */
@@ -44,9 +45,10 @@ export type Order = {
     slug: string;
     name: string;
     image: string;
-    /** Chosen options (French colour name, size in cm without the unit). */
+    /** Chosen options (French colour / shape name, size in cm without the unit). */
     color?: string;
     size?: string;
+    shape?: string;
     qty: number;
     price: number;
     lineTotal: number;

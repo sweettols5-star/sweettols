@@ -58,8 +58,8 @@ export default function KitCard({ kit }: { kit: Kit }) {
             type="button"
             className={`btn btn--primary${added ? ' is-done' : ''}`}
             onClick={() => {
-              // Colours/sizes: the first of each — shown in the cart, to change on the product page.
-              sellable.forEach((p) => cart.add(p, 1, { color: p.colors?.[0], size: p.sizes?.[0] }));
+              // Colours/sizes/shapes: the first of each — shown in the cart, to change on the product page.
+              sellable.forEach((p) => cart.add(p, 1, { color: p.colors?.[0], size: p.sizes?.[0], shape: p.shapes?.[0] }));
               setAdded(true);
             }}
           >

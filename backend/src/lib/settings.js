@@ -19,7 +19,7 @@ export const DEFAULT_SETTINGS = {
   instagram: '',
   facebook: '',
   tiktok: '',
-  announcement: 'Paiement à la livraison partout au Maroc',
+  announcement: 'Société spécialisée dans la vente de matériel de pâtisserie',
   freeShippingThreshold: 0,
   // Client rule (2026-10-10): no order under 200 DH, delivery included (invoice VAT not).
   minOrder: 200,

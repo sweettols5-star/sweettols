@@ -12,10 +12,10 @@ const STORAGE_KEY = 'sweettools.cart.v1';
  * Only slug, options and qty are stored: prices are always re-read from the
  * catalogue. The same product in two colours makes two lines.
  */
-type StoredLine = { slug: string; qty: number; color?: string; size?: string };
+type StoredLine = { slug: string; qty: number; color?: string; size?: string; shape?: string };
 
-/** Chosen colour (French name) and size (cm, no unit), when the product has some. */
-export type CartOptions = { color?: string; size?: string };
+/** Chosen colour / shape (French names) and size (cm, no unit), when the product has some. */
+export type CartOptions = { color?: string; size?: string; shape?: string };
 
 export type CartLine = {
   /** Identifies the line for setQty / remove: slug + options. */
@@ -24,13 +24,15 @@ export type CartLine = {
   qty: number;
   color?: string;
   size?: string;
+  shape?: string;
   /** False when the product lost its price, stock or the chosen option since it was added. */
   sellable: boolean;
-  /** The chosen colour or size is no longer offered (or was never chosen). */
+  /** The chosen colour, size or shape is no longer offered (or was never chosen). */
   optionGone: boolean;
 };
 
-const keyOf = (l: { slug: string; color?: string; size?: string }) => [l.slug, l.color || '', l.size || ''].join('|');
+const keyOf = (l: { slug: string; color?: string; size?: string; shape?: string }) =>
+  [l.slug, l.color || '', l.size || '', l.shape || ''].join('|');
 
 interface CartApi {
   lines: CartLine[];
@@ -71,6 +73,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
               qty: Math.max(1, Math.min(MAX, Math.floor(l.qty))),
               ...(typeof l.color === 'string' && l.color ? { color: l.color } : {}),
               ...(typeof l.size === 'string' && l.size ? { size: l.size } : {}),
+              ...(typeof l.shape === 'string' && l.shape ? { shape: l.shape } : {}),
             })),
         );
       }
@@ -94,13 +97,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
       .map((l): CartLine | null => {
         const product = products.find((p) => p.slug === l.slug);
         if (!product) return null;
-        const optionGone = !validOptions(product, l.color, l.size);
+        const optionGone = !validOptions(product, l.color, l.size, l.shape);
         return {
           key: keyOf(l),
           product,
           qty: l.qty,
           color: l.color,
           size: l.size,
+          shape: l.shape,
           sellable: isSellable(product) && !optionGone,
           optionGone,
         };
@@ -121,6 +125,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           qty: Math.min(MAX, qty),
           ...(product.colors?.length && options.color ? { color: options.color } : {}),
           ...(product.sizes?.length && options.size ? { size: options.size } : {}),
+          ...(product.shapes?.length && options.shape ? { shape: options.shape } : {}),
         };
         const key = keyOf(line);
         setStored((prev) =>

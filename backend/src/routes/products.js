@@ -8,7 +8,7 @@ import { autoTranslate, translationEnabled } from '../lib/translate.js';
 /** Fills the missing English / Arabic translations (see lib/translate.js). */
 async function withTranslations(product, existing = null) {
   const { i18n, i18nAuto } = await autoTranslate(product, existing);
-  return { ...product, i18n: translations(i18n, { name: 140, description: 4000, details: 'list', colors: 'list' }), i18nAuto };
+  return { ...product, i18n: translations(i18n, { name: 140, description: 4000, details: 'list', colors: 'list', shapes: 'list' }), i18nAuto };
 }
 
 export const productRoutes = Router();

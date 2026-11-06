@@ -19,7 +19,7 @@ import OrderSteps from './OrderSteps';
 
 type Confirmed = {
   reference: string;
-  items: Array<{ slug: string; name: string; color?: string; size?: string; qty: number; price: number; lineTotal: number }>;
+  items: Array<{ slug: string; name: string; color?: string; size?: string; shape?: string; qty: number; price: number; lineTotal: number }>;
   subtotal: number;
   shipping: number;
   invoiceFee: number;
@@ -142,7 +142,7 @@ export default function CheckoutForm() {
           customer: form,
           zoneId,
           invoice: invoice.wanted ? { company: invoice.company, ice: invoice.ice } : null,
-          items: cart.lines.map((l) => ({ slug: l.product.slug, color: l.color, size: l.size, qty: l.qty, price: l.product.price })),
+          items: cart.lines.map((l) => ({ slug: l.product.slug, color: l.color, size: l.size, shape: l.shape, qty: l.qty, price: l.product.price })),
           // For the server-side Purchase (Conversions API), matched to this browser.
           meta: { fbp: cookie('_fbp'), fbc: cookie('_fbc'), url: location.href },
         }),
@@ -317,7 +317,7 @@ export default function CheckoutForm() {
               <li key={l.key}>
                 <span>
                   {l.qty} × {l.product.name}
-                  {(l.color || l.size) && <small> — {optionsOf(l.product, l.color, l.size)}</small>}
+                  {(l.color || l.size || l.shape) && <small> — {optionsOf(l.product, l.color, l.size, l.shape)}</small>}
                 </span>
                 <span>{l.sellable ? t.dh(l.product.price * l.qty) : '—'}</span>
               </li>
@@ -363,7 +363,7 @@ export default function CheckoutForm() {
                 settings.whatsapp,
                 k.whatsappOrderMessage(
                   cart.lines
-                    .map((l) => `- ${l.qty} × ${l.product.name}${l.color || l.size ? ` (${optionsOf(l.product, l.color, l.size)})` : ''}`)
+                    .map((l) => `- ${l.qty} × ${l.product.name}${l.color || l.size || l.shape ? ` (${optionsOf(l.product, l.color, l.size, l.shape)})` : ''}`)
                     .join('\n'),
                 ),
               )}
@@ -408,11 +408,11 @@ function Confirmation({ order, whatsapp, t }: { order: Confirmed; whatsapp: stri
         <div className="summary confirm__summary">
           <ul className="summary__items">
             {order.items.map((l) => (
-              <li key={[l.slug, l.color, l.size].join('|')}>
+              <li key={[l.slug, l.color, l.size, l.shape].join('|')}>
                 <span>
                   {l.qty} × {nameOf(l.slug, l.name)}
-                  {(l.color || l.size) && (
-                    <small> — {optionsOf(products.find((p) => p.slug === l.slug), l.color, l.size)}</small>
+                  {(l.color || l.size || l.shape) && (
+                    <small> — {optionsOf(products.find((p) => p.slug === l.slug), l.color, l.size, l.shape)}</small>
                   )}
                 </span>
                 <span>{t.dh(l.lineTotal)}</span>

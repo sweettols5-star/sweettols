@@ -13,8 +13,8 @@ import Anthropic from '@anthropic-ai/sdk';
 import { env, envInt } from '../env.js';
 import { LANGS } from './text.js';
 
-const FIELDS = ['name', 'description', 'details', 'colors'];
-const isList = (f) => f === 'details' || f === 'colors';
+const FIELDS = ['name', 'description', 'details', 'colors', 'shapes'];
+const isList = (f) => f === 'details' || f === 'colors' || f === 'shapes';
 const empty = (v) => (Array.isArray(v) ? !v.length : !v);
 const same = (a, b) => JSON.stringify(a ?? '') === JSON.stringify(b ?? '');
 

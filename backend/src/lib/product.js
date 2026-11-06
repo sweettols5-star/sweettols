@@ -8,8 +8,8 @@
  * Stock: `null` = not tracked (always orderable), a number = units left, and
  * each order takes them off (see lib/order.js).
  *
- * Options: `colors` (names, French) and `sizes` (in cm, stored without the
- * unit: "20", "30 × 40"). When a product has some, the customer picks one of
+ * Options: `colors` and `shapes` (names, French: « Cœur », « Rond ») and
+ * `sizes` (in cm, stored without the unit: "20", "30 × 40"). When a product has some, the customer picks one of
  * each; same price and same stock for every option.
  */
 import { bool, clean, int, slugify, stringList, translations } from './text.js';
@@ -29,6 +29,7 @@ export function sizeLabel(raw) {
 export const sizeList = (value) =>
   stringList((Array.isArray(value) ? value : String(value ?? '').split('\n')).map(sizeLabel), { max: MAX_OPTIONS, len: 40 });
 export const colorList = (value) => stringList(value, { max: MAX_OPTIONS, len: 40 });
+export const shapeList = colorList;
 
 function image(raw) {
   if (!raw) return null;
@@ -94,8 +95,9 @@ export function normaliseProduct(body = {}, existing = null, categories = [], ta
       details: stringList(body.details),
       colors: colorList(body.colors),
       sizes: sizeList(body.sizes),
+      shapes: shapeList(body.shapes),
       // Absent = untouched (an older admin screen must not wipe the translations).
-      i18n: body.i18n === undefined ? existing?.i18n || {} : translations(body.i18n, { name: 140, description: 4000, details: 'list', colors: 'list' }),
+      i18n: body.i18n === undefined ? existing?.i18n || {} : translations(body.i18n, { name: 140, description: 4000, details: 'list', colors: 'list', shapes: 'list' }),
       images,
       stock,
       active: body.active === undefined ? true : bool(body.active),
@@ -122,6 +124,7 @@ export function publicView(p) {
     details: p.details || [],
     colors: p.colors || [],
     sizes: p.sizes || [],
+    shapes: p.shapes || [],
     i18n: p.i18n || {},
     images: (p.images || []).map(({ url, thumb }) => ({ url, thumb: thumb || url })),
     featured: !!p.featured,

@@ -1821,3 +1821,17 @@ a.adm-stat:hover {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   text-align: right;
 }
+
+/* Quick-add buttons above a list field (product shapes). */
+.adm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.adm-btn--sm {
+  min-height: 32px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+}

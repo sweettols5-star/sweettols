@@ -68,16 +68,17 @@ export function buildOrder(body = {}, catalogue = [], settings) {
   if (!requested.length) return { error: msg(lang, 'emptyCart') };
 
   const bySlug = new Map(catalogue.map((p) => [p.slug, p]));
-  // One line per product + colour + size; the stock is shared by every option.
+  // One line per product + colour + size + shape; the stock is shared by every option.
   const merged = new Map();
   const perProduct = new Map();
   for (const line of requested) {
     const slug = clean(line?.slug, 90);
     const color = clean(line?.color, 40);
     const size = sizeLabel(line?.size);
+    const shape = clean(line?.shape, 40);
     const qty = int(line?.qty, { min: 1, max: 99, fallback: 1 });
-    const key = [slug, color, size].join('\u0000');
-    merged.set(key, { slug, color, size, qty: (merged.get(key)?.qty || 0) + qty, price: line?.price });
+    const key = [slug, color, size, shape].join('\u0000');
+    merged.set(key, { slug, color, size, shape, qty: (merged.get(key)?.qty || 0) + qty, price: line?.price });
     perProduct.set(slug, (perProduct.get(slug) || 0) + qty);
   }
 
@@ -98,7 +99,12 @@ export function buildOrder(body = {}, catalogue = [], settings) {
     // Options a product no longer has are dropped, not refused.
     const colors = product.colors || [];
     const sizes = product.sizes || [];
-    if ((colors.length && !colors.includes(line.color)) || (sizes.length && !sizes.includes(line.size))) {
+    const shapes = product.shapes || [];
+    if (
+      (colors.length && !colors.includes(line.color))
+      || (sizes.length && !sizes.includes(line.size))
+      || (shapes.length && !shapes.includes(line.shape))
+    ) {
       problems.push({ slug, name: product.name, reason: 'option' });
       continue;
     }
@@ -107,6 +113,7 @@ export function buildOrder(body = {}, catalogue = [], settings) {
       name: product.name,
       ...(colors.length ? { color: line.color } : {}),
       ...(sizes.length ? { size: line.size } : {}),
+      ...(shapes.length ? { shape: line.shape } : {}),
       image: product.images?.[0]?.thumb || product.images?.[0]?.url || '',
       qty: line.qty,
       price: product.price,

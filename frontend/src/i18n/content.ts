@@ -29,12 +29,21 @@ export function colorName(p: Product, color: string, lang: Lang): string {
   return (i >= 0 && p.i18n?.[lang]?.colors?.[i]) || color;
 }
 
-/** Does the product ask for a colour or a size before going in the cart? */
-export const hasOptions = (p: Product) => !!(p.colors?.length || p.sizes?.length);
+/** A shape (« Cœur », « Rond ») in the shopper's language — same rule as colours. */
+export function shapeName(p: Product, shape: string, lang: Lang): string {
+  if (lang === 'fr') return shape;
+  const i = (p.shapes || []).indexOf(shape);
+  return (i >= 0 && p.i18n?.[lang]?.shapes?.[i]) || shape;
+}
 
-/** A chosen colour/size is (still) one the product offers — none needed when it has none. */
-export const validOptions = (p: Product, color?: string, size?: string) =>
-  (p.colors?.length ? p.colors.includes(color || '') : true) && (p.sizes?.length ? p.sizes.includes(size || '') : true);
+/** Does the product ask for a colour, a size or a shape before going in the cart? */
+export const hasOptions = (p: Product) => !!(p.colors?.length || p.sizes?.length || p.shapes?.length);
+
+/** A chosen colour/size/shape is (still) one the product offers — none needed when it has none. */
+export const validOptions = (p: Product, color?: string, size?: string, shape?: string) =>
+  (p.colors?.length ? p.colors.includes(color || '') : true) &&
+  (p.sizes?.length ? p.sizes.includes(size || '') : true) &&
+  (p.shapes?.length ? p.shapes.includes(shape || '') : true);
 
 export function locCategory(c: Category, lang: Lang): Category {
   const t = lang === 'fr' ? undefined : c.i18n?.[lang];

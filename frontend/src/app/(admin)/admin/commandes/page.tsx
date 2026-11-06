@@ -270,13 +270,15 @@ function OrderCard({
               <h3 className="adm-h3">Articles</h3>
               <ul className="adm-lines">
                 {o.items.map((l) => (
-                  <li key={[l.slug, l.color, l.size].join('|')}>
+                  <li key={[l.slug, l.color, l.size, l.shape].join('|')}>
                     {l.image ? <img src={l.image} alt="" width={44} height={44} /> : <span className="adm-lines__ph" />}
                     <span>
                       {l.qty} × {l.name}
-                      {(l.color || l.size) && (
+                      {(l.color || l.size || l.shape) && (
                         <small className="adm-lines__opts">
-                          {[l.color && `Couleur : ${l.color}`, l.size && `Taille : ${l.size} cm`].filter(Boolean).join(' · ')}
+                          {[l.color && `Couleur : ${l.color}`, l.size && `Taille : ${l.size} cm`, l.shape && `Forme : ${l.shape}`]
+                            .filter(Boolean)
+                            .join(' · ')}
                         </small>
                       )}
                       <small>

@@ -50,9 +50,9 @@ export default function CartView() {
       <div className="checkout">
         <div className="checkout__main">
           <ul className="lines">
-            {cart.lines.map(({ key, product, qty, color, size, sellable, optionGone }) => {
+            {cart.lines.map(({ key, product, qty, color, size, shape, sellable, optionGone }) => {
               const href = productHref(product.slug);
-              const options = optionsOf(product, color, size);
+              const options = optionsOf(product, color, size, shape);
               return (
                 <li key={key} className={`line${sellable ? '' : ' line--blocked'}`}>
                   <Link href={href} className="line__img" tabIndex={-1} aria-hidden>

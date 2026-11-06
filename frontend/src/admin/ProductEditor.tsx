@@ -38,6 +38,7 @@ type Draft = {
   /** One per line. */
   colors: string;
   sizes: string;
+  shapes: string;
   images: ProductImage[];
   active: boolean;
   featured: boolean;
@@ -49,10 +50,11 @@ const TR_FIELDS: TrField[] = [
   { key: 'description', label: 'Description', rows: 4, max: 4000 },
   { key: 'details', label: 'Caractéristiques', rows: 4, list: true },
   { key: 'colors', label: 'Couleurs', rows: 3, list: true },
+  { key: 'shapes', label: 'Formes', rows: 3, list: true },
 ];
 
 /** The text fields that exist in every language, edited under one tab bar. */
-type TextKey = 'name' | 'description' | 'details' | 'colors';
+type TextKey = 'name' | 'description' | 'details' | 'colors' | 'shapes';
 type EditLang = 'fr' | TrLang;
 const EDIT_LANGS: Array<{ lang: EditLang; label: string; dir: 'ltr' | 'rtl' }> = [
   { lang: 'fr', label: 'Français', dir: 'ltr' },
@@ -72,6 +74,7 @@ const EMPTY: Draft = {
   details: '',
   colors: '',
   sizes: '',
+  shapes: '',
   images: [],
   active: true,
   featured: false,
@@ -90,6 +93,7 @@ const toDraft = (p: AdminProduct): Draft => ({
   details: p.details.join('\n'),
   colors: (p.colors || []).join('\n'),
   sizes: (p.sizes || []).join('\n'),
+  shapes: (p.shapes || []).join('\n'),
   images: p.images,
   active: p.active !== false,
   featured: p.featured,
@@ -97,6 +101,10 @@ const toDraft = (p: AdminProduct): Draft => ({
 });
 
 const num = (s: string) => Number(s.replace(/[^\d]/g, '')) || 0;
+
+/** One click adds a common shape; any other one can be typed in the box. */
+const SHAPE_PRESETS = ['Cœur', 'Carré', 'Rond', 'Rectangle', 'Étoile', 'Ovale', 'Fleur'];
+const shapeLines = (s: string) => s.split('\n').map((l) => l.trim()).filter(Boolean);
 const MAX_IMAGES = 8;
 
 export default function ProductEditor({ slug }: { slug: string }) {
@@ -213,6 +221,7 @@ export default function ProductEditor({ slug }: { slug: string }) {
       details: draft.details.split('\n'),
       colors: draft.colors.split('\n'),
       sizes: draft.sizes.split('\n'),
+      shapes: draft.shapes.split('\n'),
       images: draft.images,
       active: draft.active,
       featured: draft.featured,
@@ -398,6 +407,36 @@ export default function ProductEditor({ slug }: { slug: string }) {
                   placeholder={'20\n24\n30 x 40'}
                 />
               </Field>
+              {lang === 'fr' ? (
+                <Field label="Formes" hint="Une par ligne. Vide = pas de choix de forme. Cliquez pour ajouter :">
+                  <div className="adm-chips">
+                    {SHAPE_PRESETS.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        className="adm-btn adm-btn--ghost adm-btn--sm"
+                        disabled={shapeLines(draft.shapes).includes(s)}
+                        onClick={() => set('shapes', [...shapeLines(draft.shapes), s].join('\n'))}
+                      >
+                        + {s}
+                      </button>
+                    ))}
+                  </div>
+                  <textarea
+                    className="adm-input"
+                    rows={4}
+                    value={draft.shapes}
+                    onChange={(e) => set('shapes', e.target.value)}
+                    placeholder={'Cœur\nCarré\nRond'}
+                  />
+                </Field>
+              ) : (
+                draft.shapes.trim() && (
+                  <Field label="Formes" hint="Une par ligne, dans le même ordre qu’en français.">
+                    <textarea className="adm-input" rows={4} value={text('shapes')} onChange={(e) => setText('shapes', e.target.value)} {...tr('shapes')} />
+                  </Field>
+                )
+              )}
             </div>
           </section>
 

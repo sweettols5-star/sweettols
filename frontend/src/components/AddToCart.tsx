@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { colorName, hasOptions } from '@/i18n/content';
+import { colorName, hasOptions, shapeName } from '@/i18n/content';
 import { isSellable } from '@/lib/catalogue';
 import { routes } from '@/lib/routes';
 import { whatsappUrl } from '@/lib/whatsapp';
@@ -19,7 +19,7 @@ import { productHref } from './ProductCard';
  * the product page. An unpriced or sold-out product never reaches the cart —
  * it offers to ask on WhatsApp instead, when a number is set.
  *
- * A product with colours or sizes is chosen on its page: the card button
+ * A product with colours, sizes or shapes is chosen on its page: the card button
  * leads there, and the page asks for one of each (preselected when there is
  * only one).
  */
@@ -34,13 +34,16 @@ export default function AddToCart({ product, withQty = false }: { product: Produ
   const sizes = product.sizes || [];
   const [color, setColor] = useState(colors.length === 1 ? colors[0] : '');
   const [size, setSize] = useState(sizes.length === 1 ? sizes[0] : '');
+  const shapes = product.shapes || [];
+  const [shape, setShape] = useState(shapes.length === 1 ? shapes[0] : '');
   const [missing, setMissing] = useState(false);
 
   // The live catalogue can drop the option that was picked.
   useEffect(() => {
     if (color && !colors.includes(color)) setColor(colors.length === 1 ? colors[0] : '');
     if (size && !sizes.includes(size)) setSize(sizes.length === 1 ? sizes[0] : '');
-  }, [colors.join('|'), sizes.join('|')]);
+    if (shape && !shapes.includes(shape)) setShape(shapes.length === 1 ? shapes[0] : '');
+  }, [colors.join('|'), sizes.join('|'), shapes.join('|')]);
 
   useEffect(() => {
     if (!added) return;
@@ -87,12 +90,12 @@ export default function AddToCart({ product, withQty = false }: { product: Produ
   }
 
   const add = () => {
-    if ((colors.length && !color) || (sizes.length && !size)) {
+    if ((colors.length && !color) || (sizes.length && !size) || (shapes.length && !shape)) {
       setMissing(true);
       return;
     }
     const n = withQty ? qty : 1;
-    cart.add(product, n, { color, size });
+    cart.add(product, n, { color, size, shape });
     trackPixel('AddToCart', {
       content_ids: [product.slug],
       content_name: product.name,
@@ -147,6 +150,19 @@ export default function AddToCart({ product, withQty = false }: { product: Produ
             setAdded(false);
           }}
           error={missing && !size ? t.product.chooseSize : ''}
+        />
+      )}
+      {shapes.length > 0 && (
+        <OptionPicker
+          label={t.product.shape}
+          values={shapes}
+          value={shape}
+          show={(s) => shapeName(product, s, lang)}
+          onChange={(s) => {
+            setShape(s);
+            setAdded(false);
+          }}
+          error={missing && !shape ? t.product.chooseShape : ''}
         />
       )}
       <div className="buy__row">
