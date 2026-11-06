@@ -1,6 +1,143 @@
 {
   "products": [
     {
+      "slug": "moule-en-silicone-effet-nid-d-abeille",
+      "name": "‏ Moule en silicone effet nid d’abeille",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791992047/sweettools/produits/moule-en-silicone-effet-nid-d-abeille-mv89soxc.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791992047/sweettools/produits/moule-en-silicone-effet-nid-d-abeille-mv89soxc-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T15:34:12.956Z"
+    },
+    {
+      "slug": "12-cercles-a-tartelettes-perfores-en-acier-inoxydable-de-qualite-moyenne",
+      "name": "12 cercles à tartelettes perforés en acier inoxydable, de qualité moyenne.",
+      "categoryId": "cercles-en-inox",
+      "categoryIds": [
+        "cercles-en-inox"
+      ],
+      "price": 90,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "12 perforated stainless steel tart rings, made of stainless steel, medium quality."
+        },
+        "ar": {
+          "name": "12 حلقة دائرية مثقبة لتحضير التارت، مصنوعة من الفولاذ المقاوم للصدأ، بجودة متوسطة."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792419339/sweettools/produits/12-cercles-a-tartelettes-perfores-en-acier-inoxydable-de-qualite-moyenne-mvfc70oq.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792419338/sweettools/produits/12-cercles-a-tartelettes-perfores-en-acier-inoxydable-de-qualite-moyenne-mvfc70oq-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-19T14:16:04.401Z"
+    },
+    {
+      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm",
+      "name": "2 Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 16 cm",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 52,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819470/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm-mv5f1r3n.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819470/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm-mv5f1r3n-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T15:38:27.995Z"
+    },
+    {
+      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm",
+      "name": "2 Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 19 cm",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 58,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819600/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm-mv5f4jcr.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819599/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm-mv5f4jcr-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T15:40:15.427Z"
+    },
+    {
+      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm",
+      "name": "2 Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 20 cm",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 60,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819692/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm-mv5f6iwu.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819692/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm-mv5f6iwu-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-12T15:41:45.765Z"
+    },
+    {
       "slug": "26-pieces-de-decoupoirs-alphabet-pour-la-decoration-des-gateaux",
       "name": "26 pièces de découpoirs alphabet pour la décoration des gâteaux",
       "categoryId": "materiel-patisserie",
@@ -13,6 +150,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -38,6 +176,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -63,6 +202,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -88,6 +228,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -99,6 +240,37 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-11T12:55:17.133Z"
+    },
+    {
+      "slug": "balance-de-cuisine-electronique-10-kg",
+      "name": "Balance de cuisine électronique – 10 kg",
+      "categoryId": "appareils-patisserie",
+      "categoryIds": [
+        "appareils-patisserie",
+        "materiel-patisserie"
+      ],
+      "price": 70,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006866/sweettools/produits/balance-de-cuisine-electronique-10-kg-mv8imazm.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006866/sweettools/produits/balance-de-cuisine-electronique-10-kg-mv8imazm-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006873/sweettools/produits/balance-de-cuisine-electronique-10-kg-mv8imgik.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006873/sweettools/produits/balance-de-cuisine-electronique-10-kg-mv8imgik-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T19:41:27.914Z"
     },
     {
       "slug": "batteur-electrique-5-vitesses-200w-lamacom-une-marque-qui-propose-des-produits-d",
@@ -113,6 +285,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -147,6 +320,7 @@
         "Blanc"
       ],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -172,6 +346,83 @@
       "createdAt": "2026-10-14T12:14:13.285Z"
     },
     {
+      "slug": "bouteille-de-decoration-pour-patisserie-avec-embouts-interchangeables",
+      "name": "Bouteille de décoration pour pâtisserie avec embouts interchangeables",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Pastry Decorating Bottle with Interchangeable Nozzles"
+        },
+        "ar": {
+          "name": "قارورة تزيين الحلويات مع رؤوس قابلة للتبديل."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792440469/sweettools/produits/bouteille-de-decoration-pour-patisserie-avec-embouts-interchangeables-mvforwuq.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792440468/sweettools/produits/bouteille-de-decoration-pour-patisserie-avec-embouts-interchangeables-mvforwuq-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-19T20:08:01.012Z"
+    },
+    {
+      "slug": "couronne-luxueuse-pour-decoration-de-gateau",
+      "name": "Couronne luxueuse pour décoration de gâteau",
+      "categoryId": "decoration-patisserie",
+      "categoryIds": [
+        "decoration-patisserie"
+      ],
+      "price": 70,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [
+        "Dorée",
+        "Argentée"
+      ],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Luxury Cake Decorating Crown",
+          "details": [
+            "Dorée",
+            "Argentée"
+          ]
+        },
+        "ar": {
+          "name": "تاج  فاخر لتزيين الكيك"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793188181/sweettools/produits/couronne-luxueuse-pour-decoration-de-gateau-mvs1xzki.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793188181/sweettools/produits/couronne-luxueuse-pour-decoration-de-gateau-mvs1xzki-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793188184/sweettools/produits/couronne-luxueuse-pour-decoration-de-gateau-mvs1y25q.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793188184/sweettools/produits/couronne-luxueuse-pour-decoration-de-gateau-mvs1y25q-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 1,
+      "createdAt": "2026-10-28T11:51:47.908Z"
+    },
+    {
       "slug": "couteau-a-pain-dentele-ideal-pour-couper-les-pains-les-viennoiseries-et-les-pati",
       "name": "Couteau à pain dentelé, idéal pour couper les pains, les viennoiseries et les pâtisseries.",
       "categoryId": "equipement-professionnel",
@@ -184,6 +435,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -207,8 +459,16 @@
       "compareAtPrice": 0,
       "description": "",
       "details": [],
-      "colors": [],
+      "colors": [
+        "Rose",
+        "Bleu clair",
+        "Bleu ciel",
+        "Jaune",
+        "Gris",
+        "Bleu foncé"
+      ],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -218,88 +478,32 @@
         {
           "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791791889/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv4ymm47.webp",
           "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791791889/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv4ymm47-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002653/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g401d.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002653/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g401d-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002736/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g5s3j.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002736/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g5s3j-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002787/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g6vbn.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002787/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g6vbn-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002832/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g7ugh.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002832/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g7ugh-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002880/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g8vk7.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002880/sweettools/produits/decorations-pour-gateaux-et-cupcakes-papillons-et-cake-toppers-disponibles-en-pl-mv8g8vk7-thumb.webp"
         }
       ],
       "featured": false,
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-12T07:52:05.305Z"
-    },
-    {
-      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm",
-      "name": "Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 16 cm",
-      "categoryId": "materiel-patisserie",
-      "categoryIds": [
-        "materiel-patisserie"
-      ],
-      "price": 26,
-      "compareAtPrice": 0,
-      "description": "",
-      "details": [],
-      "colors": [],
-      "sizes": [],
-      "i18n": {},
-      "images": [
-        {
-          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819470/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm-mv5f1r3n.webp",
-          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819470/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-15-cm-mv5f1r3n-thumb.webp"
-        }
-      ],
-      "featured": false,
-      "inStock": true,
-      "lowStock": 0,
-      "createdAt": "2026-10-12T15:38:27.995Z"
-    },
-    {
-      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm",
-      "name": "Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 19 cm",
-      "categoryId": "materiel-patisserie",
-      "categoryIds": [
-        "materiel-patisserie"
-      ],
-      "price": 29,
-      "compareAtPrice": 0,
-      "description": "",
-      "details": [],
-      "colors": [],
-      "sizes": [],
-      "i18n": {},
-      "images": [
-        {
-          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819600/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm-mv5f4jcr.webp",
-          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819599/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-18-cm-mv5f4jcr-thumb.webp"
-        }
-      ],
-      "featured": false,
-      "inStock": true,
-      "lowStock": 0,
-      "createdAt": "2026-10-12T15:40:15.427Z"
-    },
-    {
-      "slug": "disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm",
-      "name": "Disque et Plateau à Ganache Plexiglass Transparent Rond Ø 20 cm",
-      "categoryId": "appareils-patisserie",
-      "categoryIds": [
-        "appareils-patisserie",
-        "materiel-patisserie"
-      ],
-      "price": 30,
-      "compareAtPrice": 0,
-      "description": "",
-      "details": [],
-      "colors": [],
-      "sizes": [],
-      "i18n": {},
-      "images": [
-        {
-          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819692/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm-mv5f6iwu.webp",
-          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791819692/sweettools/produits/disque-et-plateau-a-ganache-plexiglass-transparent-rond-20-cm-mv5f6iwu-thumb.webp"
-        }
-      ],
-      "featured": false,
-      "inStock": true,
-      "lowStock": 0,
-      "createdAt": "2026-10-12T15:41:45.765Z"
     },
     {
       "slug": "double-lisseur-pate-a-sucre-2-en-1",
@@ -314,6 +518,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "2-in-1 double sugar paste smoother",
@@ -366,6 +571,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Stainless steel pretzel cutter with plunger",
@@ -413,6 +619,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Round tartlet cutter and press",
@@ -455,6 +662,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Stainless steel spatula set",
@@ -487,6 +695,40 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "fouet-en-acier-inoxydable",
+      "name": "Fouet en acier inoxydable",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie",
+        "equipement-professionnel"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Stainless Steel Whisk"
+        },
+        "ar": {
+          "name": "مخفقة من الفولاذ المقاوم للصدأ"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792420760/sweettools/produits/fouet-en-acier-inoxydable-mvfd1hg4.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792420759/sweettools/produits/fouet-en-acier-inoxydable-mvfd1hg4-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-19T14:39:35.962Z"
+    },
+    {
       "slug": "tapis-patisserie-silicone-grande-taille",
       "name": "Grand tapis de travail en silicone avec graduations et cercles de repère, pour pétrir et étaler la pâte à la bonne taille",
       "categoryId": "tapis-patisserie",
@@ -499,6 +741,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone pastry mat – large",
@@ -541,6 +784,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -552,6 +796,135 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-13T20:12:18.976Z"
+    },
+    {
+      "slug": "grattoir-a-chocolat-en-acier-inoxydable",
+      "name": "Grattoir à chocolat en acier inoxydable",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Stainless Steel Chocolate Scraper"
+        },
+        "ar": {
+          "name": "كاشطة الشوكولاتة المصنوعة من الفولاذ المقاوم للصدأ"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792332732/sweettools/produits/grattoir-a-chocolat-en-acier-inoxydable-mvdwmqzv.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792332732/sweettools/produits/grattoir-a-chocolat-en-acier-inoxydable-mvdwmqzv-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T14:12:35.399Z"
+    },
+    {
+      "slug": "grattoir-et-coupe-pate-en-inox-22-cm",
+      "name": "Grattoir et Coupe-Pâte en Inox – 22 cm",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006309/sweettools/produits/grattoir-coupe-pate-en-inox-mv8iadgs.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006309/sweettools/produits/grattoir-coupe-pate-en-inox-mv8iadgs-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T19:33:14.958Z"
+    },
+    {
+      "slug": "kit-d-outils-pour-la-decoration-de-fleurs-en-creme-au-beurre",
+      "name": "Kit d’outils pour la décoration de fleurs en crème au beurre.",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 30,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Buttercream Flower Decorating Tool Kit"
+        },
+        "ar": {
+          "name": "طقم أدوات تزيين الحلويات وصنع الورود بكريمة الزبدة."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792440797/sweettools/produits/22b84cfd-bda1-4714-a6ee-0db65586aa4a-mvfoyy78.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792440797/sweettools/produits/22b84cfd-bda1-4714-a6ee-0db65586aa4a-mvfoyy78-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-19T20:14:06.285Z"
+    },
+    {
+      "slug": "kit-de-decoration-de-gateau-happy-birthday-papillons-fleurs-et-feuillages-artifi",
+      "name": "Kit de décoration de gâteau Happy Birthday – Papillons, fleurs et feuillages artificiels.",
+      "categoryId": "decoration-patisserie",
+      "categoryIds": [
+        "decoration-patisserie"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Happy Birthday Cake Decoration Kit – Butterflies, Artificial Flowers and Leaves."
+        },
+        "ar": {
+          "name": "طقم تزيين الكيك لعيد الميلاد – فراشات وورود وأوراق شجر اصطناعية.",
+          "details": [
+            "Roug",
+            "Blanc"
+          ]
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792335392/sweettools/produits/kit-de-decoration-de-gateau-happy-birthday-papillons-fleurs-et-feuillages-artifi-mvdy7r11.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792335391/sweettools/produits/kit-de-decoration-de-gateau-happy-birthday-papillons-fleurs-et-feuillages-artifi-mvdy7r11-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T14:57:26.973Z"
     },
     {
       "slug": "lot-de-100-poches-a-douille-jetables",
@@ -566,6 +939,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -577,6 +951,98 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-12T18:13:47.955Z"
+    },
+    {
+      "slug": "lot-de-3-cercles-a-patisserie-en-inox-hauteurs-15-cm-diametres-15-17-et-19-cm",
+      "name": "Lot de 3 cercles à pâtisserie en inox – hauteurs 15 cm, diamètres 15, 17 et 19 cm.",
+      "categoryId": "cercles-en-inox",
+      "categoryIds": [
+        "cercles-en-inox"
+      ],
+      "price": 80,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792003235/sweettools/produits/lot-de-3-cercles-a-patisserie-en-inox-hauteurs-15-cm-diametres-15-17-et-19-cm-mv8ggh5t.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792003234/sweettools/produits/lot-de-3-cercles-a-patisserie-en-inox-hauteurs-15-cm-diametres-15-17-et-19-cm-mv8ggh5t-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T18:41:24.376Z"
+    },
+    {
+      "slug": "lot-de-3-moules-a-gateau-en-forme-de-coeur-en-acier-inoxydable",
+      "name": "Lot de 3 moules à gâteau en forme de cœur en acier inoxydable",
+      "categoryId": "cercles-en-inox",
+      "categoryIds": [
+        "cercles-en-inox"
+      ],
+      "price": 80,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Set of 3 Stainless Steel Heart-Shaped Cake Molds"
+        },
+        "ar": {
+          "name": "طقم من 3 قوالب كيك على شكل قلب من الفولاذ المقاوم للصدأ"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792439832/sweettools/produits/lot-de-3-moules-a-gateau-en-forme-de-coeur-en-acier-inoxydable-mvfoe9rd.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792439832/sweettools/produits/lot-de-3-moules-a-gateau-en-forme-de-coeur-en-acier-inoxydable-mvfoe9rd-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-19T19:57:19.170Z"
+    },
+    {
+      "slug": "lot-de-6-couteaux-a-palette-pour-decoration-de-patisserie",
+      "name": "Lot de 6 couteaux à palette pour décoration de pâtisserie",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 60,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Set of 6 Stainless Steel Palette Knives for Cake Decorating"
+        },
+        "ar": {
+          "name": "طقم من 6 سكاكين من الفولاذ المقاوم للصدأ لتزيين الكيك والحلويات."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792441569/sweettools/produits/cabfbc91-a145-493c-99d2-cbd780ad748b-mvfpfi1i.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792441569/sweettools/produits/cabfbc91-a145-493c-99d2-cbd780ad748b-mvfpfi1i-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-19T20:27:17.928Z"
     },
     {
       "slug": "maryse-silicone",
@@ -591,6 +1057,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone spatula",
@@ -623,6 +1090,103 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "moule-a-gateau-charlotte-en-silicone-moule-rond-antiadhesif-pour-cheesecakes-gat",
+      "name": "Moule à gâteau Charlotte en silicone – Moule rond antiadhésif pour cheesecakes, gâteaux aux fraises, tartes et tourtes.",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 45,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Charlotte Cake Mold – Non-Stick Round Baking Pan for Cheesecakes, Strawberry Shortcakes, Tarts and Pies"
+        },
+        "ar": {
+          "name": "قالب سيليكون شارلوت للكيك، دائري وغير لاصق، مناسب لتحضير التشيز كيك، وكيك الفراولة، والتارت والفطائر."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792328671/sweettools/produits/moule-a-gateau-charlotte-en-silicone-moule-rond-antiadhesif-pour-cheesecakes-gat-mvdu7p31.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792328671/sweettools/produits/moule-a-gateau-charlotte-en-silicone-moule-rond-antiadhesif-pour-cheesecakes-gat-mvdu7p31-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T13:06:14.673Z"
+    },
+    {
+      "slug": "moule-a-gateau-charlotte-rond-en-silicone-moule-antiadhesif-pour-cheesecakes-gat",
+      "name": "Moule à gâteau Charlotte rond en silicone – Moule antiadhésif pour cheesecakes, gâteaux aux fraises, tartes et tourtes.",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 50,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792330455/sweettools/produits/3f9cdef9-3be9-4d95-bc80-576c05332ece-15c912d5-90d4-40e1-9905-1cb47f12bec2-mvdv9xsc.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792330455/sweettools/produits/3f9cdef9-3be9-4d95-bc80-576c05332ece-15c912d5-90d4-40e1-9905-1cb47f12bec2-mvdv9xsc-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792330457/sweettools/produits/ebb4c85b-0aa0-4368-a7d4-344a54f7a879-51e7757b-9f97-48e1-bbca-824ff707e5e6-mvdv9zne.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792330457/sweettools/produits/ebb4c85b-0aa0-4368-a7d4-344a54f7a879-51e7757b-9f97-48e1-bbca-824ff707e5e6-mvdv9zne-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T13:35:24.059Z"
+    },
+    {
+      "slug": "moule-a-gateau-en-silicone-en-forme-de-spirale-moule-de-cuisson-reutilisable",
+      "name": "Moule à gâteau en silicone en forme de spirale – Moule de cuisson réutilisable.",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone",
+        "moules-silicone-four"
+      ],
+      "price": 45,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Spiral Silicone Cake Mold – Reusable Baking Mold"
+        },
+        "ar": {
+          "name": "قالب كيك سيليكون حلزوني – قابل لإعادة الاستخدام."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792331779/sweettools/produits/f11edd85-e89f-4572-b10b-57e80ac3c55c-21c58ac4-1504-4f94-a7de-2dba8d81fce4-mvdw2bla.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792331779/sweettools/produits/f11edd85-e89f-4572-b10b-57e80ac3c55c-21c58ac4-1504-4f94-a7de-2dba8d81fce4-mvdw2bla-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T13:59:36.413Z"
+    },
+    {
       "slug": "moule-madeleines-silicone",
       "name": "Moule à madeleines en silicone qui va au four, pour des madeleines bien formées qui se démoulent sans accroc.",
       "categoryId": "moules-silicone-four",
@@ -635,6 +1199,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone madeleine mould",
@@ -677,6 +1242,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -706,6 +1272,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -717,6 +1284,197 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-13T18:43:52.235Z"
+    },
+    {
+      "slug": "moule-en-silicone-pour-chocolats-carres",
+      "name": "Moule en silicone  pour chocolats carrés",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Square Silicone Chocolate Mold"
+        },
+        "ar": {
+          "name": "قالب سيليكون لصنع الشوكولاتة المربعة"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793191415/sweettools/produits/a8a23d40-6ce7-42e1-8c93-c4be8e9b1fa1-mvs3vatl.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793191415/sweettools/produits/a8a23d40-6ce7-42e1-8c93-c4be8e9b1fa1-mvs3vatl-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-28T12:47:13.011Z"
+    },
+    {
+      "slug": "moule-en-silicone-bebe-ours-et-jouets",
+      "name": "Moule en silicone – Bébé ours et jouets",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 37,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold – Baby Bear and Toys"
+        },
+        "ar": {
+          "name": "قالب سيليكون بتصميم دبّ صغير وألعاب الأطفال."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792324548/sweettools/produits/img-5989-mvdrrbvn.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792324548/sweettools/produits/img-5989-mvdrrbvn-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:59:27.484Z"
+    },
+    {
+      "slug": "moule-en-silicone-couronnes-perlees",
+      "name": "Moule en silicone – Couronnes perlées",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792001100/sweettools/produits/moule-en-silicone-couronnes-perlees-mv8f6qca.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792001100/sweettools/produits/moule-en-silicone-couronnes-perlees-mv8f6qca-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T18:05:18.203Z"
+    },
+    {
+      "slug": "moule-en-silicone-empreintes-de-pieds-de-bebe",
+      "name": "Moule en silicone – Empreintes de pieds de bébé",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold – Baby Footprints"
+        },
+        "ar": {
+          "name": "قالب سيليكون لبصمات أقدام الرضيع."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792325789/sweettools/produits/452c2570-adbc-4f90-b674-2fc1622126b6-mvdshxl3.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792325789/sweettools/produits/452c2570-adbc-4f90-b674-2fc1622126b6-mvdshxl3-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T12:17:10.284Z"
+    },
+    {
+      "slug": "moule-en-silicone-graduation",
+      "name": "Moule en silicone – Graduation",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold - Graduation"
+        },
+        "ar": {
+          "name": "قالب سيليكون – التخرّج."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792321849/sweettools/produits/img-5962-mvdq5h6f.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792321848/sweettools/produits/img-5962-mvdq5h6f-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:11:44.553Z"
+    },
+    {
+      "slug": "moule-en-silicone-petites-framboises",
+      "name": "Moule en silicone – Petites framboises",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "SMALL BERRIES SILICONE MOULD"
+        },
+        "ar": {
+          "name": "قالب سيليكون لتشكيل حبات التوت الصغيرة."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792322221/sweettools/produits/0097038d-4f0e-4c38-ba4a-2bafec0bd3f2-mvdqdge6.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792322221/sweettools/produits/0097038d-4f0e-4c38-ba4a-2bafec0bd3f2-mvdqdge6-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:17:34.855Z"
     },
     {
       "slug": "moule-silicone-vetements-bebe",
@@ -734,6 +1492,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Baby clothes",
@@ -764,6 +1523,91 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "moule-en-silicone-3d-en-forme-de-mangue-6-cavites",
+      "name": "Moule en silicone 3D en forme de mangue – 6 cavités",
+      "categoryId": "moule-trompe-l-oeil",
+      "categoryIds": [
+        "moule-trompe-l-oeil"
+      ],
+      "price": 120,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "3D Silicone Mango Cake Mold – 6 Cavities"
+        },
+        "ar": {
+          "name": "قالب سيليكون ثلاثي الأبعاد لصنع حلويات على شكل المانجو – 6 تجاويف."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792333408/sweettools/produits/628e3cca-cf7c-4275-8e11-475642a5dc1c-mvdx18kh.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792333408/sweettools/produits/628e3cca-cf7c-4275-8e11-475642a5dc1c-mvdx18kh-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T14:24:58.419Z"
+    },
+    {
+      "slug": "moule-en-silicone-a-12-cavites-en-forme-de-mini-citron",
+      "name": "Moule en silicone à 12 cavités  en forme de mini-citron.",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002134/sweettools/produits/moule-en-silicone-a-12-cavites-en-forme-de-mini-citron-mv8fsvs0.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002134/sweettools/produits/moule-en-silicone-a-12-cavites-en-forme-de-mini-citron-mv8fsvs0-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T18:22:20.589Z"
+    },
+    {
+      "slug": "moule-en-silicone-a-12-cavites-rondes-ou-cylindriques",
+      "name": "Moule en silicone à 12 cavités rondes ou cylindriques.",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792001985/sweettools/produits/moule-en-silicone-a-12-cavites-rondes-ou-cylindriques-mv8fpovw.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792001985/sweettools/produits/moule-en-silicone-a-12-cavites-rondes-ou-cylindriques-mv8fpovw-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T18:20:00.655Z"
+    },
+    {
       "slug": "moule-silicone-24-palets-ronds",
       "name": "Moule en silicone à 24 empreintes rondes pour palets, inserts et petits fonds.",
       "categoryId": "moules-silicone-four",
@@ -779,6 +1623,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – 24 round discs",
@@ -809,6 +1654,65 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "moule-en-silicone-a-7-cavites-en-forme-de-roses-pour-fondant-glacage-chocolat-de",
+      "name": "Moule en silicone à 7 cavités en forme de roses, pour fondant, glaçage, chocolat, décoration de gâteaux et pâtisserie créative.",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "7 Cell Rose Flower Silicone Fondant Mould Icing Chocolate Cake Topper Sugarcraft"
+        },
+        "ar": {
+          "name": "قالب سيليكون يحتوي على 7 تجاويف على شكل ورود، لتشكيل الفوندان والكريمة والشوكولاتة وتزيين الكيك وصناعة الحلويات."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792322462/sweettools/produits/a5f15acb-8de2-4247-927f-efa3f56eb341-mvdqimin.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792322462/sweettools/produits/a5f15acb-8de2-4247-927f-efa3f56eb341-mvdqimin-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:22:18.561Z"
+    },
+    {
+      "slug": "moule-en-silicone-a-cavites-ovales",
+      "name": "Moule en silicone à cavités ovales.",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002265/sweettools/produits/moule-en-silicone-a-cavites-ovales-mv8fvoyh.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002265/sweettools/produits/moule-en-silicone-a-cavites-ovales-mv8fvoyh-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T18:24:31.309Z"
+    },
+    {
       "slug": "moule-silicone-fleurs",
       "name": "Moule en silicone à fleurs en relief, pour des décors de gâteaux en pâte à sucre ou en chocolat.",
       "categoryId": "moules-silicone",
@@ -821,6 +1725,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Flowers",
@@ -863,6 +1768,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Small flowers",
@@ -893,6 +1799,33 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "moule-en-silicone-alphabet-chiffres-et-motifs-pour-patisserie",
+      "name": "Moule en silicone alphabet, chiffres et motifs pour pâtisserie.",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four",
+        "moules-silicone"
+      ],
+      "price": 40,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002389/sweettools/produits/moule-en-silicone-alphabet-chiffres-et-motifs-pour-patisserie-mv8fyc5s.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792002388/sweettools/produits/moule-en-silicone-alphabet-chiffres-et-motifs-pour-patisserie-mv8fyc5s-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T18:26:40.370Z"
+    },
+    {
       "slug": "moule-silicone-ornements-venitiens",
       "name": "Moule en silicone aux motifs d'ornements baroques volutes, médaillons et frises pour décorer gâteaux et entremets en pâte à sucre chocolat",
       "categoryId": "moules-silicone",
@@ -905,6 +1838,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Venetian ornaments",
@@ -947,6 +1881,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone mould – Bows, hearts and crowns",
@@ -977,11 +1912,293 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "moule-en-silicone-demi-spheres",
+      "name": "Moule en silicone demi-sphères",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792001748/sweettools/produits/moule-en-silicone-demi-spheres-mv8fklu2.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792001748/sweettools/produits/moule-en-silicone-demi-spheres-mv8fklu2-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T18:16:08.481Z"
+    },
+    {
+      "slug": "moule-en-silicone-en-forme-de-bagues-diamant-6-cavites",
+      "name": "Moule en silicone en forme de bagues diamant (6 cavités)",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 40,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold – Diamond-Studded Rings (6 Cavities)"
+        },
+        "ar": {
+          "name": "قالب سيليكون على شكل خواتم مرصعة بالألماس (6 تجاويف)."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792320831/sweettools/produits/img-5955-mvdpjnv6.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792320831/sweettools/produits/img-5955-mvdpjnv6-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T10:55:38.778Z"
+    },
+    {
+      "slug": "moule-en-silicone-en-forme-de-fleur-a-six-petales",
+      "name": "Moule en silicone en forme de fleur à six pétales",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 0,
+      "compareAtPrice": 25,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792001525/sweettools/produits/moule-en-silicone-en-forme-de-fleur-a-six-petales-mv8ffu2a.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792001525/sweettools/produits/moule-en-silicone-en-forme-de-fleur-a-six-petales-mv8ffu2a-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T18:12:13.890Z"
+    },
+    {
+      "slug": "moule-en-silicone-en-forme-de-grains-de-cafe",
+      "name": "Moule en silicone en forme de grains de café",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 30,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Coffee Bean Silicone Chocolate Mold"
+        },
+        "ar": {
+          "name": "قالب سيليكون على شكل حبوب القهوة"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793192176/sweettools/produits/5a5a21c9-d8c3-4781-be0e-6b4493fa6164-mvs4blrv.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793192176/sweettools/produits/5a5a21c9-d8c3-4781-be0e-6b4493fa6164-mvs4blrv-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-28T12:57:15.826Z"
+    },
+    {
+      "slug": "moule-en-silicone-en-forme-de-queue-de-sirene-pour-decoration-de-gateaux-et-pati",
+      "name": "Moule en silicone en forme de queue de sirène pour décoration de gâteaux et pâtisseries.",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold – Mermaid Tail for Cake and Pastry Decoration"
+        },
+        "ar": {
+          "name": "قالب سيليكون على شكل ذيل حورية البحر لتزيين الكيك والحلويات."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792325414/sweettools/produits/688beee8-e11e-4339-8d70-4f1b510c5fc4-mvds9vvr.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792325413/sweettools/produits/688beee8-e11e-4339-8d70-4f1b510c5fc4-mvds9vvr-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T12:10:35.988Z"
+    },
+    {
+      "slug": "moule-en-silicone-en-forme-de-tourbillon",
+      "name": "Moule en silicone en forme de tourbillon",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792000434/sweettools/produits/moule-en-silicone-en-forme-de-tourbillon-mv8esg82.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792000434/sweettools/produits/moule-en-silicone-en-forme-de-tourbillon-mv8esg82-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T17:54:04.410Z"
+    },
+    {
+      "slug": "moule-silicone-nuage",
+      "name": "Moule en silicone motif framboise",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 30,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Raspberry Design Silicone Mold"
+        },
+        "ar": {
+          "name": "قالب سيليكون بتصميم حبات التوت"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793283366/sweettools/produits/cd200012-1961-4be7-90cf-90ce39c19b06-mvtmm494.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793283365/sweettools/produits/cd200012-1961-4be7-90cf-90ce39c19b06-mvtmm494-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-29T14:23:51.996Z"
+    },
+    {
+      "slug": "moule-en-silicone-noir-pour-bento-cake",
+      "name": "Moule en silicone noir pour Bento Cake",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [
+        "En forme de cœur",
+        "En forme carrée",
+        "En forme ron"
+      ],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Black Silicone Bento Cake Mold"
+        },
+        "ar": {
+          "name": "قالب سيليكون أسود لتحضير البنتو كيك"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793280047/sweettools/produits/moule-en-silicone-noir-pour-bento-cake-mvtkmzl6.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793280047/sweettools/produits/moule-en-silicone-noir-pour-bento-cake-mvtkmzl6-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793280049/sweettools/produits/moule-en-silicone-noir-pour-bento-cake-mvtkn1db.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793280049/sweettools/produits/moule-en-silicone-noir-pour-bento-cake-mvtkn1db-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793280051/sweettools/produits/moule-en-silicone-noir-pour-bento-cake-mvtkn35w.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793280051/sweettools/produits/moule-en-silicone-noir-pour-bento-cake-mvtkn35w-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-29T13:21:04.286Z"
+    },
+    {
+      "slug": "moule-en-silicone-ovale",
+      "name": "moule en silicone ovale",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791991248/sweettools/produits/moule-en-silicone-ovale-mv89bkas.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791991248/sweettools/produits/moule-en-silicone-ovale-mv89bkas-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T15:21:01.863Z"
+    },
+    {
       "slug": "moule-en-silicone-papillon",
       "name": "Moule en silicone papillon – Tapis de cuisson en silicone pour la décoration de pâtisseries et de gâteaux, le caramel, dimensions 29 x 19cm",
       "categoryId": "tapis-patisserie",
       "categoryIds": [
-        "tapis-patisserie"
+        "tapis-patisserie",
+        "equipement-professionnel"
       ],
       "price": 60,
       "compareAtPrice": 0,
@@ -989,6 +2206,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1002,11 +2220,36 @@
       "createdAt": "2026-10-11T09:45:27.426Z"
     },
     {
+      "slug": "moule-en-silicone-pour-8-glaces-magnum",
+      "name": "Moule en silicone pour 8 glaces Magnum",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 50,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006181/sweettools/produits/34a0d373-3a48-4472-bb74-1f057bbf7378-mv8i7mxc.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006181/sweettools/produits/34a0d373-3a48-4472-bb74-1f057bbf7378-mv8i7mxc-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T19:30:20.705Z"
+    },
+    {
       "slug": "moule-en-silicone-pour-chocolat-formes-rondes",
       "name": "Moule en silicone pour chocolat – Formes rondes",
-      "categoryId": "appareils-patisserie",
+      "categoryId": "moules-silicone-chocolat",
       "categoryIds": [
-        "appareils-patisserie",
         "moules-silicone-chocolat"
       ],
       "price": 25,
@@ -1015,6 +2258,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1032,11 +2276,45 @@
       "createdAt": "2026-10-13T19:01:21.160Z"
     },
     {
+      "slug": "moule-en-silicone-pour-coquillages-marins",
+      "name": "Moule en silicone pour coquillages marins",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold for Seashells"
+        },
+        "ar": {
+          "name": "قالب سيليكون لتشكيل الأصداف البحرية المتنوعة."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792323786/sweettools/produits/15ae03a1-21ce-4157-bbbb-bf106518594b-mvdrazti.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792323786/sweettools/produits/15ae03a1-21ce-4157-bbbb-bf106518594b-mvdrazti-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:48:07.356Z"
+    },
+    {
       "slug": "moule-en-silicone",
       "name": "Moule en silicone pour dentelles et tuiles – Mélange de fleurs dimensions 47 x 27 cm",
       "categoryId": "tapis-patisserie",
       "categoryIds": [
-        "tapis-patisserie"
+        "tapis-patisserie",
+        "equipement-professionnel"
       ],
       "price": 70,
       "compareAtPrice": 0,
@@ -1044,6 +2322,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1055,6 +2334,105 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-11T13:01:44.038Z"
+    },
+    {
+      "slug": "moule-en-silicone-pour-etoiles-croissant-de-lune-et-nuages",
+      "name": "Moule en silicone pour étoiles, croissant de lune et nuages",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold for Stars, Crescent Moon, and Clouds"
+        },
+        "ar": {
+          "name": "قالب سيليكون للنجوم والهلال والسحب لتزيين الحلويات."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792322923/sweettools/produits/20af3e02-afbb-4f35-8e24-68fd82f9a671-mvdqsikd.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792322923/sweettools/produits/20af3e02-afbb-4f35-8e24-68fd82f9a671-mvdqsikd-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:29:34.411Z"
+    },
+    {
+      "slug": "moule-en-silicone-pour-madeleines",
+      "name": "Moule en silicone pour madeleines",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 70,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Madeleine Mold"
+        },
+        "ar": {
+          "name": "قالب سيليكون للمادلين"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793192646/sweettools/produits/c0783e10-c45b-4557-b969-1dc08b44fc02-mvs4loco.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793192646/sweettools/produits/c0783e10-c45b-4557-b969-1dc08b44fc02-mvs4loco-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-28T13:06:48.895Z"
+    },
+    {
+      "slug": "moule-en-silicone-pour-plumes-decoratives",
+      "name": "Moule en silicone pour plumes décoratives",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 38,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold for Decorative Feathers"
+        },
+        "ar": {
+          "name": "قالب سيليكون لتشكيل الريش وتزيين الحلويات."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792323561/sweettools/produits/moule-en-silicone-pour-plumes-decoratives-mvdr66bb.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792323561/sweettools/produits/moule-en-silicone-pour-plumes-decoratives-mvdr66bb-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:39:32.467Z"
     },
     {
       "slug": "moule-en-silicone-pour-tablette-de-chocolat-forme-ondulee",
@@ -1069,6 +2447,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1098,6 +2477,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1127,6 +2507,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1156,6 +2537,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone chocolate bar mould – 3 shapes",
@@ -1201,6 +2583,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Silicone chocolate bar mould – rainbow",
@@ -1231,6 +2614,299 @@
       "createdAt": "2026-10-06T13:47:16.056Z"
     },
     {
+      "slug": "moule-en-silicone-sur-le-theme-marin-coquillage-conque-etoile-de-mer",
+      "name": "Moule en silicone sur le thème marin, coquillage, conque, étoile de mer",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone mold with a marine theme, featuring seashells, conch shells, and starfish."
+        },
+        "ar": {
+          "name": "قالب سيليكون بتصاميم بحرية، يضم الأصداف والمحار ونجم البحر."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792324309/sweettools/produits/moule-en-silicone-sur-le-theme-marin-coquillage-conque-etoile-de-mer-mvdrm7eu.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792324309/sweettools/produits/moule-en-silicone-sur-le-theme-marin-coquillage-conque-etoile-de-mer-mvdrm7eu-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:53:19.799Z"
+    },
+    {
+      "slug": "moule-fleurs-assorties-en-silicone-11-modeles",
+      "name": "MOULE FLEURS ASSORTIES EN SILICONE - 11 MODÈLES",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "ASSORTED FLOWERS SILICONE MOLD - 11 MODELS"
+        },
+        "ar": {
+          "name": "قالب سيليكون بأشكال زهور متنوعة – 11 شكلاً."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792321502/sweettools/produits/moule-fleurs-assorties-en-silicone-11-modeles-mvdpy1t4.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792321502/sweettools/produits/moule-fleurs-assorties-en-silicone-11-modeles-mvdpy1t4-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:05:19.273Z"
+    },
+    {
+      "slug": "moule-silicone-9-fleurs-et-1-feuille",
+      "name": "Moule Silicone - 9 Fleurs et 1 Feuille",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 40,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold – 9 Flowers and 1 Leaf"
+        },
+        "ar": {
+          "name": "قالب سيليكون يحتوي على 9 زهور وورقة واحدة."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792321326/sweettools/produits/moule-silicone-9-fleurs-et-1-feuille-mvdpu9w8.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792321326/sweettools/produits/moule-silicone-9-fleurs-et-1-feuille-mvdpu9w8-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T11:02:49.662Z"
+    },
+    {
+      "slug": "moule-silicone-5-fleurs-carre",
+      "name": "Moule Silicone 5 Fleurs Carré",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Square Silicone Mold with 5 Flowers"
+        },
+        "ar": {
+          "name": "قالب سيليكون مربع لصنع 5 زهور."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792320708/sweettools/produits/moule-silicone-5-fleurs-carre-mvdph0sd.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792320708/sweettools/produits/moule-silicone-5-fleurs-carre-mvdph0sd-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T10:52:08.430Z"
+    },
+    {
+      "slug": "moule-silicone-cone",
+      "name": "Moule Silicone Cône",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792000599/sweettools/produits/moule-silicone-cone-mv8evzne.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792000599/sweettools/produits/moule-silicone-cone-mv8evzne-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T17:56:47.816Z"
+    },
+    {
+      "slug": "moule-silicone-couronne-de-bulles-ideal-pour-gateaux-mousses-entremets-et-patiss",
+      "name": "Moule Silicone Couronne de Bulles – Idéal pour gâteaux, mousses, entremets et pâtisseries créatives.",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 45,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Bubble Crown Silicone Cake Mold – Ideal for Cakes, Mousses, Entremets and Creative Pastries."
+        },
+        "ar": {
+          "name": "قالب سيليكون على شكل تاج من الفقاعات – مثالي لتحضير الكيك، والموس، والحلويات العصرية والمبتكرة."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792331327/sweettools/produits/b044e357-f23f-42ab-b46a-531bab9d1c0c-d39205c2-6703-433b-b690-0352da05d544-mvdvsn02.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792331327/sweettools/produits/b044e357-f23f-42ab-b46a-531bab9d1c0c-d39205c2-6703-433b-b690-0352da05d544-mvdvsn02-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792331338/sweettools/produits/1e81c7c9-b3db-49bf-b1f2-2b30c0044978-mvdvsve6.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792331338/sweettools/produits/1e81c7c9-b3db-49bf-b1f2-2b30c0044978-mvdvsve6-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T13:49:51.190Z"
+    },
+    {
+      "slug": "moule-silicone-pastille-rond",
+      "name": "Moule Silicone Pastille Rond",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792135106/sweettools/produits/moule-silicone-pastille-rond-mvamyxon.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792135106/sweettools/produits/moule-silicone-pastille-rond-mvamyxon-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T17:58:55.482Z"
+    },
+    {
+      "slug": "moule-silicone-poisson-et-2-etoiles-de-mer",
+      "name": "Moule Silicone Poisson et 2 Etoiles de Mer",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 35,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [
+        "35"
+      ],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Silicone Mold – Fish and 2 Starfish"
+        },
+        "ar": {
+          "name": "قالب سيليكون على شكل سمكة ونجمتي بحر."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792325040/sweettools/produits/moule-silicone-poisson-et-2-etoiles-de-mer-mvds1vee.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792325040/sweettools/produits/moule-silicone-poisson-et-2-etoiles-de-mer-mvds1vee-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T12:04:09.117Z"
+    },
+    {
+      "slug": "moule-silicone-pour-chocolat-choco-flamme",
+      "name": "Moule silicone pour chocolat Choco Flamme",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Choco Flamme Silicone Chocolate Mold"
+        },
+        "ar": {
+          "name": "قالب سيليكون للشوكولاتة بشكل شعلة «Choco Flamme»"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792327492/sweettools/produits/moule-silicone-pour-chocolat-choco-flamme-mvdtifxp.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792327492/sweettools/produits/moule-silicone-pour-chocolat-choco-flamme-mvdtifxp-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792327501/sweettools/produits/moule-silicone-pour-chocolat-choco-flamme-mvdtimou.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792327501/sweettools/produits/moule-silicone-pour-chocolat-choco-flamme-mvdtimou-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-18T12:45:54.905Z"
+    },
+    {
       "slug": "moule-silicone-tablette-de-chocolat-fragment-15-3-x-7-8-cm",
       "name": "Moule Silicone Tablette de Chocolat Fragment 15.3 x 7.8 cm",
       "categoryId": "moules-silicone-chocolat",
@@ -1243,6 +2919,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1254,6 +2931,84 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-13T18:48:39.002Z"
+    },
+    {
+      "slug": "moules-silicone-theme-clown-et-cirque",
+      "name": "Moules Silicone Thème Clown et Cirque",
+      "categoryId": "moules-silicone",
+      "categoryIds": [
+        "moules-silicone"
+      ],
+      "price": 40,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006539/sweettools/produits/moules-silicone-theme-clown-et-cirque-mv8ifayn.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792006539/sweettools/produits/moules-silicone-theme-clown-et-cirque-mv8ifayn-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T19:35:55.178Z"
+    },
+    {
+      "slug": "outil-de-decoupe-de-gateau",
+      "name": "Outil de découpe de gâteau",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 50,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792005902/sweettools/produits/outil-de-decoupe-de-gateau-mv8i1ng8.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792005902/sweettools/produits/outil-de-decoupe-de-gateau-mv8i1ng8-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T19:25:35.673Z"
+    },
+    {
+      "slug": "outil-de-decoupe-de-gateau-en-acier-inoxydable",
+      "name": "Outil de découpe de gâteau en acier inoxydable",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792005650/sweettools/produits/outil-de-decoupe-de-gateau-en-acier-inoxydable-mv8hw94x.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792005650/sweettools/produits/outil-de-decoupe-de-gateau-en-acier-inoxydable-mv8hw94x-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T19:22:06.001Z"
     },
     {
       "slug": "papier-decoratif-paillettes-feuilles-d-or-d-imitation",
@@ -1268,6 +3023,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1289,7 +3045,8 @@
       "name": "Plateau tournant en acier inoxydable pour masquer, lisser et décorer un gâteau en le faisant pivoter d'une main.",
       "categoryId": "materiel-patisserie",
       "categoryIds": [
-        "materiel-patisserie"
+        "materiel-patisserie",
+        "equipement-professionnel"
       ],
       "price": 220,
       "compareAtPrice": 0,
@@ -1300,6 +3057,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Stainless steel turntable",
@@ -1342,6 +3100,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1361,12 +3120,13 @@
       "categoryIds": [
         "materiel-patisserie"
       ],
-      "price": 25,
+      "price": 23,
       "compareAtPrice": 0,
       "description": "",
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1380,6 +3140,39 @@
       "createdAt": "2026-10-12T16:23:38.775Z"
     },
     {
+      "slug": "rouleau-a-fondant",
+      "name": "Rouleau à Fondant",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 70,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Fondant Rolling Pin"
+        },
+        "ar": {
+          "name": "نشّابة لعجينة السكر"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792417601/sweettools/produits/rouleau-a-fondant-mvfb5rwm.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1792417601/sweettools/produits/rouleau-a-fondant-mvfb5rwm-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-19T13:47:01.571Z"
+    },
+    {
       "slug": "rouleau-et-bicyclette-extensible-multicoupe-simple-5-roulettes-en-inox",
       "name": "Rouleau et Bicyclette Extensible Multicoupe Simple 5 Roulettes en Inox",
       "categoryId": "equipement-professionnel",
@@ -1387,12 +3180,13 @@
         "equipement-professionnel",
         "appareils-patisserie"
       ],
-      "price": 260,
+      "price": 250,
       "compareAtPrice": 0,
       "description": "",
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1408,6 +3202,33 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-11T20:29:49.312Z"
+    },
+    {
+      "slug": "rouleau-et-bicyclette-extensible-multicoupe-simple-7-roulettes-en-inox",
+      "name": "Rouleau et Bicyclette Extensible Multicoupe Simple 7 Roulettes en Inox",
+      "categoryId": "equipement-professionnel",
+      "categoryIds": [
+        "equipement-professionnel",
+        "materiel-patisserie"
+      ],
+      "price": 300,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793284183/sweettools/produits/rouleau-et-bicyclette-extensible-multicoupe-simple-7-roulettes-en-inox-mvtn3nda.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793284183/sweettools/produits/rouleau-et-bicyclette-extensible-multicoupe-simple-7-roulettes-en-inox-mvtn3nda-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-29T14:29:53.725Z"
     },
     {
       "slug": "rouleau-pate-a-sucre-anneaux-epaisseur",
@@ -1426,6 +3247,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Sugar paste rolling pin with thickness rings",
@@ -1474,6 +3296,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1491,7 +3314,8 @@
       "name": "SET. 12 Douilles Pâtisserie en Inox",
       "categoryId": "materiel-patisserie",
       "categoryIds": [
-        "materiel-patisserie"
+        "materiel-patisserie",
+        "equipement-professionnel"
       ],
       "price": 95,
       "compareAtPrice": 0,
@@ -1499,6 +3323,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1516,9 +3341,10 @@
       "name": "Spatule coudée en acier inoxydable pour napper, lisser le dessus d'un gâteau et soulever les décors sans y mettre les doigts",
       "categoryId": "materiel-patisserie",
       "categoryIds": [
-        "materiel-patisserie"
+        "materiel-patisserie",
+        "equipement-professionnel"
       ],
-      "price": 60,
+      "price": 70,
       "compareAtPrice": 0,
       "description": "",
       "details": [
@@ -1527,6 +3353,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Offset spatula",
@@ -1572,6 +3399,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Macaron mat – large 60 × 40 cm",
@@ -1617,6 +3445,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Macaron mat – small 30 × 40 cm",
@@ -1659,6 +3488,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1687,6 +3517,7 @@
       ],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Oven baking mat – large",
@@ -1729,6 +3560,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Oven baking mat – small",
@@ -1771,6 +3603,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1796,14 +3629,16 @@
       "name": "Tapis dentelle fleurs",
       "categoryId": "tapis-patisserie",
       "categoryIds": [
-        "tapis-patisserie"
+        "tapis-patisserie",
+        "equipement-professionnel"
       ],
-      "price": 70,
+      "price": 90,
       "compareAtPrice": 0,
       "description": "",
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1829,7 +3664,8 @@
       "name": "Tapis en silicone – Moule à feuilles et motifs végétaux pour la décoration de pâtisseries, gâteaux et chocolats dimensions 30 x 27 cm",
       "categoryId": "tapis-patisserie",
       "categoryIds": [
-        "tapis-patisserie"
+        "tapis-patisserie",
+        "equipement-professionnel"
       ],
       "price": 70,
       "compareAtPrice": 0,
@@ -1837,6 +3673,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1862,6 +3699,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1883,7 +3721,8 @@
       "name": "tapis ou moule en silicone gris à motifs de feuilles ou plumes dimensions 47 x 27 cm",
       "categoryId": "tapis-patisserie",
       "categoryIds": [
-        "tapis-patisserie"
+        "tapis-patisserie",
+        "equipement-professionnel"
       ],
       "price": 70,
       "compareAtPrice": 0,
@@ -1891,6 +3730,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1916,6 +3756,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {},
       "images": [
         {
@@ -1945,6 +3786,7 @@
       "details": [],
       "colors": [],
       "sizes": [],
+      "shapes": [],
       "i18n": {
         "en": {
           "name": "Cake scrapers – 3 pieces",
@@ -1973,6 +3815,129 @@
       "inStock": true,
       "lowStock": 0,
       "createdAt": "2026-10-06T13:47:16.056Z"
+    },
+    {
+      "slug": "un-moule-en-silicone-concu-pour-realiser-des-mini-buches",
+      "name": "Un moule en silicone conçu pour réaliser des mini-bûches.",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791992158/sweettools/produits/un-moule-en-silicone-concu-pour-realiser-des-mini-buches-mv89v2b1.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791992158/sweettools/produits/un-moule-en-silicone-concu-pour-realiser-des-mini-buches-mv89v2b1-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T15:36:10.284Z"
+    },
+    {
+      "slug": "un-moule-en-silicone-en-forme-de-pyramide",
+      "name": "Un moule en silicone en forme de pyramide",
+      "categoryId": "moules-silicone-four",
+      "categoryIds": [
+        "moules-silicone-four"
+      ],
+      "price": 25,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {},
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791992280/sweettools/produits/un-moule-en-silicone-en-forme-de-pyramide-mv89xotz.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1791992280/sweettools/produits/un-moule-en-silicone-en-forme-de-pyramide-mv89xotz-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-14T15:38:21.109Z"
+    },
+    {
+      "slug": "un-tamis-a-farine-mecanique-en-forme-de-tasse",
+      "name": "un tamis à farine mécanique en forme de tasse",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie"
+      ],
+      "price": 45,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "Mechanical Cup-Shaped Flour Sifter"
+        },
+        "ar": {
+          "name": "منخل دقيق ميكانيكي على شكل كوب"
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793190280/sweettools/produits/un-tamis-a-farine-mecanique-en-forme-de-tasse-mvs36z40.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793190280/sweettools/produits/un-tamis-a-farine-mecanique-en-forme-de-tasse-mvs36z40-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-10-28T12:24:52.975Z"
+    },
+    {
+      "slug": "une-balance-de-cuisine-electronique-dawood-avec-ecran-lcd-et-indicateur-de-tempe",
+      "name": "une balance de cuisine électronique Dawood avec écran LCD et indicateur de température",
+      "categoryId": "materiel-patisserie",
+      "categoryIds": [
+        "materiel-patisserie",
+        "appareils-patisserie"
+      ],
+      "price": 100,
+      "compareAtPrice": 0,
+      "description": "",
+      "details": [],
+      "colors": [],
+      "sizes": [],
+      "shapes": [],
+      "i18n": {
+        "en": {
+          "name": "DAWOOD Electronic Kitchen Scale with LCD Screen and Temperature Display."
+        },
+        "ar": {
+          "name": "ميزان مطبخ إلكتروني DAWOOD مزود بشاشة LCD وخاصية عرض درجة الحرارة."
+        }
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793712248/sweettools/produits/une-balance-de-cuisine-electronique-dawood-avec-ecran-lcd-et-indicateur-de-tempe-mw0pyjtt.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793712248/sweettools/produits/une-balance-de-cuisine-electronique-dawood-avec-ecran-lcd-et-indicateur-de-tempe-mw0pyjtt-thumb.webp"
+        },
+        {
+          "url": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793712251/sweettools/produits/une-balance-de-cuisine-electronique-dawood-avec-ecran-lcd-et-indicateur-de-tempe-mw0pym95.webp",
+          "thumb": "https://res.cloudinary.com/c8z8nv4g/image/upload/v1793712250/sweettools/produits/une-balance-de-cuisine-electronique-dawood-avec-ecran-lcd-et-indicateur-de-tempe-mw0pym95-thumb.webp"
+        }
+      ],
+      "featured": false,
+      "inStock": true,
+      "lowStock": 0,
+      "createdAt": "2026-11-03T13:25:36.584Z"
     }
   ],
   "categories": [
@@ -2089,8 +4054,8 @@
     },
     {
       "id": "moules-silicone-four",
-      "name": "Moules en silicone pour four",
-      "description": "Moules en silicone qui passent au four pour madeleines, palets et petits gâteaux.",
+      "name": "Moules en silicone pour four et congélateur",
+      "description": "Moules en silicone pour four et congélateur",
       "order": 8,
       "image": "",
       "i18n": {
@@ -2152,6 +4117,29 @@
         "ar": {
           "name": "حصائر الحلويات",
           "description": "حصائر للعمل والخَبز والماكارون، للفرد والخَبز والتشكيل على سطح مانع للالتصاق."
+        }
+      }
+    },
+    {
+      "id": "moule-trompe-l-oeil",
+      "name": "moule trompe l'oeil",
+      "description": "",
+      "order": 12,
+      "image": "",
+      "i18n": {}
+    },
+    {
+      "id": "cercles-en-inox",
+      "name": "Cercles et cadres à pâtisserie en inox",
+      "description": "",
+      "order": 13,
+      "image": "",
+      "i18n": {
+        "en": {
+          "name": "Rust-Resistant Pastry Rings and Frames"
+        },
+        "ar": {
+          "name": "حلقات وإطارات الحلويات المقاومة للصدأ"
         }
       }
     }
@@ -2259,5 +4247,5 @@
       }
     }
   },
-  "generatedAt": "2026-10-14T13:09:38.897Z"
+  "generatedAt": "2026-11-06T16:27:08.922Z"
 }
