@@ -6,7 +6,7 @@
  * customer picked. When the cart displayed a different price, the database
  * wins and the old figure is kept on the line for the phone call.
  */
-import { clean, int, reference } from './text.js';
+import { clean, int, moroccanPhone, reference } from './text.js';
 import { msg, nameIn, shopLang } from './i18n.js';
 import { isSellable, sizeLabel } from './product.js';
 import { shippingFor } from './settings.js';
@@ -41,11 +41,9 @@ function customer(raw = {}, lang = 'fr') {
     notes: clean(raw.notes, 1000),
   };
   if (c.name.length < 2) return { error: msg(lang, 'name') };
-  const d = c.phone.replace(/\D/g, '');
-  // 06/07/05 + 8 digits locally, or 212 + 9 digits.
-  if (!/^(0[5-7]\d{8}|212[5-7]\d{8})$/.test(d)) {
-    return { error: msg(lang, 'phone') };
-  }
+  // Stored as 0612345678 whatever the shopper typed (+212, 00212, Arabic digits…).
+  c.phone = moroccanPhone(c.phone);
+  if (!c.phone) return { error: msg(lang, 'phone') };
   // Optional, but a typo would be kept and never reach the customer.
   if (c.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email)) {
     return { error: msg(lang, 'email') };

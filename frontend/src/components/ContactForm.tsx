@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { apiUrl } from '@/config/api';
+import { moroccanPhone } from '@/lib/phone';
 import { whatsappUrl } from '@/lib/whatsapp';
 import Field from './FormField';
 import { IconCheck, IconWhatsapp } from './Icons';
@@ -14,7 +15,6 @@ import { useSettings } from './LiveCatalogue';
  */
 const SUBJECTS = ['Question sur un produit', 'Suivi de commande', 'Commande en gros / professionnel', 'Autre'];
 
-const PHONE = /^(0[5-7]\d{8}|212[5-7]\d{8})$/;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const EMPTY = { name: '', phone: '', email: '', subject: SUBJECTS[0], message: '', website: '' };
 
@@ -45,9 +45,9 @@ export default function ContactForm() {
   function validate() {
     const e: Record<string, string> = {};
     if (form.name.trim().length < 2) e.name = t.errName;
-    const phone = form.phone.replace(/\D/g, '');
+    const phone = form.phone.trim();
     if (!phone && !form.email.trim()) e.phone = t.errPhoneOrEmail;
-    else if (phone && !PHONE.test(phone)) e.phone = t.errPhone;
+    else if (phone && !moroccanPhone(phone)) e.phone = t.errPhone;
     if (form.email.trim() && !EMAIL.test(form.email.trim())) e.email = t.errEmail;
     if (form.message.trim().length < 10) e.message = t.errMessage;
     return e;

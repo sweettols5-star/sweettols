@@ -5,6 +5,7 @@ import { apiUrl } from '@/config/api';
 import type { Dict } from '@/i18n';
 import { rich } from '@/i18n/rich';
 import { routes } from '@/lib/routes';
+import { moroccanPhone } from '@/lib/phone';
 import { whatsappUrl } from '@/lib/whatsapp';
 import { useCart } from './CartProvider';
 import { IconCheck, IconWhatsapp } from './Icons';
@@ -29,7 +30,6 @@ type Confirmed = {
   phone: string;
 };
 
-const PHONE = /^(0[5-7]\d{8}|212[5-7]\d{8})$/;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const STORAGE_KEY = 'sweettools.checkout.v1';
 /** Same rule as the API (backend/src/lib/order.js): +20 % VAT on the products, delivery excluded. */
@@ -106,7 +106,7 @@ export default function CheckoutForm() {
   function validate() {
     const e: Record<string, string> = {};
     if (form.name.trim().length < 2) e.name = k.errName;
-    if (!PHONE.test(form.phone.replace(/\D/g, ''))) e.phone = k.errPhone;
+    if (!moroccanPhone(form.phone)) e.phone = k.errPhone;
     if (form.email.trim() && !EMAIL.test(form.email.trim())) e.email = k.errEmail;
     if (!form.city.trim()) e.city = k.errCity;
     if (form.address.trim().length < 5) e.address = k.errAddress;
@@ -148,6 +148,10 @@ export default function CheckoutForm() {
         }),
       });
       const data = await res.json().catch(() => ({}));
+      if (res.status === 429) {
+        setServerError(k.errTooMany);
+        return;
+      }
       if (!res.ok) {
         setServerError(data.error || k.errFailed);
         return;

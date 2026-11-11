@@ -20,6 +20,7 @@ const MESSAGES = {
     unavailable: ({ name }) => `« ${name} » n'est plus disponible. Retirez-le du panier pour continuer.`,
     option: ({ name }) => `La couleur, la taille ou la forme choisie pour « ${name} » n'est plus proposée. Retirez-le du panier et choisissez à nouveau.`,
     minOrder: ({ min, missing }) => `Le montant minimum de commande est de ${min} DH (livraison comprise). Il manque ${missing} DH à votre panier.`,
+    tooManyOrders: 'Plusieurs commandes viennent d’être passées depuis votre connexion. Patientez une minute, ou commandez sur WhatsApp.',
   },
   en: {
     name: 'Please enter your full name.',
@@ -37,6 +38,7 @@ const MESSAGES = {
     unavailable: ({ name }) => `“${name}” is no longer available. Remove it from your cart to continue.`,
     option: ({ name }) => `The colour, size or shape chosen for “${name}” is no longer offered. Remove it from your cart and choose again.`,
     minOrder: ({ min, missing }) => `The minimum order is ${min} DH (delivery included). Add ${missing} DH more to your cart.`,
+    tooManyOrders: 'Several orders were just placed from your connection. Please wait a minute, or order on WhatsApp.',
   },
   ar: {
     name: 'يرجى إدخال اسمك الكامل.',
@@ -54,6 +56,7 @@ const MESSAGES = {
     unavailable: ({ name }) => `«${name}» لم يعد متوفرًا. احذفه من السلة للمتابعة.`,
     option: ({ name }) => `اللون أو المقاس أو الشكل المختار لـ «${name}» لم يعد متوفرًا. احذفه من السلة واختر من جديد.`,
     minOrder: ({ min, missing }) => `الحد الأدنى للطلب هو ${min} درهم (شاملًا التوصيل). أضف ${missing} درهم إلى سلتك.`,
+    tooManyOrders: 'تم تسجيل عدة طلبات من اتصالك للتو. يرجى الانتظار دقيقة، أو اطلب عبر واتساب.',
   },
 };
 

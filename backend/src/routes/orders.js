@@ -5,6 +5,7 @@ import { buildOrder, STATUSES, stockDelta } from '../lib/order.js';
 import { clean } from '../lib/text.js';
 import { readSettings } from '../lib/settings.js';
 import { sendPurchase } from '../lib/meta.js';
+import { msg, shopLang } from '../lib/i18n.js';
 
 export const orderRoutes = Router();
 export const adminOrderRoutes = Router();
@@ -19,7 +20,15 @@ async function moveStock(items, sign) {
   }
 }
 
-orderRoutes.post('/orders', throttle({ tries: 6, windowMs: 60_000 }), async (req, res) => {
+// Only orders actually placed count: a refused attempt (typo, minimum…) never locks a customer out.
+const orderThrottle = throttle({
+  tries: 6,
+  windowMs: 60_000,
+  successOnly: true,
+  message: (req) => msg(shopLang(req.body?.lang), 'tooManyOrders'),
+});
+
+orderRoutes.post('/orders', orderThrottle, async (req, res) => {
   try {
     const [catalogue, settings] = await Promise.all([store.products.all(), readSettings()]);
     const { error, problems, order } = buildOrder(req.body, catalogue, settings);

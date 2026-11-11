@@ -210,6 +210,7 @@ const fr = {
     errBlocked: 'Retirez les articles indisponibles de votre panier.',
     errFailed: 'La commande n’a pas pu être enregistrée. Réessayez.',
     errNetwork: 'Connexion impossible. Vérifiez votre réseau puis réessayez.',
+    errTooMany: 'Plusieurs commandes viennent d’être passées depuis votre connexion. Patientez une minute, ou commandez sur WhatsApp.',
     thanks: (first: string) => `Merci ${first} !`,
     saved: 'Votre commande {ref} est enregistrée. Nous vous appelons au {phone} pour la confirmer avant l’envoi.',
     deliveryTo: (zone: string) => `Livraison (${zone})`,

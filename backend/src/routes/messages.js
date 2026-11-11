@@ -8,7 +8,8 @@ export const messageRoutes = Router();
 export const adminMessageRoutes = Router();
 
 /** Contact form. Tight throttle: nobody writes more than a few messages in 10 minutes. */
-messageRoutes.post('/messages', throttle({ tries: 5, windowMs: 10 * 60_000 }), async (req, res) => {
+// Only messages accepted count: a refused one (bad phone, too short) can be fixed and resent.
+messageRoutes.post('/messages', throttle({ tries: 5, windowMs: 10 * 60_000, successOnly: true }), async (req, res) => {
   try {
     const result = buildMessage(req.body);
     if (result.error) {

@@ -206,6 +206,7 @@ const en: Dict = {
     errBlocked: 'Remove the unavailable items from your cart.',
     errFailed: 'The order could not be saved. Please try again.',
     errNetwork: 'Connection failed. Check your network and try again.',
+    errTooMany: 'Several orders were just placed from your connection. Please wait a minute, or order on WhatsApp.',
     thanks: (first: string) => `Thank you ${first}!`,
     saved: 'Your order {ref} has been received. We will call you on {phone} to confirm it before shipping.',
     deliveryTo: (zone: string) => `Delivery (${zone})`,

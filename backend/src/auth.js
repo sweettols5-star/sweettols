@@ -44,21 +44,29 @@ export function requireAdmin(req, res, next) {
 }
 
 /**
- * Crude per-IP throttle for the login route. Enough to make password guessing
+ * Crude per-IP throttle. Enough to make password guessing or order spam
  * pointless without adding a dependency or a second datastore.
+ *
+ * `successOnly`: only requests that end well (status < 400) count — for the
+ * shopper routes, where a customer fixing a typo in their phone number must
+ * not lock themselves out. `message(req)` is the text a shopper reads.
  */
-export function throttle({ tries = 5, windowMs = 60_000 } = {}) {
+export function throttle({ tries = 5, windowMs = 60_000, successOnly = false, message = () => 'too_many_attempts' } = {}) {
   const seen = new Map();
   return (req, res, next) => {
     const now = Date.now();
     const key = req.ip || 'unknown';
     const hits = (seen.get(key) || []).filter((t) => now - t < windowMs);
+    seen.set(key, hits);
     if (hits.length >= tries) {
-      res.status(429).json({ error: 'too_many_attempts' });
+      res.status(429).json({ error: message(req) });
       return;
     }
-    hits.push(now);
-    seen.set(key, hits);
+    if (successOnly) {
+      res.on('finish', () => { if (res.statusCode < 400) hits.push(Date.now()); });
+    } else {
+      hits.push(now);
+    }
     // Keep the map from growing without bound on a long-running process.
     if (seen.size > 5000) {
       for (const [k, v] of seen) if (!v.some((t) => now - t < windowMs)) seen.delete(k);
